@@ -1,0 +1,67 @@
+---
+permalink: commands-a-z/set-storagearray-odxenabled.html 
+sidebar: sidebar 
+keywords: enable, disable, odx 
+summary: 'O comando Set storageArray odxEnabled ativa ou desativa a transferência de dados descarregados (ODX) para um storage array.' 
+---
+= Ativar ou desativar o ODX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray odxEnabled` comando liga ou desliga a transferência de dados descarregados (ODX) para uma matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+A matriz de armazenamento vem com o ODX ativado. Use este comando para desativar o ODX se você não quiser executar o ODX ou se o ODX estiver causando problemas com o storage array. A única matriz de armazenamento afetada é a matriz de armazenamento em que o comando é executado.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray odxEnabled=(TRUE | FALSE)
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`odxEnabled`
+ a| 
+A definição para ligar ou desligar o ODX. Para ativar o ODX, defina este parâmetro para `TRUE`. Para desativar o ODX, defina este parâmetro para `FALSE`. A configuração padrão é que o ODX está ativado.
+
+|===
+
+
+== Notas
+
+O ODX fornece uma maneira de transferir dados sem usar operações de leitura e gravação em buffer e não requer envolvimento direto do host com a operação de transferência de dados. Quando o ODX não está habilitado, os dados são lidos do armazenamento de origem para o host e gravados no armazenamento de destino a partir do host. Com o ODX ativado, as operações de transferência de dados são gerenciadas diretamente pela infraestrutura de armazenamento. Os dados são movidos diretamente do storage de origem para o storage de destino sem passar pelo host.
+
+
+
+== Nível mínimo de firmware
+
+8,20

@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/save-storagearray-iserstatistics.html 
+sidebar: sidebar 
+keywords: save, storage, array, iser, statistics 
+summary: O comando save storageArray iserStatistics salva as estatísticas de desempenho iSER do storage array em um arquivo. 
+---
+= Salvar estatísticas de iSER de storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `save storageArray iserStatistics`O comando salva as estatísticas de performance da iSER do storage array em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+[NOTE]
+====
+Este comando está obsoleto e é substituído pelo xref:save-storagearray-hostportstatistics.adoc[Salvar estatísticas da porta do host do storage array]comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray iserStatistics [(raw | baseline)] file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`raw`
+ a| 
+As estatísticas coletadas são todas estatísticas do início do dia do controlador. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`baseline`
+ a| 
+As estatísticas que são coletadas são todas estatísticas a partir do momento em que os controladores foram redefinidos para zero usando o `reset storageArray iserStatsBaseline` comando. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as estatísticas de desempenho. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\iserstat.csv"`
+
+O nome padrão do arquivo que contém as estatísticas de desempenho iSCSI é `iser-statistics.csv`. Você pode usar qualquer nome de arquivo, mas você deve usar a `.csv` extensão.
+
+|===
+
+
+== Notas
+
+Se você não redefinir as estatísticas de linha de base do iSER desde o início do dia do controlador, a hora no início do dia é a hora de linha de base padrão.
+
+
+
+== Nível mínimo de firmware
+
+8,20
+
+8,41 este comando está obsoleto.

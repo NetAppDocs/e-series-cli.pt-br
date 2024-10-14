@@ -1,0 +1,57 @@
+---
+permalink: commands-a-z/set-tray-attribute.html 
+sidebar: sidebar 
+keywords: set, tray, attribute 
+summary: 'O comando Set Tray (Definir bandeja) define atributos definidos pelo usuário para uma bandeja' 
+---
+= Definir atributo de bandeja
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set tray` comando define atributos definidos pelo usuário para uma bandeja
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set tray pass:quotes[[_trayID_]] (chassisName | assetTag)=pass:quotes["_userID_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`tray`
+ a| 
+Identifica uma bandeja específica para a qual definir o atributo. Os valores de ID da bandeja são de 0 a 99. Você deve colocar colchetes ([ ]) ao redor do valor de ID do gabinete.
+
+
+
+ a| 
+`chassisName`
+ a| 
+Nome ou número do chassi para fornecer o novo gabinete. Os nomes de chassis podem ser qualquer combinação de carateres alfanuméricos com um comprimento máximo de 32 carateres. Os carateres alfabéticos podem ser maiúsculos ou minúsculos. Você também pode usar o caractere sublinhado (_) e o caractere hífen (-). Não é possível usar espaços em um nome de chassi. Tem de colocar aspas (" ") ao redor do nome do chassis.
+
+
+
+ a| 
+`assetTag`
+ a| 
+Nome ou número da etiqueta de ativo para dar ao novo gabinete. As etiquetas de ativos podem ser qualquer combinação de carateres alfanuméricos com um comprimento máximo de dez carateres. Os carateres alfabéticos podem ser maiúsculos ou minúsculos. Você também pode usar o caractere sublinhado (_) e o caractere hífen (-). Você não pode usar espaços em um nome de etiqueta de ativo. Você deve colocar aspas (" ") ao redor do nome da etiqueta do ativo.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,16

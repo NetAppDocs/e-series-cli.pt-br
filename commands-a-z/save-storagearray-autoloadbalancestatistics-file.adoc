@@ -1,0 +1,94 @@
+---
+permalink: commands-a-z/save-storagearray-autoloadbalancestatistics-file.html 
+sidebar: sidebar 
+keywords: save, auto-load, balance, statistics 
+summary: O comando save storageArray autoLoadBalanceStatistics file fornece balanceamento automatizado da carga de trabalho de e/S e garante que o tráfego de e/S recebido dos hosts seja gerenciado dinamicamente e balanceado entre ambos os controladores. 
+---
+= Guardar estatísticas de balanceamento de carga automática
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray autoLoadBalanceStatistics file` comando fornece balanceamento automatizado da carga de trabalho de e/S e garante que o tráfego de e/S recebido dos hosts seja gerenciado e balanceado dinamicamente entre os dois controladores.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando salva as estatísticas de balanceamento de carga automático do storage array em um arquivo. Essas estatísticas mostram o histórico de mudança de propriedade em cada volume no array.
+
+[NOTE]
+====
+Envie este ficheiro para o suporte técnico para interpretação.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+ save storageArray autoLoadBalanceStatistics file=pass:quotes["_filename_"]
+(numberOfDays=pass:quotes[_numberOfDays_]);
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`storageArray`
+ a| 
+Especifica que esse comando funciona em um storage array.
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as estatísticas de balanceamento de carga automática. Coloque o nome do ficheiro entre aspas duplas (" ").
+
+
+
+ a| 
+`numberOfDays`
+ a| 
+O número de dias de estatísticas a serem salvas. Este parâmetro é opcional e o valor padrão é 0, que indica todos os dados disponíveis.
+
+|===
+
+
+== Exemplo
+
+[listing]
+----
+SMcli -n Array1 -c "save storageArray autoLoadBalanceStatistics file="filename" numberOfDays=30;"
+----
+[NOTE]
+====
+Uma condição ativa "Drive Lost Primary Path" resultará no balanceamento de carga automático incapaz de equilibrar cargas de trabalho. Essa condição deve estar inativa para garantir que as cargas de trabalho sejam equilibradas por meio do recurso balanceamento de carga automático.
+
+====
+
+
+== Nível mínimo de firmware
+
+8,30

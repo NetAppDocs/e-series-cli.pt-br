@@ -1,0 +1,84 @@
+---
+permalink: commands-a-z/save-storagearray-trustedcertificate.html 
+sidebar: sidebar 
+keywords: retrieve, installed, trusted, ca, certificates 
+summary: O comando save storageArray truckCertificate recupera os certificados de CA confiáveis instalados para o array. Incluídos nos arquivos recuperados estão todos os certificados de CA solicitados dos servidores da web da matriz. 
+---
+= Recuperar certificados de CA confiáveis instalados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray trustedCertificate` comando recupera os certificados de CA confiáveis instalados para o array. Incluídos nos arquivos recuperados estão todos os certificados de CA solicitados dos servidores da web da matriz.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+save storageArray trustedCertificate [allUserInstalled |
+aliases=pass:quotes[("_alias1_" ... "_aliasN_")]] path=pass:quotes["_fileLocation_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allUserInstalled`
+ a| 
+Permite especificar a recuperação de certificados instalados pelo utilizador. A opção padrão é `allUserInstalled` se você não especificou nenhum alias.
+
+
+
+ a| 
+`aliases`
+ a| 
+Permite especificar qual o certificado confiável instalado pelo usuário para recuperar por alias. Inclua todos os aliases entre parênteses. Se você inserir mais de um alias, separe-os com um espaço.
+
+
+
+ a| 
+`path`
+ a| 
+Permite especificar a localização local para a qual guardar os certificados fidedignos do controlador.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "save storageArray trustedCertificate allUserInstalled path="C:\";"
+
+SMcli -n Array1 -c "save storageArray trustedCertificate aliases=("myAlias" "anotherAlias") path="C:\";"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

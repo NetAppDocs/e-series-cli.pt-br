@@ -1,0 +1,83 @@
+---
+permalink: commands-a-z/validate-storagearray-securitykey.html 
+sidebar: sidebar 
+keywords: validate, storage array, security key 
+summary: O comando Validar storageArray securityKey valida a chave de segurança para um storage array que tenha unidades com capacidade de segurança para garantir que o arquivo de chave de segurança de backup não esteja corrompido. 
+---
+= Valide a chave de segurança do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `validate storageArray securityKey` comando valida a chave de segurança para uma matriz de armazenamento com unidades compatíveis com segurança para garantir que o ficheiro de chave de segurança de cópia de segurança não está corrompido.
+
+
+
+== Arrays compatíveis
+
+Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800 e E5700. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+A validação da chave de segurança usa a frase-passe usada para gerar o arquivo para descriptografar a chave e combiná-la com o valor mantido na memória do controlador (para chaves internas) ou no servidor externo (para chaves externas).
+
+[NOTE]
+====
+Este comando aplica-se ao gerenciamento de chaves internas e externas.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[validate storageArray securityKey file="_fileName_" passPhrase="_passPhraseString_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo que tem a chave de segurança. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[NOTE]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk`.
+
+====
+
+
+ a| 
+`passPhrase`
+ a| 
+Uma cadeia de carateres que criptografa a chave de segurança para que você possa armazenar a chave de segurança em um arquivo externo. Inclua a frase-passe em aspas duplas (" ").
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,70

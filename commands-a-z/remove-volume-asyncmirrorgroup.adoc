@@ -1,0 +1,79 @@
+---
+permalink: commands-a-z/remove-volume-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: remove, volume, asynchronous, mirror, group 
+summary: O comando remove volume asyncMirrorGroup remove um volume de membro de um grupo de espelhos assíncrono existente. 
+---
+= Remova o volume do grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `remove volume asyncMirrorGroup` comando remove um volume de membro de um grupo de espelhos assíncronos existente.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Opcionalmente, você pode excluir os membros do volume do repositório do grupo de espelhos assíncronos.
+
+Este comando é válido apenas na matriz de armazenamento local que contém o grupo de espelhos assíncronos cujo volume de membros que você deseja remover.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+remove volume pass:quotes[[_"volumeName"_]] asyncMirrorGroup=pass:quotes[_"asyncMirrorGroupName"_]
+[deleteRepositoryMembers=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume específico que você deseja remover do grupo de espelhos assíncronos. Coloque o nome do volume entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos que contém o volume de membros que você deseja remover. Inclua o nome do grupo de espelhos assíncronos em aspas duplas (" ").
+
+
+
+ a| 
+`deleteRepositoryMembers`
+ a| 
+Determina se deseja remover todos os membros do repositório do grupo de espelhos assíncronos.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

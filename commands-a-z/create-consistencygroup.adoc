@@ -1,0 +1,979 @@
+---
+permalink: commands-a-z/create-consistencygroup.html 
+sidebar: sidebar 
+keywords: create, consistency, group 
+summary: O comando Create consistentcyGroup cria um novo grupo de consistência vazio que pode conter grupos de snapshot. Você deve adicionar os grupos de snapshot usando o comando set consistencyGroup addCGMember. 
+---
+= Crie um grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create consistencyGroup` comando cria um novo grupo de consistência vazio que pode conter grupos de snapshot. Você deve adicionar os grupos de snapshot usando o `set consistencyGroup addCGMember` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create consistencyGroup userLabel=pass:quotes[_"consistencyGroupName"_]
+[repositoryFullPolicy=(failBaseWrites | purgeSnapImages)]
+[repositoryFullLimit=pass:quotes[_percentValue_]]
+[autoDeleteLimit=pass:quotes[_numberOfSnapImages_]]
+[enableSchedule=(TRUE | FALSE)]
+[schedule (immediate | pass:quotes[_snapSchedule_])]
+[rollbackPriority=(lowest | low | medium | high | highest)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome do novo grupo de consistência que você deseja criar. Inclua o novo nome do grupo de consistência entre aspas duplas (" ").
+
+
+
+ a| 
+`repositoryFullPolicy`
+ a| 
+Como você deseja que o processamento de snapshot continue se os volumes do repositório de snapshot estiverem cheios. Pode optar por falhar gravações no volume (`failBaseWrites`base ) ou eliminar (limpar) as imagens instantâneas  `purgeSnapImages`). A ação padrão é `purgeSnapImages`.
+
+
+
+ a| 
+`repositoryFullLimit`
+ a| 
+A porcentagem da capacidade do repositório na qual você recebe um aviso de que o volume do repositório instantâneo está quase cheio. Use valores inteiros. Por exemplo, um valor de 70 significa 70%. O valor padrão é 75.
+
+
+
+ a| 
+`autoDeleteLimit`
+ a| 
+Cada grupo de instantâneos pode ser configurado para executar a eliminação automática das suas imagens instantâneas, de modo a manter o número total de imagens instantâneas no grupo de instantâneos a um nível designado ou inferior a um nível designado. Quando esta opção está ativada, sempre que uma nova imagem instantânea for criada no grupo de instantâneos, o sistema elimina automaticamente a imagem instantânea mais antiga do grupo para cumprir o valor limite. Essa ação libera a capacidade do repositório para que ele possa ser usado para atender aos requisitos contínuos de cópia na gravação para as imagens snapshot restantes.
+
+
+
+ a| 
+`enableSchedule`
+ a| 
+Se a capacidade de agendar uma operação de snapshot está ativada ou desativada. Para ativar o agendamento de instantâneos, defina este parâmetro como `TRUE`. Para desativar o agendamento de instantâneos, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`rollBackPriority`
+ a| 
+Determina se os recursos do sistema devem ser alocados à operação de reversão à custa do desempenho do sistema. Um valor de `high` indica que a operação de reversão é priorizada sobre todas as outras e/S do host Um valor de `low` indica que a operação de reversão deve ser executada com impactos mínimo na e/S do host
+
+|===
+
+
+== Notas
+
+Um grupo de consistência é uma entidade lógica que permite gerenciar em lote todas as imagens instantâneas adicionadas à coleção. O grupo de consistência é uma coleção de grupos de instantâneos que têm requisitos de consistência mútua ou dependências para suas imagens de snapshot. Todas as imagens instantâneas que você criar e usar para esta coleção devem ser gerenciadas de acordo com as dependências de consistência.
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+As imagens instantâneas de um grupo de consistência podem ser deduzidas com base na existência de uma imagem instantânea dentro de um grupo de consistência. Todas as imagens instantâneas que residem num grupo de consistência partilham um carimbo de hora e um número de sequência comuns.
+
+Uma operação em um grupo de consistência de imagem instantânea é tratada como uma única solicitação e faz com que todas as operações de e/S pendentes para o volume base associado de cada membro sejam drenadas e suspensas antes de criar as imagens instantâneas. Se a criação das imagens instantâneas não puder ser concluída com êxito para todos os membros do grupo de consistência, a operação falhará e não afetará (ou seja, novas imagens instantâneas não serão criadas).
+
+Com base nesse comportamento, todos os membros de um grupo de consistência geralmente têm o mesmo número de imagens instantâneas. No entanto, quando um novo membro é adicionado a um grupo de consistência, esse novo membro não possui as imagens instantâneas que foram criadas anteriormente nos membros estabelecidos do grupo de consistência. A falta de imagens instantâneas não é considerada uma condição de erro. As solicitações subsequentes de exclusão ou reversão de imagens instantâneas que existem apenas em um subconjunto dos membros do grupo de consistência só afetarão os membros para os quais as imagens de snapshot especificadas realmente existem.
+
+
+
+== Eliminação automática
+
+Pode configurar cada grupo de instantâneos para eliminar automaticamente as suas imagens instantâneas para manter o número total de imagens instantâneas no grupo de instantâneos a um número máximo de imagens ou abaixo de um número máximo de imagens. Quando o número de imagens instantâneas no grupo de instantâneos está no limite máximo, o `autoDeleteLimit` parâmetro elimina automaticamente as imagens instantâneas sempre que uma nova imagem instantânea é criada no grupo de instantâneos. O `autoDeleteLimit` parâmetro elimina as imagens instantâneas mais antigas do grupo de instantâneos até que o número máximo de imagens definido com o parâmetro seja atingido. Isso tem o efeito de liberar a capacidade do repositório para que ele possa ser usado para atender aos requisitos contínuos de cópia em gravação para as imagens snapshot restantes.
+
+
+
+== Agendamento de imagens instantâneas em um grupo de consistência
+
+O `enableSchedule` parâmetro e o `schedule` parâmetro fornecem uma forma de agendar instantâneos. Usando esses parâmetros, você pode agendar snapshots diariamente, semanalmente ou mensalmente (por dia ou por data). O `enableSchedule` parâmetro liga ou desativa a capacidade de agendar instantâneos. Quando você ativa o agendamento, você usa o `schedule` parâmetro para definir quando deseja que os snapshots ocorram.
+
+Esta tabela explica como usar as opções para o `schedule` parâmetro:
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`schedule`
+ a| 
+Necessário para especificar parâmetros de programação.
+
+
+
+ a| 
+`immediate`
+ a| 
+Inicie a operação imediatamente. Este item é mutuamente exclusivo com quaisquer outros parâmetros de agendamento.
+
+
+
+ a| 
+`enableSchedule`
+ a| 
+Quando definido como `true`, a programação é ativada. Quando definido como `false`, a programação é desativada.
+
+[NOTE]
+====
+A predefinição é `false`.
+
+====
+
+
+ a| 
+`startDate`
+ a| 
+Uma data específica para iniciar a operação. O formato para introduzir a data é MM:DD:YY. O padrão é a data atual. Um exemplo dessa opção é `startDate=06:27:11`.
+
+
+
+ a| 
+`scheduleDay`
+ a| 
+Um dia da semana em que iniciar a operação. Pode ser todos ou um ou mais dos seguintes valores:
+
+* `monday`
+* `tuesday`
+* `wednesday`
+* `thursday`
+* `friday`
+* `saturday`
+* `sunday`
+
+
+[NOTE]
+====
+Inclua o valor entre parênteses. Por exemplo, `scheduleDay=(wednesday)`.
+
+====
+Mais de um dia pode ser especificado anexando os dias em um único conjunto de parênteses e separando cada dia com um espaço. Por exemplo, `scheduleDay=(monday wednesday friday)`.
+
+[NOTE]
+====
+Este parâmetro não é compatível com uma programação mensal.
+
+====
+
+
+ a| 
+`startTime`
+ a| 
+A hora de um dia em que iniciar a operação. O formato para introduzir a hora é HH:MM, onde HH é a hora e MM é o minuto após a hora. Utiliza um relógio de 24 horas. Por exemplo, 2:00 da tarde é 14:00. Um exemplo dessa opção é `startTime=14:27`.
+
+
+
+ a| 
+`scheduleInterval`
+ a| 
+Uma quantidade de tempo, em minutos, para ter como mínimo entre as operações.intervalo de programação não deve ser superior a 1440 (24 horas) e deve ser um múltiplo de 30.
+
+Um exemplo dessa opção é``scheduleInterval=180``.
+
+
+
+ a| 
+`endDate`
+ a| 
+Uma data específica para parar a operação. O formato para introduzir a data é MM:DD:YY. Se nenhuma data de fim for desejada, você pode especificar `noEndDate`. Um exemplo dessa opção é `endDate=11:26:11`.
+
+
+
+ a| 
+`timesPerDay`
+ a| 
+O número de vezes para executar a operação em um dia. Um exemplo dessa opção é `timesPerDay=4`.
+
+
+
+ a| 
+`timezone`
+ a| 
+Especifica o fuso horário a ser usado para o agendamento. Pode ser especificado de duas maneiras:
+
+* *GMT±HH:MM*
++
+O desvio do fuso horário de GMT. Exemplo `timezone=GMT-06:00`: .
+
+* * String de texto*
++
+Cadeia de texto de fuso horário padrão, deve ser incluída entre aspas. Exemplo:``timezone="America/Chicago"``
+
+
+
+
+
+ a| 
+`scheduleDate`
+ a| 
+Um dia do mês em que realizar a operação. Os valores para os dias são numéricos e no intervalo de 1-31.
+
+[NOTE]
+====
+Este parâmetro não é compatível com uma programação semanal.
+
+====
+Um exemplo da `scheduleDate` opção é `scheduleDate=("15")`.
+
+
+
+ a| 
+`month`
+ a| 
+Um mês específico para realizar a operação. Os valores para os meses são:
+
+* `jan` - Janeiro
+* `feb` - Fevereiro
+* `mar` - Março
+* `apr` - Abril
+* `may` - Maio
+* `jun` - Junho
+* `jul` - Julho
+* `aug` - Agosto
+* `sep` - Setembro
+* `oct` - Outubro
+* `nov` - Novembro
+* `dec` - Dezembro
+
+
+[NOTE]
+====
+Inclua o valor entre parênteses. Por exemplo, `month=(jan)`.
+
+====
+Mais de um mês pode ser especificado encerrando os meses em um único conjunto de parênteses e separando cada mês com um espaço. Por exemplo, `month=(jan jul dec)`.
+
+Utilize este parâmetro com o `scheduleDate` parâmetro para efetuar a operação num dia específico do mês.
+
+[NOTE]
+====
+Este parâmetro não é compatível com uma programação semanal.
+
+====
+|===
+Esta tabela explica como usar o `timeZone` parâmetro:
+
+|===
+| Nome do fuso horário | Desvio GMT 
+
+
+ a| 
+`Etc/GMT+12`
+ a| 
+`GMT-12:00`
+
+
+
+ a| 
+`Etc/GMT+11`
+ a| 
+`GMT-11:00`
+
+
+
+ a| 
+`Pacific/Honolulu`
+ a| 
+`GMT-10:00`
+
+
+
+ a| 
+`America/Anchorage`
+ a| 
+`GMT-09:00`
+
+
+
+ a| 
+`America/Santa_Isabel`
+ a| 
+`GMT-08:00`
+
+
+
+ a| 
+`America/Los_Angeles`
+ a| 
+`GMT-08:00`
+
+
+
+ a| 
+`America/Phoenix`
+ a| 
+`GMT-07:00`
+
+
+
+ a| 
+`America/Chihuahua`
+ a| 
+`GMT-07:00`
+
+
+
+ a| 
+`America/Denver`
+ a| 
+`GMT-07:00`
+
+
+
+ a| 
+`America/Guatemala`
+ a| 
+`GMT-06:00`
+
+
+
+ a| 
+`America/Chicago`
+ a| 
+`GMT-06:00`
+
+
+
+ a| 
+`America/Mexico_City`
+ a| 
+`GMT-06:00`
+
+
+
+ a| 
+`America/Regina`
+ a| 
+`GMT-06:00`
+
+
+
+ a| 
+`America/Bogota`
+ a| 
+`GMT-05:00`
+
+
+
+ a| 
+`America/New_York`
+ a| 
+`GMT-05:00`
+
+
+
+ a| 
+`Etc/GMT+5`
+ a| 
+`GMT-05:00`
+
+
+
+ a| 
+`America/Caracas`
+ a| 
+`GMT-04:30`
+
+
+
+ a| 
+`America/Asuncion`
+ a| 
+`GMT-04:00`
+
+
+
+ a| 
+`America/Halifax`
+ a| 
+`GMT-04:00`
+
+
+
+ a| 
+`America/Cuiaba`
+ a| 
+`GMT-04:00`
+
+
+
+ a| 
+`America/La_Paz`
+ a| 
+`GMT-04:00`
+
+
+
+ a| 
+`America/Santiago`
+ a| 
+`GMT-04:00`
+
+
+
+ a| 
+`America/St_Johns`
+ a| 
+`GMT-03:30`
+
+
+
+ a| 
+`America/Sao_Paulo`
+ a| 
+`GMT-03:00`
+
+
+
+ a| 
+`America/Buenos_Aires`
+ a| 
+`GMT-03:00`
+
+
+
+ a| 
+`America/Cayenne`
+ a| 
+`GMT-03:00`
+
+
+
+ a| 
+`America/Godthab`
+ a| 
+`GMT-03:00`
+
+
+
+ a| 
+`America/Montevideo`
+ a| 
+`GMT-03:00`
+
+
+
+ a| 
+`Etc/GMT+2`
+ a| 
+`GMT-02:00`
+
+
+
+ a| 
+`Atlantic/Azores`
+ a| 
+`GMT-01:00`
+
+
+
+ a| 
+`Atlantic/Cape_Verde`
+ a| 
+`GMT-01:00`
+
+
+
+ a| 
+`Africa/Casablanca`
+ a| 
+`GMT`
+
+
+
+ a| 
+`Etc/GMT`
+ a| 
+`GMT`
+
+
+
+ a| 
+`Europe/London`
+ a| 
+`GMT`
+
+
+
+ a| 
+`Atlantic/Reykjavik`
+ a| 
+`GMT`
+
+
+
+ a| 
+`Europe/Berlin`
+ a| 
+`GMT+01:00`
+
+
+
+ a| 
+`Europe/Budapest`
+ a| 
+`GMT+01:00`
+
+
+
+ a| 
+`Europe/Paris`
+ a| 
+`GMT+01:00`
+
+
+
+ a| 
+`Europe/Warsaw`
+ a| 
+`GMT+01:00`
+
+
+
+ a| 
+`Africa/Lagos`
+ a| 
+`GMT+01:00`
+
+
+
+ a| 
+`Africa/Windhoek`
+ a| 
+`GMT+01:00`
+
+
+
+ a| 
+`Asia/Anman`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Asia/Beirut`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Africa/Cairo`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Asia/Damascus`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Africa/Johannesburg`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Europe/Kiev`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Asia/Jerusalem`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Europe/Istanbul`
+ a| 
+`GMT+03:00`
+
+
+
+ a| 
+`Europe/Minsk`
+ a| 
+`GMT+02:00`
+
+
+
+ a| 
+`Asia/Baghdad`
+ a| 
+`GMT+03:00`
+
+
+
+ a| 
+`Asia/Riyadh`
+ a| 
+`GMT+03:00`
+
+
+
+ a| 
+`Africa/Nairobi`
+ a| 
+`GMT+03:00`
+
+
+
+ a| 
+`Asia/Tehran`
+ a| 
+`GMT+03:30`
+
+
+
+ a| 
+`Europe/Moscow`
+ a| 
+`GMT+04:00`
+
+
+
+ a| 
+`Asia/Dubai`
+ a| 
+`GMT+04:00`
+
+
+
+ a| 
+`Asia/Baku`
+ a| 
+`GMT+04:00`
+
+
+
+ a| 
+`Indian/Mauritius`
+ a| 
+`GMT+04:00`
+
+
+
+ a| 
+`Asia/Tbilisi`
+ a| 
+`GMT+04:00`
+
+
+
+ a| 
+`Asia/Yerevan`
+ a| 
+`GMT+04:00`
+
+
+
+ a| 
+`Asia/Kabul`
+ a| 
+`GMT+04:30`
+
+
+
+ a| 
+`Asia/Karachi`
+ a| 
+`GMT+05:00`
+
+
+
+ a| 
+`Asia//Tashkent`
+ a| 
+`GMT+05:00`
+
+
+
+ a| 
+`Asia/Calcutta`
+ a| 
+`GMT+05:30`
+
+
+
+ a| 
+`Asia/Colombo`
+ a| 
+`GMT+05:30`
+
+
+
+ a| 
+`Asia/Katmandu`
+ a| 
+`GMT+05:45`
+
+
+
+ a| 
+`Asia/Yekaterinburg`
+ a| 
+`GMT+06:00`
+
+
+
+ a| 
+`Asia/Almaty`
+ a| 
+`GMT+06:00`
+
+
+
+ a| 
+`Asia/Dhaka`
+ a| 
+`GMT+06:00`
+
+
+
+ a| 
+`Asia/Rangoon`
+ a| 
+`GMT+06:30`
+
+
+
+ a| 
+`Asia/Novosibirsk`
+ a| 
+`GMT+07:00`
+
+
+
+ a| 
+`Asia/Bangkok`
+ a| 
+`GMT+07:00`
+
+
+
+ a| 
+`Asia/Krasnoyarsk`
+ a| 
+`GMT+08:00`
+
+
+
+ a| 
+`Asia/Shanghai`
+ a| 
+`GMT+08:00`
+
+
+
+ a| 
+`Asia/Singapore`
+ a| 
+`GMT+08:00`
+
+
+
+ a| 
+`Australia/Perth`
+ a| 
+`GMT+08:00`
+
+
+
+ a| 
+`Asia/Taipei`
+ a| 
+`GMT+08:00`
+
+
+
+ a| 
+`Asia/Ulaanbaatar`
+ a| 
+`GMT+08:00`
+
+
+
+ a| 
+`Asia/Irkutsk`
+ a| 
+`GMT+09:00`
+
+
+
+ a| 
+`Asia/Tokyo`
+ a| 
+`GMT+09:00`
+
+
+
+ a| 
+`Asia/Seoul`
+ a| 
+`GMT+09:00`
+
+
+
+ a| 
+`Australia/Adelaide`
+ a| 
+`GMT+09:30`
+
+
+
+ a| 
+`Australia/Darwin`
+ a| 
+`GMT+09:30`
+
+
+
+ a| 
+`Asia/Yakutsk`
+ a| 
+`GMT+10:00`
+
+
+
+ a| 
+`Australia/Brisbane`
+ a| 
+`GMT+10:00`
+
+
+
+ a| 
+`Australia/Sydney`
+ a| 
+`GMT+10:00`
+
+
+
+ a| 
+`Pacific/Port Moresby`
+ a| 
+`GMT+10:00`
+
+
+
+ a| 
+`Australia/Hobart`
+ a| 
+`GMT+10:00`
+
+
+
+ a| 
+`Asia/Vladivostok`
+ a| 
+`GMT+11:00`
+
+
+
+ a| 
+`Pacific/Guadalcanal`
+ a| 
+`GMT+11:00`
+
+
+
+ a| 
+`Pacific/Auckland`
+ a| 
+`GMT+12:00`
+
+
+
+ a| 
+`Etc/GMT-12`
+ a| 
+`GMT+12:00`
+
+
+
+ a| 
+`Pacific/Fiji`
+ a| 
+`GMT+12:00`
+
+
+
+ a| 
+`Asia/Kamchatka`
+ a| 
+`GMT+12:00`
+
+
+
+ a| 
+`Pacific/Tongatapu`
+ a| 
+`GMT+13:00`
+
+|===
+A string de código para definir uma programação é semelhante a estes exemplos:
+
+[listing]
+----
+enableSchedule=true schedule startTime=14:27
+----
+[listing]
+----
+enableSchedule=true schedule scheduleInterval=180
+----
+[listing]
+----
+enableSchedule=true schedule timeZone=GMT-06:00
+----
+[listing]
+----
+enableSchedule=true schedule timeZone="America/Chicago"
+----
+Se você também usar a `scheduleInterval` opção, o firmware escolhe entre a `timesPerDay` opção e a `scheduleInterval` opção selecionando o valor mais baixo das duas opções. O firmware calcula um valor inteiro para a opção dividindo 1440 por um `scheduleInterval` valor `scheduleInterval` de opção definido. Por exemplo, 1440/180 é 8. O firmware então compara o `timesPerDay` valor inteiro com o valor inteiro calculado `scheduleInterval` e usa o valor menor.
+
+Para remover um agendamento, use o `delete volume` comando com o `schedule` parâmetro. O `delete volume` comando com o `schedule` parâmetro exclui apenas a programação, não o volume instantâneo.
+
+Ao executar uma reversão em um grupo de consistência, a operação padrão é reverter todos os membros do grupo de consistência. Se uma reversão não puder ser iniciada com êxito para todos os membros do grupo consistência, a reversão falhará e não terá efeito. A imagem instantânea não é revertida.
+
+
+
+== Nível mínimo de firmware
+
+7,83
+
+7,86 adiciona a `scheduleDate` opção e a `month` opção.

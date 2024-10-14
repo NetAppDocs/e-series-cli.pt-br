@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/stop-consistencygroup-pendingsnapimagecreation.html 
+sidebar: sidebar 
+keywords: stop, snapshot, images, consistency, group 
+summary: O comando stop consistencyGroup pendingSnapImageCreation pára todas as imagens de snapshot pendentes que devem ser criadas em um grupo de consistência de snapshot. 
+---
+= Parar imagens instantâneas pendentes no grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop consistencyGroup pendingSnapImageCreation` comando pára todas as imagens instantâneas pendentes que devem ser criadas em um grupo de consistência de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Se o grupo de consistência de instantâneos não tiver imagens instantâneas pendentes, o software de gestão de armazenamento apresenta uma mensagem de erro e não executa o comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+stop consistencyGroup pass:quotes[[_consistencyGroupName_]]pendingSnapImageCreation
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`consistencyGroupName`
+ a| 
+O nome do grupo de consistência para o qual você deseja interromper qualquer operação de snapshot pendente. Inclua o nome do grupo de consistência entre colchetes ([ ]). Se o nome do grupo de consistência tiver carateres especiais ou números, você deve incluir o nome do grupo de consistência entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

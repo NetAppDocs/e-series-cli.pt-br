@@ -1,0 +1,114 @@
+---
+permalink: commands-a-z/set-snapgroup-enableschedule.html 
+sidebar: sidebar 
+keywords: set, snapshot, group, schedule 
+summary: O comando Set snapGroup enableSchedule define a programação para tirar imagens instantâneas para um grupo de instantâneos. 
+---
+= Definir agendamento do grupo de instantâneos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snapGroup enableSchedule` comando define a programação para tirar imagens instantâneas para um grupo de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set snapGroup pass:quotes[["_snapGroupName_"]]
+enableSchedule=(TRUE | FALSE)
+schedule (immediate | snapshotSchedule)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo de instantâneos para o qual você está definindo propriedades. Coloque o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`enableSchedule`
+ a| 
+Use este parâmetro para ativar ou desativar a capacidade de agendar uma operação de snapshot. Para ativar o agendamento de instantâneos, defina este parâmetro como `TRUE`. Para desativar o agendamento de instantâneos, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O `enableSchedule` parâmetro e o `schedule` parâmetro fornecem uma forma de agendar a criação de imagens instantâneas para um grupo de instantâneos. Usando esses parâmetros, você pode agendar snapshots diariamente, semanalmente ou mensalmente (por dia ou por data). O `enableSchedule` parâmetro liga ou desativa a capacidade de agendar instantâneos. Quando você ativa o agendamento, você usa o `schedule` parâmetro para definir quando deseja que os snapshots ocorram.
+
+Esta lista explica como utilizar as opções para o `schedule` parâmetro:
+
+* `immediate` -- assim que você inserir o comando, uma imagem instantânea é criada e uma operação copy-on-write começa.
+* `startDate` -- Uma data específica na qual você deseja criar uma imagem instantânea e executar uma operação de cópia em gravação. O formato para inserir a data é `MM:DD:YY` . Se você não fornecer uma data de início, a data atual será usada. Um exemplo dessa opção é `startDate=06:27:11`.
+* `scheduleDay` -- Um dia da semana em que você deseja criar uma imagem instantânea e executar uma operação de cópia em gravação. Pode introduzir estes valores: `monday`, `tuesday`, `wednesday`, `thursday`, , `friday`, , `saturday`, `sunday`, e `all`. Um exemplo dessa opção é `scheduleDay=wednesday`.
+* `startTime` -- a hora de um dia em que você deseja criar uma imagem instantânea e começar a executar uma operação copy-on-write. O formato para introduzir a hora é `HH:MM`, onde `HH` está a hora e `MM` é o minuto depois da hora. Use um relógio de 24 horas. Por exemplo, 2:00 da tarde é 14:00. Um exemplo dessa opção é `*startTime=14:27*`.
+*  `scheduleInterval` -- uma quantidade de tempo, em minutos, que você quer ter como mínimo entre operações de cópia em gravação. É possível criar um cronograma no qual você tenha operações de cópia em gravação sobrepostas devido à duração de uma operação de cópia. Você pode ter certeza de que tem tempo entre operações de cópia na gravação usando esta opção. O valor máximo para a `scheduleInterval` opção é de 1440 minutos. Um exemplo dessa opção é `*scheduleInterval=180*`.
+* `endDate` -- Uma data específica na qual você deseja parar de criar uma imagem instantânea e terminar a operação copy-on-write. O formato para inserir a data é `MM:DD:YY`. Um exemplo dessa opção é `*endDate=11:26:11*`.
+* `noEndDate` -- Use esta opção se você não quiser que sua operação de cópia em gravação agendada termine Se você decidir encerrar as operações copy-on-write mais tarde, você deve digitar novamente o `set snapGroup` comando e especificar uma data de fim.
+* `timesPerDay` -- o número de vezes que você quer que a programação seja executada em um dia. Um exemplo dessa opção é `timesPerDay=4`.
+* `timeZone` -- Use este parâmetro para definir o fuso horário em que a matriz de armazenamento está operando. Pode definir o fuso horário de duas formas:
++
+** `GMT±HH:MM` -- o deslocamento do fuso horário de GMT. Introduza o desvio em horas e minutos. Por exemplo, GMT-06:00 é o fuso horário central nos Estados Unidos.
+** `Text string` -- cadeias de texto de fuso horário padrão. Por exemplo: "América/Chicago" ou "Austrália/Brisbane". Cadeias de texto de fuso horário são sensíveis a maiúsculas e minúsculas. Se introduzir uma cadeia de texto incorreta, é utilizada a hora GMT. Coloque a cadeia de texto em aspas duplas.
+
+
+
+
+A string de código para definir uma programação é semelhante a estes exemplos:
+
+[listing]
+----
+enableSchedule=true schedule startTime=14:27
+----
+[listing]
+----
+enableSchedule=true schedule scheduleInterval=180
+----
+[listing]
+----
+enableSchedule=true schedule timeZone=GMT-06:00
+----
+[listing]
+----
+enableSchedule=true schedule timeZone="America/Chicago"
+----
+Se você também usar a `scheduleInterval` opção, o firmware escolhe entre a `timesPerDay` opção e a `scheduleInterval` opção selecionando o valor mais baixo das duas opções. O firmware calcula um valor inteiro para a `scheduleInterval` opção dividindo 1440 pelo `scheduleInterval` valor de opção definido. Por exemplo, 1440/180 é 8. O firmware então compara o `timesPerDay` valor inteiro com o valor inteiro calculado `scheduleInterval` e usa o valor menor.
+
+Para remover um agendamento, use o `delete volume` comando com o `schedule` parâmetro. O `delete volume` comando com o `schedule` parâmetro exclui apenas a programação, não o volume instantâneo.
+
+
+
+== Nível mínimo de firmware
+
+7,83
+
+7,86 adiciona a `scheduleDate` opção e a `month` opção.

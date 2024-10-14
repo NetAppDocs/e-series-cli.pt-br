@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/suspend-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: suspend, asynchronous, mirror, group 
+summary: O comando suspender asyncMirrorGroup suspende a sincronização de dados em todos os pares espelhados no nível do grupo de espelhos assíncronos. 
+---
+= Suspenda o grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `suspend asyncMirrorGroup` comando suspende a sincronização de dados em todos os pares espelhados no nível do grupo de espelhos assíncronos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+ `suspend`Esse comando ajuda a reduzir qualquer impacto no desempenho do aplicativo host que possa ocorrer enquanto quaisquer dados alterados no storage array local são copiados para o storage array remoto.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[suspend asyncMirrorGroup [_asyncMirrorGroupName_]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos para o qual você deseja suspender a sincronização de dados. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos tiver carateres ou números especiais, você deve incluir o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Quando um grupo de espelhos assíncrono está em um estado suspenso, não é feita nenhuma tentativa de copiar dados dos volumes primários para os volumes secundários dos pares espelhados. Todas as gravações no lado primário do grupo de espelhos assíncronos são persistentemente registradas em seus volumes de repositório de espelhos associados. Depois que o grupo de espelhos assíncronos é retomado, apenas as regiões modificadas dos volumes primários são gravadas nos volumes secundários.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

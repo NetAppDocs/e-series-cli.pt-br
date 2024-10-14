@@ -1,0 +1,69 @@
+---
+permalink: commands-a-z/enable-volumegroup-security.html 
+sidebar: sidebar 
+keywords: enable, volumegroup, security, command, non secure, volume, group 
+summary: O comando Enable volumeGroup security converte um grupo de volumes não seguro para um grupo de volumes seguro. 
+---
+= Ativar a segurança do grupo de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `enable volumeGroup security` comando converte um grupo de volumes não seguro para um grupo de volumes seguro.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[enable volumeGroup [_volumeGroupName_]] security
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes que pretende colocar no estado Segurança ativada. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Essas condições devem ser atendidas para executar com êxito este comando.
+
+* Todas as unidades do grupo de volumes devem ser unidades de criptografia de disco total.
+* O recurso Segurança da unidade deve estar ativado.
+* A chave de segurança do storage array deve ser definida.
+* O grupo de volumes é ideal e não tem volumes de repositório.
+
+
+O firmware da controladora cria um bloqueio que restringe o acesso às unidades FDE. As unidades FDE têm um estado chamado Security Capable. Quando você cria uma chave de segurança, o estado é definido como Segurança ativada, o que restringe o acesso a todas as unidades FDE existentes no storage de armazenamento.
+
+
+
+== Nível mínimo de firmware
+
+7,40

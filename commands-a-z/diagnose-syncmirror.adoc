@@ -1,0 +1,79 @@
+---
+permalink: commands-a-z/diagnose-syncmirror.html 
+sidebar: sidebar 
+keywords: diagnose, syncmirror, command, test, connection, specified, primary, volumes, mirror, storage, array, synchronous, feature, enabled 
+summary: O comando diagnosticar SyncMirror testa a conexão entre os volumes primários especificados e os volumes espelhados em um storage array com o recurso de espelhamento síncrono habilitado. 
+---
+= Diagnosticar o espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `diagnose syncMirror` comando testa a conexão entre os volumes primários especificados e os volumes espelhados em um storage array com o recurso de espelhamento síncrono habilitado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[diagnose syncMirror (_primary [primaryVolumeName_]] |pass:quotes[primaries ["_primaryVolumeName1_]" ... pass:quotes[_"primaryVolumeNameN"_]])
+testID=connectivity
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`primary`
+ a| 
+O nome do volume principal do par de espelhos remotos que você deseja testar. Coloque o nome do volume primário entre colchetes ([ ]). Se o nome do volume principal tiver carateres especiais ou consistir apenas em números, você deve incluir o nome do volume primário entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`primaries`
+ a| 
+Pode introduzir mais do que um nome de volume. Inclua todos os nomes de volume em um conjunto de colchetes ([ ]). Coloque cada nome de volume em aspas duplas (" "). Separe cada nome de volume com um espaço.
+
+Os nomes de vários volumes que você deseja usar como volumes primários. Insira os nomes dos volumes primários usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

@@ -1,0 +1,49 @@
+---
+permalink: commands-a-z/clear-storagearray-firmwarependingarea.html 
+sidebar: sidebar 
+keywords: clear, storage array, firmware, pending, area 
+summary: O comando Clear storageArray firmwarePendingArea exclui uma imagem de firmware ou valores NVSRAM que você baixou anteriormente do buffer de área pendente. 
+---
+= Limpe a área pendente do firmware da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `clear storageArray firmwarePendingArea` comando exclui uma imagem de firmware ou valores NVSRAM que você baixou anteriormente do buffer de área pendente.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possíveis danos à configuração da matriz de armazenamento* -- assim que você executar este comando, o conteúdo da área pendente existente na matriz de armazenamento é excluído.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+clear storageArray firmwarePendingArea
+----
+
+
+== Parâmetros
+
+Nenhum.

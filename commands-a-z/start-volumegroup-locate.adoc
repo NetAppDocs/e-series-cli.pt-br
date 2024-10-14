@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/start-volumegroup-locate.html 
+sidebar: sidebar 
+keywords: start, volume, group, locate 
+summary: O comando start volumeGroup Locate identifica as unidades que são agrupadas logicamente para formar o grupo de volume especificado, piscando as luzes indicadoras nas unidades. 
+---
+= Iniciar a localização do grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start volumeGroup locate` comando identifica as unidades que são agrupadas logicamente para formar o grupo de volume especificado piscando as luzes indicadoras nas unidades.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Use o `stop volumeGroup locate` comando para desligar as luzes indicadoras nas unidades.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[start volumeGroup [_volumeGroupName_]] locate
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes para o qual você deseja localizar as unidades que pertencem a esse grupo de volumes. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,16

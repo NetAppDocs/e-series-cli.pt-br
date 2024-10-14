@@ -1,0 +1,163 @@
+---
+permalink: commands-a-z/show-alldrives.html 
+sidebar: sidebar 
+keywords: show, drive 
+summary: O comando show allDrives retorna informações sobre as unidades na matriz de armazenamento. 
+---
+= Mostrar unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show allDrives` comando retorna informações sobre as unidades na matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Para cada unidade na matriz de armazenamento, este comando retorna as seguintes informações:
+
+* O número total de unidades
+* O tipo de unidade (SAS ou NVMe4K)
+* Informações sobre a unidade básica:
++
+** A localização da bandeja e a localização da ranhura
+** O estado
+** A capacidade
+** A taxa de transferência de dados
+** A ID do produto
+** O nível de firmware
+
+
+* Informações sobre a vida útil das unidades SSD (essas informações são válidas apenas para o E2800 e E5700/EF570 e não são exibidas se o array não contiver unidades SSD):
++
+** A contagem média de apagamento.
+** Os blocos sobresselentes restantes.
+** O percentual de resistência usado (novo na versão 11,41). A percentagem de resistência utilizada é a quantidade de dados gravados nas unidades SSD até à data dividida pelo limite teórico total de escrita para as unidades.
+
+
+* Informações sobre o canal da unidade:
++
+** A localização da bandeja e a localização da ranhura
+** O canal preferido
+** O canal redundante
+
+
+* Cobertura hot spare
+* Detalhes para cada unidade
++
+[NOTE]
+====
+As informações de data de fabricação não estão disponíveis para unidades NVMe.
+
+====
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show ((allDrives
+[driveMediaType=(HDD | SSD | unknown | allMedia)] |
+[driveType=( SAS | NVMe4K)]) |
+(drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drives pass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]]))
+summary
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allDrives`
+ a| 
+A configuração para retornar informações sobre todas as unidades no storage de armazenamento.
+
+
+
+ a| 
+`driveMediaType`
+ a| 
+O tipo de Mídia de unidade para o qual você deseja recuperar informações. Os valores a seguir são tipos válidos de Mídia de unidade:
+
+* `HDD` -- Use esta opção quando tiver discos rígidos na bandeja de unidades
+* `SSD` -- Use esta opção quando tiver unidades de estado sólido na bandeja de unidades
+* `unknown` -- Use esta opção se não tiver certeza de quais tipos de Mídia de unidade estão na bandeja de unidades
+* `allMedia` -- Use esta opção quando quiser usar todos os tipos de Mídia de unidade que estão na bandeja de unidades
+
+
+
+
+ a| 
+`driveType`
+ a| 
+O tipo de unidade para a qual você deseja recuperar informações. Não é possível misturar tipos de unidade.
+
+Os tipos de unidade válidos são:
+
+* `SAS`
+* `NVMe4K`
+
+
+Se você não especificar um tipo de unidade, o comando padrão será qualquer tipo.
+
+
+
+ a| 
+`drive` ou `drives`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`summary`
+ a| 
+A configuração para retornar o status, a capacidade, a taxa de transferência de dados, a ID do produto e a versão do firmware para as unidades especificadas.
+
+|===
+
+
+== Notas
+
+Para determinar informações sobre o tipo e a localização de todas as unidades no storage de armazenamento, use o `allDrives` parâmetro.
+
+Para determinar as informações sobre as unidades SAS na matriz de armazenamento, use o `driveType` parâmetro.
+
+Para determinar o tipo de unidade em um local específico, use o `drive` parâmetro e insira o ID da bandeja e o ID do slot da unidade.
+
+ `drive`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+
+
+== Nível mínimo de firmware
+
+5,43
+
+7,60 adiciona a `drawerID` entrada do usuário e o `driveMediaType` parâmetro.
+
+O 8,41 adiciona informações de relatórios de vida útil, na forma da porcentagem de resistência usada, para unidades SSD em um sistema E2800, E5700 ou EF570.

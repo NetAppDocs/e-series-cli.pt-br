@@ -1,0 +1,83 @@
+---
+permalink: commands-a-z/set-tray-identification.html 
+sidebar: sidebar 
+keywords: set, tray, identification 
+summary: 'O comando Set Tray (Definir bandeja) define a ID da bandeja de uma bandeja do controlador, de uma bandeja de unidades e controlador ou de uma bandeja de unidades em uma matriz de armazenamento.' 
+---
+= Definir a identificação da bandeja
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set tray` comando define a ID da bandeja de uma bandeja de controlador, uma bandeja de unidades de controlador ou uma bandeja de unidades em um storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando é válido apenas para bandejas de controladores, bandejas de unidades e controlador ou bandejas de unidades que têm IDs de bandeja que podem ser definidas pelo firmware da controladora. Não é possível usar este comando para bandejas de controladores, bandejas de unidades e controlador ou bandejas de unidades que tenham um ID de bandeja definido com um switch.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set tray pass:quotes[["_serialNumber_"]] pass:quotes[id=_trayID_]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`tray`
+ a| 
+O número de série da bandeja do controlador, da bandeja de unidades e controlador ou da bandeja de unidades para a qual você está definindo o ID da bandeja. Os números de série podem ser qualquer combinação de carateres alfanuméricos e qualquer comprimento. Coloque o número de série entre aspas duplas (" ").
+
+
+
+ a| 
+`id`
+ a| 
+O valor para o ID da bandeja da bandeja do controlador, ID da bandeja da bandeja da bandeja da unidade e controlador ou ID da bandeja da bandeja da unidade. Os valores de ID da bandeja são `0` `9` atravésde ou `10` através `99`de .
+
+[NOTE]
+====
+Para os gabinetes DE5600, DE1600 e DE6600, preceda o número de série com a cadeia de texto "SN" e um espaço. Por exemplo, `SN SV23802522`.
+
+====
+[NOTE]
+====
+Não é necessário incluir o valor de ID da bandeja entre parênteses.
+
+====
+[NOTE]
+====
+Os valores da bandeja `00` de até `09` são rejeitados pelo controlador. Use `0` até `9` para especificar esses valores.
+
+====
+|===
+
+
+== Notas
+
+Este comando originalmente suportava a bandeja do controlador CE6998 As bandejas de controladores da série CE6998 podem ser conectadas a uma variedade de bandejas, incluindo aquelas cujas IDs de bandeja são definidas por switches. Ao conectar uma bandeja de controladora da série CE6998 às bandejas de unidades cujas IDs de bandeja são definidas por switches, os valores válidos para IDs de bandeja da controladora `80` são até `99`. Esse intervalo evita conflitos com IDs de bandeja usadas para bandejas de unidades anexadas.

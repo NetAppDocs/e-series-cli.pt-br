@@ -1,0 +1,73 @@
+---
+permalink: commands-a-z/add-drives-to-ssd-cache.html 
+sidebar: sidebar 
+keywords: add drives ssd cache, supported arrays, syntax, parameters, minimum firmware level 
+summary: 'O comando Set ssdCache aumenta a capacidade de um cache SSD existente adicionando mais discos de estado sólido (SSDs).' 
+---
+= Adicione unidades ao cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set ssdCache` comando aumenta a capacidade de um cache SSD existente adicionando mais discos de estado sólido (SSDs).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+[NOTE]
+====
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[set ssdCache [_ssdCacheName_]]
+pass:quotes[addDrives=(_trayID1_,[_drawerID1_,]]pass:quotes[_slotID1 ... trayIDn_,]pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`ssdCache`
+ a| 
+O nome do cache SSD ao qual você deseja adicionar SSDs. Coloque o nome entre colchetes ([ ]). Se o nome do cache SSD contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`addDrives`
+ a| 
+As unidades que você deseja adicionar ao cache SSD.para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+O cache SSD pode conter qualquer número de SSDs. O tamanho máximo do cache SSD é de 5 TB, mas pode ser menor dependendo do tamanho do cache principal da controladora.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

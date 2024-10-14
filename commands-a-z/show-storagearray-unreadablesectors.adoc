@@ -1,0 +1,64 @@
+---
+permalink: commands-a-z/show-storagearray-unreadablesectors.html 
+sidebar: sidebar 
+keywords: show, storage, array, unreadable, sectors 
+summary: O comando show storageArray unreadableSectors retorna uma tabela dos endereços de todos os setores no storage array que não podem ser lidos. 
+---
+= Mostrar setores ilegíveis do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray unreadableSectors` comando retorna uma tabela dos endereços de todos os setores da matriz de armazenamento que não podem ser lidos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+A tabela retornada é organizada com cabeçalhos de coluna para as seguintes informações:
+
+* Etiqueta do utilizador do volume
+* Número de unidade lógica (LUN)
+* Acessível por (host ou grupo host)
+* Data/hora
+* Endereço de bloco lógico relativo a volume (formato hexadecimal -- 0xnnnnnnnn)
+* Localização da unidade (bandeja t, slot s)
+* Endereço de bloco lógico relativo à unidade (formato hexadecimal -- 0xnnnnnnnn)
+* Tipo de falha
+
+
+Os dados são ordenados primeiro pelo rótulo do usuário do volume e segundo pelo endereço de bloco lógico (LBA). Cada entrada no quadro corresponde a um único setor.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray unreadableSectors
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10

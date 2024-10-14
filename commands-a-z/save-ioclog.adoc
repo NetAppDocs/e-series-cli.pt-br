@@ -1,0 +1,79 @@
+---
+permalink: commands-a-z/save-ioclog.html 
+sidebar: sidebar 
+keywords: save, input, output, controller, ioc, dump 
+summary: O comando SAVE IOCLog salva os despejos do COI dos controladores em um storage array para um arquivo em um host. 
+---
+= Salve o despejo do controlador de saída de entrada (IOC)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save IOCLog` comando salva os despejos do COI dos controladores em um storage array para um arquivo em um host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save IOCLog [file=pass:quotes["_filename_"]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você salva o despejo IOC. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+[listing]
+----
+file="C:\Array Backups\IOCcoredump1.7z"
+----
+Este comando salva os dados em um arquivo compactado e adiciona a extensão de arquivo `.7z` ao arquivo salvo. O nome padrão do arquivo que contém os dados relacionados ao IOC para controladores no storage array usa o WWN do storage array.
+
+|===
+
+
+== Notas
+
+Este comando recupera de ambos os controladores os dados de log de despejo do COI e os metadados de despejo do COI. Usando um formato de arquivo 7zip, os dados recuperados são arquivados e compatados em um único arquivo com um nome de arquivo de sua escolha. O arquivo de arquivo 7zip contém o seguinte:
+
+* Nome do arquivo "IOCLog"[A|B].gz -- os logs do IOC recuperados do controlador A ou controlador B, se disponíveis
+* [A|B].txt -- o IOC Registra as informações de metadados recuperadas do controlador A ou do controlador B . Se os dados de log do COI não puderem ser recuperados de um controlador, o arquivo .txt de metadados conterá a condição de erro e o motivo.
+
+
+A seguir estão as condições de erro:
+
+* A plataforma do controlador e o HIC não suportam despejo COI.
+* Os controladores não coletaram dados de despejo do COI.
+
+
+Os logs compatados não estão em um formato legível por humanos. Você deve retornar os logs ao suporte técnico para serem avaliados.
+
+
+
+== Nível mínimo de firmware
+
+8,20

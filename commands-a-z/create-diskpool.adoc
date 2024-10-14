@@ -1,0 +1,322 @@
+---
+permalink: commands-a-z/create-diskpool.html 
+sidebar: sidebar 
+keywords: create, disk pool 
+summary: O comando criar diskPool cria um novo pool de discos com base nos parâmetros especificados. 
+---
+= Criar pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create diskPool` comando cria um novo pool de discos com base nos parâmetros especificados.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você pode criar o pool de discos inserindo uma lista de unidades ou um tipo de unidade que deseja usar para o pool de discos.
+
+[NOTE]
+====
+Se você inserir uma lista de unidades, certifique-se de que todas as unidades tenham a mesma capacidade. Se as unidades não tiverem a mesma capacidade, cada unidade no pool de discos relatará capacidade igual à menor unidade.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create diskPool
+(drives=pass:quotes[_(trayID1_],pass:quotes[[_drawerID1,_]]pass:quotes[_slotID1 ... trayIDN_],pass:quotes[[_drawerIDN,_]]pass:quotes[_slotIDN)_]|
+driveType=(fibre | SATA | SAS | NVMe4K))
+ userLabel=pass:quotes[_"diskPoolName"_]
+[driveCount=pass:quotes[_driveCountValue_]]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[warningThreshold=(pass:quotes[_warningThresholdValue_] | default)]
+[criticalThreshold=(pass:quotes[_criticalThresholdValue_] | default)]
+[criticalPriority=(highest|high|medium|low|lowest)]
+[backgroundPriority=(highest|high|medium|low|lowest)]
+[degradedPriority=(highest|high|medium|low|lowest)]
+[securityType=(none | capable | enabled )]
+[secureDrives=(fips | fde )]
+[driveMediaType=(hdd | ssd | allMedia | unknown)]
+[dataAssurance=(none|enabled)]
+[resourceProvisioningCapable=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drives`
+ a| 
+As unidades que você deseja atribuir ao pool de discos que você deseja criar. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800, E5700, EF600 e EF300 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar ao novo pool de discos. Coloque o nome do conjunto de discos em aspas duplas (" ").
+
+
+
+ a| 
+`driveCount`
+ a| 
+O `driveCount` parâmetro limita os candidatos ao pool de discos ao número fornecido. Ao utilizar este parâmetro, o valor mínimo que pode introduzir para unidades HDD é 11. Para unidades SSD, o valor mínimo que você pode inserir é 8.
+
+[NOTE]
+====
+Os pools de SSD com `driveCount` menos de 11 TB estão restritos aos volumes RAID 1.
+
+====
+
+
+ a| 
+`warningThreshold`
+ a| 
+A porcentagem da capacidade de armazenamento na qual você recebe um alerta de aviso de que o pool de discos está quase cheio. Use valores inteiros. Por exemplo, um valor de 60 significa 60%. Para uma melhor operação, o valor para este parâmetro deve ser inferior ao valor para o `criticalThreshold` parâmetro.
+
+Os valores válidos são de 0 a 100.
+
+O valor padrão é 50.
+
+Definir este parâmetro para 0 (zero) desativa alertas de aviso.
+
+Se você definir isso como `default`, o valor limite do alerta de aviso será determinado pelo firmware do controlador.
+
+
+
+ a| 
+`criticalThreshold`
+ a| 
+A porcentagem de capacidade de armazenamento em que você recebe um alerta crítico de que o pool de discos está quase cheio. Use valores inteiros. Por exemplo, um valor de 70 significa 70%. Para uma melhor operação, o valor para este parâmetro deve ser maior que o valor para o `warningThreshold` parâmetro.
+
+Os valores válidos são de 0 a 100.
+
+O valor padrão é 85%.
+
+Definir este parâmetro para 0 (zero) desativa alertas de aviso e alertas críticos.
+
+Se você definir isso como `default`, o valor limite de alerta crítico será determinado pelo firmware do controlador.
+
+
+
+ a| 
+`criticalPriority`
+ a| 
+A prioridade para operações de reconstrução para eventos críticos no pool de discos. Por exemplo, reconstrução do pool de discos após pelo menos duas falhas de unidade.
+
+Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` e . O valor padrão é `highest`.
+
+
+
+ a| 
+`backgroundPriority`
+ a| 
+A prioridade para operações em segundo plano no pool de discos.
+
+Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` e . O valor padrão é `low`.
+
+
+
+ a| 
+`degradedPriority`
+ a| 
+A prioridade para atividades degradadas no pool de discos. Por exemplo, reconstrução do pool de discos após uma falha de unidade.
+
+Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` e . O valor padrão é `high`.
+
+
+
+ a| 
+`securityType`
+ a| 
+A configuração para especificar o nível de segurança ao criar o pool de discos. Todos os candidatos de volume para o pool de discos terão o tipo de segurança especificado.
+
+Estas definições são válidas:
+
+* `none` -- os candidatos ao volume não são seguros.
+* `capable` -- os candidatos ao volume são capazes de ter um conjunto de segurança, mas a segurança não foi ativada.
+* `enabled` -- o volume de candidatos tem a segurança ativada.
+
+
+O valor padrão é `none`.
+
+
+
+ a| 
+`secureDrives`
+ a| 
+O tipo de unidades seguras para usar no grupo de volumes. Estas definições são válidas:
+
+* `fips` -- para usar somente unidades compatíveis com FIPS.
+* `fde` -- para usar unidades compatíveis com FDE.
+
+
+[NOTE]
+====
+Use este parâmetro junto com o `securityType` parâmetro. Se você especificar `none` para o `securityType` parâmetro, o valor do `secureDrives` parâmetro será ignorado, porque os pools de discos não seguros não precisam ter tipos de unidades seguras especificados.
+
+====
+[NOTE]
+====
+Este parâmetro é ignorado a menos que você também esteja usando o `driveCount` parâmetro. Se você estiver especificando as unidades a serem usadas para o pool de discos em vez de fornecer uma contagem, especifique o tipo apropriado de unidades na lista de seleção com base no tipo de segurança desejado.
+
+====
+
+
+ a| 
+`driveMediaType`
+ a| 
+O tipo de Mídia de unidade que você deseja usar para o pool de disco.
+
+Você deve usar esse parâmetro quando tiver mais de um tipo de Mídia de unidade em seu storage de armazenamento.
+
+Estes suportes de dados da unidade são válidos:
+
+* `hdd` -- Use esta opção quando você tem discos rígidos.
+* `ssd` -- Use esta opção quando tiver discos de estado sólido.
+* `unknown` -- Use esta opção se não tiver certeza de quais tipos de Mídia de unidade estão na bandeja de unidades
+* `allMedia` -- Use esta opção quando quiser usar todos os tipos de Mídia de unidade que estão na bandeja de unidades
+
+
+O valor padrão é `hdd`.
+
+[NOTE]
+====
+O firmware da controladora não mistura `hdd` e `ssd` conduz Mídia no mesmo pool de discos, independentemente de usar a configuração selecionada.
+
+====
+
+
+ a| 
+`resourceProvisioningCapable`
+ a| 
+A configuração para especificar se os recursos de provisionamento de recursos estão ativados. Para desativar o provisionamento de recursos, defina este parâmetro como `FALSE`. O valor padrão é `TRUE`.
+
+|===
+
+
+== Notas
+
+Cada nome do pool de discos deve ser exclusivo. Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para o rótulo do usuário. As etiquetas de utilizador podem ter um máximo de 30 carateres.
+
+Se os parâmetros especificados não puderem ser satisfeitos por nenhuma das unidades candidatas disponíveis, o comando falhará. Normalmente, todas as unidades que correspondem aos atributos de qualidade de serviço são retornadas como os principais candidatos. No entanto, se você especificar uma lista de unidades, algumas das unidades disponíveis retornadas como candidatos podem não corresponder à qualidade dos atributos de serviço.
+
+Se você não especificar um valor para um parâmetro opcional, um valor padrão será atribuído.
+
+
+
+== Unidades
+
+Quando você usa o `driveType` parâmetro, todas as unidades não atribuídas desse tipo de unidade são usadas para criar o pool de discos. Se você quiser limitar o número de unidades encontradas pelo `driveType` parâmetro no pool de discos, você pode especificar o número de unidades usando o `driveCount` parâmetro. Você pode usar o `driveCount` parâmetro somente quando você usa o `driveType` parâmetro.
+
+ `drives`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+Se você inserir especificações para uma bandeja de unidades de alta capacidade, mas uma bandeja de unidades não estiver disponível, o software de gerenciamento de armazenamento retornará uma mensagem de erro.
+
+
+
+== Limites de alerta do pool de discos
+
+Cada pool de discos tem dois níveis progressivamente graves de alertas para informar os usuários quando a capacidade de armazenamento do pool de discos está se aproximando completamente. O limite para um alerta é uma porcentagem da capacidade usada para a capacidade utilizável total no pool de discos. Os alertas são os seguintes:
+
+* Aviso -- este é o primeiro nível de alerta. Esse nível indica que a capacidade usada em um pool de discos está se aproximando completamente. Quando o limite para o alerta de aviso é atingido, uma condição de atenção precisa é gerada e um evento é publicado no software de gerenciamento de armazenamento. O limiar de aviso é substituído pelo limiar crítico. O limite de aviso padrão é de 50%.
+* Crítico -- este é o nível mais severo de alerta. Esse nível indica que a capacidade usada em um pool de discos está se aproximando completamente. Quando o limite para o alerta crítico é atingido, uma condição de atenção precisa é gerada e um evento é publicado no software de gerenciamento de armazenamento. O limiar de aviso é substituído pelo limiar crítico. O limite padrão para o alerta crítico é de 85%.
+
+
+Para ser eficaz, o valor de um alerta de aviso deve ser sempre inferior ao valor de um alerta crítico. Se o valor para o alerta de aviso for o mesmo que o valor para um alerta crítico, apenas o alerta crítico é enviado.
+
+
+
+== Operações em segundo plano do pool de discos
+
+Os pools de discos suportam essas operações em segundo plano:
+
+* Reconstrução
+* Formato de disponibilidade instantânea (IAF)
+* Formato
+* Expansão dinâmica de capacidade (DCE)
+* Expansão dinâmica de volume (DVE) (para pools de discos, o DVE na verdade não é uma operação em segundo plano, mas o DVE é suportado como uma operação síncrona.)
+
+
+Os pools de discos não colocam em fila os comandos em segundo plano. Você pode iniciar vários comandos em segundo plano sequencialmente, mas iniciar mais de uma operação em segundo plano de cada vez atrasa a conclusão dos comandos que você iniciou anteriormente. As operações de fundo suportadas têm os seguintes níveis de prioridade relativa:
+
+. Reconstrução
+. Formato
+. IAF
+. DCE
+
+
+
+
+== Tipo de segurança
+
+Use o `securityType` parâmetro para especificar as configurações de segurança do storage array.
+
+Antes de definir o `securityType` parâmetro como `enabled`, você deve criar uma chave de segurança do storage array. Use o `create storageArray securityKey` comando para criar uma chave de segurança de storage array. Estes comandos estão relacionados com a chave de segurança:
+
+* `create storageArray securityKey`
+* `export storageArray securityKey`
+* `import storageArray securityKey`
+* `set storageArray securityKey`
+* `enable volumeGroup [volumeGroupName] security`
+* `enable diskPool [diskPoolName] security`
+
+
+
+
+== Unidades seguras
+
+As unidades com capacidade segura podem ser unidades com criptografia total de disco (FDE) ou unidades FIPS (Federal Information Processing Standard). Use o `secureDrives` parâmetro para especificar o tipo de unidades seguras a serem usadas. Os valores que você pode usar são `fips` e `fde`.
+
+
+
+== Exemplo de comando
+
+[listing]
+----
+create diskPool driveType=SAS userLabel="FIPS_Pool" driveCount=11 securityType=capable secureDrives=fips;
+----
+
+
+== Nível mínimo de firmware
+
+7,83
+
+8,20 adiciona estes parâmetros:
+
+* `trayLossProtect`
+* `drawerLossProtect`
+
+
+8,25 adiciona o `secureDrives` parâmetro.
+
+8,63 adiciona o `resourceProvisioningCapable` parâmetro.
+
+11,73 atualiza o `driveCount` parâmetro.

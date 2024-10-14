@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/set-target.html 
+sidebar: sidebar 
+keywords: set, target, properties 
+summary: O comando Set target altera as propriedades de um destino iSCSI/iSER, incluindo método de autenticação e nome de alias. 
+---
+= Definir propriedades de destino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set target` comando altera as propriedades de um destino iSCSI/iSER, incluindo o método de autenticação e o nome de alias.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando substitui os comandos e xref:set-iscsitarget.adoc[Definir propriedades de destino iSCSI]preteridosxref:set-isertarget.adoc[Defina o destino iSER].
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+
+set target (["targetAliasName"] | <"targetQualifiedName">) (authenticationMethod=(none | chap chapSecret="newSecurityKey") | targetAlias="newAliasName")
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`target`
+ a| 
+Permite especificar qual alvo você deseja definir. Você pode especificar o nome de alias do destino ou o nome qualificado (por exemplo, iqn). Inclua o identificador de destino em aspas duplas (" "). Você também deve incluir o identificador entre colchetes ([ ]) se for um alias ou colchetes angulares ( ) se for um nome qualificado.
+
+
+
+ a| 
+`authenticationMethod`
+ a| 
+Permite-lhe definir os meios de autenticação da sua sessão. As opções válidas são: `none` Ou `chap`.
+
+
+
+ a| 
+`chapSecret`
+ a| 
+Permite-lhe introduzir a chave de segurança para autenticar uma ligação peer. Isto só é aplicável quando `authenticationMethod` está definido como `chap`.
+
+
+
+ a| 
+`targetAlias`
+ a| 
+Permite especificar o novo nome de alias para o destino. Coloque o nome entre aspas duplas (" ").
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,41

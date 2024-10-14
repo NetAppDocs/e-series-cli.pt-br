@@ -1,0 +1,57 @@
+---
+permalink: commands-a-z/stop-asyncmirrorgroup-rolechange.html 
+sidebar: sidebar 
+keywords: cancel, asynchronous, mirror, group, role, reversal 
+summary: O comando stop asyncMirrorGroup rolechange cancela uma operação pendente de reversão de função entre grupos de espelhos assíncronos. 
+---
+= Cancelar inversão de função do grupo de espelhos assíncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop asyncMirrorGroup rolechange` comando cancela uma operação pendente de reversão de função entre grupos de espelhos assíncronos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[stop asyncMirrorGroup [_asyncMirrorGroupName_]] rolechange
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos para o qual você deseja cancelar a operação de reversão de função pendente. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

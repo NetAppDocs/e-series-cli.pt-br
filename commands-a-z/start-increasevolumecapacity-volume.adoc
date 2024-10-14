@@ -1,0 +1,101 @@
+---
+permalink: commands-a-z/start-increasevolumecapacity-volume.html 
+sidebar: sidebar 
+keywords: increase, capacity, volume, disk pool, volume, group 
+summary: O comando start increaseVolumeCapacity volume aumenta a capacidade de um volume padrão ou de um volume de repositório em um pool de discos ou grupo de volumes. 
+---
+= Aumente a capacidade de volume no pool de discos ou no grupo de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start increaseVolumeCapacity volume` comando aumenta a capacidade de um volume padrão ou de um volume de repositório em um pool de discos ou grupo de volumes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Neste comando, um volume padrão também é chamado de volume grosso.
+
+[NOTE]
+====
+Você não pode usar este comando para aumentar a capacidade de um volume fino.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[start increaseVolumeCapacity volume="_volumeName_"
+incrementalCapacity=_volumeCapacity_]
+[addDrives=pass:quotes[(_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_)]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume em um pool de discos ou grupo de volumes para o qual você deseja aumentar a capacidade. Coloque o nome do volume entre aspas duplas (" ").
+
+
+
+ a| 
+`incrementalCapacity`
+ a| 
+A definição para aumentar o tamanho de armazenamento (capacidade) para o volume. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou . O valor padrão é `bytes`.
+
+
+
+ a| 
+`addDrives`
+ a| 
+A definição para adicionar novas unidades ao volume. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+[NOTE]
+====
+O `addDrives` parâmetro só pode ser utilizado para aumentar a capacidade de um grupo de volumes. O parâmetro não pode ser usado para aumentar a capacidade de um pool de discos.
+
+====
+|===
+
+
+== Notas
+
+Em alguns casos, um `drive` parâmetro pode aparecer como entrada válida para a sintaxe do comando. No entanto, você não pode usar o `drive` parâmetro com este comando.
+
+Definir o `incrementalCapacity` parâmetro, inicia uma operação de longa duração que não pode parar. As operações de longa duração são executadas em segundo plano e não o impedem de executar outros comandos. Para mostrar o progresso das operações de longa duração, use o `show volume actionProgress` comando.
+
+ `addDrives`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+
+
+== Nível mínimo de firmware
+
+7,83

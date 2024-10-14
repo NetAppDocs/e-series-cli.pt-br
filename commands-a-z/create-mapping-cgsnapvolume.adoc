@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/create-mapping-cgsnapvolume.html 
+sidebar: sidebar 
+keywords: create, consistency, group, snapshot, volume, map 
+summary: O comando criar mapeamento cgSnapvolume cria um mapeamento lógico de um volume instantâneo de um grupo de consistência para um host ou um grupo de host. 
+---
+= Criar mapeamento de volume de snapshot do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create mapping cgSnapVolume` comando cria um mapeamento lógico de um volume instantâneo de grupo de consistência para um host ou um grupo de host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create mapping cgSnapVolume=pass:quotes[_"snapVolumeName"_
+(host="_hostName_" | hostGroup=("_hostGroupName_" | defaultGroup))]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`cgSnapVolume`
+ a| 
+O nome do volume instantâneo do grupo de consistência para o qual você deseja criar um mapeamento lógico. Inclua o nome do volume instantâneo do grupo de consistência entre aspas duplas (" ").
+
+
+
+ a| 
+`host`
+ a| 
+O nome de um host para o qual você deseja criar um mapeamento lógico. Inclua o nome do host em aspas duplas (" ").
+
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome de um grupo de host para o qual você deseja criar um mapeamento lógico. Coloque o nome do grupo anfitrião em aspas duplas (" "). Se você usar a `defaultGroup` palavra-chave, não a coloque entre aspas.
+
+|===
+
+
+== Notas
+
+Um host é um computador conetado ao storage array e acessa os volumes no storage array por meio das portas do host. Você pode definir mapeamentos específicos para um host individual. Você também pode atribuir o host a um grupo de host que compartilha o acesso a um ou mais volumes.
+
+Um grupo de host é um elemento topológico opcional que você pode definir se deseja designar uma coleção de hosts que compartilham acesso aos mesmos volumes. O grupo host é uma entidade lógica. Defina um grupo de hosts somente se você tiver dois ou mais hosts que compartilham o acesso aos mesmos volumes.
+
+
+
+== Nível mínimo de firmware
+
+7,83

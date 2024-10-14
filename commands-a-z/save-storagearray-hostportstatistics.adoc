@@ -1,0 +1,136 @@
+---
+permalink: commands-a-z/save-storagearray-hostportstatistics.html 
+sidebar: sidebar 
+keywords: save, storage, array, host, port, statistics 
+summary: O comando save storageArray hostPortStatistics salva as estatísticas da porta do host do storage array. 
+---
+= Salvar estatísticas da porta do host do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray hostPortStatistics` comando salva as estatísticas da porta do host do storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de Segurança.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando substitui os comandos obsoletos xref:save-storagearray-iscsistatistics.adoc[Guardar estatísticas iSCSI da matriz de armazenamento], xref:save-storagearray-iserstatistics.adoc[Salvar estatísticas de iSER de storage array], e xref:save-storagearray-ibstats.adoc[Salvar estatísticas de storage array InfiniBand].
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+save storageArray hostPortStatistics [(raw | baseline)] type=(ISCSI| ISER | SRP | NVMEOF) file="filename"
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`raw`
+ a| 
+Permite-lhe recuperar as estatísticas recolhidas desde o início do dia. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`baseline`
+ a| 
+Permite recuperar as estatísticas recolhidas a partir do momento em que as linhas de base dos controladores foram repostas para zero. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`type`
+ a| 
+Permite indicar qual tipo de estatísticas a recolher. As opções válidas são: `ISCSI`, `ISER`, `SRP`, `NVMEOF` E .
+
+
+
+ a| 
+`file`
+ a| 
+Permite especificar o caminho do arquivo e o nome do arquivo para salvar as estatísticas. Coloque o nome do ficheiro entre aspas duplas (" "). Use qualquer nome de arquivo com a `.csv` extensão.
+
+|===
+[cols="6*"]
+|===
+| Tipo | Ethernet MAC, Ethernet TCP/IP, Iniciador local (Protocolo), Estado operacional DCBX, LDP TLV, DCBX TLV | Destino (Protocolo) | Interface InfiniBand | Subsistema NVMe | Nome do arquivo ASUP 
+
+
+ a| 
+`iscsi`
+ a| 
+X
+ a| 
+X
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+`iser`
+ a| 
+ a| 
+X
+ a| 
+X
+ a| 
+ a| 
+
+
+
+ a| 
+`srp`
+ a| 
+ a| 
+ a| 
+X
+ a| 
+ a| 
+
+
+
+ a| 
+`nvmeof`
+ a| 
+ a| 
+ a| 
+X
+ a| 
+X
+ a| 
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,41

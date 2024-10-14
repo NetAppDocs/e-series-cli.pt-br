@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/start-volumegroup-defragment.html 
+sidebar: sidebar 
+keywords: start, volume, group, defragment 
+summary: O comando start volumeGroup desfragment inicia uma operação de desfragmentação no grupo de volumes especificado. 
+---
+= Iniciar desfragmentação do grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start volumeGroup defragment` comando inicia uma operação de desfragmentação no grupo de volumes especificado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+A desfragmentação de um grupo de volume inicia uma operação de longa duração que você não pode parar.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[start volumeGroup [_volumeGroupName_]] defragment
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volume que você deseja desfragmentar. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Erros de e/S do host podem resultar em grupos de volumes com mais de 32 volumes. Esta operação também pode resultar em reinicializações internas do controlador porque o período de tempo limite termina antes que a definição do grupo de volume seja definida. Se você tiver esse problema, silencie as operações de e/S do host e tente o comando novamente.
+
+
+
+== Nível mínimo de firmware
+
+6,10

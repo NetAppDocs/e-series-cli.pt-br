@@ -1,0 +1,66 @@
+---
+permalink: commands-a-z/revive-snapgroup.html 
+sidebar: sidebar 
+keywords: revive, snapshot, group 
+summary: O comando revive snapGroup força o grupo de instantâneos especificado para o estado ideal. 
+---
+= Reavive o grupo instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `revive snapGroup` comando força o grupo de instantâneos especificado para o estado ideal.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Se o grupo de instantâneos não estiver no estado Falha, o firmware exibirá uma mensagem de erro e não executará este comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+revive snapGroup pass:quotes[[_snapGroupName_]]
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo de instantâneos que pretende definir para o estado ideal. Inclua o nome do grupo de instantâneos entre colchetes ([ ]). Se o nome do grupo instantâneo tiver carateres especiais ou consistir apenas em números, você deve incluir o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

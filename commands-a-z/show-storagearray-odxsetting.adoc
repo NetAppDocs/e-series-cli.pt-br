@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/show-storagearray-odxsetting.html 
+sidebar: sidebar 
+keywords: show, storage, array, odx, set 
+summary: 'O comando show storageArray odxsetting retorna as configurações atuais para transferência de dados descarregados (ODX) e VMware vStorage API Array Architecture (VAAI) no storage array.' 
+---
+= Mostrar configuração ODX da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray odxsetting` comando retorna as configurações atuais para transferência de dados descarregados (ODX) e VMware vStorage API Array Architecture (VAAI) no storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+As configurações deste comando podem ser uma das seguintes:
+
+* True -- ODX e VAAI estão ligados.
+* False -- ODX e VAAI estão desligados.
+* Inconsistente -- os controladores não têm as mesmas configurações.
+* Desconhecido -- a definição para ODX ou VAAI não pode ser determinada.
+
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray odxsetting
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Este comando retorna as informações ODX e VAAI semelhantes a este exemplo.
+
+[listing]
+----
+Windows ODX Setting Status
+odxEnabled  True | False | Inconsistent | Unknown
+vaaiEnabled True | False | Inconsistent | Unknown
+----
+
+
+== Nível mínimo de firmware
+
+8,20

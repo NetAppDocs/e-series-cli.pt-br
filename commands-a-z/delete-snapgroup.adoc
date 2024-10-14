@@ -1,0 +1,80 @@
+---
+permalink: commands-a-z/delete-snapgroup.html 
+sidebar: sidebar 
+keywords: delete, snapgroup, command, entire, snapshot, group, option, associate, repository, volume 
+summary: O comando delete snapGroup é um grupo de snapshot inteiro e, opcionalmente, os volumes de repositório associados. 
+---
+= Eliminar grupo instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete snapGroup` comando um grupo de snapshot inteiro e, opcionalmente, os volumes de repositório associados.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possível dano à configuração do storage array* -- todos os dados no grupo instantâneo são perdidos assim que você executar este comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete snapGroup ["_snapGroupName_"]]
+[deleteRepositoryMembers=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo de instantâneos que pretende eliminar. Coloque o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`deleteRepositoryMembers`
+ a| 
+O parâmetro para excluir ou salvar os volumes do repositório. Para excluir os volumes do repositório, defina este parâmetro como `TRUE`. Para salvar os volumes do repositório, defina este parâmetro como `FALSE`. O valor padrão é `FALSE`.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para o rótulo do usuário. As etiquetas de utilizador podem ter um máximo de 30 carateres.
+
+Pode eliminar um grupo de instantâneos se estiver vazio ou se contiver imagens instantâneas. Todas as imagens de instantâneos no grupo de instantâneos são eliminadas juntamente com o grupo de instantâneos. Se qualquer imagem instantânea existente dentro do grupo de instantâneos tiver um volume instantâneo associado, cada volume de instantâneo é interrompido e separado da imagem instantânea. Quando você exclui um grupo instantâneo, o volume do repositório associado também é excluído. Por padrão, todos os volumes membros no volume do repositório são retidos como volumes padrão não mapeados e não utilizados. Para remover os volumes membros, defina o `deleteRepositoryMembers` parâmetro como `TRUE`, ou não use este parâmetro. Para manter os volumes dos membros, defina o `deleteRepositoryMembers` parâmetro como `FALSE`.
+
+
+
+== Nível mínimo de firmware
+
+7,83

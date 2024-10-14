@@ -1,0 +1,66 @@
+---
+permalink: commands-a-z/set-storagearray-loginbanner.html 
+sidebar: sidebar 
+keywords: set, storage, array, login, banner 
+summary: O comando Set storageArray loginBanner permite que você carregue um arquivo de texto para ser usado como um banner de login. O texto do banner pode incluir uma mensagem de aviso de aviso e consentimento, que é apresentada aos usuários antes de estabelecerem sessões no Gerenciador de sistemas do SANtricity ou antes de executar comandos. 
+---
+= Definir banner de login de matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray loginBanner` comando permite que você carregue um arquivo de texto para ser usado como um banner de login. O texto do banner pode incluir uma mensagem de aviso de aviso e consentimento, que é apresentada aos usuários antes de estabelecerem sessões no Gerenciador de sistemas do SANtricity ou antes de executar comandos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray loginBanner file="path_to_login_banner"
+----
+
+
+== Contexto
+
+Depois de carregar o arquivo de texto, ele é salvo na matriz de armazenamento. O texto do banner é exibido antes da tela de login do Gerenciador de sistema do SANtricity ou antes de executar comandos.
+
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo onde o arquivo de texto da faixa de login é armazenado.
+
+[NOTE]
+====
+O arquivo de banner de login não pode estar vazio e deve ter 5 KB ou menos.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+8,41

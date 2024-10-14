@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/start-storagearray-directoryservices-test.html 
+sidebar: sidebar 
+keywords: test, storage, array, directory, server 
+summary: O comando start storageArray directoryServices test verifica a comunicação com todos os servidores de diretório configurados e valida as configurações de domínio do servidor. 
+---
+= Teste o servidor de diretório do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start storageArray directoryServices test` comando verifica a comunicação com todos os servidores de diretório configurados e valida as configurações do domínio do servidor.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Este comando retorna um erro se pelo menos um servidor de diretório ainda não tiver sido adicionado ao domínio.
+
+
+
+== Sintaxe
+
+[listing]
+----
+
+start storageArray directoryServices test
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "start storageArray directoryServices test;"
+
+<test results for each domain configured are returned>
+
+SMcli completed successfully.
+----

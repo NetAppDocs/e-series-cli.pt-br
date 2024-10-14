@@ -1,0 +1,72 @@
+---
+permalink: commands-a-z/resume-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: resume, asynchronous, mirror, group 
+summary: O comando RESUME asyncMirrorGroup retoma a transferência de dados entre todos os pares espelhados em um grupo de espelhos assíncrono. 
+---
+= Retomar grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `resume asyncMirrorGroup` comando retoma a transferência de dados entre todos os pares espelhados em um grupo de espelhos assíncronos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Os dados gravados nos volumes primários enquanto o grupo de espelhos assíncronos foi suspenso são gravados nos volumes secundários imediatamente. A sincronização periódica é retomada se tiver sido definido um intervalo de sincronização automática.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+resume asyncMirrorGroup pass:quotes[[_"asyncMirrorGroupName"_]]
+[deleteRecoveryPointIfNecessary]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos para o qual você deseja iniciar a sincronização. Inclua o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes ([ ]").
+
+
+
+ a| 
+`deleteRecoveryPointIfNecessary`
+ a| 
+O parâmetro para excluir o ponto de recuperação se os dados de sincronização recuperáveis excederem o limite de tempo para recuperação. A idade do ponto de recuperação é medida a partir do momento em que os dados foram congelados no storage array primário.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+8,10 adiciona o `deleteRecoveryPointIfNecessary` parâmetro
+
+O 11,80 adiciona suporte a array EF600 e EF300

@@ -1,0 +1,34 @@
+---
+permalink: commands-a-z/getting-started-with-internal-key-management.html 
+sidebar: sidebar 
+keywords: security key, string, characters, secure enabled, drive, controllers, storage, array, internal, key, management, create, maintain, persistent, memory 
+summary: Uma chave de segurança é uma cadeia de carateres, que é compartilhada entre as unidades e controladores habilitados para segurança em um storage array. Ao usar o gerenciamento de chaves internas, você cria e mantém chaves de segurança na memória persistente do controlador. 
+---
+= Introdução ao gerenciamento de chaves internas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Uma chave de segurança é uma cadeia de carateres, que é compartilhada entre as unidades e controladores habilitados para segurança em um storage array. Ao usar o gerenciamento de chaves internas, você cria e mantém chaves de segurança na memória persistente do controlador.
+
+Consulte a ajuda on-line do Gerenciador de sistemas do SANtricity para obter informações conceituais sobre como usar chaves de segurança internas.
+
+O seguinte é o fluxo de trabalho básico para usar chaves de segurança internas:
+
+. * Criar chaves de segurança*
+. * Definir chaves de segurança*
+. *Validar chave de segurança*
+
+
+
+
+== Etapas do fluxo de trabalho
+
+Os seguintes comandos começam com as chaves de segurança internas:
+
+. Crie uma chave de segurança de storage array, usando o `create storageArray securityKey` comando. xref:create-storagearray-securitykey.adoc[Criando uma chave de segurança de storage array]Consulte .
+. Defina a chave de segurança do storage array, usando o `set storageArray securityKey` comando. xref:set-storagearray-securitykey.adoc[Definir uma chave de segurança de storage array]Consulte .
+. Valide a chave de segurança usando o `validate storageArray securityKey` comando. xref:validate-storagearray-securitykey.adoc[Validar uma chave de segurança de storage array]Consulte .
+

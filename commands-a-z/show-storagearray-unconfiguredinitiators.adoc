@@ -1,0 +1,48 @@
+---
+permalink: commands-a-z/show-storagearray-unconfiguredinitiators.html 
+sidebar: sidebar 
+keywords: show, unconfigured, initiators 
+summary: O comando show storageArray unconfiguredInitiators retorna uma lista de iniciadores que foram detetados pelo storage array mas ainda não estão configurados na topologia do storage array. 
+---
+= Mostrar iniciadores não configurados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray unconfiguredInitiators` comando retorna uma lista de iniciadores que foram detetados pelo storage array mas ainda não estão configurados na topologia do storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+Este comando substitui o link:show-storagearray-unconfigurediscsiinitiators.html["Mostrar storageArray unconfiguredIscsiInitiators"] comando.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray unconfiguredInitiators
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+8,50

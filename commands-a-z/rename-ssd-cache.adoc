@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/rename-ssd-cache.html 
+sidebar: sidebar 
+keywords: rename, ssd, cache 
+summary: O comando set ssdCache altera o nome do cache SSD. 
+---
+= Renomeie o cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set ssdCache` comando altera o nome do cache SSD.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set ssdCache pass:quotes[[_old_ssdCacheName_]] userLabel=pass:quotes[_"new_ssdCacheName_"]
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`ssdCache`
+ a| 
+O nome do cache SSD que você deseja renomear. Inclua o nome do cache SSD entre colchetes ([ ]). Se o nome do cache SSD tiver carateres especiais ou consistir apenas em números, você também deve incluir o nome do cache SSD em aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome para o cache SSD. Insira o nome entre aspas duplas (" "). Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para o identificador. Os identificadores podem ter um máximo de 30 carateres.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

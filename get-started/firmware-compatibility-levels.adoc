@@ -1,0 +1,45 @@
+---
+permalink: get-started/firmware-compatibility-levels.html 
+sidebar: sidebar 
+keywords: firmware, compatibility, levels 
+summary: Os comandos de script e os parâmetros de comando não são executados em todas as versões do firmware do controlador. 
+---
+= Níveis de compatibilidade de firmware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+Os comandos de script e os parâmetros de comando não são executados em todas as versões do firmware do controlador. Os comandos de script nas seções a seguir listam os níveis mínimos de firmware sob os quais os comandos de script podem ser executados. Nos comandos de script, os níveis de firmware são listados sob o título ""nível mínimo de firmware""" esta lista descreve como interpretar as informações sobre os níveis de firmware.
+
+* Se um comando de script não listar um nível mínimo de firmware de controladora, o comando de script e todos os parâmetros associados a esse comando de script podem ser executados em qualquer nível de firmware de controladora.
+* Um número de firmware do controlador sem qualquer informação explicativa indica que o nível de firmware do controlador se aplica a todo o comando de script e a todos os parâmetros desse comando de script.
+* Um número de firmware do controlador associado a um parâmetro indica o nível mínimo de firmware do controlador sob o qual o parâmetro pode ser executado.
+
+
+[NOTE]
+====
+O nível mínimo de firmware do controlador indica o suporte do software que libera o comando, bem como o suporte de todo o software de gerenciamento de storage que capta o uso. Os recursos de suporte da CLI dependem do hardware usado. Quando um comando não suportado é introduzido, é apresentada uma mensagem de erro.
+
+====
+
+
+== Exemplos de níveis de compatibilidade de firmware
+
+O `create hostGroup` comando tem a seguinte secção.
+
+*Nível mínimo de firmware*
+
+8,10
+
+Esse nível indica que todo o comando script é executado com um mínimo de firmware da controladora versão 8,10.
+
+O `create ssdCache` comando tem a seguinte secção.
+
+*Nível mínimo de firmware*
+
+7,84
+
+8.20.11 - Adicionado o `*securityType*` parâmetro.
+
+Essas notações indicam que o comando script e todos os parâmetros, exceto `*securityType*` executados sob um mínimo de firmware do controlador versão 7,84. O `*securityType*` parâmetro é executado com um mínimo de versão de firmware do controlador 8,20_M3.

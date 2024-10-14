@@ -1,0 +1,107 @@
+---
+permalink: commands-a-z/clear-asyncmirrorfault.html 
+sidebar: sidebar 
+keywords: clear, asynchronous mirroring, fault 
+summary: O comando clear asyncMirrorFault limpa uma falha de espelhamento assíncrono de um ou mais grupos de espelhos assíncronos e de um ou mais volumes de membros do grupo de espelhos assíncronos. 
+---
+= Apagar falha de espelhamento assíncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `clear asyncMirrorFault` comando limpa uma falha "pegajosa" de espelhamento assíncrono de um ou mais grupos de espelhos assíncronos e de um ou mais volumes de membros do grupo de espelhos assíncronos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Um grupo de espelhos assíncrono e seus volumes de membros podem encontrar falhas assíncronas "pegajosas" de espelhamento, que ocorrem em um único ponto no tempo, mas não afetam a funcionalidade dos espelhos. Estes tipos de avarias têm de ser revistos, mas podem não necessitar de quaisquer alterações à configuração.
+
+Um grupo de espelhos assíncrono e seus volumes de membros podem ou podem ter mais de uma falha de aderência associada. Este comando limpa todas as avarias associadas ao grupo de espelhos assíncronos e ao seu volume de membros. No entanto, se um grupo de espelhos assíncronos tiver uma avaria e um dos seus volumes de membros tiver uma avaria, apagar a avaria no grupo de espelhos assíncronos não apaga a avaria no seu volume de membros.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+clear asyncMirrorFault(all |
+asyncMirrorGroup pass:quotes[[_asyncMirrorGroupName_]] |
+asyncMirrorGroups pass:quotes[[_"asyncMirrorGroupName1"
+... "asyncMirrorGroupNameN"_]] |
+volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_"volumeName1" ... "volumeNameN"_]])
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`all`
+ a| 
+Use este parâmetro se quiser limpar todas as falhas de espelhamento assíncrono de todos os grupos de espelhos assíncronos e em todos os volumes de membros do grupo de espelhos assíncronos.
+
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos a partir do qual você deseja limpar a falha de espelhamento assíncrono. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`asyncMirrorGroups`
+ a| 
+Os nomes de vários grupos de espelhos assíncronos dos quais você deseja limpar a falha de espelhamento assíncrono. Digite os nomes dos grupos de espelhos assíncronos usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume específico do membro (em um grupo de espelhos assíncronos) do qual você deseja limpar a falha de espelhamento assíncrono. Inclua o nome do volume do membro entre colchetes ([ ]). Se o nome do volume contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes de membros (em um grupo de espelhos assíncronos) dos quais você deseja limpar a falha de espelhamento assíncrono. Digite os nomes dos volumes de membros usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

@@ -1,0 +1,87 @@
+---
+permalink: commands-a-z/check-asyncmirrorgroup-repositoryconsistency.html 
+sidebar: sidebar 
+keywords: check, asynchronous mirror group, consistency 
+summary: O comando check asyncMirrorGroup repositoryConsistency produz um relatório baseado na análise dos dados no volume do repositório subjacente do grupo de espelhos assíncronos especificado. 
+---
+= Verifique a consistência do grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `check asyncMirrorGroup repositoryConsistency` comando produz um relatório baseado na análise dos dados no volume de repositório subjacente do grupo de espelhos assíncronos especificado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+check asyncMirrorGrouppass:quotes[[_asyncMirrorGroupName_]]
+repositoryConsistency localVolume=pass:quotes[[_localVolumeName"_]]
+file=pass:quotes[_"filePath"_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos no qual executar uma verificação de consistência. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos contiver carateres especiais ou consistir apenas em números, você também deve incluir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`repositoryConsistency`
+ a| 
+Especifica que o grupo de espelhos assíncronos é verificado quanto à consistência.
+
+
+
+ a| 
+`localVolume`
+ a| 
+Especifica o nome de um volume local que participa da relação de espelhamento. Você pode especificar um volume local que seja a origem ou o destino em uma relação espelhada. Se o nome do volume local contiver carateres especiais ou consistir apenas em números, você também deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar o relatório resultante da verificação de consistência. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\repoConsistency.txt"` Este parâmetro deve aparecer por último, após qualquer um dos parâmetros opcionais.
+
+|===
+
+
+== Notas
+
+O relatório gerado por este comando destina-se a ser utilizado pelo suporte técnico para analisar problemas.
+
+
+
+== Nível mínimo de firmware
+
+7,83
+
+O 11,80 adiciona suporte a array EF600 e EF300

@@ -1,0 +1,71 @@
+---
+permalink: commands-a-z/set-drivechannel.html 
+sidebar: sidebar 
+keywords: set, drive, channel, status 
+summary: O comando SET driveChannel define o desempenho do canal de acionamento. 
+---
+= Definir o estado do canal de transmissão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set driveChannel` comando define o desempenho do canal da unidade.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set driveChannel [(1 | 2 | 3 | 4 | 5 | 6 | 7 | 8)]
+status=(optimal | degraded)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`driveChannel`
+ a| 
+O número do identificador do canal da unidade para o qual você deseja definir o status. Os valores válidos do canal da unidade são `1`, `2` `3` , `4`, `5`, , , `6`, `7`, `8` ou . Coloque o número do canal da unidade entre colchetes ([ ]).
+
+
+
+ a| 
+`status`
+ a| 
+O estado do canal de transmissão. Pode definir o estado do canal da unidade para `optimal` ou `degraded`.
+
+|===
+
+
+== Notas
+
+Utilize a `optimal` opção para mover um canal de unidade degradado de volta ao estado ideal. Use a `degraded` opção quando o canal da unidade estiver enfrentando problemas e o storage de armazenamento exigir tempo adicional para transferências de dados.
+
+
+
+== Nível mínimo de firmware
+
+6,10
+
+7,15 adiciona a atualização ao identificador do canal da unidade.

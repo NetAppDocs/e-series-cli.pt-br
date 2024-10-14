@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/set-storagearray-resourceprovisionedvolumes.html 
+sidebar: sidebar 
+keywords: set, storage, array, resource, provisioned, volumes 
+summary: O comando Set storageArray resourceProvideVolumes desativa o recurso DULBE. 
+---
+= Definir volumes provisionados de recurso de storage de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `set storageArray resourceProvisionedVolumes`O comando desativa o recurso DULBE.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays EF600 e EF300; desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array EF600 e EF300, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+O provisionamento de recursos é um recurso disponível que permite que grandes volumes sejam inicializados rapidamente.
+
+Um volume provisionado por recurso é um volume espesso em um grupo ou pool de volumes SSD, em que a capacidade da unidade é alocada (atribuída ao volume) quando o volume é criado, mas os blocos de unidades são deslocalizados (não mapeados). Com um volume provisionado de recurso, não há inicialização em segundo plano com tempo. Em vez disso, cada stripe RAID é inicializado na primeira gravação em um bloco de volume no stripe
+
+Os volumes provisionados de recursos são suportados apenas em grupos de volumes e pools de SSD, em que todas as unidades do grupo ou pool são compatíveis com a funcionalidade de recuperação de erro DULBE (Logical Block Error Enable) desalocada ou não escrita do NVMe. Quando um volume provisionado de recurso é criado, todos os blocos de unidade atribuídos ao volume são desalocados (não mapeados). A desalocação de blocos pode melhorar a vida útil do SSD e aumentar o desempenho máximo de gravação. A melhoria varia de acordo com cada modelo de unidade e capacidade.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray resourceProvisionedVolumes=(enable|disable)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`resourceProvisionedVolumes`
+ a| 
+A configuração para especificar se os recursos de provisionamento de recursos estão ativados. Para desativar o provisionamento de recursos, defina este parâmetro como `disable`. O valor padrão é `enable`.
+
+[NOTE]
+====
+A alteração desse valor aplica-se apenas a grupos de volumes e pools criados no futuro. Ele não altera o valor de nenhum grupo de volumes e pools existentes.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+8,63

@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/revive-snapvolume.html 
+sidebar: sidebar 
+keywords: revive, snapshot, volume 
+summary: O comando revive snapvolume força um volume instantâneo especificado para o estado ideal. 
+---
+= Reavive o volume instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `revive snapVolume` comando força um volume instantâneo especificado para o estado ideal.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+O volume instantâneo pode ser um dos seguintes:
+
+* Um volume de snapshot autônomo
+* Um volume instantâneo que é membro de um grupo de consistência
+
+
+Se o volume instantâneo não estiver no estado de falha, o firmware exibirá uma mensagem de erro e não executará este comando.
+
+[NOTE]
+====
+Você não pode usar este comando para um volume instantâneo usado na cópia de volume on-line.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+revive snapVolume pass:quotes[[_snapVolumeName_]]
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapVolume`
+ a| 
+O nome do volume instantâneo que pretende definir para o estado ideal. Inclua o nome do volume do instantâneo entre colchetes ([ ]). Se o nome do volume instantâneo tiver carateres especiais ou consistir apenas em números, você deve incluir o nome do volume instantâneo entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

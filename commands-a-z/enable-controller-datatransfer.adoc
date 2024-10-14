@@ -1,0 +1,55 @@
+---
+permalink: commands-a-z/enable-controller-datatransfer.html 
+sidebar: sidebar 
+keywords: enable, controller, datatransfer, command, revive, quiesced, running, diagnostics, role, syntax, parameter, firmware level 
+summary: O comando enable controller dataTransfer revive um controlador que ficou quieto durante a execução do diagnóstico. 
+---
+= Ativar a transferência de dados do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `enable controller dataTransfer` comando revive um controlador que ficou quieto durante a execução do diagnóstico.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+enable controller [(a|b)] dataTransfer
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador que você quer reviver. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o software de gerenciamento de armazenamento retornará um erro de sintaxe.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

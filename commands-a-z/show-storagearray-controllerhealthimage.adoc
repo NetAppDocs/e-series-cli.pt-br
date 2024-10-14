@@ -1,0 +1,59 @@
+---
+permalink: commands-a-z/show-storagearray-controllerhealthimage.html 
+sidebar: sidebar 
+keywords: show, storage, array, controller, health, image 
+summary: O comando show storageArray controllerHealthImage mostra detalhes da imagem de integridade do controlador no cache do controlador, se uma imagem de integridade do controlador estiver disponível, em matrizes de armazenamento que suportem a imagem de integridade do controlador. 
+---
+= Mostrar imagem de integridade do controlador do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray controllerHealthImage` comando mostra detalhes da imagem de integridade do controlador no cache do controlador, se uma imagem de integridade do controlador estiver disponível, em matrizes de armazenamento que suportem a imagem de integridade do controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Com a versão de firmware 8,20, o `coreDump` parâmetro é substituído pelo `controllerHealthImage` parâmetro.
+
+====
+Se o storage array não suportar o recurso de imagem de integridade do controlador, este comando retornará um erro.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray controllerHealthImage
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+7,83
+
+8,20 substitui o `coreDump` parâmetro pelo `controllerHealthImage` parâmetro.

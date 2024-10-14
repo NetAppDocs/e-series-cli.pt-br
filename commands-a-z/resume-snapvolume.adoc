@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/resume-snapvolume.html 
+sidebar: sidebar 
+keywords: resume, snapshot, volume 
+summary: O comando RESUME snapvolume retoma uma operação de volume instantâneo que foi interrompida. 
+---
+= Retomar o volume do instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `resume snapVolume` comando retoma uma operação de volume instantâneo que foi interrompida.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+resume snapVolume pass:quotes[[_"snapVolumeName"_]] snapImage=pass:quotes[_"snapCGID:imageID"_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapVolume`
+ a| 
+O nome do volume instantâneo para o qual você deseja retomar as operações. Coloque o nome do volume instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`snapImage`
+ a| 
+O nome da imagem instantânea para a qual pretende retomar as operações de volume instantâneo. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` - Use esta opção quando você quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de instantâneos
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser retomar as operações de volume instantâneo para a imagem instantânea 12345 em um grupo instantâneo que tenha o nome snapGroup1, você usaria este comando:
+
+[listing]
+----
+resume snapVolume ["snapVol1"] snapImage="snapGroup1:12345";
+----
+Para retomar as operações de volume de instantâneo para a imagem de instantâneo mais recente num grupo de instantâneos com o nome snapGroup1, utilize este comando:
+
+[listing]
+----
+resume snapVolume ["snapVol1"] snapImage="snapGroup1:newest";
+----
+
+
+== Nível mínimo de firmware
+
+7,83

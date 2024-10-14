@@ -1,0 +1,110 @@
+---
+permalink: commands-a-z/suspend-syncmirror-primaries.html 
+sidebar: sidebar 
+keywords: suspend, synchronous, mirror 
+summary: O comando suspender primárias SyncMirror suspende uma operação de espelhamento síncrono. 
+---
+= Suspender o espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `suspend syncMirror primaries`O comando suspende uma operação de espelhamento síncrono.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+suspend syncMirror (primary pass:quotes[[_primaryVolumeName_]]
+primaries pass:quotes[[_primaryVolumeName1_ ... _primaryVolumeNameN_])]
+[writeConsistency=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`primary`
+ a| 
+O nome do volume principal para o qual você deseja suspender a operação. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`primaries`
+ a| 
+Os nomes de vários volumes primários para os quais você deseja suspender operações. Todos os volumes terão as mesmas propriedades. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`writeConsistency`
+ a| 
+Este parâmetro define se os volumes identificados neste comando estão em um grupo write-consistency ou são separados. Para os volumes no mesmo grupo de consistência de gravação, defina este parâmetro como `TRUE`. Para os volumes separados, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Se você definir `writeConsistency` o parâmetro como `TRUE`, os volumes deverão estar em um grupo de consistência de gravação (ou grupos). Esse comando suspende todos os grupos de consistência de gravação que contêm os volumes. Por exemplo, se os volumes A, B e C estiverem em um grupo de consistência de gravação e tiverem contrapartes remotas A', B' e C'', o comando:
+
+[listing]
+----
+suspend syncMirror volume ["A"] writeConsistency=TRUE
+----
+SUSPENDE A-A», B-B» E C-C». Se você tiver um grupo de consistência de gravação 1 A, B, C e grupo de consistência de gravação 2 D, e, F, o comando:
+
+[listing]
+----
+suspend syncMirror volumes ["A" "D"] writeConsistency=TRUE
+----
+suspende ambos os grupos de consistência de escrita.
+
+
+
+== Nível mínimo de firmware
+
+6,10

@@ -1,0 +1,80 @@
+---
+permalink: commands-a-z/start-ssdcache-performancemodeling.html 
+sidebar: sidebar 
+keywords: start, ssd, cache, performance, model 
+summary: O comando start ssdCache performanceModeling inicia a modelagem de desempenho para o cache SSD. 
+---
+= Inicie a modelagem de desempenho de cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start ssdCache performanceModeling` comando inicia a modelagem de desempenho para o cache SSD.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+
+
+== Contexto
+
+A modelagem de desempenho monitora e mede a atividade de e/S por um período de tempo e estima o desempenho para vários tamanhos de cache SSD. O desempenho é estimado usando duas métricas: Porcentagem de acerto do cache e tempo médio de resposta. Os dados de modelagem de desempenho não estão disponíveis até que você pare a operação usando o `stop ssdCache performanceModeling` comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start ssdCache pass:quotes[[_ssdCacheName_]] performanceModeling
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`ssdCache`
+ a| 
+O nome do cache SSD para o qual você deseja modelar o desempenho. Inclua o nome do cache SSD entre colchetes ([ ]). Se o nome do cache SSD contiver carateres especiais ou consistir apenas em números, você deve incluir o nome do cache SSD em aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+A modelagem de desempenho termina e os dados de modelagem de desempenho estão disponíveis quando ocorre uma das seguintes condições:
+
+* Executar o `stop ssdCache performanceModeling` comando.
+* Recupere os dados de modelagem de desempenho usando o software de gerenciamento de armazenamento.
+
+
+A modelagem de desempenho termina, mas nenhum dado está disponível quando ocorre uma das seguintes condições:
+
+* Reinicie o controlador.
+* Você faz quaisquer alterações na configuração de cache SSD.
+* O estado do cache SSD muda.
+
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

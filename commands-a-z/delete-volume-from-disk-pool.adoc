@@ -1,0 +1,116 @@
+---
+permalink: commands-a-z/delete-volume-from-disk-pool.html 
+sidebar: sidebar 
+keywords: delete, volume, command, normal, thin, disk pool, roles, support 
+summary: O comando delete volume exclui volumes normais ou finos de um pool de discos. 
+---
+= Excluir volume do pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete volume` comando exclui volumes normais ou finos de um pool de discos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você também pode usar este comando para excluir quaisquer programações relacionadas ao volume. Quando você exclui a programação, o volume não é excluído.
+
+[]
+====
+*Possível dano à configuração do storage de armazenamento* -- todos os dados no volume são perdidos assim que você executar este comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete (allVolumes |
+volume [volumeName] |
+pass:quotes[volumes ["_volumeName1_" ... "_volumeNameN_"]]
+[force=(TRUE | FALSE)]
+[schedule]
+[retainRepositoryMembers=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+Esse parâmetro exclui todos os volumes em um pool de discos.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume específico que você deseja excluir. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume contiver carateres especiais ou consistir apenas em números, você deve inserir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes que você deseja excluir. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`force`
+ a| 
+Use este parâmetro para forçar a exclusão imediata de um volume, mesmo que os controladores estejam executando outras operações. Para forçar imediatamente a exclusão de um volume, defina este parâmetro como `TRUE`. Para aguardar até que os controladores tenham terminado de executar outras operações, não use este parâmetro nem defina esse parâmetro como `FALSE`.
+
+
+
+ a| 
+`schedule`
+ a| 
+Esse parâmetro exclui qualquer agendamento relacionado a um volume específico de pool de discos. Somente a programação é excluída, o volume do pool de discos permanece.
+
+
+
+ a| 
+`retainRepositoryMembers`
+ a| 
+Quando você exclui um volume fino, o volume do repositório associado é excluído por padrão. No entanto, quando o `retainRepositoryMembers` está definido como `TRUE`, o volume do repositório é retido. Para volumes normais, este parâmetro não tem efeito.
+
+|===
+
+
+== Notas
+
+Quando você usa o `allVolumes` parâmetro, esse comando exclui volumes até que todos os volumes sejam removidos ou até que um erro seja encontrado. Se for encontrado um erro, este comando não tenta eliminar os volumes restantes. É possível eliminar volumes de diferentes grupos de volumes. Todos os grupos de volumes que ficam vazios são excluídos se você definir o `removeVolumeGroup` parâmetro como `TRUE`.
+
+
+
+== Nível mínimo de firmware
+
+7,83

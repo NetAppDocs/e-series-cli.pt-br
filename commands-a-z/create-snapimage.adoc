@@ -1,0 +1,83 @@
+---
+permalink: commands-a-z/create-snapimage.html 
+sidebar: sidebar 
+keywords: create, snapshot, image 
+summary: O comando Create snapImage cria uma nova imagem instantânea em um ou mais grupos de instantâneos existentes. 
+---
+= Criar imagem instantânea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create snapImage` comando cria uma nova imagem instantânea em um ou mais grupos de instantâneos existentes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Antes de poder criar uma imagem instantânea, primeiro tem de ter pelo menos um grupo de instantâneos no qual pode colocar a imagem instantânea. Para criar um grupo de instantâneos, use o `create snapGroup` comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create snapImage (snapGroup=pass:quotes[_"snapGroupName" |
+snapGroups=("_snapGroupName1"... "snapGroupNamen_"))]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo instantâneo que conterá a imagem instantânea. Coloque o nome do grupo instantâneo entre aspas duplas (" ").
+
+
+
+ a| 
+`snapGroups`
+ a| 
+Os nomes de vários grupos de instantâneos que conterão a imagem instantânea. Introduza os nomes dos grupos de instantâneos utilizando estas regras:
+
+* Inclua todos os nomes entre parênteses.
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Uma imagem instantânea é uma imagem lógica pontual do conteúdo de um volume _base_ associado. A imagem instantânea é criada instantaneamente e Registra o estado do volume base naquele momento. Cada imagem de snapshot é criada no contexto de exatamente um _grupo de snapshot_. Um grupo de instantâneos é uma sequência de imagens instantâneas do volume base associado. Um grupo de instantâneos tem um _volume de repositório_ usado para salvar todos os dados das imagens instantâneas. As imagens instantâneas num grupo de instantâneos têm uma ordem específica. A ordem específica das imagens instantâneas permite-lhe gerir as imagens instantâneas, como restaurar uma imagem instantânea específica para o volume base ou eliminar as imagens instantâneas que já não necessita.
+
+O resultado da criação de uma imagem instantânea de um grupo de consistência é uma imagem instantânea de cada volume de membro do grupo de consistência.
+
+
+
+== Nível mínimo de firmware
+
+7,83

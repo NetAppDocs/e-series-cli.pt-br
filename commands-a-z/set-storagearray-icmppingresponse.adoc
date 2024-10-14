@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/set-storagearray-icmppingresponse.html 
+sidebar: sidebar 
+keywords: set, storage, array, icmp, response 
+summary: O comando set storageArray icmpPingResponse retorna os valores padrão para configurações negociáveis para sessões e conexões, que representam o ponto de partida para o storage array para negociações. 
+---
+= Defina a resposta ICMP do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray icmpPingResponse` comando retorna os valores padrão para configurações negociáveis para sessões e conexões, que representam o ponto de partida para o storage array para negociações.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray icmpPingResponse=(TRUE | FALSE)
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`icmpPingResponse`
+ a| 
+Este parâmetro liga ou desliga as mensagens de solicitação de eco. Defina o parâmetro como `TRUE` para ativar as mensagens de solicitação de eco. Defina o parâmetro como `FALSE` para desativar as mensagens de solicitação de eco.
+
+|===
+
+
+== Notas
+
+O ICMP (Internet Control Message Protocol) é usado por sistemas operacionais em uma rede para enviar mensagens de erro, pacotes de teste e mensagens informativas relacionadas ao IP, como um serviço solicitado não está disponível ou que um host ou roteador não pôde ser alcançado. O comando ICMP response envia mensagens de solicitação de eco ICMP e recebe mensagens de resposta de eco ICMP para determinar se um host está acessível e o tempo que leva para que os pacotes cheguem a esse host.
+
+
+
+== Nível mínimo de firmware
+
+7,10

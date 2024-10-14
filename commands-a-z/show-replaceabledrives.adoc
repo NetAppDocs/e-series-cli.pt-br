@@ -1,0 +1,71 @@
+---
+permalink: commands-a-z/show-replaceabledrives.html 
+sidebar: sidebar 
+keywords: show, replaceable, drives 
+summary: O comando show replaceableDrives mostra todas as unidades substituíveis em uma matriz de armazenamento. 
+---
+= Mostrar unidades substituíveis
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show replaceableDrives` comando mostra todas as unidades substituíveis em um storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Para cada unidade substituível na matriz de armazenamento, este comando retorna as seguintes informações:
+
+* A localização da bandeja e a localização da ranhura
+* O nome do grupo de volumes ao qual a unidade pertence
+* O Nome Mundial (WWN)
+* O estado da unidade
+
+
+
+
+== Sintaxe
+
+[listing]
+----
+show replaceableDrives
+----
+
+
+== Exemplo de saída
+
+[listing]
+----
+Replaceable drive at Tray 0, Slot 3
+                Volume group: 2
+                World-wide name: 5000c50028785aff0000000000000000
+                Status: Removed
+Replaceable drive at Tray 0, Slot 23
+                Volume group: 2
+                World-wide name: 5000c500095d46df0000000000000000
+                Status: Removed
+Replaceable drive at Tray 0, Slot 24
+                Volume group: 2
+                World-wide name: 5000c500287854d70000000000000000
+                Status: Removed
+----
+
+
+== Nível mínimo de firmware
+
+7,10

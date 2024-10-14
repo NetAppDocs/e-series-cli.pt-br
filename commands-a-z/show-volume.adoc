@@ -1,0 +1,146 @@
+---
+permalink: commands-a-z/show-volume.html 
+sidebar: sidebar 
+keywords: show, thin, volume 
+summary: O comando show volume retorna o histórico de expansão ou a capacidade consumida para o volume ou volumes finos especificados. 
+---
+= Mostrar volume fino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show volume` comando retorna o histórico de expansão ou a capacidade consumida para o volume ou volumes finos especificados.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]])
+(consumedCapacity |
+(expansionHistory pass:quotes[[file=_fileName_]]))
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+Este parâmetro retorna informações sobre todos os volumes finos na matriz de armazenamento.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume fino para o qual você está recuperando informações. Coloque o nome do volume fino entre colchetes ([ ]). Se o nome do volume fino tiver carateres especiais ou números, você deve incluir o nome do volume fino em aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes finos para os quais você deseja recuperar informações. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`consumedCapacity`
+ a| 
+A configuração para retornar uma lista concisa de informações sobre a capacidade consumida dos volumes finos.
+
+
+
+ a| 
+`expansionHistory`
+ a| 
+A configuração para retornar uma lista concisa de informações sobre o histórico de expansão dos volumes finos.
+
+
+
+ a| 
+`file`
+ a| 
+O `file` parâmetro especifica um arquivo para Registrar a saída do `expansionHistory` parâmetro. O `file` é válido apenas quando utilizado com o `expansionHistory` parâmetro. Um nome de arquivo inválido faz com que o comando falhe.
+
+|===
+
+
+== Notas
+
+Com o `expansionHistory` parâmetro, o comando retorna informações semelhantes ao exemplo mostrado abaixo.
+
+`Thin volume name: volume-nameRepository volume Name: REPOS_NNNN`
+
+[cols="4*"]
+|===
+| Hora registada | Tipo de expansão | Iniciar a capacidade | Capacidade final 
+
+
+ a| 
+MM/DD/AAAA HH:MM:SS
+ a| 
+Manual|Automático
+ a| 
+NNNNNNNN bytes
+ a| 
+NNNNNNNN bytes
+
+|===
+Com o `consumedCapacity` parâmetro, o comando retorna informações semelhantes ao exemplo mostrado abaixo.
+
+[cols="5*"]
+|===
+| Volume | Capacidade provisionada | Capacidade consumida | Cota | % Prov.consumidas 
+
+
+ a| 
+`volumeName`
+ a| 
+500,000 GB
+ a| 
+230,000 GB
+ a| 
+700,000 GB
+ a| 
+46%
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

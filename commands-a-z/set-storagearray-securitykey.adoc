@@ -1,0 +1,65 @@
+---
+permalink: commands-a-z/set-storagearray-securitykey.html 
+sidebar: sidebar 
+keywords: set, internal, storage, array, security key 
+summary: O comando Set storageArray securityKey define a chave de segurança que é usada em todo o storage array para implementar o recurso Drive Security. 
+---
+= Definir a chave de segurança do storage array interno
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray securityKey` comando define a chave de segurança que é usada em todo o storage para implementar o recurso Segurança da unidade.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Quando qualquer unidade com capacidade de segurança no storage de armazenamento é atribuída a um grupo de volumes ou pool de discos protegidos, essa unidade será habilitada para segurança usando a chave de segurança. Antes de poder definir a chave de segurança, tem de utilizar o `create storageArray securityKey` comando para criar a chave de segurança.
+
+[NOTE]
+====
+Este comando aplica-se apenas ao gerenciamento de chaves internas.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray securityKey
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+As unidades com capacidade de segurança têm hardware para acelerar o processamento criptográfico e cada uma tem uma chave de unidade exclusiva. Uma unidade com capacidade de segurança se comporta como qualquer outra unidade até que seja adicionada a um grupo de volume seguro, momento em que a unidade com capacidade de segurança se torna habilitada para segurança.
+
+Sempre que uma unidade habilitada para segurança é ligada, ela requer a chave de segurança correta do controlador antes de poder ler ou gravar dados. Assim, uma unidade habilitada para segurança usa duas chaves: A chave da unidade que criptografa e descriptografa os dados e a chave de segurança que autoriza os processos de criptografia e descriptografia. O `set storageArray securityKey` comando compromete a chave de segurança a todos os controladores e unidades habilitadas para segurança no storage array. O recurso completo de criptografia de disco garante que, se uma unidade habilitada para segurança for fisicamente removida de uma matriz de armazenamento, seus dados não poderão ser lidos por qualquer outro dispositivo, a menos que a chave de segurança seja conhecida.
+
+
+
+== Nível mínimo de firmware
+
+7,50

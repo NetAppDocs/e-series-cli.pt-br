@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/resume-snapimage-rollback.html 
+sidebar: sidebar 
+keywords: resume, snapshot, image, rollback 
+summary: O comando RESUME snapImage rollback retoma uma operação de reversão que entrou em um estado de pausa. 
+---
+= Retomar a reversão da imagem instantânea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `resume snapImage rollback` comando retoma uma operação de reversão que entrou em um estado de pausa.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Uma operação de reversão pode entrar em um estado pausado devido a erros de processamento, o que causa uma condição de atenção necessária para o storage array.
+
+Se a operação de reversão não puder ser retomada, a imagem instantânea selecionada reverte para um estado de pausa e a condição de atenção necessária é exibida.
+
+[NOTE]
+====
+Não pode utilizar este comando para imagens instantâneas envolvidas na cópia de volume online.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+resume snapImage pass:quotes[[_snapImageName_]] rollback
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapImage`
+ a| 
+O nome da imagem instantânea para a qual deseja reiniciar uma operação de reversão. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` - Use esta opção quando você quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de instantâneos
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser reiniciar uma operação de reversão para a imagem instantânea 12345 em um grupo de instantâneos que tenha o nome snapgroup1, você usaria este comando:
+
+[listing]
+----
+resume snapImage ["snapgroup1:12345"] rollback;
+----
+
+
+== Nível mínimo de firmware
+
+7,83

@@ -1,0 +1,93 @@
+---
+permalink: commands-a-z/create-iscsiinitiator.html 
+sidebar: sidebar 
+keywords: create, iscsi, initiator 
+summary: O comando Create iscsiInitiator cria um novo objeto iniciador iSCSI. 
+---
+= Criar iniciador iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create iscsiInitiator` comando cria um novo objeto iniciador iSCSI.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+[NOTE]
+====
+Este comando está obsoleto e é substituído pelo xref:create-initiator.adoc[Criar iniciador]comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create iscsiInitiator iscsiName=pass:quotes[_"iscsiID"_
+userLabel="_name_"
+host="_hostName"_]
+[chapSecret=pass:quotes[_"securityKey"_]]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetros | Descrição 
+
+
+ a| 
+`iscsiName`
+ a| 
+O identificador predefinido do iniciador iSCSI. Coloque o identificador em aspas duplas (" ").
+
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que pretende utilizar para o iniciador iSCSI. Coloque o nome entre aspas duplas (" ").
+
+
+
+ a| 
+`host`
+ a| 
+O nome do host no qual o iniciador iSCSI está instalado. Coloque o nome entre aspas duplas (" ").
+
+
+
+ a| 
+`chapSecret`
+ a| 
+A chave de segurança que você deseja usar para autenticar uma conexão peer. Coloque a chave de segurança entre aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+O CHAP (Challenge Handshake Authentication Protocol) é um protocolo que autentica o ponto de uma conexão. O CHAP é baseado nos pares que compartilham um _segredo_. Um segredo é uma chave de segurança semelhante a uma senha.
+
+Use o `chapSecret` parâmetro para configurar as chaves de segurança para iniciadores que exigem uma autenticação mútua.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+8,41 este comando está obsoleto.

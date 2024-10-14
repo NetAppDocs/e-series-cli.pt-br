@@ -1,0 +1,65 @@
+---
+permalink: commands-a-z/save-alltrays-logfile.html 
+sidebar: sidebar 
+keywords: save, tray log 
+summary: O comando save allTrays logfile salva os dados de deteção de log em um arquivo. 
+---
+= Guardar registo da bandeja
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save allTrays logFile` comando salva os dados de deteção de log em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Os dados de deteção de log são mantidos pelos cartões ambientais para cada bandeja Nem todos os cartões ambientais contêm dados de deteção de log.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save allTrays logFile=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`*logFile*`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os dados de deteção de log. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\traylogdat.txt"`
+
+Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,50

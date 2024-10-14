@@ -1,0 +1,117 @@
+---
+permalink: commands-a-z/load-storagearray-dbmdatabase.html 
+sidebar: sidebar 
+keywords: load, storage array, database, command, management 
+summary: 'O comando load storageArray dbmDatabase restaura uma imagem de banco de dados DBM (Gerenciamento de banco de dados) recuperando a imagem de um arquivo ou do cache.' 
+---
+= Carregar banco de dados DBM do array de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `load storageArray dbmDatabase` comando restaura uma imagem de banco de dados DBM (Database Management) recuperando a imagem de um arquivo ou do cache.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Este comando restaura um banco de dados DBM de matriz de armazenamento para a configuração exata que existia quando a imagem do banco de dados foi capturada usando o `save storageArray dbmDatabase` comando. Os dados em um arquivo incluem dados para configuração RAID, grupos de volume e pools de discos.
+
+Antes de usar este comando com a `file` opção, você deve primeiro obter uma string validador (um código de segurança) do suporte técnico. Para obter um validador, use o `save storageArray dbmValidatorInfo` comando para gerar um arquivo XML que contenha informações de validador. O suporte técnico usa o arquivo XML para gerar a cadeia de validação necessária para este comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+load storageArray dbmDatabase
+pass:quotes[((file="_filename_" validator="_validatorValue_") | sourceLocation=onboard)]
+[controller [(a|b)]]
+[contentType= all]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo do banco de dados DBM que você deseja carregar. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Array Backups\DBMbackup_03302010.dbm"` Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+
+
+ a| 
+`validator`
+ a| 
+O código de segurança alfanumérico necessário para restaurar uma matriz de armazenamento para uma configuração existente.
+
+Você deve obter o validador do suporte técnico. Para obter o validador, gere o arquivo XML de informações de validação necessárias executando o `save storageArray dbmValidatorInfo` comando. Depois que o arquivo XML de informações de validação estiver disponível, entre em Contato com o suporte técnico para obter o validador.
+
+Inclua o validador em aspas duplas (" ").
+
+
+
+ a| 
+`sourceLocation`
+ a| 
+Este parâmetro especifica o local a partir do qual recuperar informações de banco de dados de backup. O parâmetro deve ser incluído para consistência, mas o único valor permitido é `onboard`.
+
+
+
+ a| 
+`controller`
+ a| 
+Este parâmetro especifica o controlador a partir do qual os dados serão recuperados exclusivamente. Inclua o identificador do controlador entre colchetes ([ ]). Se o `controller` parâmetro não for especificado, os dados podem ser recuperados de qualquer controlador.
+
+Identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B.
+
+
+
+ a| 
+`contentType`
+ a| 
+Este parâmetro especifica o tipo de conteúdo dos dados que serão recuperados.
+
+Este parâmetro é definido como `all` por padrão, de modo que todos os dados, incluindo dados de configuração do pool de disco, sejam recuperados.
+
+|===
+
+
+== Notas
+
+Dependendo do tamanho da imagem do banco de dados, a restauração do banco de dados pode levar até 30 minutos. O software host não mostrará os controladores em um estado ideal até que todas as ações para carregar a imagem do banco de dados sejam concluídas nos controladores.
+
+
+
+== Nível mínimo de firmware
+
+7,75
+
+7,83 adiciona estes parâmetros:
+
+* `sourceLocation`
+* `controller`
+* `contentType`
+

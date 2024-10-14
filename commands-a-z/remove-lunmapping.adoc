@@ -1,0 +1,127 @@
+---
+permalink: commands-a-z/remove-lunmapping.html 
+sidebar: sidebar 
+keywords: remove, volume, lun map 
+summary: 'O comando remove lunMapping remove o mapeamento de número de unidade lógica (LUN) ou ID de namespace (NSID) de um ou mais volumes.' 
+---
+= Remover mapeamento LUN de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `remove lunMapping` comando remove o mapeamento de número de unidade lógica (LUN) ou ID de namespace (NSID) de um ou mais volumes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+remove (volume pass:quotes[[_"volumeName"_]] | accessVolume) lunMapping
+(host=pass:quotes[_"hostName_" | hostGroup=(_"hostGroupName"_] | defaultGroup)
+----
+
+
+== Sintaxe para remover o mapeamento LUN ou NSID de mais de um mapeamento LUN ou NSID de volume
+
+[listing, subs="+macros"]
+----
+remove (allVolumes | volumes pass:quotes[[_volumeName1 ... volumeNameN_]])
+lunMapping
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume do qual você está removendo o mapeamento LUN ou NSID. Coloque as aspas duplas do nome do volume (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`accessVolume`
+ a| 
+Este parâmetro remove o volume de acesso.
+
+
+
+ a| 
+`allVolumes`
+ a| 
+Este parâmetro remove o mapeamento LUN de todos os volumes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes dos quais você está removendo o mapeamento LUN ou NSID. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`host`
+ a| 
+O nome do host para o qual o volume é mapeado. Inclua o nome do host em aspas duplas (" ").
+
+Esse parâmetro funciona somente quando você está removendo o mapeamento LUN ou NSID de um volume.
+
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome do grupo de hosts que contém o host para o qual o volume é mapeado. Coloque o nome do grupo anfitrião em aspas duplas (" "). O `defaultGroup` valor é o grupo de hosts que contém o host para o qual o volume é mapeado.
+
+Esse parâmetro funciona somente quando você está removendo o mapeamento LUN ou NSID de um volume.
+
+|===
+
+
+== Notas
+
+O volume de acesso é o volume em um ambiente SAN usado para comunicação entre o software de gerenciamento de storage e o controlador do storage array. O volume de acesso usa um endereço LUN ou NSID e consome 20 MB de espaço de armazenamento que não está disponível para armazenamento de dados do aplicativo. Um volume de acesso é necessário apenas para storages gerenciados na banda.
+
+[NOTE]
+====
+*Remover um volume de acesso pode danificar sua configuração* -- o agente usa os volumes de acesso para se comunicar com um storage array. Se você remover um mapeamento de volume de acesso para um storage array de um host que tenha um agente em execução nele, o software de gerenciamento de storage não poderá mais gerenciar o storage array por meio do agente.
+
+====
+Você deve usar o `host` parâmetro e o `hostGroup` parâmetro quando especificar um volume não-acesso ou um volume de acesso. O Script Engine ignora o `host` parâmetro ou o `hostGroup` parâmetro quando você usa o `allVolumes` parâmetro ou o `volumes` parâmetro.
+
+
+
+== Nível mínimo de firmware
+
+6,10

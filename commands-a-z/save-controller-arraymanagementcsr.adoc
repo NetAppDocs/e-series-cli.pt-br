@@ -1,0 +1,153 @@
+---
+permalink: commands-a-z/save-controller-arraymanagementcsr.html 
+sidebar: sidebar 
+keywords: generate, web server, certificate, sign, request, csr 
+summary: 'O comando save controller arrayManagementCSR gera uma solicitação de assinatura de certificado (CSR) para o controlador.' 
+---
+= Gerar solicitação de assinatura de certificado (CSR) do servidor Web
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save controller arrayManagementCSR` comando gera uma solicitação de assinatura de certificado (CSR) para o controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+O CSR deve ser assinado por uma Autoridade de Certificação (CA). O certificado assinado resultante é instalado no servidor Web do controlador para que os navegadores possam confiar automaticamente no servidor Web do controlador ao tentar gerenciar o array. Execute esta ação para cada controlador.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+save controller [(a|b)] arrayManagementCSR
+     commonName=pass:quotes["_ipOrDnsName_"]
+     [alternateIPAddresses=pass:quotes[(_ipvX1_..._ipvXN_)]]
+     [alternateDnsNames=pass:quotes[("_dnsName1_"..."_dnsNameN_")]]
+     organization=pass:quotes["_organizationName_"]
+     [organizationalUnit=pass:quotes["_organizationalUnitName_"]]
+     locality=pass:quotes["_cityOrLocality_"]
+     [stateProvince=pass:quotes["_stateOrRegion_"]]
+     country=pass:quotes["_string_"]
+     file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+Permite especificar o controlador para o qual pretende criar o CSR. Identificadores válidos do controlador são a ou b, onde a é o controlador no slot A, e b é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]).
+
+
+
+ a| 
+`commonName`
+ a| 
+Permite especificar o endereço IP ou o nome DNS do controlador. Isso deve corresponder exatamente ao que será digitado no navegador para acessar o Gerenciador do sistema (não inclua http:// nem https://) ou haverá um erro de incompatibilidade de nome.
+
+
+
+ a| 
+`alternateIPAddresses`
+ a| 
+Permite especificar endereços IP adicionais ou aliases para o controlador. Inclua todos os endereços IP entre parênteses. Se introduzir mais do que um endereço IP, separe-os com um espaço.
+
+
+
+ a| 
+`alternateDnsNames`
+ a| 
+Permite especificar nomes DNS adicionais para o controlador. Inclua todos os nomes DNS entre parênteses. Se você inserir mais de um nome, separe-os com um espaço.
+
+
+
+ a| 
+`organization`
+ a| 
+Permite especificar o nome legal completo da organização ao qual o storage array pertence. Não abreviar e incluir quaisquer sufixos como Inc, Corp ou LLC.
+
+
+
+ a| 
+`organizationalUnit`
+ a| 
+Permite que o usuário especifique a divisão da organização que lida com o certificado.
+
+
+
+ a| 
+`locality`
+ a| 
+Permite especificar a cidade ou localidade onde o storage array está localizado.
+
+
+
+ a| 
+`stateProvince`
+ a| 
+Permite especificar o estado ou a região em que o storage array está localizado. Isso não deve ser abreviado.
+
+
+
+ a| 
+`country`
+ a| 
+Permite especificar o código ISO (International Organization for Standardization) de dois dígitos do seu país, como EUA.
+
+
+
+ a| 
+`file`
+ a| 
+Permite especificar o ficheiro para o qual pretende guardar o ficheiro CSR do controlador.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "save controller [a] arrayManagementCSR
+   commonName="ictd0702s05c01-a.ict.englab.xyz.com"
+   alternateIPAddresses=(10.113.174.190 10.113.174.191)
+   alternateDnsNames=("ictd0702s05c01-b.ict.englab.xyz.com")
+   organization="Company"
+   locality="Wichita"
+   stateProvince="Kansas"
+   country="US"
+   file="C:\storage_array_csr.csr";"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

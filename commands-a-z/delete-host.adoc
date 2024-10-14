@@ -1,0 +1,60 @@
+---
+permalink: commands-a-z/delete-host.html 
+sidebar: sidebar 
+keywords: delete, host 
+summary: O comando delete host exclui um ou mais hosts. 
+---
+= Eliminar anfitrião
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete host` comando exclui um ou mais hosts.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete host pass:quotes[[_hostName_]]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`host`
+ a| 
+O nome do host que você deseja excluir. Inclua o nome do host entre colchetes ([ ]). Se o nome do host tiver carateres especiais, você deve incluir o nome do host entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Um host é um computador conetado ao storage array e acessa os volumes no storage array por meio das portas do host.
+
+
+
+== Nível mínimo de firmware
+
+5,20

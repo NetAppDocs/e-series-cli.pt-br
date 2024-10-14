@@ -1,0 +1,121 @@
+---
+permalink: commands-a-z/diagnose-controller.html 
+sidebar: sidebar 
+keywords: diagnose, controller, command, run, diagnostic, tests, arrays, roles, context 
+summary: O comando de diagnóstico do controlador executa testes de diagnóstico no controlador. 
+---
+= Diagnostique o controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `diagnose controller` comando executa testes de diagnóstico no controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Os testes de diagnóstico consistem em testes de loopback nos quais os dados são gravados nas unidades e lidos das unidades.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+diagnose controller [(a| b)]
+loopbackDriveChannel=(allchannels | (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8))
+testID=(1 | 2 | 3 | discreteLines)
+pass:quotes[[patternFile="_filename_"]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador no qual pretende executar os testes de diagnóstico. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o software de gerenciamento de armazenamento retornará um erro de sintaxe.
+
+
+
+ a| 
+`loopbackDriveChannel`
+ a| 
+Os canais de acionamento nos quais você deseja executar os testes de diagnóstico. Você pode optar por executar o diagnóstico em todos os canais ou selecionar um canal específico no qual executar o diagnóstico. Se selecionar um canal específico, os valores válidos para os canais de unidade são `1`, `2`, `3`, `4`, `5`, , , `6`, `7`, `8` ou .
+
+
+
+ a| 
+`testID`
+ a| 
+O identificador para o teste de diagnóstico que pretende executar. O identificador e os testes correspondentes são os seguintes:
+
+* `1` -- Leia o teste
+* `2` -- Teste de escrita
+* `3` -- Teste de loop-back de dados
+* `discreteLines` -- Teste de diagnóstico de linhas discretas
+
+
+
+
+ a| 
+`patternFile`
+ a| 
+O caminho do arquivo e o nome do arquivo que contém um padrão de dados que você deseja usar como dados de teste. Inclua o nome do arquivo do padrão de dados em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\sup\patfile.txt"`
+
+|===
+
+
+== Notas
+
+Quando você executa um teste de retorno de loop de dados, você pode especificar opcionalmente um arquivo que contém um padrão de dados. Se você não especificar um arquivo, o firmware do controlador fornecerá um padrão padrão padrão.
+
+Linhas discretas são linhas de controle e linhas de status que são conetadas entre dois controladores em uma bandeja de controlador O teste de diagnóstico de linhas discretas permite que cada controlador verifique se as transições de sinal de controle podem ser observadas nas entradas de controle do controlador alternativo. O teste de diagnóstico de linhas discretas é executado automaticamente após cada ciclo de energia ou cada reinicialização do controlador. Você pode executar o teste de diagnóstico de linhas discretas depois de ter substituído um componente que falhou no teste de diagnóstico de linhas discretas iniciais. O teste de diagnóstico de linhas discretas retorna uma destas mensagens:
+
+* Quando o teste de diagnóstico de linhas discretas é executado com sucesso, esta mensagem é exibida:
++
+[listing]
+----
+The controller discrete lines successfully passed the diagnostic
+test. No failures were detected.
+----
+* Se o teste de diagnóstico de linhas discretas falhar, esta mensagem será exibida:
++
+[listing]
+----
+One or more controller discrete lines failed the diagnostic test.
+----
+* Se a CLI não puder executar o teste de diagnóstico de linhas discretas, a CLI retornará o erro 270, o que significa que o teste de diagnóstico de linhas discretas não pôde ser iniciado nem concluído.
+
+
+
+
+== Nível mínimo de firmware
+
+o 6,10 adiciona o teste de leitura, o teste de gravação e o teste de retorno de loop de dados.
+
+o 6,14 adiciona o teste de diagnóstico de linhas discretas.
+
+7,30 adiciona o identificador de canal de unidade atualizado.

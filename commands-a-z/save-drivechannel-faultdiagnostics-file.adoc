@@ -1,0 +1,76 @@
+---
+permalink: commands-a-z/save-drivechannel-faultdiagnostics-file.html 
+sidebar: sidebar 
+keywords: save, drive, channel, fault, isolation, diagnostic, status 
+summary: O comando SAVE driveChannel faultDiagnostics file guarda os dados de diagnóstico de isolamento de falhas do canal da unidade que são devolvidos a partir do comando start driveChannel faultDiagnostics. 
+---
+= Salvar o status de diagnóstico de isolamento de falha do canal de acionamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save driveChannel faultDiagnostics file` comando salva os dados de diagnóstico de isolamento de falhas do canal da unidade que são retornados do `start driveChannel faultDiagnostics` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Com a versão de firmware 8,10, o `save driveChannel faultDiagnostics` comando está obsoleto.
+
+====
+Você pode salvar os dados de diagnóstico em um arquivo como texto padrão ou como XML.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save driveChannel faultDiagnostics file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os resultados do teste de diagnóstico de isolamento de falhas no canal da unidade. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\sup\fltdiag.txt"`
+
+Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+|===
+
+
+== Notas
+
+Uma extensão de arquivo não é anexada automaticamente ao arquivo salvo. Você deve especificar a extensão de arquivo de formato aplicável para o arquivo. Se você especificar uma extensão de arquivo `.txt` do , a saída será em um formato de arquivo de texto. Se você especificar uma extensão de arquivo `.xml` do , a saída será em um formato de arquivo XML.
+
+
+
+== Nível mínimo de firmware
+
+a 7,15 apresenta esse novo recurso para bandejas de controladores herdadas.

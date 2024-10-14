@@ -1,0 +1,83 @@
+---
+permalink: commands-a-z/set-snmpsystemvariables.html 
+sidebar: sidebar 
+keywords: update, snmp, mib, system, group, variables 
+summary: 'O comando set snmpSystemVariables altera as variáveis do sistema para o SNMP (Simple Network Management Protocol).' 
+---
+= Atualizar variáveis do grupo de sistema SNMP MIB II
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snmpSystemVariables` comando altera as variáveis do sistema para o SNMP (Simple Network Management Protocol).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+As seguintes variáveis do sistema são mantidas em um banco de dados da base de informações de Gestão II (MIB-II):
+
+* Nome do sistema
+* Nome do contacto do sistema
+* Localização do sistema
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set snmpSystemVariables
+[sysName=pass:quotes[_newSystemName_]]
+[sysContact=pass:quotes[_contactName_]]
+[sysLocation=pass:quotes[_systemLocation_]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`sysName`
+ a| 
+O novo nome que você deseja dar ao sistema SNMP. Utilize convenções SNMP e MIB padrão para o nome do sistema. Inclua o nome do sistema SNMP entre colchetes ([ ]).
+
+
+
+ a| 
+`sysContact`
+ a| 
+O nome da pessoa de contacto do sistema gerido com informações sobre como contactar esta pessoa. Inclua o nome do Contato SNMP entre colchetes ([ ]).
+
+
+
+ a| 
+`sysLocation`
+ a| 
+A localização física do sistema, como "3rd flr". Coloque a localização do sistema SNMP entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,30

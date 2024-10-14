@@ -1,0 +1,80 @@
+---
+permalink: commands-a-z/set-storagearray-revocationchecksettings.html 
+sidebar: sidebar 
+keywords: set, certificate, revocation, check, set 
+summary: 'O comando Set storageArray revocationCheckSettings permite ativar ou desativar a verificação de revogação e configurar um servidor OCSP (Online Certificate Status Protocol).' 
+---
+= Defina as configurações de verificação de revogação de certificado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray revocationCheckSettings` comando permite ativar ou desativar a verificação de revogação e configurar um servidor OCSP (Online Certificate Status Protocol).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+O servidor OCSP verifica se há certificados revogados pela Autoridade de Certificação (CA) antes da data de expiração programada. Talvez você queira habilitar a verificação de revogação nos casos em que a CA emitiu um certificado incorretamente ou se uma chave privada for comprometida.
+
+[NOTE]
+====
+Verifique se um servidor DNS está configurado em ambos os controladores, o que permite usar um nome de domínio totalmente qualificado para o servidor OCSP.
+
+====
+Depois de ativar a verificação de revogação, a matriz de armazenamento nega uma tentativa de ligação a um servidor com um certificado revogado.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray revocationCheckSettings ([revocationCheckEnable = boolean] &| [ocspResponderUrl=stringLiteral])
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`revocationCheckEnable`
+ a| 
+Defina como `true` para ativar a verificação de revogação de certificados.
+
+
+
+ a| 
+`ocspResponderUrl`
+ a| 
+O URL do servidor de resposta OCSP a ser usado para a verificação de revogação de certificado.
+
+[NOTE]
+====
+A especificação de um endereço de resposta OCSP substitui o endereço OCSP encontrado no arquivo de certificado.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+8,42

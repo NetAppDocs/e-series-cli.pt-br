@@ -1,0 +1,239 @@
+---
+permalink: commands-a-z/activate-synchronous-mirroring.html 
+sidebar: sidebar 
+keywords: activate, synchronous mirroring, supported arrays, roles, context, syntax, parameters, data assurance management, minimum firmware level 
+summary: O comando Ativar recurso storageArray ativa o recurso Espelhamento síncrono e cria o volume do repositório espelhado. 
+---
+= Ativar o espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `activate storageArray feature` comando ativa o recurso Espelhamento síncrono e cria o volume do repositório espelhado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+Quando você usa esse comando, você pode definir o volume do repositório espelhado de uma de três maneiras:
+
+* Unidades definidas pelo usuário
+* Grupo de volume definido pelo utilizador
+* Número de unidades definido pelo usuário
+
+
+Se você optar por definir um número de unidades, o firmware do controlador escolherá quais unidades usar para o volume do repositório espelhado.
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de recurso era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe (unidades definidas pelo usuário)
+
+[listing, subs="+macros"]
+----
+activate storageArray feature=syncMirror
+repositoryRAIDLevel=(0 |1 | 3 | 5 | 6)
+repositoryDrives=pass:quotes[(_trayID1_],pass:quotes[[_drawerID1,_]pass:quotes[_slotID1 ... trayIDn_,pass:quotes[[_drawerIDn_,]pass:quotes[_slotIDn_
+[driveType=(fibre | SATA | SAS | NVMe4K)]
+)
+[repositoryVolumeGroupUserLabel=pass:quotes[_"volumeGroupName"_]]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[dataAssurance=(none | enabled)]
+----
+[listing, subs="+macros"]
+----
+activate storageArray feature=syncMirror
+repositoryRAIDLevel=(0 |1 | 5 | 6)
+repositoryDrives=pass:quotes[_(trayID1,_]pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1 ... trayIDn_],pass:quotes[[_drawerIDn,_]]pass:quotes[_slotIDn)_]
+[repositoryVolumeGroupUserLabel=pass:quotes[_"volumeGroupName"_]]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[dataAssurance=(none | enabled)]
+----
+
+
+== Sintaxe (grupo de volume definido pelo usuário)
+
+[listing, subs="+macros"]
+----
+activate storageArray feature=syncMirror
+repositoryVolumeGroup=pass:quotes[_volumeGroupName_]
+[freeCapacityArea=pass:quotes[_freeCapacityIndexNumber_]]
+----
+
+
+== Sintaxe (número definido pelo usuário de unidades)
+
+[listing, subs="+macros"]
+----
+activate storageArray feature=syncMirror
+repositoryRAIDLevel=(1 | 3 | 5 | 6)
+repositoryDriveCount=pass:quotes[_numberOfDrives_]
+[repositoryVolumeGroupUserLabel=pass:quotes[_"volumeGroupName"_]]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[dataAssurance=(none | enabled)]
+----
+[listing, subs="+macros"]
+----
+activate storageArray feature=syncMirror
+repositoryRAIDLevel=(1 | 5 | 6)
+repositoryDriveCount=pass:quotes[_numberOfDrives_]
+[repositoryVolumeGroupUserLabel=pass:quotes[_"volumeGroupName"_]]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[dataAssurance=(none | enabled)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`repositoryRAIDLevel`
+ a| 
+O nível RAID para o volume do repositório espelhado. Os valores válidos são `0`, `1`, `3`, `5` `6` ou .
+
+
+
+ a| 
+`repositoryDrives`
+ a| 
+As unidades para o volume do repositório espelhado. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`repositoryVolumeGroupUserLabel`
+ a| 
+O nome que você deseja dar ao novo grupo de volumes no qual o volume do repositório espelhado será localizado. Coloque o nome do grupo de volume entre aspas duplas (" ").
+
+
+
+ a| 
+`repositoryVolumeGroup`
+ a| 
+O nome do grupo de volume do repositório espelhado onde o volume do repositório espelhado está localizado. (Para determinar os nomes dos grupos de volume em sua matriz de armazenamento, execute o `show storageArray profile` comando.)
+
+
+
+ a| 
+`freeCapacityArea`
+ a| 
+O número de índice do espaço livre em um grupo de volumes existente que você deseja usar para criar o volume do repositório espelhado. A capacidade livre é definida como a capacidade livre entre os volumes existentes em um grupo de volumes. Por exemplo, um grupo de volumes pode ter as seguintes áreas: Volume 1, capacidade livre, volume 2, capacidade livre, volume 3, capacidade livre. Para usar a capacidade livre após o volume 2, você especificaria:
+
+[listing]
+----
+freeCapacityArea=2
+----
+Execute o `show volumeGroup` comando para determinar se existe uma área de capacidade livre.
+
+
+
+ a| 
+`repositoryDriveCount`
+ a| 
+O número de unidades não atribuídas que você deseja usar para o volume do repositório espelhado.
+
+
+
+ a| 
+`driveType`
+ a| 
+O tipo de unidade para a qual você deseja recuperar informações. Não é possível misturar tipos de unidade.
+
+Os tipos de unidade válidos são:
+
+* `fibre`
+* `SATA`
+* `SAS`
+* NVMe4K
+
+
+Se você não especificar um tipo de unidade, o comando padrão será todo tipo.
+
+
+
+ a| 
+`trayLossProtect`
+ a| 
+A configuração para aplicar proteção contra perda de bandeja quando você cria o volume do repositório espelhado. Para aplicar a proteção contra perda de bandeja, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+
+
+ a| 
+`drawerLossProtect`
+ a| 
+A configuração para aplicar a proteção contra perda de gaveta quando você cria o volume do repositório espelhado. Para aplicar a proteção contra perda de gaveta, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+|===
+
+
+== Notas
+
+ `repositoryDrives`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+Se as unidades selecionadas para o `repositoryDrives` parâmetro não forem compatíveis com outros parâmetros (como o `repositoryRAIDLevel` parâmetro), o comando script retornará um erro e o espelhamento síncrono não será ativado. O erro retorna a quantidade de espaço necessária para o volume do repositório espelhado. Em seguida, você pode digitar novamente o comando e especificar a quantidade adequada de espaço.
+
+Se você inserir um valor para o espaço de armazenamento do repositório que é muito pequeno para os volumes do repositório espelhado, o firmware do controlador retornará uma mensagem de erro que fornece a quantidade de espaço necessária para os volumes do repositório espelhado. O comando não tenta ativar o espelhamento síncrono. Você pode digitar novamente o comando usando o valor da mensagem de erro para o valor do espaço de armazenamento do repositório.
+
+Quando você atribui as unidades, se você definir o `trayLossProtect` parâmetro como `TRUE` e tiver selecionado mais de uma unidade de qualquer bandeja, a matriz de armazenamento retornará um erro. Se você definir `trayLossProtect` o parâmetro como `FALSE`, o storage array executará operações, mas o grupo de volumes criado poderá não ter proteção contra perda de bandeja.
+
+Quando o firmware do controlador atribui as unidades, se você definir o `trayLossProtect` parâmetro como `TRUE`, a matriz de armazenamento retornará um erro se o firmware do controlador não puder fornecer unidades que resultem no novo grupo de volumes com proteção contra perda de bandeja. Se você definir `trayLossProtect` o parâmetro como `FALSE`, o storage de armazenamento executará a operação mesmo que isso signifique que o grupo de volume talvez não tenha proteção contra perda de bandeja.
+
+O `drawerLossProtect` parâmetro determina se os dados de um volume estão acessíveis se uma gaveta falhar. Quando você atribui as unidades, se você definir o `drawerLossProtect` parâmetro `TRUE` e selecionar mais de uma unidade de qualquer gaveta, a matriz de armazenamento retornará um erro. Se você definir `drawerLossProtect` o parâmetro como `FALSE`, a matriz de armazenamento executará operações, mas o grupo de volumes criado pode não ter proteção contra perda de gaveta.
+
+
+
+== Gerenciamento de garantia de dados
+
+O recurso Data Assurance (DA) aumenta a integridade dos dados em todo o sistema de armazenamento. O DA permite que o storage array verifique se há erros que possam ocorrer quando os dados são movidos entre os hosts e as unidades. Quando esse recurso está ativado, o storage de armazenamento anexa códigos de verificação de erros (também conhecidos como verificações de redundância cíclica ou CRCs) a cada bloco de dados no volume. Depois que um bloco de dados é movido, o storage array usa esses códigos CRC para determinar se ocorreram erros durante a transmissão. Os dados potencialmente corrompidos não são gravados no disco nem devolvidos ao host.
+
+Se você quiser usar o recurso DA, comece com um pool ou grupo de volume que inclui apenas unidades que suportam DA. Em seguida, crie volumes compatíveis com DA. Finalmente, mapeie esses volumes com capacidade PARA DA para o host usando uma interface de e/S capaz de DA. As interfaces de e/S capazes de DA incluem Fibre Channel, SAS e iSER over InfiniBand (extensões iSCSI para RDMA/IB). DA não é compatível com iSCSI via Ethernet ou SRP em InfiniBand.
+
+[NOTE]
+====
+Quando todas as unidades são capazes de DA, você pode definir o `dataAssurance` parâmetro para `enabled` e, em seguida, usar DA com certas operações. Por exemplo, você pode criar um grupo de volumes que inclua unidades compatíveis com DA e, em seguida, criar um volume dentro desse grupo de volumes habilitado PARA DA. Outras operações que usam um volume habilitado PARA DA têm opções para suportar o recurso DA.
+
+====
+Se o `dataAssurance` parâmetro estiver definido como `enabled`, somente unidades capazes de garantia de dados serão consideradas para candidatos a volume; caso contrário, serão consideradas unidades capazes de garantia de dados e unidades que não sejam capazes de garantia de dados. Se apenas unidades de garantia de dados estiverem disponíveis, o novo grupo de volumes será criado usando as unidades de garantia de dados ativadas.
+
+
+
+== Nível mínimo de firmware
+
+7,10 adiciona capacidade RAID nível 6.
+
+7,60 adiciona a `drawerID` entrada do usuário, o `driveMediaType` parâmetro e o `drawerLossProtect` parâmetro.
+
+7,75 adiciona o `dataAssurance` parâmetro.
+
+8,10 remove o `driveMediaType` parâmetro.
+
+8,60 adiciona o `driveType` parâmetro.

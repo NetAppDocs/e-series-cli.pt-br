@@ -1,0 +1,239 @@
+---
+permalink: commands-a-z/recover-volume.html 
+sidebar: sidebar 
+keywords: recover, raid, volume 
+summary: O comando Recover volume cria um volume RAID com as propriedades dadas sem inicializar nenhuma das áreas de dados do usuário nas unidades. 
+---
+= Recuperar volume RAID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `recover volume` comando cria um volume RAID com as propriedades dadas sem inicializar nenhuma das áreas de dados do usuário nas unidades.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Os valores dos parâmetros são derivados do arquivo de dados do Perfil de recuperação (`recovery-profile.csv`) para a matriz de armazenamento. Você pode criar o volume de recuperação em um grupo de volumes existente ou criar um novo grupo de volumes usando este comando.
+
+[NOTE]
+====
+Você pode executar este comando apenas a partir de uma linha de comando. Não é possível executar este comando a partir do editor de scripts GUI. Você não pode usar a GUI de gerenciamento de storage para recuperar um volume.
+
+====
+[NOTE]
+====
+Não é possível usar este comando para volumes de pool de disco dinâmico (DDP).
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+recover volume (drive=pass:quotes[(_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_])) |
+(drives=pass:quotes[_trayID1_,pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1 ... trayIDn,_]pass:quotes[[_drawerIDn,_]]pass:quotes[_slotIDn_])) |
+volumeGroup=pass:quotes[_volumeGroupName_]))
+[newVolumeGroup=pass:quotes[_volumeGroupName_]]
+userLabel=pass:quotes["_volumeName_" volumeWWN="_volumeWWN_"
+capacity=_volumeCapacity_
+offset=_offsetValue_
+raidLevel=(0 | 1 | 3 | 5 | 6)
+segmentSize=_segmentSizeValue_
+dssPreAllocate=(TRUE | FALSE)
+SSID=_subsystemVolumeID_]
+[owner=(a|b)]
+[cacheReadPrefetch=(TRUE | FALSE)]
+[dataAssurance=(none | enabled)]
+[hostUnmapEnabled=(TRUE | FALSE)]
+[blockSize=blockSizeValue]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drive` ou `drives`
+ a| 
+As unidades que você deseja atribuir ao grupo de volumes que conterá o volume que você deseja recuperar. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome de um grupo de volumes existente no qual você deseja criar o volume. (Para determinar os nomes dos grupos de volume em sua matriz de armazenamento, execute o `show storageArray profile` comando.)
+
+
+
+ a| 
+`newVolumeGroup`
+ a| 
+O nome que você deseja dar a um novo grupo de volumes. Coloque o novo nome do grupo de volumes entre aspas duplas (" ").
+
+
+
+ a| 
+`userLabel`
+ a| 
+O nome do volume que você deseja recuperar. A etiqueta do utilizador tem duas partes:
+
+* O nome do volume. Coloque o nome do volume entre aspas duplas (" ").
+* O nome mundial do volume, `volumeWWN`, na forma de um identificador de 16 bytes, por exemplo, 60080E500017B43200000049887D77. Coloque o identificador em aspas duplas (" ").
+
+
+Tem de introduzir o nome do volume e o nome mundial do volume. Tem de introduzir primeiro o nome do volume. Por exemplo:
+
+[listing]
+----
+userLabel="engdata"
+volumeWWN=60080E500017B4320000000049887D77
+----
+
+
+ a| 
+`capacity`
+ a| 
+O tamanho do volume que você está adicionando ao storage array. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou .
+
+
+
+ a| 
+`offset`
+ a| 
+O número de blocos desde o início do grupo de volumes até o início do volume referenciado.
+
+
+
+ a| 
+`raidLevel`
+ a| 
+O nível RAID do grupo de volumes que contém as unidades. Os valores válidos são `0`, `1`, `3`, `5` `6` ou .
+
+
+
+ a| 
+`segmentSize`
+ a| 
+A quantidade de dados (em KB) que o controlador grava em uma única unidade em um grupo de volumes antes de gravar dados na próxima unidade. Os valores válidos são `8` `16` , `32`, `64`, , , `128`, `256`, ou `512`.
+
+
+
+ a| 
+`dssPreAllocate`
+ a| 
+A configuração para ativar ou desativar a alocação da capacidade de armazenamento de volume para futuras alterações de tamanho de segmento. Para ativar a alocação, defina este parâmetro como `TRUE`. Para desativar a alocação, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`SSID`
+ a| 
+O identificador do subsistema de storage array de um volume. Use o `show volume` comando para determinar o identificador do subsistema storage array.
+
+
+
+ a| 
+`owner`
+ a| 
+O controlador que possui o volume. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A e `b` é o controlador no slot B. se você não especificar um proprietário, o firmware do controlador determina o proprietário.
+
+
+
+ a| 
+`cacheReadPrefetch`
+ a| 
+A configuração para ativar ou desativar o cache ler pré-busca. Para desativar a pré-busca de leitura de cache, defina este parâmetro como `FALSE`. Para ativar a pré-busca de leitura de cache, defina este parâmetro como `TRUE`.
+
+
+
+ a| 
+`hostUnmapEnabled`
+ a| 
+Quando este parâmetro é definido como `True`, é permitido um host emitir comandos de desmapeamento para o volume. Os comandos unmap só são permitidos em volumes provisionados por recurso.
+
+
+
+ a| 
+`blockSize`
+ a| 
+Esta configuração é o tamanho do bloco de volume em bytes.
+
+|===
+
+
+== Notas
+
+O software de gerenciamento de armazenamento coleta perfis de recuperação das matrizes de armazenamento monitoradas e salva os perfis em uma estação de gerenciamento de armazenamento.
+
+ `drive`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+Se você tentar recuperar um volume usando o `drive` parâmetro ou o `drives` parâmetro e as unidades estiverem em um estado não atribuído, o controlador criará automaticamente um novo grupo de volumes. Use o `newVolumeGroup` parâmetro para especificar um nome para o novo grupo de volumes.
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O `owner` parâmetro define qual controlador possui o volume. A propriedade preferida do controlador de um volume é o controlador que atualmente possui o grupo de volumes.
+
+
+
+== Pré-alocação da capacidade de armazenamento
+
+O `dssPreAllocate` parâmetro permite atribuir capacidade em um volume para armazenar informações que são usadas para reconstruir um volume. Quando você define o `dssPreallocate` parâmetro como `TRUE`, a lógica de alocação de espaço de armazenamento no firmware do controlador pré-aloca o espaço em um volume para futuras alterações de tamanho de segmento. O espaço pré-alocado é o tamanho máximo permitido do segmento. O `dssPreAllocate` parâmetro é necessário para recuperar adequadamente configurações de volume que não podem ser recuperadas do banco de dados do controlador. Para desativar a capacidade de pré-alocação, defina `dssPreAllocate` como `FALSE`.
+
+
+
+== Tamanho do segmento
+
+O tamanho de um segmento determina quantos blocos de dados o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Cada bloco de dados armazena 512 bytes de dados. Um bloco de dados é a menor unidade de armazenamento. O tamanho de um segmento determina quantos blocos de dados contém. Por exemplo, um segmento de 8 KB contém 16 blocos de dados. Um segmento de 64 KB contém 128 blocos de dados.
+
+Quando você insere um valor para o tamanho do segmento, o valor é verificado em relação aos valores suportados fornecidos pelo controlador no tempo de execução. Se o valor inserido não for válido, o controlador retornará uma lista de valores válidos. O uso de uma única unidade para uma única solicitação deixa outras unidades disponíveis para atender simultaneamente a outras solicitações.
+
+Se o volume estiver em um ambiente onde um único usuário está transferindo grandes unidades de dados (como Multimídia), o desempenho é maximizado quando uma única solicitação de transferência de dados é atendida com uma única faixa de dados. (Uma faixa de dados é o tamanho do segmento que é multiplicado pelo número de unidades no grupo de volumes que são usadas para transferências de dados.) Neste caso, várias unidades são usadas para a mesma solicitação, mas cada unidade é acessada apenas uma vez.
+
+Para obter o desempenho ideal em um ambiente de armazenamento de sistemas de arquivos ou banco de dados multiusuário, defina o tamanho do segmento para minimizar o número de unidades necessárias para atender a uma solicitação de transferência de dados.
+
+
+
+== Cache lê pré-busca
+
+A pré-busca de leitura de cache permite que o controlador copie blocos de dados adicionais no cache enquanto o controlador lê e copia blocos de dados solicitados pelo host do disco para o cache. Essa ação aumenta a chance de que uma futura solicitação de dados possa ser atendida a partir do cache. A pré-busca de leitura de cache é importante para aplicativos Multimídia que usam transferências de dados sequenciais. As configurações do storage array que você usa determinam o número de blocos de dados adicionais lidos pelo controlador no cache. Os valores válidos para o `cacheReadPrefetch` parâmetro são `TRUE` ou `FALSE`.
+
+
+
+== Nível mínimo de firmware
+
+5,43
+
+O 7,10 adiciona capacidade de nível RAID 6 e o `newVolumeGroup` parâmetro.
+
+7,60 adiciona a `drawerID` entrada do usuário.
+
+7,75 adiciona o `dataAssurance` parâmetro.
+
+8,78 adiciona o `hostUnmapEnabled` parâmetro.
+
+11.70.1 adiciona o `blockSize` parâmetro.

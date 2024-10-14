@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/revive-volumegroup.html 
+sidebar: sidebar 
+keywords: revive, volume, group 
+summary: O comando revive volumeGroup força o grupo de volume especificado e suas unidades com falha associadas ao estado ideal. 
+---
+= Reavive o grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `revive volumeGroup` comando força o grupo de volume especificado e suas unidades com falha associadas ao estado ideal.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possível perda de acesso a dados* -- o uso correto deste comando depende da configuração de dados de todas as unidades do grupo de volumes. Nunca tente reviver uma unidade, a menos que você seja supervisionado por suporte técnico.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+revive volumeGroup pass:quotes[[_volumeGroupName_]]
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volume a definir para o estado ideal. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

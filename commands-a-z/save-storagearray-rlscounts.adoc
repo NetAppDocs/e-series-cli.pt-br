@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/save-storagearray-rlscounts.html 
+sidebar: sidebar 
+keywords: save, storage, array, rls, counts 
+summary: 'O comando save storageArray RLSCounts salva os contadores de status de link de leitura (RLS) em um arquivo.' 
+---
+= Guardar contagens RLS da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray RLSCounts` comando salva os contadores de status do link de leitura (RLS) em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray RLSCounts file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os contadores RLS. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\rlscnt.csv"`
+
+O nome padrão do arquivo que contém as contagens RLS é `read-link-status.csv`. Você pode usar qualquer nome de arquivo, mas você deve usar a `.csv` extensão.
+
+|===
+
+
+== Notas
+
+Para salvar contadores RLS de forma mais eficaz em um arquivo, execute estas etapas:
+
+. Execute o `reset storageArray RLSBaseline` comando para definir todos os contadores RLS como 0.
+. Execute o storage array por um período predeterminado de tempo (por exemplo, duas horas).
+. Execute o `save storageArray RLSCounts file`[.code]``_filename_`` comando ".
+
+
+
+
+== Nível mínimo de firmware
+
+6,10

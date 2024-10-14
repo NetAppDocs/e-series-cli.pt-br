@@ -1,0 +1,122 @@
+---
+permalink: commands-a-z/delete-volume.html 
+sidebar: sidebar 
+keywords: delete, volume, command, one, standard, volume, supported, array, role 
+summary: O comando delete volume exclui um ou mais volumes padrão. 
+---
+= Eliminar volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete volume` comando exclui um ou mais volumes padrão.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possível dano à configuração do storage de armazenamento* -- todos os dados no volume são perdidos assim que você executar este comando.
+
+====
+[NOTE]
+====
+Quando um volume excede um determinado tamanho (atualmente 128 TB), a exclusão está sendo executada em segundo plano e o espaço livre pode não estar imediatamente disponível.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+delete (allVolumes) |
+volume [volumeName] |
+volumes [volumeName1 ... volumeNameN]
+[removeVolumeGroup=(TRUE | FALSE)]
+[force=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+Esse parâmetro exclui todos os volumes em uma matriz de armazenamento.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume que você deseja excluir. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou consistir apenas em números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes que você deseja excluir. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`removeVolumeGroup`
+ a| 
+A exclusão do último volume em um grupo de volumes não exclui o grupo de volumes. Você pode ter um grupo de volume autônomo (menos quaisquer volumes). Para remover o grupo de volumes autônomo, defina este parâmetro como `TRUE`. Para manter os grupos de volume autônomos intactos, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`force`
+ a| 
+Use este parâmetro para forçar a exclusão imediata de um volume, mesmo que os controladores estejam executando outras operações. Para forçar imediatamente a exclusão de um volume, defina este parâmetro como `TRUE`. Para aguardar até que os controladores tenham terminado de executar outras operações, não use este parâmetro nem defina esse parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Quando você usa o `allVolumes` parâmetro, esse comando exclui volumes até que todos os volumes sejam removidos ou até que um erro seja encontrado. Se for encontrado um erro, este comando não tenta eliminar os volumes restantes. É possível eliminar volumes de diferentes grupos de volumes. Todos os grupos de volumes que ficam vazios são excluídos se você definir o `removeVolumeGroup` parâmetro como `TRUE`.
+
+Se você quiser excluir um grupo de volume inteiro, você também pode usar o `delete volumeGroup` comando.
+
+
+
+== Nível mínimo de firmware
+
+6,10
+
+7,10 adiciona o `removeVolumeGroup` parâmetro.

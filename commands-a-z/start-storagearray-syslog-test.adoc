@@ -1,0 +1,65 @@
+---
+permalink: commands-a-z/start-storagearray-syslog-test.html 
+sidebar: sidebar 
+keywords: start, storage, array, syslog, test 
+summary: O comando start storageArray syslog test permite testar as comunicações entre o storage array e um servidor syslog. 
+---
+= Inicie o teste syslog de storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start storageArray syslog test` comando permite testar as comunicações entre o storage array e um servidor syslog.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+start storageArray syslog test id="<id>"
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+id
+ a| 
+ID de configuração do syslog para testar. O ID está disponível usando o `show storageArray syslog` comando.
+
+|===
+
+
+=== Exemplo
+
+[listing]
+----
+SMcli -n Array1 -c "start storageArray syslog test
+id=\"331998fe-3154-4489-b773-b0bb60c6b48e\";"
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,42

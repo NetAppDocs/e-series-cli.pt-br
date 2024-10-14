@@ -1,0 +1,85 @@
+---
+permalink: commands-category/alert-configuration-commands.html 
+sidebar: sidebar 
+keywords: configuration, commands, alert, embedded 
+summary: Comandos de configuração de alerta 
+---
+= Comandos de configuração de alerta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== Configuração SNMP incorporada
+
+link:../commands-a-z/create-snmpcommunity.html["Registre a comunidade SNMP"]
+
+link:../commands-a-z/create-snmptrapdestination.html["Registar destino de trap SNMP"]
+
+link:../commands-a-z/show-allsnmpcommunities.html["Mostrar comunidades SNMP"]
+
+link:../commands-a-z/show-snmpsystemvariables.html["Mostrar variáveis do grupo de sistema SNMP MIB II"]
+
+link:../commands-a-z/start-snmptrapdestination.html["Teste o destino da trap SNMP"]
+
+link:../commands-a-z/delete-snmpcommunity.html["Anular o registo da comunidade SNMP"]
+
+link:../commands-a-z/delete-snmptrapdestination.html["Anular o registo do destino de trap SNMP"]
+
+link:../commands-a-z/set-snmpcommunity.html["Atualizar a comunidade SNMP"]
+
+link:../commands-a-z/set-snmpsystemvariables.html["Atualizar variáveis do grupo de sistema SNMP MIB II"]
+
+link:../commands-a-z/set-snmptrapdestination-trapreceiverip.html["Atualizar destino de trap SNMP"]
+
+
+
+== Configuração de alerta de e-mail - matrizes E2700 ou E5600
+
+link:../commands-a-z/set-emailalert.html["Configure as definições de alerta por e-mail"]
+
+link:../commands-a-z/set-event-alert.html["Definir filtragem de alerta de eventos"]
+
+link:../commands-a-z/show-blockedeventalertlist.html["Mostrar eventos bloqueados"]
+
+link:../commands-a-z/smcli-alerttest.html["Alertas de teste"]
+
+
+
+== Comandos de cache SSD
+
+link:../commands-a-z/clear-emailalert-configuration.html["Limpar a configuração do alerta de e-mail"]
+
+link:../commands-a-z/set-emailalert.html["Configure as definições de alerta por e-mail"]
+
+link:../commands-a-z/delete-emailalert.html["Eliminar destinatário do alerta de e-mail"]
+
+link:../commands-a-z/show-emailalert-summary.html["Mostrar configuração de alerta de e-mail"]
+
+link:../commands-a-z/start-emailalert-test.html["Teste a configuração do alerta de e-mail"]
+
+
+
+== Configuração do syslog
+
+link:../commands-a-z/clear-syslog-configuration.html["Limpar a configuração do syslog"]
+
+link:../commands-a-z/set-syslog.html["Configure as configurações do syslog"]
+
+link:../commands-a-z/create-storagearray-syslog.html["Crie a configuração syslog array de storage"]
+
+link:../commands-a-z/delete-storagearray-syslog.html["Exclua a configuração do syslog do storage array"]
+
+link:../commands-a-z/delete-syslog.html["Exclua o servidor syslog"]
+
+link:../commands-a-z/show-storagearray-syslog.html["Exibir a configuração do syslog do storage array"]
+
+link:../commands-a-z/show-syslog-summary.html["Mostrar configuração do syslog"]
+
+link:../commands-a-z/start-storagearray-syslog-test.html["Inicie o teste syslog de storage array"]
+
+link:../commands-a-z/start-syslog-test.html["Teste a configuração do syslog"]
+
+link:../commands-a-z/set-storagearray-syslog.html["Atualize a configuração do syslog do storage array"]

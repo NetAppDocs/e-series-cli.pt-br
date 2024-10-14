@@ -1,0 +1,27 @@
+---
+settings:
+  name: SANtricity commands
+  internal:
+    pdf_enabled: false
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  rss_page: whats-new.html
+  pdf:
+    zip-level: 1
+    zip-filename: santricity-commands.zip
+  langs: pt-br,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: SANtricity docs CLI
+    url: "/index.html"
+  - title: O que há de novo
+    url: "/whats-new.html"
+  - section: get-started
+  - section: commands-category
+  - section: commands-a-z
+  - title: Avisos legais
+    url: "/legal-notices.html"
+product-family:
+  name: E-Series
+  repo: e-series-family

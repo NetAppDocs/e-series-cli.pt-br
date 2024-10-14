@@ -1,0 +1,122 @@
+---
+permalink: commands-a-z/set-storagearray-learncycledate-controller.html 
+sidebar: sidebar 
+keywords: set, storage, array, controller, battery, learn, cycle 
+summary: O comando set storageArray learnCycleDate define os ciclos de aprendizagem da bateria do controlador. 
+---
+= Definir o ciclo de aprendizagem da bateria do controlador da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray learnCycleDate controller` comando define os ciclos de aprendizagem da bateria do controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Para definir ciclos de aprendizagem individuais para cada controlador na matriz de armazenamento, envie este comando para ambos os controladores.
+
+====
+[NOTE]
+====
+Os ciclos de aprendizagem não estão ligados entre si e, por isso, uma interrupção num ciclo de aprendizagem da bateria do controlador não afetará o ciclo de aprendizagem da bateria do outro controlador.
+
+====
+[NOTE]
+====
+Um ciclo de aprendizagem pode levar várias horas para ser concluído.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set storageArray learnCycleDate (controller[(a| b)] )
+pass:quotes[(daysToNextLearnCycle=_numberOfDays_ |
+day=_dayOfTheWeek_)] pass:quotes[time=_HH:MM_]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`*controller*`
+ a| 
+O controlador para o qual você deseja especificar um ciclo de aprendizagem da bateria. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o firmware do controlador retornará um erro de sintaxe.
+
+[NOTE]
+====
+Omitir este parâmetro define o ciclo de aprendizagem para ambas as baterias do controlador em uma matriz de controlador duplo.
+
+====
+
+
+ a| 
+`daysToNextLearnCycle`
+ a| 
+Os valores válidos `0` são a `7`, onde `0` é imediatamente e `7` é em sete dias. O `daysToNextLearnCycle` parâmetro ocorre até sete dias após o próximo ciclo de aprendizagem programado.
+
+
+
+ a| 
+`day`
+ a| 
+Os valores válidos para o `day` parâmetro incluem os dias da semana (`Sunday` `Monday`, , `Tuesday` `Wednesday` , , , , , `Thursday` `Friday`, e `Saturday` ). Definir o dia faz com que o próximo ciclo de aprendizagem seja agendado no dia especificado, após o ciclo de aprendizagem atualmente programado.
+
+
+
+ a| 
+`time`
+ a| 
+A hora no formato de 24 horas; por exemplo, 8:00 a.m. é introduzida como `08:00`. Nove horas p.m. é inserida como `21:00`, e 9:30 p.m. é inserida `21:30` como .
+
+|===
+
+
+== Exemplo
+
+[listing]
+----
+set storageArray learnCycleDate controller [a] daysToNextLearnCycle=4 time=08:30;
+----
+
+
+== Notas
+
+Você pode definir o ciclo de aprendizagem para ocorrer apenas uma vez durante um período de sete dias.
+
+O `time` parâmetro seleciona uma hora específica que você deseja executar o ciclo de aprendizagem. Se um valor não for inserido, o comando usará um valor padrão `00:00` de (meia-noite).
+
+Se o dia e a hora especificados estiverem no passado, o próximo ciclo de aprendizagem ocorre no próximo dia possível especificado.
+
+
+
+== Nível mínimo de firmware
+
+7,15
+
+8,30 - adicionado o `controller` parâmetro.

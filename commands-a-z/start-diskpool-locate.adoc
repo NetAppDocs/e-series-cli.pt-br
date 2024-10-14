@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/start-diskpool-locate.html 
+sidebar: sidebar 
+keywords: start, disk pool, locate 
+summary: O comando start diskPool Locate identifica as unidades que são agrupadas logicamente para formar o pool de discos especificado, piscando as luzes indicadoras nas unidades. 
+---
+= Inicie a localização do pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start diskPool locate` comando identifica as unidades que são agrupadas logicamente para formar o pool de discos especificado, piscando as luzes indicadoras nas unidades.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+(Use o `stop diskPool locate` comando para desligar as luzes indicadoras nas unidades.)
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start diskPool pass:quotes[[_diskPoolName_]] locate
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPool`
+ a| 
+O nome do pool de discos para o qual você deseja localizar. Inclua o nome do pool de discos entre colchetes ([ ]). Se o nome do conjunto de discos tiver carateres especiais ou números, você deve incluir o nome do conjunto de discos em aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

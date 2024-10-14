@@ -1,0 +1,124 @@
+---
+permalink: commands-a-z/set-host.html 
+sidebar: sidebar 
+keywords: set, host 
+summary: O comando Set host atribui um host a um grupo de host ou move um host para um grupo de host diferente. 
+---
+= Definir host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set host` comando atribui um host a um grupo de host ou move um host para um grupo de host diferente.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você também pode criar um novo grupo de hosts e atribuir o host ao novo grupo de hosts com este comando. As ações executadas por este comando dependem se o host tem mapeamentos individuais ou não tem mapeamentos individuais.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set host [hostName]
+hostGroup=pass:quotes[("_hostGroupName_"] | none | defaultGroup)
+userLabel=pass:quotes["_newHostName_"]
+hostType=pass:quotes[(_hostTypeIndexLabel_ | _hostTypeIndexNumber_)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`host`
+ a| 
+O nome do host que você deseja atribuir a um grupo de hosts. Inclua o nome do host entre colchetes ([ ]). Se o nome do host tiver carateres especiais ou números, você deve incluir o nome do host entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome do grupo de hosts ao qual você deseja atribuir o host. (A tabela a seguir define como o comando é executado se o host tiver ou não mapeamentos individuais.) Coloque o nome do grupo anfitrião em aspas duplas (" "). A `defaultGroup` opção é o grupo de hosts que contém o host para o qual o volume é mapeado.
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome de host. Inclua o nome do host em aspas duplas (" ").
+
+
+
+ a| 
+`hostType`
+ a| 
+O rótulo de índice ou o número do tipo de host para a porta do host. Use o `show storageArray hostTypeTable` comando para gerar uma lista de identificadores de tipo de host disponíveis. Se o tipo de host tiver carateres especiais, inclua o tipo de host entre aspas duplas (" ").
+
+|===
+[cols="3*"]
+|===
+| Parâmetro Grupo anfitrião | Host tem Mapeamentos individuais | O host não tem Mapeamentos individuais 
+
+
+ a| 
+`_hostGroupName_`
+ a| 
+O host é removido do grupo de hosts atual e é colocado sob o novo grupo de hosts definido pelo `_hostGroupName_`.
+ a| 
+O host é removido do grupo de hosts atual e é colocado sob o novo grupo de hosts definido pelo `_hostGroupName_`.
+
+
+
+ a| 
+`none`
+ a| 
+O host é removido do grupo de hosts como uma partição independente e é colocado sob o nó raiz.
+ a| 
+O host é removido do grupo de hosts atual e é colocado sob o grupo padrão.
+
+
+
+ a| 
+`defaultGroup`
+ a| 
+O comando falha.
+ a| 
+O host é removido do grupo de hosts atual e é colocado sob o grupo padrão.
+
+|===
+
+
+== Notas
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.
+
+Para os nomes, você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+6,10

@@ -1,0 +1,145 @@
+---
+permalink: commands-a-z/start-drivechannel-faultdiagnostics.html 
+sidebar: sidebar 
+keywords: start, drive channel, fault, isolation, diagnostics 
+summary: O comando iniciar driveChannel faultDiagnostics executa o diagnóstico de isolamento de falhas do canal da unidade e armazena os resultados. 
+---
+= Inicie o diagnóstico de isolamento de falhas do canal da unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start driveChannel faultDiagnostics` comando executa o diagnóstico de isolamento de falhas do canal da unidade e armazena os resultados.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Com a versão de firmware 8,10, o `start driveChannel faultDiagnostics` comando está obsoleto.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start driveChannel [(1 | 2 | 3 | 4 | 5 | 6 | 7 | 8)]
+controller [(a|b)] faultDiagnostics
+testDevices=[all |
+controller=(a|b) |
+esms=pass:quotes[[_trayID1_ (left | right), ... , _trayIDN_] (left | right)] |
+drivespass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]]
+|[dataPattern=(fixed | pseudoRandom) |
+patternNumber=[pass:quotes[(_0xhexadecimal_ | _number_)]] |
+pass:quotes[maxErrorCount=_integer_] |
+pass:quotes[testIterations=_integer_] |
+pass:quotes[timeout=_timeInterval_]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`driveChannel`
+ a| 
+O número do identificador do canal da unidade que você deseja localizar. Os valores válidos para o número de identificação do canal da unidade são `1`, `2`, `3` `4` `5` , , , , `6`, `7`, `8` ou . Inclua o número do identificador do canal da unidade entre colchetes ([ ]).
+
+
+
+ a| 
+`controller`
+ a| 
+A letra do identificador do controlador que você deseja testar. Os valores válidos do identificador do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]).
+
+
+
+ a| 
+`testDevices`
+ a| 
+Os identificadores dos dispositivos (controladores, módulo de serviços ambientais [ESMs] ou unidades) que pretende testar. Você pode especificar `all` ou inserir os identificadores específicos para os dispositivos que deseja diagnosticar. Os `controller` identificadores são `a` ou `b`, onde `a` está o módulo do controlador RAID no slot A e `b` é o módulo do controlador RAID no slot B.
+
+Os `esms` identificadores são ID da bandeja e esquerda ou direita, onde ID da bandeja é um valor de 0 a 99, e esquerda ou direita são determinados ao visualizar a bandeja da unidade pela parte traseira.
+
+Os `drive` identificadores incluem um identificador de bandeja, um identificador de gaveta quando a bandeja tem gavetas e um identificador de slot.
+
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`dataPattern`
+ a| 
+O método de repetibilidade que você deseja testar.
+
+
+
+ a| 
+`patternNumber`
+ a| 
+O padrão de dados hexadecimais que você deseja usar para executar o teste. Este número pode ser qualquer número hexadecimal entre `0000` a `FFFF`. Você deve colocar `0x` na frente para indicar um número hexadecimal.
+
+
+
+ a| 
+`maxErrorCount`
+ a| 
+O número de erros que você deseja aceitar antes de terminar o teste.
+
+
+
+ a| 
+`testIterations`
+ a| 
+O número de vezes que você deseja repetir o teste.
+
+
+
+ a| 
+`timeout`
+ a| 
+O tempo em minutos que você deseja executar o teste.
+
+|===
+
+
+== Notas
+
+Pode introduzir mais de um tipo de dispositivo para testar e pode introduzir mais de um tipo de teste para executar.
+
+Utilizar o `save driveChannel faultDiagnostics` comando e o `stop driveChannel faultDiagnostics` comando com o `start driveChannel faultDiagnostics` comando. Esses comandos são necessários para salvar os resultados do teste de diagnóstico em um arquivo e parar o teste de diagnóstico.
+
+Exemplos de entradas válidas `patternNumber` são `0xA5A5`, `0x3C3C`, `8787` `1234` e .
+
+Você também pode parar este comando a qualquer momento pressionando `Ctrl+C`.
+
+
+
+== Nível mínimo de firmware
+
+7,15

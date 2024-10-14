@@ -1,0 +1,74 @@
+---
+permalink: commands-a-z/clear-volume-reservations.html 
+sidebar: sidebar 
+keywords: clear, volume, reservations 
+summary: O comando Limpar reservas de volume limpa as reservas de volume persistentes. 
+---
+= Limpar reservas de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `clear volume reservations` comando limpa reservas de volume persistentes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+clear (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_"volumeName1" ... "volumeNameN"_]]) reservations
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+A configuração para limpar reservas de volume persistente em todos os volumes no storage array.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume para o qual você está limpando reservas persistentes. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes para os quais você está limpando reservas persistentes. Digite os nomes dos volumes de membros usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.

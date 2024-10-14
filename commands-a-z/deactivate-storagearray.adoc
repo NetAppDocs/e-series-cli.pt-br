@@ -1,0 +1,52 @@
+---
+permalink: commands-a-z/deactivate-storagearray.html 
+sidebar: sidebar 
+keywords: deactivate, asynchronous, mirroring 
+summary: O recurso Desativar storageArray desativa o recurso de espelhamento assíncrono. 
+---
+= Desativar o espelhamento assíncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `deactivate storageArray feature` desativa a funcionalidade de espelhamento assíncrono.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Todos os grupos de espelhos assíncronos ou pares espelhados assíncronos existentes devem ser excluídos do storage array local e do storage array remoto antes que o recurso espelhamento assíncrono possa ser desativado.
+
+
+
+== Sintaxe
+
+[listing]
+----
+deactivate storageArray feature=asyncRemoteMirror
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+7,84

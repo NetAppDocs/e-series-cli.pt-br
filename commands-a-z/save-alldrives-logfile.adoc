@@ -1,0 +1,73 @@
+---
+permalink: commands-a-z/save-alldrives-logfile.html 
+sidebar: sidebar 
+keywords: save, drive log 
+summary: O comando save allDrives logfile salva os logs da unidade em um arquivo. 
+---
+= Guardar o registo da unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save allDrives logFile` comando salva os logs da unidade em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Os dados de log de unidade são mantidos pelo storage de armazenamento de cada unidade.
+
+[NOTE]
+====
+Não execute este comando a menos que você seja instruído a fazê-lo pelo suporte técnico.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save allDrives logFile=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`*logFile*`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os logs da unidade. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\drive01.zip"`
+
+[NOTE]
+====
+Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar a extensão do arquivo .zip ao digitar o nome do arquivo.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

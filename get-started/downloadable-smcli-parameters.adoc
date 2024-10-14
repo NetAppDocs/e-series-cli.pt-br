@@ -1,0 +1,341 @@
+---
+permalink: get-started/downloadable-smcli-parameters.html 
+sidebar: sidebar 
+keywords: downloadable, smcli, command line, parameters, identify, devices, SAML, multifactor, authentication, https, certificate, array, 
+summary: 'A versão do SANtricity os 11,60 incluiu a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como CLI segura ou SMcli) diretamente através do Gerenciador de sistema do SANtricity.' 
+---
+= Parâmetros da linha de comando SMcli para download
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== 11,60 e parâmetros de linha de comando SMcli para download mais recentes
+
+A versão do SANtricity os 11,60 inclui a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como "CLI segura" ou SMcli) diretamente através do Gerenciador de sistema do SANtricity. Esta versão para download do SMcli está disponível nos controladores EF600, EF300, E5700, EF570, E2800 e EF280. Para fazer o download do SMcli no Gerenciador de sistema do SANtricity, selecione *Configurações* *sistema* e *Complementos* *Interface de linha de comando* .
+
+
+NOTE: Um Java Runtime Environment (JRE), versão 8 e superior, deve estar disponível no sistema de gerenciamento onde você planeja executar os comandos CLI.
+
+Tal como nas versões anteriores do SMcli, o SMcli transferível através do Gestor de sistema SANtricity tem um conjunto exclusivo de parâmetros. Para obter informações sobre como usar parâmetros de linha de comando para o SANtricity os 11,53 e versões mais antigas, link:https://docs.netapp.com/us-en/e-series-cli/get-started/command-line-parameters.html["Parâmetros da linha de comando legada"]consulte .
+
+
+
+=== Autenticação de vários fatores
+
+Se o SAML (Security Assertion Markup Language) estiver habilitado, somente tokens de acesso podem ser usados com a CLI. Se o SAML não estiver habilitado, o nome de usuário/senha ou tokens de acesso podem ser usados. Os tokens de acesso podem ser gerados através do Gerenciador do sistema SANtricity.
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`-t`
+ a| 
+Define o token de acesso a ser usado para autenticação com uma matriz de armazenamento. Um token de acesso é um substituto para fornecer o nome de usuário e a senha.
+
+
+
+ a| 
+`-T` (maiúsculas)
+ a| 
+Este argumento requer um dos dois argumentos:
+
+* `access_token-file` - Contém o token de acesso a ser usado para autenticação
+* `-(dash)` - Leia o token de acesso do stdin
+
+
+
+
+ a| 
+`-u`
+ a| 
+Siga este parâmetro com a `_username_` variável. Este parâmetro é necessário sempre que um token de acesso não é usado.
+
+
+
+ a| 
+`-p`
+ a| 
+Define a senha para o storage no qual você deseja executar comandos. Não é necessária uma palavra-passe nestas condições:
+
+* Não foi definida uma palavra-passe na matriz de armazenamento.
+* A senha é especificada em um arquivo de script que você está executando.
+
+
+
+
+ a| 
+`-P` (maiúsculas)
+ a| 
+Este argumento requer um dos dois argumentos:
+
+* `_password_file_` - Contém a senha a ser usada para autenticação.
+* `-` (Um traço) - Leia a senha do `stdin`.
+
+
+|===
+
+
+=== Parâmetros gerais da linha de comando do modo https
+
+O SMcli transferível suporta apenas o modo https. Os seguintes parâmetros são comumente usados na linha de comando para o modo https.
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`_host-name-or-IP-address_`
+ a| 
+Especifica o nome do host ou o endereço IP (Internet Protocol) (`_xxx.xxx.xxx.xxx_`de um storage gerenciado fora da banda.
+
+Ao gerenciar o gerenciamento de storage fora da banda por meio da conexão Ethernet em cada controlador, você deve especificar o `_host-name-or-IP-address_` dos controladores.
+
+
+
+ a| 
+`-k`
+ a| 
+Este argumento opcional permite que um `*https*` cliente opere em modo inseguro. Isso significa que o certificado do storage array não será validado. Por padrão, se omitido, a validação adequada será executada.
+
+
+NOTE: Para obter informações adicionais sobre como gerenciar certificados de storage array, <<storedcertificates,Gerenciando parâmetros da linha de comando de certificados armazenados>>consulte .
+
+
+
+ a| 
+`-e`
+ a| 
+Executa os comandos sem executar uma verificação de sintaxe primeiro.
+
+
+
+ a| 
+`-L` (maiúsculas)
+ a| 
+Exibe os avisos legais para SMcli para download.
+
+
+
+ a| 
+`-n`
+ a| 
+Especifica o rótulo armazenado localmente no qual você deseja executar os comandos de script. Isso é opcional quando você usa `_host-name-or-IP-address_`o . A etiqueta guardada localmente é necessária quando a `_host-name-or-IP-address_` não é utilizada.
+
+
+NOTE: Para obter informações adicionais sobre como usar rótulos armazenados localmente para gerenciar matrizes de armazenamento, <<managearrays,Gerenciando parâmetros da linha de comando stored Arrays>>consulte .
+
+
+
+ a| 
+`-o`
+ a| 
+Especifica um nome de arquivo para todo o texto de saída que é o resultado da execução dos comandos de script. Utilize o `-o` parâmetro com estes parâmetros:
+
+* `-c`
+* `-f`
+
+
+Se você não especificar um arquivo de saída, o texto de saída vai para saída padrão  `stdout`). Todas as saídas de comandos que não são comandos de script são enviadas para `stdout`, independentemente de este parâmetro estar definido.
+
+
+
+ a| 
+`-S` (maiúsculas)
+ a| 
+Suprime mensagens informativas descrevendo o progresso do comando que aparecem quando você executa comandos de script. (Suprimir mensagens informativas também é chamado de modo silencioso.) Este parâmetro suprime estas mensagens:
+
+* `Performing syntax check`
+* `Syntax check complete`
+* `Executing script`
+* `Script execution complete`
+* `SMcli completed successfully`
+
+
+
+
+ a| 
+`-version`
+ a| 
+Exibe a versão SMcli para download
+
+
+
+ a| 
+`-?`
+ a| 
+Mostra informações de uso sobre os comandos CLI.
+
+|===
+
+
+=== Gerenciamento de arrays armazenados
+
+Os seguintes parâmetros de linha de comando permitem que você gerencie matrizes armazenadas através de seu rótulo armazenado localmente.
+
+
+NOTE: O rótulo armazenado localmente pode não corresponder ao nome real da matriz de armazenamento exibido no Gerenciador do sistema do SANtricity.
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`SMcli storageArrayLabel show all`
+ a| 
+Exibe todas as etiquetas armazenadas localmente e seus endereços associados
+
+
+
+ a| 
+`SMcli storageArrayLabel show label <LABEL>`
+ a| 
+Exibe os endereços associados ao rótulo armazenado localmente nomeado `<LABEL>`
+
+
+
+ a| 
+`SMcli storageArrayLabel delete all`
+ a| 
+Elimina todas as etiquetas armazenadas localmente
+
+
+
+ a| 
+`SMcli storageArrayLabel delete label <LABEL>`
+ a| 
+Exclui a etiqueta armazenada localmente chamada `<LABEL>`
+
+
+
+ a| 
+`SMcli <host-name-or-IP-address> [host-name-or-IP-address] storageArrayLabel add label <LABEL>`
+ a| 
+* Adiciona uma etiqueta armazenada localmente com o nome `<LABEL>` que contém os endereços fornecidos
+* As atualizações não são suportadas diretamente. Para atualizar, exclua o rótulo e, em seguida, adicione novamente.
+
+
+
+NOTE: O SMcli não entra em Contato com a matriz de armazenamento ao adicionar uma etiqueta armazenada localmente.
+
+|===
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`SMcli localCertificate show all`
+ a| 
+Exibe todos os certificados confiáveis armazenados localmente
+
+
+
+ a| 
+`SMcli localCertificate show alias <ALIAS>`
+ a| 
+Exibe um certificado confiável armazenado localmente com o alias `<ALIAS>`
+
+
+
+ a| 
+`SMcli localCertificate delete all`
+ a| 
+Exclui todos os certificados confiáveis armazenados localmente
+
+
+
+ a| 
+`SMcli localCertificate delete alias <ALIAS>`
+ a| 
+Exclui um certificado confiável armazenado localmente com o alias `<ALIAS>`
+
+
+
+ a| 
+`SMcli localCertificate trust file <CERT_FILE> alias <ALIAS>`
+ a| 
+* Salva um certificado para ser confiável com o alias `<ALIAS>`
+* O certificado a ser confiável é baixado do controlador em uma operação separada, como o uso de um navegador da Web
+
+
+
+
+ a| 
+`SMcli <host-name-or-IP-address> [host-name-or-IP-address] localCertificate trust`
+ a| 
+* Coneta-se a cada endereço e salva o certificado retornado no armazenamento de certificados confiável
+* O nome do host ou endereço IP especificado é usado como o alias para cada certificado salvo desta maneira
+* O usuário deve verificar se o certificado no(s) controlador(es) deve ser confiável antes de executar este comando
+* Para maior segurança, o comando trust que leva um arquivo deve ser usado para garantir que o certificado não mudou entre a validação do usuário e a execução desse comando
+
+
+|===
+
+
+=== Identificar dispositivos
+
+O parâmetro de linha de comando a seguir permite exibir informações de todos os dispositivos aplicáveis visíveis para o host.
+
+
+NOTE: A partir da versão do SANtricity 11,81, o parâmetro SMcli `identifyDevices` substitui a funcionalidade anteriormente disponível através da ferramenta SMdevices.
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`identifyDevices`
+ a| 
+Procura todos os dispositivos de bloco nativo SCSI que estão associados aos nossos storages de armazenamento. Para cada dispositivo encontrado, relata várias informações, como nome de dispositivo específico do sistema operacional nativo, matriz de armazenamento associada, nome de volume, informações LUN, etc.
+
+|===
+
+
+==== Exemplos
+
+Consulte o seguinte para obter exemplos do `-identifyDevices` parâmetro nos sistemas operacionais Linux e Windows.
+
+.Linux
+[listing]
+----
+ICTAE11S05H01:~/osean/SMcli-01.81.00.10004/bin # ./SMcli -identifyDevices
+  <n/a> (/dev/sg2) [Storage Array ictae11s05a01, Volume 1, LUN 0, Volume ID <600a098000bbd04f00001c7365426b58>, Alternate Path (Controller-A): Non owning controller - Active/Non-optimized, Preferred Path Auto Changeable: Yes, Implicit Failback: Yes]
+  /dev/sdb (/dev/sg3) [Storage Array ictae11s05a01, Volume Access, LUN 7, Volume ID <600a098000bbcdd3000002005a731d29>]
+  <n/a> (/dev/sg4) [Storage Array ictae11s05a01, Volume 1, LUN 0, Volume ID <600a098000bbd04f00001c7365426b58>, Preferred Path (Controller-B): Owning controller - Active/Optimized, Preferred Path Auto Changeable: Yes, Implicit Failback: Yes]
+  /dev/sdc (/dev/sg5) [Storage Array ictae11s05a01, Volume Access, LUN 7, Volume ID <600a098000bbcdd3000002005a731d29>]
+SMcli completed successfully.
+----
+.Windows
+[listing]
+----
+PS C:\Users\Administrator\Downloads\SMcli-01.81.00.0017\bin> .\SMcli -identifyDevices
+  \\.\PHYSICALDRIVE1 [Storage Array ICTAG22S08A01, Volume Vol1, LUN 1, Volume ID <600a0980006cee060000592e6564fa6a>, Preferred Path (Controller-B): Owning controller - Active/Optimized, Preferred Path Auto Changeable: Yes, Implicit Failback: Yes]
+  \\.\PHYSICALDRIVE2 [Storage Array ICTAG22S08A01, Volume Vol2, LUN 2, Volume ID <600a0980006ce727000001096564f9f5>, Preferred Path (Controller-A): Owning controller - Active/Optimized, Preferred Path Auto Changeable: Yes, Implicit Failback: Yes]
+  \\.\PHYSICALDRIVE3 [Storage Array ICTAG22S08A01, Volume Vol3, LUN 3, Volume ID <600a0980006cee06000059326564fa76>, Preferred Path (Controller-B): Owning controller - Active/Optimized, Preferred Path Auto Changeable: Yes, Implicit Failback: Yes]
+  \\.\PHYSICALDRIVE4 [Storage Array ICTAG22S08A01, Volume Vol4, LUN 4, Volume ID <600a0980006ce7270000010a6564fa01>, Preferred Path (Controller-A): Owning controller - Active/Optimized, Preferred Path Auto Changeable: Yes, Implicit Failback: Yes]
+SMcli completed successfully.
+----
+
+
+==== Notas adicionais
+
+* Compatível apenas em sistemas operacionais Linux e Windows que executam plataformas x86-64 com interfaces de host baseadas em SCSI.
++
+** Interfaces de host baseadas em NVMe não são compatíveis.
+
+
+* O `identifyDevices` parâmetro não causa uma nova verificação no nível do SO. Ele itera sobre os dispositivos existentes vistos pelo sistema operacional.
+* Você deve ter permissões de usuário suficientes para executar o `identifyDevices` comando.
++
+** Isso inclui a capacidade de ler de dispositivos de bloco nativos do sistema operacional e executar comandos de consulta SCSI.
+
+
+

@@ -1,0 +1,353 @@
+---
+permalink: whats-new.html 
+sidebar: sidebar 
+keywords: 'what"s new' 
+summary: Este tópico lista as alterações nas versões mais recentes do SANtricity System Manager do comando CLI e dos comandos de script. 
+---
+= O que há de novo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este tópico lista as alterações nas versões mais recentes do SANtricity System Manager do comando CLI e dos comandos de script.
+
+[NOTE]
+====
+Ao emitir comandos SMcli no prompt de comando, você deve inserir um (`\`caractere de barra invertida adicional ) como um caractere de escape no nome do caminho do arquivo de um arquivo de entrada ou saída ao usar o sistema operacional Windows. A barra invertida (`\`adicional ) deve ser incluída ao usar SMcli no modo seguro https, fornecendo a opção -u para especificar um usuário de gerenciamento de acesso baseado em função. Exemplo: `C:\\dir\\subdir\\filename`
+
+====
+[NOTE]
+====
+Se você estiver usando o SANtricity 11,52 ou anterior, não será possível atualizar para a versão mais recente do SANtricity por meio da CLI legada. As atualizações do SANtricity 11,52 para versões posteriores só podem ser realizadas através do SMcli.
+
+====
+
+
+== SANtricity 11,81
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11,81.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./get-started/downloadable-smcli-parameters.adoc#identify-Devices[Identificar dispositivos]
+ a| 
+ `identifyDevices`Adicionado parâmetro.
+
+|===
+
+
+== SANtricity 11,80
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11,80.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./commands-a-z/save-check-vol-parity-job-errors.adoc[Guardar erros de paridade de trabalhos de paridade de volume de verificação]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/start-check-vol-parity-job.adoc[Iniciar trabalho de paridade de volume de verificação]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/show-check-vol-parity-jobs.adoc[Mostrar trabalhos de paridade de volume de verificação]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/show-check-vol-parity-job.adoc[Mostrar trabalho de paridade de volume de verificação]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/stop-check-vol-parity-job.adoc[Parar trabalho de paridade de volume de verificação]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./get-started/command-line-parameters.adoc[Parâmetros da linha de comando legada]
+ a| 
+ `-useLegacyTransferPort`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/autoconfigure-storagearray.adoc[Configuração automática do storage array]
+ a| 
+ `blockSize`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/check-volume-parity.adoc[Verifique a paridade do volume]
+ a| 
+Comando obsoleto.
+
+|===
+
+
+== SANtricity 11.70.5
+
+Não há alterações CLI e Script Command para a versão 11.70.5.
+
+
+
+== SANtricity 11.70.4
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11.70.4.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./get-started/downloadable-smcli-parameters.adoc[Downloadble SMcli parâmetros de linha de comando]
+ a| 
+Descrições de parâmetros de token de acesso e `-T` adicionado `-t` para autenticação multifator.
+
+|===
+
+
+== SANtricity 11.70.3
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11.70.3.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./commands-a-z/start-diskpool-resourceprovisioning.adoc[Inicie o provisionamento de recursos do pool de disco]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/start-volumegroup-resourceprovisioning.adoc[Iniciar provisionamento recurso Grupo volume]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/start-diskpool-fullprovisioning.adoc[Inicie o provisionamento completo do pool de discos]
+ a| 
+ `disableResourceProvisioning`Descrição do parâmetro atualizada.
+
+
+
+ a| 
+xref:./commands-a-z/start-volumegroup-fullprovisioning.adoc[Iniciar o provisionamento total do grupo de volume]
+ a| 
+ `disableResourceProvisioning`Descrição do parâmetro atualizada.
+
+
+
+ a| 
+xref:./commands-a-z/recreate-storagearray-securitykey.html[Recriar a chave de segurança externa]
+ a| 
+ `deleteOldKey`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/create-diskpool.html[Criar pool de discos]
+ a| 
+ `driveCount`Descrição do parâmetro atualizada.
+
+|===
+
+
+== SANtricity 11.70.2
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11.70.2.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./commands-a-z/create-snmpuser-username.adoc[Registar o utilizador da SNMPv3 USM]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/set-snmpuser-username.adoc[Atualize o utilizador da SNMPv3 USM]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/show-allsnmpusers.adoc[Mostrar utilizador da SNMPv3L USM]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/delete-snmpuser-username.adoc[Anular o registo do utilizador da SNMPv3 USM]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/create-snmptrapdestination.adoc[Registar destino de trap SNMP]
+ a| 
+Adicionado `userName` e `engineid` parâmetros.
+
+
+
+ a| 
+xref:./commands-a-z/set-snmptrapdestination-trapreceiverip.adoc[Atualizar destino de trap SNMP]
+ a| 
+Adicionado `userName` e `engineid` parâmetros.
+
+
+
+ a| 
+xref:./commands-a-z/start-snmptrapdestination.adoc[Teste o destino da trap SNMP]
+ a| 
+Adicionado `userName` e `engineid` parâmetros.
+
+|===
+
+
+== SANtricity 11.70.1
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11.70.1.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./commands-a-z/start-drive-erase.adoc[Inicie a eliminação da unidade]
+ a| 
+Adicionado comando
+
+
+
+ a| 
+xref:./commands-a-z/import-storagearray-securitykey-file.adoc[Importar chave de segurança do storage array]
+ a| 
+ `forceOverwrite`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/set-controller-hostport.adoc[Defina as propriedades da porta do host do controlador]
+ a| 
+ `fecMode`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/show-syslog-summary.adoc[Mostrar configuração do syslog]
+ a| 
+ `syslogFormat`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/set-syslog.adoc[Configure as configurações do syslog]
+ a| 
+ `syslogFormat`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/set-emailalert.adoc[Configure as definições de alerta por e-mail]
+ a| 
+Adicionados `serverEncryption` parâmetros , `serverPort`, , `serverUsername` e `serverPassword` .
+
+
+
+ a| 
+xref:./commands-a-z/show-emailalert-summary.adoc[Mostrar configuração de alerta de e-mail]
+ a| 
+Adicionado `SMTP` criptografia, porta e dados de parâmetro de credencial.
+
+
+
+ a| 
+xref:./commands-a-z/recover-volume.adoc[Recuperar volume RAID]
+ a| 
+ `blockSize`Adicionado parâmetro.
+
+|===
+
+
+== SANtricity 11,70
+
+A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11,70.
+
+[cols="2*"]
+|===
+| Comando | Descrição da mudança 
+
+
+ a| 
+xref:./commands-a-z/download-storagearray-firmware.adoc[Transfira o firmware da matriz de armazenamento/NVSRAM]
+ a| 
+ `healthCheckNeedsAttnOverride`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/create-volume-diskpool.adoc[Criar volume no pool de discos]
+ a| 
+ `raidLevel`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/enable-storagearray-externalkeymanagement-file.adoc[Ativar o gerenciamento de chaves de segurança externas]
+ a| 
+ `saveFile`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/disable-storagearray-externalkeymanagement-file.adoc[Desativar o gerenciamento de chaves de segurança externas]
+ a| 
+ `saveFile`Adicionado parâmetro.
+
+
+
+ a| 
+xref:./commands-a-z/recover-volume.adoc[Recuperar volume RAID]
+ a| 
+ `hostUnmapEnabled`Adicionado parâmetro.
+
+|===

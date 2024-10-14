@@ -1,0 +1,177 @@
+---
+permalink: commands-a-z/smcli-autosupportconfig.html 
+sidebar: sidebar 
+keywords: specify, autosupport, delivery, method 
+summary: O comando SMcli -AutoSupportConfig configura o método de entrega para o envio de mensagens AutoSupport. 
+---
+= Especifique o método de entrega AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `SMcli -autoSupportConfig` comando configura o método de entrega para enviar mensagens AutoSupport.
+
+
+
+== Arrays compatíveis
+
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando é um comando SMcli, não um comando script. Você deve executar este comando a partir de uma linha de comando. Não é possível executar este comando a partir do editor de scripts no software de gerenciamento de armazenamento.
+
+====
+Você pode criar dois tipos principais de métodos de entrega para o envio de mensagens AutoSupport:
+
+* SMTP -- Use este método quando quiser usar o e-mail como o método de entrega para enviar mensagens AutoSupport.
+* HTTP/HTTPS -- Use este método quando quiser enviar mensagens AutoSupport usando os protocolos HTTP ou HTTPS. Você precisa usar HTTPS se quiser usar o AutoSupport OnDemand ou o AutoSupport Remote Diagnostics.
+
+
+
+
+== Sintaxe para método de entrega SMTP
+
+[listing]
+----
+SMcli -autoSupportConfig deliveryMethod=SMTP
+mailRelayServer=<mailRelayServerName> senderMail=<senderEmailAddress>
+----
+
+
+== Parâmetros para o método de entrega SMTP
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`deliveryMethod`
+ a| 
+Permite especificar o método de entrega das mensagens AutoSupport. A opção válida é SMTP. Consulte a próxima seção deste tópico para obter informações sobre como usar HTTP ou HTTPS, que também são válidas.
+
+
+
+ a| 
+`mailRelayServer`
+ a| 
+Permite especificar o servidor de reencaminhamento de correio para as mensagens AutoSupport.
+
+
+
+ a| 
+`senderMail`
+ a| 
+Permite especificar o endereço de e-mail do remetente para as mensagens AutoSupport.
+
+|===
+
+
+== Sintaxe para métodos de entrega HTTP/HTTPS
+
+[listing]
+----
+SMcli -autoSupportConfig deliveryMethod={HTTP|HTTPS}
+ {direct|proxyConfigScript=<proxyConfigScript>| proxyServer
+hostAddress:<address>portNumber=<portNumber> [userName=<userName>password=<password>]}
+----
+
+
+== Parâmetros para os métodos de entrega HTTP/HTTPS
+
+A tabela a seguir lista os parâmetros para os métodos de entrega HTTP/HTTPS.
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`deliveryMethod`
+ a| 
+Permite especificar o método de entrega das mensagens AutoSupport. As opções válidas são HTTPS e HTTP (consulte a seção anterior para uso de SMTP, que também é válida).
+
+
+
+ a| 
+`direct`
+ a| 
+Permite que você se conete diretamente aos sistemas de suporte técnico de destino usando os protocolos HTTPS ou HTTP.
+
+
+
+ a| 
+`proxyConfigScript`
+ a| 
+Permite especificar a localização de um ficheiro de script PAC (Proxy Auto-Configuration).
+
+
+
+ a| 
+`proxyServer`
+ a| 
+Permite especificar os detalhes do servidor proxy HTTP(s) necessários para estabelecer conexão com o sistema de suporte técnico de destino.
+
+
+
+ a| 
+`hostAddress`
+ a| 
+O endereço IP do host do proxyServer.
+
+
+
+ a| 
+`portNumber`
+ a| 
+O número da porta do servidor proxy. Este parâmetro é necessário quando o parâmetro proxyServer é usado.
+
+
+
+ a| 
+`userName`
+ a| 
+O nome de utilizador. Este parâmetro é obrigatório.
+
+
+
+ a| 
+`password`
+ a| 
+A senha de autenticação. Este parâmetro é obrigatório.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,25
+
+
+
+== Exemplos
+
+[listing]
+----
+SMcli –autoSupportConfig deliveryMethod=SMTP
+mailRelayServer:server.eng.netapp.com
+senderEmail:user@netapp.com
+----
+[listing]
+----
+SMcli -autoSupportConfig deliveryMethod=HTTPS
+proxyServer hostAddress:10.117.12.112 portNumber=8080
+userName=user password=0987654321
+----
+
+
+== Verificação
+
+Envie uma mensagem de teste usando o `SMcli -autoSupportConfig test` comando para verificar se seus métodos de entrega estão configurados corretamente.

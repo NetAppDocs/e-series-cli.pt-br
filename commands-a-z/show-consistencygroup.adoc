@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/show-consistencygroup.html 
+sidebar: sidebar 
+keywords: show, consistency, group 
+summary: O comando show consistencyGroup retorna informações sobre um ou mais grupos de consistência. 
+---
+= Mostrar grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show consistencyGroup` comando retorna informações sobre um ou mais grupos de consistência.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allConsistencyGroups | consistencyGroup pass:quotes[[_consistencyGroupName_]] |
+consistencyGroups pass:quotes[[_consistencyGroupName1_ ... _consistencyGroupNameN_]])
+[(summary | schedule)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allConsistencyGroups`
+ a| 
+Esta configuração retorna informações sobre todos os grupos de consistência na matriz de armazenamento.
+
+
+
+ a| 
+`consistencyGroup`
+ a| 
+O nome do grupo de consistência para o qual você está recuperando informações. Inclua o nome do grupo de consistência entre colchetes ([ ]). Se o nome do grupo de consistência tiver carateres especiais ou números, você deve incluir o nome do grupo de consistência entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`consistencyGroups`
+ a| 
+Os nomes de vários grupos de consistência para os quais você está recuperando informações. Todos os volumes terão as mesmas propriedades. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`summary`
+ a| 
+Esta configuração retorna uma lista concisa de informações sobre os grupos de consistência.
+
+
+
+ a| 
+`schedule`
+ a| 
+Este parâmetro retorna informações sobre quaisquer programações para um grupo de consistência.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

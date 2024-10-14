@@ -1,0 +1,85 @@
+---
+permalink: commands-a-z/show-syncmirror-synchronizationprogress.html 
+sidebar: sidebar 
+keywords: show, synchronous, mirror, volume, synchronization, progress 
+summary: O comando show SyncMirror SynchronizationProgress retorna o progresso da sincronização de dados entre o volume primário e o volume secundário em uma configuração de espelhamento síncrono. 
+---
+= Mostrar o progresso da sincronização de volume do espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show syncMirror synchronizationProgress` comando retorna o progresso da sincronização de dados entre o volume primário e o volume secundário em uma configuração de espelhamento síncrono.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Este comando mostra o progresso como uma porcentagem de sincronização de dados que foi concluída.
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `*syncMirror*`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show syncMirror (localVolume pass:quotes[[_volumeName_]] |
+localVolumes pass:quotes[[_volumeName1_... _volumeNameN_]]) synchronizationProgress
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume principal do par espelhado remoto para o qual você deseja verificar o progresso da sincronização. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes do volume principal do par espelhado remoto para o qual você deseja verificar o progresso da sincronização. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Nível mínimo de firmware
+
+5,40

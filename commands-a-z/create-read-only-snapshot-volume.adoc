@@ -1,0 +1,115 @@
+---
+permalink: commands-a-z/create-read-only-snapshot-volume.html 
+sidebar: sidebar 
+keywords: create, read only, snapshot, volume 
+summary: O comando Create snapvolume cria um volume instantâneo somente leitura para as imagens instantâneas de um volume base. Para alterar um volume instantâneo somente leitura para um volume de leitura/gravação, use o comando Set snapvolume convertToReadWrite. 
+---
+= Criar volume instantâneo somente leitura
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create snapVolume` comando cria um volume instantâneo somente leitura para as imagens instantâneas de um volume base. Para alterar um volume instantâneo somente leitura para um volume de leitura/gravação, use o `set snapVolume convertToReadWrite` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Você não pode usar este comando para uma imagem instantânea que é usada na cópia de volume on-line.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create snapVolume userLabel=pass:quotes[_"snapVolumeName"_
+snapImageID="_snapCGID:imageID"_]
+readOnly
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar a um volume instantâneo. Coloque o nome do volume instantâneo entre aspas duplas (" ").
+
+
+
+ a| 
+`snapImageID`
+ a| 
+O nome de uma imagem instantânea que você deseja adicionar ao novo volume instantâneo somente leitura. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` - Use esta opção quando você quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ").
+
+
+
+ a| 
+`readOnly`
+ a| 
+Este parâmetro define o volume do instantâneo para somente leitura. Este parâmetro é realmente um booleano; no entanto, no contexto deste comando, o valor booleano é `TRUE` sempre .
+
+[NOTE]
+====
+Com o `readOnly` parâmetro, os volumes instantâneos não são criados.
+
+====
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O identificador de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O nome do grupo instantâneo
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser criar um volume somente leitura chamado engData1 usando a imagem de snapshot mais recente em um grupo de snapshot com o nome snapGroup1, você usaria este comando:
+
+[listing]
+----
+create snapVolume userLabel="engData1" snapImageID="snapGroup1:newest" readOnly;
+----
+
+
+== Nível mínimo de firmware
+
+7,83

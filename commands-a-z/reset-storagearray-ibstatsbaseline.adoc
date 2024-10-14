@@ -1,0 +1,59 @@
+---
+permalink: commands-a-z/reset-storagearray-ibstatsbaseline.html 
+sidebar: sidebar 
+keywords: reset, storage array, infiniband, statistics, baseline 
+summary: O comando reset storageArray ibStatsBaseline redefine a linha de base de estatísticas InfiniBand para 0 para o storage array. 
+---
+= Redefinir linha de base de estatísticas InfiniBand do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset storageArray ibStatsBaseline` comando redefine a linha de base de estatísticas InfiniBand para 0 no storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, ou E5700, você deve ter a função Storage Admin.
+
+[NOTE]
+====
+Este comando está obsoleto e é substituído pelo xref:reset-storagearray-hostportstatisticsbaseline.adoc[Redefinir linha de base de estatísticas da porta do host do storage]comando.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+reset storageArray ibStatsBaseline
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Esse comando não redefine as contagens em bruto mantidas no hardware e no firmware. Em vez disso, o firmware cria um instantâneo dos valores atuais do contador e usa esses valores para relatar diferenças nas contagens quando as estatísticas são recuperadas. O novo tempo de linha de base é aplicado a ambos os controladores para que as contagens do controlador sejam sincronizadas entre si. Se um controlador for reiniciado sem que o outro controlador seja reiniciado, os contadores não serão mais sincronizados. O cliente fica ciente de que os controladores não são sincronizados porque os dados de carimbo de data/hora relatados juntamente com as estatísticas não são os mesmos para ambos os controladores.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+8,41 este comando está obsoleto.

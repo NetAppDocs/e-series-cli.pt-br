@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/start-volumegroup-resourceprovisioning.html 
+sidebar: sidebar 
+keywords: start, volume, group, resource, provision 
+summary: O comando start volumeGroup resourceProvisioning habilita o provisionamento de recursos em um determinado grupo de volumes e inicia uma operação assíncrona de habilitação de provisionamento de recursos em cada volume no grupo de volumes. O provisionamento de recursos requer que todas as unidades do grupo de volumes sejam compatíveis com o recurso DULBE do NVMe. 
+---
+= Iniciar provisionamento recurso Grupo volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start volumeGroup resourceProvisioning` comando habilita o provisionamento de recursos em um determinado grupo de volumes e inicia uma operação assíncrona de capacitação de provisionamento de recursos em cada volume no grupo de volumes. O provisionamento de recursos requer que todas as unidades do grupo de volumes sejam compatíveis com o recurso DULBE do NVMe.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays EF600 e EF300; desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array EF600 e EF300, você deve ter as funções Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Para desativar o provisionamento de recursos em um grupo de volumes, use o comando de provisionamento completo com a opção de desativar o provisionamento de recursos. Um grupo de volumes será provisionado por recurso quando criado se todas as unidades forem capazes de DULBE e a configuração do storage array `resourceProvisionedVolumes` for `true`.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[start volumeGroup[_volumeGroupName_]] resourceProvisioning
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroupName`
+ a| 
+O grupo de volume que você deseja ativar o recurso de provisionamento de recursos. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+11,73

@@ -1,0 +1,56 @@
+---
+permalink: commands-a-z/set-storagearray-usersession.html 
+sidebar: sidebar 
+keywords: set, storage, array, user, session 
+summary: O comando Set storageArray userSession permite definir um tempo limite no System Manager, para que as sessões inativas dos usuários sejam desconetadas após um tempo especificado. 
+---
+= Defina a sessão do usuário do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray userSession` comando permite definir um tempo limite no System Manager, para que as sessões inativas dos usuários sejam desconetadas após um tempo especificado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Use este comando para executar uma destas operações:
+
+* Defina um tempo limite em segundos para sessões do usuário. O valor mínimo de tempo limite é de 900 segundos (15 minutos).
+* Desative os tempos limite da sessão definindo o valor para 0.
+
+
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray userSession sessionTimeout=n
+----
+
+
+== Nível mínimo de firmware
+
+8,41

@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/show-diskpool.html 
+sidebar: sidebar 
+keywords: show, disk pool 
+summary: O comando show diskPool retorna informações sobre um pool de discos. 
+---
+= Mostrar pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show diskPool` comando retorna informações sobre um pool de discos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando retorna essas informações sobre um pool de discos:
+
+* O estado (tal como ideal, degradado, falhou, ausente)
+* A capacidade total
+* Capacidade de preservação, capacidade utilizável e capacidade inutilizável
+* A capacidade usada, a capacidade livre, e a porcentagem cheia
+* O proprietário atual (o controlador no slot A ou o controlador no slot B )
+* O suporte de dados da unidade (SAS)
+* O tipo de suporte de unidade (HDD ou SSD)
+* O tipo de interface da unidade (Fibre Channel, iSCSI, InfiniBand, SAS)
+* Proteção contra perda de tabuleiro (sim ou não)
+* Capacidade segura - indica se o pool de discos é composto por todas as unidades com capacidade de segurança. As unidades com capacidade segura podem ser unidades FDE ou FIPS.
+* Seguro - indica se o pool de discos tem a segurança da unidade ativada (isso é chamado de seguro ativado).
+* As restantes definições de notificação de capacidade (aviso crítico e antecipado)
+* As definições de prioridade
+* Os volumes associados e a capacidade livre
+* As unidades associadas
+* Recursos de garantia de dados e presença de volumes habilitados para o Data Assurance
+* Recursos de provisionamento de recursos
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[show diskPool [_diskPoolName_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPool`
+ a| 
+O nome do pool de discos para o qual você está recuperando informações. Inclua o nome do pool de discos entre colchetes ([ ]). Se o nome do conjunto de discos tiver carateres especiais ou números, você deve incluir o nome do conjunto de discos em aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Use este comando para mostrar o conteúdo do pool de discos do perfil do storage array.
+
+
+
+== Nível mínimo de firmware
+
+7,83

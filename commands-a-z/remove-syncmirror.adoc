@@ -1,0 +1,82 @@
+---
+permalink: commands-a-z/remove-syncmirror.html 
+sidebar: sidebar 
+keywords: remove, synchronous, mirror 
+summary: O comando remove SyncMirror remove a relação de espelhamento entre o volume primário e o volume secundário em um par espelhado remoto. 
+---
+= Remova o espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `remove syncMirror` comando remove a relação de espelhamento entre o volume primário e o volume secundário em um par espelhado remoto.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+remove syncMirror (localVolume pass:quotes[[_volumeName_]] |
+localVolumes pass:quotes[[_volumeName1 ... volumeNameN_]])
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`localVolume`
+ a| 
+O nome do volume principal (o volume na matriz de armazenamento local) que você deseja remover. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou consistir apenas em números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`localVolumes`
+ a| 
+Os nomes de vários volumes primários (os volumes na matriz de armazenamento local) que você deseja remover. Insira os nomes dos volumes primários usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes de volume primário tiverem carateres especiais ou forem compostos apenas por números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

@@ -1,0 +1,61 @@
+---
+permalink: get-started/formatting-cli-commands.html 
+sidebar: sidebar 
+keywords: format, rules, cli, commands 
+summary: Aspas duplas que são usadas como parte de um nome ou rótulo exigem consideração especial quando você executa os comandos CLI e os comandos de script em um sistema operacional Windows, Linux ou Solaris. 
+---
+= Formate as regras para comandos CLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+Aspas duplas (" ") que são usadas como parte de um nome ou rótulo exigem consideração especial quando você executa os comandos CLI e os comandos de script em um sistema operacional Windows, Linux ou Solaris.
+
+Quando aspas duplas (" ") são parte de um nome ou valor, você deve inserir uma barra invertida (") antes de cada caractere de aspas duplas.
+
+Por exemplo:
+
+[listing]
+----
+-c "set storageArray userLabel=\"Engineering\";"
+----
+Neste exemplo, "Engineering" é o nome do storage array.
+
+Um segundo exemplo é:
+
+[listing]
+----
+-n \"My\"_Array
+----
+Neste exemplo, "My"_Array é o nome da matriz de armazenamento.
+
+Você não pode usar aspas duplas (" ") como parte de uma cadeia de carateres (também chamada de string literal) dentro de um comando de script. Por exemplo, você não pode inserir a seguinte cadeia de carateres para definir o nome da matriz de armazenamento como "Finanças" Array:
+
+[listing]
+----
+-c "set storageArray userLabel=\"\"Finance\"Array\";"
+----
+Em um sistema operacional Windows, se você não usar aspas duplas (" ") em torno de um nome, você deve inserir um cursor antes de cada caractere de script especial. Os carateres especiais são: [Caret], | , e .
+
+Insira um cursor antes de cada caractere especial de script quando usado com os terminais `-n`, `-o`, , `-f` e `-p`. Por exemplo, para especificar a matriz de armazenamento CLICLIENT, insira esta cadeia de carateres:
+
+[listing]
+----
+-n CLI^>CLIENT
+----
+Insira um caret ("caret") antes de cada caractere de script especial quando usado dentro de uma string literal em um comando de script. Por exemplo, para alterar o nome de um storage array para FINANCE_|_PAYROLL, digite a seguinte cadeia de carateres:
+
+[listing]
+----
+-c "set storageArray userLabel=\"FINANCE_^|_PAYROLL\";"
+----
+[NOTE]
+====
+Ao emitir comandos SMcli no prompt de comando, um (`\`caractere de barra invertida adicional ) é necessário como um caractere de escape no nome do caminho do arquivo de um arquivo de entrada ou saída ao usar o sistema operacional Windows. A barra invertida (`\`adicional ) deve ser incluída ao usar SMcli no modo seguro https, fornecendo a opção -u para especificar um usuário de gerenciamento de acesso baseado em função. *Exemplo:*
+
+[listing]
+----
+C:\\dir\\subdir\\filename
+----
+====

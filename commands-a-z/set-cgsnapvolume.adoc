@@ -1,0 +1,69 @@
+---
+permalink: commands-a-z/set-cgsnapvolume.html 
+sidebar: sidebar 
+keywords: set, consistency, group, snapshot, volume 
+summary: O comando set cgSnapvolume cria um nome exclusivo para um volume instantâneo de um grupo de consistência. 
+---
+= Definir o volume instantâneo do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set cgSnapVolume` comando cria um nome exclusivo para um volume instantâneo de um grupo de consistência.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set cgSnapVolume pass:quotes[[_cgSnapVolumeName_]]
+userLabel=pass:quotes["_cgSnapVolumeName_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`cgSnapVolume`
+ a| 
+O nome do volume do grupo de consistência que você deseja renomear. Inclua o nome do volume instantâneo do grupo de consistência entre colchetes ([ ]).
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome que você deseja dar ao volume instantâneo no grupo consistência. Inclua o novo nome do volume instantâneo em aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

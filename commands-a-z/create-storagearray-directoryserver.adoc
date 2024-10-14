@@ -1,0 +1,138 @@
+---
+permalink: commands-a-z/create-storagearray-directoryserver.html 
+sidebar: sidebar 
+keywords: create, storage, array, directory server 
+summary: O comando Create storageArray directoryServer permite adicionar um novo servidor de diretório a ser usado para autenticar e autorizar usuários. 
+---
+= Criar servidor de diretório de storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create storageArray directoryServer` comando permite adicionar um novo servidor de diretório a ser usado para autenticar e autorizar usuários.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+create storageArray directoryServer
+       [domainId=pass:quotes[_"domainId"_
+       domainNames=(_"domainName1"..."domainNameN"_)
+       serverUrl="_serverUrl"_]
+       [bindAccount=pass:quotes[_"username_" bindPassword="_password_"]]
+       searchBaseDN=pass:quotes[_"distinguishedName"_
+       usernameAttribute="_attributeName_"
+       groupAttributes=("_attrName1"..."attrNameN_")]
+        [skipConfigurationTest={true | false}]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`domainId`
+ a| 
+Permite especificar uma ID exclusiva para este domínio. Se não for especificado, será gerado um GUID exclusivo.
+
+
+
+ a| 
+`domainNames`
+ a| 
+Permite especificar um ou mais nomes de domínio válidos para o servidor de diretórios. Se você inserir mais de um nome, separe os valores com um espaço.
+
+
+
+ a| 
+`serverUrl`
+ a| 
+Permite especificar a URL para acessar o servidor LDAP na forma de ldap[s]://hostAddress:port. Se o protocolo LDAPS for usado, verifique se o(s) certificado(s) raiz/intermediário(s) para validar o certificado assinado do servidor de diretório é importado usando os comandos de certificado.
+
+
+
+ a| 
+`bindAccount`
+ a| 
+Permite que você especifique o nome de usuário ou o ID de vinculação a ser usado como a conta de vinculação.
+
+
+
+ a| 
+`bindPassword`
+ a| 
+Permite especificar a palavra-passe a utilizar como palavra-passe de ligação.
+
+
+
+ a| 
+`searchBaseDN`
+ a| 
+Permite especificar a base de pesquisa Nome distinto para procurar objetos de usuário LDAP para determinar a associação ao grupo.
+
+
+
+ a| 
+`usernameAttribute`
+ a| 
+Permite que você especifique o atributo a ser usado para procurar objetos de usuário para determinar a associação ao grupo. Se especificado, a string deve conter a variável `+{uid}+` que será substituída pelo nome de usuário usado durante o login. Exemplo: `+sAMAccountName={uid}+`
+
+
+
+ a| 
+`groupAttributes`
+ a| 
+Permite definir um ou mais atributos de grupo a serem usados para procurar nomes distintos de grupo. Nomes distintos são usados para determinar associação de grupo para mapeamento de funções.
+
+[NOTE]
+====
+Se você inserir mais de um grupo, separe os valores com um espaço.
+
+====
+[NOTE]
+====
+Usar este parâmetro irá limpar os grupos existentes.
+
+====
+
+
+ a| 
+`skipConfigurationTest`
+ a| 
+Permite-lhe ignorar o teste de configuração antes de a configuração ser guardada. A predefinição é `false`.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+SMcli -n Array1 -c "create storageArray directoryServer
+domainNames=("company.com") serverUrl="ldap://hqldap.company.com:389"
+bindAccount="dummyBindDN" bindPassword="dummyPassword"
+searchBaseDN="OU=_Users,DC=hq, DC=company,DC=com"
+usernameAttributes="sAMAccountName={uid}" groupAttributes="memberOf";"
+
+SMcli completed successfully.
+----

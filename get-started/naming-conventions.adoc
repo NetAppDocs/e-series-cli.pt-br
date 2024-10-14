@@ -1,0 +1,59 @@
+---
+permalink: get-started/naming-conventions.html 
+sidebar: sidebar 
+keywords: name, conventions 
+summary: Os nomes podem ter um máximo de 30 carateres. 
+---
+= Convenções de nomenclatura
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* Os nomes podem ter um máximo de 30 carateres.
+* Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes dos seguintes componentes:
++
+** Storage arrays
+** Grupos de acolhimento
+** Hosts
+** Grupos de volume
+** Pools de discos dinâmicos
+** Volumes
+** Portas de host HBA
+
+
+* Você deve usar nomes exclusivos. Se você não usar nomes exclusivos, o firmware do controlador retornará um erro.
+* Se o nome contiver mais de uma palavra, hífens ou sublinhados, coloque o nome em aspas duplas (" """). Em alguns usos, você também deve cercar o nome com colchetes ([ ]). A descrição de cada parâmetro indica se você precisa incluir um parâmetro em aspas duplas, colchetes ou ambos.
+* A cadeia de carateres de nome não pode conter uma nova linha.
+* Em sistemas operacionais Windows, você deve incluir o nome entre dois backslashes ('), além de outros delimitadores. Por exemplo, o nome a seguir é usado em um comando executado em um sistema operacional Windows:
++
+[listing]
+----
+[\“Engineering\”]
+----
+* Para um sistema operacional UNIX e, quando usado em um arquivo de script, o nome aparece como no exemplo a seguir:
++
+[listing]
+----
+[“Engineering”]
+----
+* Quando você insere um World Wide Identifier (WWID) de uma porta host HBA, alguns usos exigem que você cerque o WWID com aspas duplas. Em outros usos, você deve cercar o WWID com colchetes angulares (). A descrição do parâmetro WWID indica se você precisa incluir o WWID em aspas duplas ou colchetes angulares.
+
+
+
+
+== Introduzir nomes numéricos
+
+Quando o software de gerenciamento de armazenamento configura automaticamente uma matriz de armazenamento, o software de gerenciamento de armazenamento atribui nomes que consistem em carateres numéricos. Nomes que consistem apenas em carateres numéricos são nomes válidos. No entanto, os nomes de carateres numéricos devem ser tratados de forma diferente dos nomes que começam com carateres alfabéticos.
+
+* Nomes que são apenas números, como 1 ou 2
+* Nomes que começam com um número, como 1Disk ou 32Volume
+* `[\“1\”]`
+* `[\“1Disk\”]`
+
+
+[NOTE]
+====
+Se você tiver alguma dúvida sobre a validade de um nome, use aspas duplas e colchetes. O uso de ambos garante que o nome funciona e não causa problemas de processamento.
+
+====

@@ -1,0 +1,88 @@
+---
+permalink: commands-a-z/set-drive-nativestate.html 
+sidebar: sidebar 
+keywords: set, foreign, drive, native 
+summary: 'O comando set drive nativeState adiciona as unidades em falta (estrangeiras) de volta ao grupo de volume original e para torná-las parte do grupo de volumes na nova matriz de armazenamento.' 
+---
+= Defina a unidade externa como nativa
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set drive nativeState` comando adiciona as unidades (estrangeiras) ausentes de volta ao grupo de volume original e para torná-las parte do grupo de volumes na nova matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Uma unidade é considerada nativa quando faz parte de um grupo de volumes em um storage array. Uma unidade é considerada estranha quando não pertence a um grupo de volumes em uma matriz de armazenamento ou quando não é importada com as unidades de um grupo de volumes que são transferidas para uma nova matriz de armazenamento. Esta última falha cria um grupo de volumes incompleto no novo storage array.
+
+Use esta operação apenas para recuperação de emergência: Quando uma ou mais unidades precisarem ser alteradas de um status de unidade estrangeira e retornadas a um status nativo dentro de seu grupo de volume original.
+
+[NOTE]
+====
+*Possível corrupção de dados ou perda de dados* -- usar este comando por razões diferentes do que é declarado anteriormente pode resultar em perda de dados sem notificação.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set (drive=pass:quotes[(_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_)] | drives=pass:quotes[(_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_)] |
+allDrives) nativeState
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drive` ou `drives`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800, E5700, EF600 e EF300 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`allDrives`
+ a| 
+A definição para selecionar todas as unidades.
+
+|===
+
+
+== Notas
+
+ `drive`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+7,60 adiciona a `drawerID` entrada do usuário.

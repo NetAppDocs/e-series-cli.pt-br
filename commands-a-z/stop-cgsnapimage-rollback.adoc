@@ -1,0 +1,111 @@
+---
+permalink: commands-a-z/stop-cgsnapimage-rollback.html 
+sidebar: sidebar 
+keywords: stop, consistency, group, snapshot, rollback 
+summary: O comando stop cgSnapImage rollback pára uma operação de reversão para volumes de base de membros em um grupo de consistência de snapshot. 
+---
+= Parar a reversão de snapshot do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop cgSnapImage rollback` comando interrompe uma operação de reversão para volumes de base de membros em um grupo de consistência de snapshot.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Cancelar uma operação de reversão de snapshot de grupo de consistência deixa o volume base em um estado indeterminado com dados potencialmente inválidos ou inconsistentes. O volume instantâneo do grupo de consistência relacionado torna-se desativado e inutilizável.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[stop cgSnapImage["_snapCGID:imageID_"]] rollback
+memberVolumeSet pass:quotes[("_memberVolumeName1_" ... "_memberVolumeNamen_")]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`cgSnapImage`
+ a| 
+O nome da imagem instantânea do grupo de consistência para a qual você deseja interromper uma operação de reversão. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`memberVolumeSet`
+ a| 
+O nome de um ou mais volumes de base de membros em um grupo de consistência que você deseja interromper uma operação de reversão. Inclua o nome do volume base de cada membro em aspas duplas (" ") entre parênteses.
+
+Você pode inserir mais de um nome de volume de base de membro. Inclua todos os nomes de volume base de membros em um conjunto de colchetes ([ ]). Inclua o nome do volume base de cada membro em aspas duplas (" "). Separe o nome do volume base de cada membro com um espaço.
+
+Quando o `memberVolumeSet` parâmetro não é usado, o processo de reversão se aplica a todos os volumes de membros do grupo de consistência.
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de instantâneos
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser parar uma operação de reversão para a imagem de snapshot mais recente em um grupo de consistência inteiro que tem o nome CG1, você usaria este comando:
+
+[listing]
+----
+stop cgSnapImage ["CG1:newest"] rollback;
+----
+Para parar uma operação de reversão para a imagem instantânea 12345 para os membros de volume base memVol1, memVol2 e memVol3 em um grupo de consistência que tenha o nome CG2, você usaria este comando:
+
+[listing]
+----
+stop cgSnapImage ["CG2:12345"] rollback memberVolumeset=("memVol1 memVol2 memVol3");
+----
+
+
+== Nível mínimo de firmware
+
+7,83

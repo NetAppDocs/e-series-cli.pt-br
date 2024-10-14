@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/set-storagearray-unnameddiscoverysession.html 
+sidebar: sidebar 
+keywords: set, storage, array, unnamed, discovery, session 
+summary: O comando Set storageArray unnamedDiscoverySession permite que o storage array participe de sessões de descoberta sem nome. 
+---
+= Defina a sessão de descoberta sem nome do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray unnamedDiscoverySession` comando permite que o storage array participe de sessões de descoberta sem nome.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray unnamedDiscoverySession=(TRUE | FALSE)
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`unnamedDiscoverySession`
+ a| 
+Este parâmetro liga ou desliga sessões de descoberta sem nome. Defina o parâmetro como `TRUE` para ativar sessões de descoberta sem nome. Defina o parâmetro como `FALSE` para desativar sessões de descoberta sem nome.
+
+|===
+
+
+== Notas
+
+A descoberta é o processo em que os iniciadores determinam os alvos disponíveis. A descoberta ocorre na inicialização/inicialização e também se a topologia do barramento mudar, por exemplo, se um dispositivo extra for adicionado.
+
+Uma sessão de descoberta sem nome é uma sessão de descoberta que é estabelecida sem especificar um ID de destino na solicitação de login. Para sessões de descoberta sem nome, nem o ID de destino nem o ID de grupo de portal de destino estão disponíveis para os alvos.
+
+
+
+== Nível mínimo de firmware
+
+7,10

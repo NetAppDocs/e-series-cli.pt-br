@@ -1,0 +1,405 @@
+---
+permalink: commands-a-z/show-storagearray.html 
+sidebar: sidebar 
+keywords: show, storage, array 
+summary: O comando show storageArray retorna informações de configuração sobre o storage array. 
+---
+= Mostrar storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray` comando retorna informações de configuração sobre o storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Os parâmetros retornam listas de valores para os componentes e recursos no storage de armazenamento. Você pode inserir o comando com um único parâmetro ou mais de um parâmetro. Se você inserir o comando sem nenhum parâmetro, todo o perfil do storage array será exibido (que é a mesma informação que se você inseriu o `*profile*` parâmetro).
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray
+[autoSupport| autoSupportConfig | profile |
+batteryAge | connections | defaultHostType | healthStatus |
+hostTypeTable | hotSpareCoverage | features | time |
+volumeDistribution | longRunningOperations | summary | preferredVolumeOwners |
+iscsiNegotiationDefaults | unconfiguredIscsiInitiators | autoLoadBalancingEnable |
+cacheMirrorDataAssuranceCheckEnable | hostConnectivityReporting]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`autoLoadBalancingEnable`
+ a| 
+O parâmetro para retornar o status de habilitação do recurso balanceamento de carga automático.
+
+[NOTE]
+====
+Quando o recurso balanceamento de carga automático estiver ativado, o recurso Relatório de conetividade do host também será ativado.
+
+====
+
+
+ a| 
+`autoSupport`
+ a| 
+[NOTE]
+====
+Este parâmetro é válido apenas para matrizes de armazenamento E2800 ou E5700 em execução com um `https` tipo de cliente. Para matrizes de armazenamento E2800 ou E5700 em execução com um tipo de cliente, utilize o `autoSupportConfig` parâmetro.
+
+====
+
+
+ a| 
+`autoSupportConfig`
+ a| 
+O parâmetro para retornar informações sobre o estado atual da operação para coletar automaticamente dados de suporte. As seguintes informações são retornadas:
+
+* Se a operação está ativada ou desativada
+* A localização da pasta onde o arquivo de dados de suporte está localizado
+
+
+[NOTE]
+====
+Este parâmetro é válido apenas para matrizes de armazenamento E2800 ou E5700 em execução com um `symbol` tipo de cliente. Para matrizes de armazenamento E2800 ou E5700 em execução com um `https` tipo de cliente, utilize o `*autoSupport*` parâmetro.
+
+====
+
+
+ a| 
+`batteryAge`
+ a| 
+O parâmetro para mostrar o status, a idade da bateria em dias e o número de dias até que a bateria precise ser substituída. É apresentada a informação para ambas as baterias.
+
+
+
+ a| 
+`cacheMirrorDataAssuranceCheckEnable`
+ a| 
+O parâmetro para retornar o status de habilitação do recurso de garantia de dados do espelho de cache.
+
+
+
+ a| 
+`connections`
+ a| 
+O parâmetro para mostrar uma lista de onde as portas do canal da unidade estão localizadas e onde os canais da unidade estão conetados.
+
+
+
+ a| 
+`defaultHostType`
+ a| 
+O parâmetro para mostrar o tipo de host padrão e o índice de tipo de host.
+
+
+
+ a| 
+`features`
+ a| 
+O parâmetro para mostrar a configuração do recurso do storage array.
+
+
+
+ a| 
+`healthStatus`
+ a| 
+O parâmetro para mostrar a integridade, as propriedades lógicas e as propriedades do componente físico do storage array.
+
+
+
+ a| 
+`hostConnectivityReporting`
+ a| 
+O parâmetro para retornar o status de capacitação do recurso de relatório de conetividade do host.
+
+
+
+ a| 
+`hostTypeTable`
+ a| 
+O parâmetro para mostrar uma tabela de todos os tipos de host conhecidos pelo controlador. Cada linha na tabela mostra um índice de tipo de host e a plataforma que o índice de tipo de host representa.
+
+
+
+ a| 
+`hotSpareCoverage`
+ a| 
+O parâmetro para mostrar informações sobre quais volumes da matriz de armazenamento têm cobertura hot spare e quais volumes não.
+
+
+
+ a| 
+`iscsiNegotiationDefaults`
+ a| 
+O parâmetro para retornar informações sobre as configurações de nível de conexão que estão sujeitas a negociação do iniciador-alvo.
+
+
+
+ a| 
+`longRunningOperations`
+ a| 
+O parâmetro para mostrar as operações de execução longa para cada grupo de volumes e cada volume no storage array.
+
+O `longRunningOperation` parâmetro retorna esta informação:
+
+* Nome do grupo de volumes ou volume
+* Operação de longa duração
+* Estado
+* % concluída
+* Tempo restante
+
+
+
+
+ a| 
+`preferredVolumeOwners`
+ a| 
+O parâmetro para mostrar o proprietário do controlador preferido para cada volume na matriz de armazenamento.
+
+
+
+ a| 
+`profile`
+ a| 
+O parâmetro para mostrar todas as propriedades dos componentes lógicos e os componentes físicos que compõem o storage array. A informação é apresentada em vários ecrãs.
+
+[NOTE]
+====
+O parâmetro profile retorna informações detalhadas sobre o storage array. A informação abrange vários ecrãs num visor. Talvez seja necessário aumentar o tamanho do buffer de exibição para ver todas as informações. Como essas informações são tão detalhadas, você pode querer salvar a saída desse parâmetro em um arquivo.
+
+====
+Use o seguinte comando para salvar a saída do perfil em um arquivo:
+
+[listing]
+----
+c:\...\smX\client>smcli 123.45.67.88
+123.45.67.89 -c "show storagearray profile;"
+-o "c:\folder\storagearray
+profile.txt"
+----
+
+
+ a| 
+`summary`
+ a| 
+O parâmetro para mostrar uma lista concisa de informações sobre a configuração do storage array.
+
+
+
+ a| 
+`time`
+ a| 
+O parâmetro para mostrar a hora atual para a qual ambos os controladores no storage array são definidos.
+
+
+
+ a| 
+`unconfiguredIscsiInitiators`
+ a| 
+O parâmetro para retornar uma lista de iniciadores que foram detetados pelo storage array mas ainda não estão configurados na topologia do storage array.
+
+
+
+ a| 
+`volumeDistribution`
+ a| 
+O parâmetro para mostrar o proprietário atual do controlador para cada volume na matriz de armazenamento.
+
+|===
+
+
+== Notas
+
+O `profile` parâmetro mostra informações detalhadas sobre o storage array. As informações são apresentadas em vários ecrãs num monitor de visualização. Talvez seja necessário aumentar o tamanho do buffer de exibição para ver todas as informações. Como essas informações são tão detalhadas, você pode querer salvar a saída desse parâmetro em um arquivo. Para salvar a saída em um arquivo, execute o `show storageArray` comando que se parece com este exemplo.
+
+[listing]
+----
+-c "show storageArray profile;" -o "c:\\folder\\storageArrayProfile.txt"
+----
+A sintaxe de comando anterior é para um host que esteja executando um sistema operacional Windows. A sintaxe real varia dependendo do seu sistema operacional.
+
+Quando você salva informações em um arquivo, você pode usar as informações como um Registro de sua configuração e como um auxílio durante a recuperação.
+
+[NOTE]
+====
+Embora o perfil de storage array retorne uma grande quantidade de dados que estão claramente rotulados, o que há de novo na versão 8,41 é a informação adicional de relatórios de vida útil para unidades SSD em matrizes de armazenamento E2800 ou E5700. Enquanto anteriormente o relatório de vida útil incluía informações sobre a contagem média de apagamento e blocos de reposição restantes, agora inclui a percentagem de resistência utilizada. A percentagem de resistência utilizada é a quantidade de dados gravados nas unidades SSD até à data dividida pelo limite teórico total de escrita para as unidades.
+
+====
+O `batteryAge` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+Battery status: Optimal
+    Age: 1 day(s)
+    Days until replacement: 718 day(s)
+----
+As bandejas de controladora mais recentes não suportam o `batteryAge` parâmetro.
+
+O `defaultHostType` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+Default host type: Linux (Host type index 6)
+----
+O `healthStatus` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+Storage array health status = optimal.
+----
+O `hostTypeTable` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+NVSRAM HOST TYPE INDEX DEFINITIONS
+HOST TYPE                         ALUA/AVT STATUS   ASSOCIATED INDEXS
+AIX MPIO                          Disabled          9
+AVT_4M                            Enabled           5
+Factory Default                   Disabled          0
+HP-UX                             Enabled           15
+Linux (ATTO)                      Enabled           24
+Linux (DM-MP)                     Disabled          6
+Linux (Pathmanager)               Enabled           25
+Mac OS                            Enabled           22
+ONTAP                             Disabled          4
+SVC                               Enabled           18
+Solaris (v11 or Later)            Enabled           17
+Solaris (version 10 or earlier)   Disabled          2
+VMWare                            Enabled           10 (Default)
+Windows                           Enabled           1
+----
+O `hotSpareCoverage` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+The following volume groups are not protected: 2, 1
+Total hot spare drives: 0
+   Standby: 0
+   In use: 0
+----
+O `features` parâmetro retorna informações que mostram quais recursos estão ativados, desativados, avaliação e disponíveis para serem instalados. Este comando retorna as informações da função em um formato semelhante a este:
+
+[listing]
+----
+PREMIUM FEATURE           STATUS
+
+asyncMirror               Trial available
+syncMirror                Trial available/Deactivated
+thinProvisioning          Trial available
+driveSlotLimit            Enabled (12 of 192 used)
+snapImage                 Enabled (0 of 512 used) - Trial version expires m/d/y
+snapshot                  Enabled (1 of 4 used)
+storagePartition          Enabled (0 of 2 used)
+volumeCopy                Enabled (1 of 511 used)
+SSDSupport                Disabled (0 of 192 used) - Feature Key required
+driveSecurity             Disabled - Feature Key required
+enterpriseSecurityKeyMgr  Disabled - Feature Key required
+highPerformanceTier       Disabled - Feature Key required
+----
+O `time` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+Controller in Slot A
+
+Date/Time: Thu Jun 03 14:54:55 MDT 2004
+Controller in Slot B
+
+Date/Time: Thu Jun 03 14:54:55 MDT 2004
+----
+O `longRunningOperations` parâmetro retorna informações neste formulário:
+
+[listing]
+----
+LOGICAL DEVICES  OPERATION         STATUS        TIME REMAINING
+Volume-2         Volume Disk Copy  10% COMPLETED  5 min
+----
+Os campos de informação retornados pelo `longRunningOperations` parâmetro têm estes significados:
+
+* `NAME` é o nome de um volume que está atualmente em uma operação de longa duração. O nome do volume deve ter o "volume" como prefixo.
+* `OPERATION` lista a operação que está sendo executada no grupo de volumes ou volume.
+* `*% COMPLETE*` mostra quanto da operação de longa duração foi executada.
+* `STATUS` pode ter um destes significados:
++
+** Pendente -- a operação de longa duração não foi iniciada, mas será iniciada após a operação atual ser concluída.
+** Em andamento -- a operação de longa duração foi iniciada e será executada até ser concluída ou parada por solicitação do usuário.
+
+
+* `TIME REMAINING` indica a duração restante para concluir a operação de longa duração atual. A hora está em um formato "horas minutos". Se restarem menos de uma hora, apenas os minutos são apresentados. Se permanecer menos de um minuto, é apresentada a mensagem[.code]``less than a minute`` " ".
+
+
+O `volumeDistribution` parâmetro retorna informações neste formulário.
+
+[listing]
+----
+volume name: 10
+     Current owner is controller in slot: A
+
+volume name: CTL 0 Mirror Repository
+     Current owner is controller in slot: A
+
+volume name: Mirror Repository 1
+     Current owner is controller in slot:A
+
+volume name: 20
+     Current owner is controller in slot:A
+
+volume name: JCG_Remote_MirrorMenuTests
+     Current owner is controller in slot:A
+----
+
+
+== Nível mínimo de firmware
+
+5,00 adiciona o `defaultHostType` parâmetro.
+
+5,43 adiciona o `summary` parâmetro.
+
+6,10 adiciona o `volumeDistribution` parâmetro.
+
+6,14 adiciona o `connections` parâmetro.
+
+7,10 adiciona o `autoSupportConfig` parâmetro.
+
+7,77 adiciona o `longRunningOperations` parâmetro.
+
+7,83 retorna informações que incluem o suporte para os novos recursos lançados no software de gerenciamento de armazenamento versão 10,83. Além disso, as informações retornadas foram expandidas para mostrar o status dos recursos no storage array.
+
+8,30 adiciona o `autoLoadBalancingEnable` parâmetro.
+
+8,40 adiciona o `autoSupport` parâmetro.
+
+O 8,40 deprecia `autoSupportConfig` o parâmetro para matrizes de armazenamento E2800 ou E5700 em execução com um `https` tipo de cliente.
+
+O 8,41 adiciona o monitoramento da vida útil das unidades SSD ao perfil da matriz de armazenamento. Essas informações são exibidas somente para matrizes de armazenamento E2800 e E5700.
+
+8,42 adiciona o `hostConnectivityReporting` parâmetro.
+
+8,63 adiciona a entrada volumes provisionados por recurso sob os `profile` resultados dos parâmetros.

@@ -1,0 +1,100 @@
+---
+permalink: commands-a-z/show-alldrives-performancestats.html 
+sidebar: sidebar 
+keywords: show, drive, performance, statistics 
+summary: O comando show allDrives performanceStats retorna informações sobre o desempenho da unidade. 
+---
+= Mostrar estatísticas de desempenho da unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show allDrives performanceStats` comando retorna informações sobre o desempenho da unidade.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Para cada unidade na matriz de armazenamento, este comando retorna as seguintes informações:
+
+* A matriz de armazenamento que contém a unidade ou unidades
+* A latência de e/S atual
+* A latência máxima de e/S
+* A latência mínima de e/S
+* A latência média de e/S
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allDrives |drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drives pass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]]) performanceStats
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allDrives`
+ a| 
+A configuração para retornar informações sobre todas as unidades no storage de armazenamento.
+
+
+
+ a| 
+`drive` ou `drives`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+ `drive`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+O `show drive performanceStats` comando retorna estatísticas de desempenho da unidade como mostrado neste exemplo:
+
+[listing]
+----
+"Performance Monitor Statistics for Storage Array: remote_pp -
+Date/Time: 10/23/12 3:47:27 PM -
+Polling interval in seconds: 5"
+
+"Objects","Current IO Latency","Maximum IO Latency","Minimum IO Latency",
+"Average IO Latency"
+
+"Capture Iteration: 1","","","",""
+"Date/Time: 10/23/12 3:47:27 PM","","","",""
+"Drive Tray 0, Slot 1","0.0","0.0","0.0","0.0"
+----
+
+
+== Nível mínimo de firmware
+
+7,86

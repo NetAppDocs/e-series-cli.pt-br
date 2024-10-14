@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/enable-storagearray-feature-file.html 
+sidebar: sidebar 
+keywords: enable, storage, array, feature, file, command, permanent, upgrade, trial period 
+summary: O comando enable storageArray Feature file habilita um recurso para uma atualização permanente para o storage array ou um período de teste. 
+---
+= Ative o recurso storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `enable storageArray feature file` comando habilita um recurso para uma atualização permanente para o storage array ou um período de teste.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Este comando executa uma destas ações:
+
+* Ativa uma chave de recurso para uma atualização permanente de um recurso
+* Ativa uma chave de recurso para uma atualização permanente de um pacote de recursos
+* Ativa um recurso para um período de teste
+
+
+Um pacote de recursos é um conjunto predefinido de vários recursos, como particionamento de armazenamento e espelhamento síncrono. Esses recursos são combinados para a conveniência dos usuários. Quando os usuários instalam um pacote de recursos, todos os recursos do pacote de recursos são instalados de uma vez.
+
+Cada recurso é gerenciado por uma chave de licença que é gerada para um pacote de recursos ou recursos específicos e um array de armazenamento específico. A chave de licença é entregue como um arquivo executado para aplicar a licença para o recurso.
+
+Para determinar quais recursos são carregados no storage array, execute o `show storageArray features` comando. O `show storageArray features` comando lista todos os recursos instalados na matriz de armazenamento, quais recursos podem ser avaliados por um período de teste, quais recursos estão habilitados e quais recursos estão desativados.
+
+
+
+== Sintaxe para ativar uma chave de recurso
+
+[listing, subs="+macros"]
+----
+pass:quotes[enable storageArray feature file="_filename_"]
+----
+O `file` parâmetro identifica o caminho do arquivo e o nome do arquivo de um arquivo de chave de recurso válido. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\dnld\ftrkey.key"
+----
+Nomes de arquivo válidos para arquivos de chave de recurso terminam com `.key` uma extensão.
+
+Você precisará de um arquivo de chave de recurso para cada recurso que deseja habilitar.
+
+
+
+== Sintaxe para ativar um pacote de recursos
+
+[listing, subs="+macros"]
+----
+pass:quotes[enable storageArray featurePack file="_filename_"]
+----
+O `file` parâmetro identifica o caminho do arquivo e o nome do arquivo de um arquivo de pacote de recursos válido. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\dnld\ftrpk.key"
+----
+Nomes de arquivo válidos para arquivos de chave de recurso terminam com `.key` uma extensão.
+
+
+
+== Sintaxe para habilitar um recurso por um período de teste
+
+[listing, subs="+macros"]
+----
+pass:quotes[enable storageArray feature=_featureAttributeList_]
+----
+Para avaliar um recurso para um período de teste, você pode inserir um ou mais dos seguintes valores de atributo para o `featureAttributeList`. Se você inserir mais de um valor de atributo, separe os valores com um espaço.
+
+* `driveSecurity`
+
+
+
+
+== Nível mínimo de firmware
+
+8,25 remove todos os atributos que não são mais válidos.

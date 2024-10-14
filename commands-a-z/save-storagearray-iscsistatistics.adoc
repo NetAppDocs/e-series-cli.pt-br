@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/save-storagearray-iscsistatistics.html 
+sidebar: sidebar 
+keywords: save, storage, array, iscsi, statistics 
+summary: O comando save storageArray iscsiStatistics salva as estatísticas de desempenho iSCSI do storage array em um arquivo. 
+---
+= Guardar estatísticas iSCSI da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray iscsiStatistics` comando salva as estatísticas de desempenho iSCSI da matriz de armazenamento em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+[NOTE]
+====
+Este comando está obsoleto e é substituído pelo xref:save-storagearray-hostportstatistics.adoc[Salvar estatísticas da porta do host do storage array]comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray iscsiStatistics [(raw | baseline)] file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`raw`
+ a| 
+As estatísticas coletadas são todas estatísticas do início do dia do controlador. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`baseline`
+ a| 
+As estatísticas que são coletadas são todas estatísticas a partir do momento em que os controladores foram redefinidos para zero usando o `reset storageArray ibStatsBaseline` comando. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as estatísticas de desempenho. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\iscsistat.csv"`
+
+O nome padrão do arquivo que contém as estatísticas de desempenho iSCSI é `iscsi-statistics.csv`. Você pode usar qualquer nome de arquivo, mas você deve usar a `.csv` extensão.
+
+|===
+
+
+== Notas
+
+Se não tiver redefinido as estatísticas da linha de base iSCSI desde o início do dia do controlador, a hora no início do dia é a hora da linha de base predefinida.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+8,41 este comando está obsoleto.

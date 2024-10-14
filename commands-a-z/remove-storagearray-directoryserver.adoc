@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/remove-storagearray-directoryserver.html 
+sidebar: sidebar 
+keywords: remove, storage array, directory, server, role, mapping 
+summary: O comando remove storageArray directoryServer remove os mapeamentos de função definidos para o servidor de diretório especificado. 
+---
+= Remover mapeamento de função do servidor de diretório de storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `remove storageArray directoryServer` comando remove os mapeamentos de função definidos para o servidor de diretório especificado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+remove storageArray directoryServer pass:quotes[[_domainId_]]
+    (allGroupDNs | groupDNs=pass:quotes[(_groupDN1 ... groupDNN_))]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`directoryServer`
+ a| 
+Permite especificar o domínio, usando o ID do domínio, para o qual remover o mapeamento.
+
+
+
+ a| 
+`allGroupDNs`
+ a| 
+Permite remover todos os mapeamentos de nome distinto do grupo do domínio.
+
+
+
+ a| 
+`groupDNs`
+ a| 
+Permite especificar o nome distinto (DN) dos grupos a serem removidos.
+
+[NOTE]
+====
+Se você inserir mais de um grupo, separe os valores com um espaço.
+
+====
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "remove storageArray directoryServer ["domain1"]
+                    groupDNs=("CN=company-distlist,OU=Managed,
+                    OU=MyCompanyGroups,DC=hq,DC=mycompany,DC=com");"
+
+SMcli -n Array1 -c "remove storageArray directoryServer ["domain1"]
+                    allGroupDNs;"
+
+SMcli completed successfully.
+----

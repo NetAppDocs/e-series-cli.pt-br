@@ -1,0 +1,91 @@
+---
+permalink: commands-a-z/establish-asyncmirror-volume.html 
+sidebar: sidebar 
+keywords: establish, asynmirror, volume, asynchronous, mirrored, remote, storage, array, secondary, existing 
+summary: O comando establish asyncMirror volume completa um par espelhado assíncrono no storage array remoto adicionando um volume secundário a um grupo de espelhos assíncrono existente. 
+---
+= Estabeleça par espelhado assíncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `establish asyncMirror volume` comando conclui um par espelhado assíncrono no storage array remoto adicionando um volume secundário a um grupo de espelhos assíncrono existente.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Antes de executar este comando, o grupo de espelhos assíncronos deve existir e o volume primário deve existir no grupo de espelhos assíncronos. Depois que esse comando for concluído com êxito, o espelhamento assíncrono começa entre o volume primário e o volume secundário.
+
+Os dois volumes que compõem um par espelhado assíncrono funcionam como uma única entidade. Estabelecer um par espelhado assíncrono permite que você execute ações em todo o par espelhado versus os dois volumes individuais.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[establish asyncMirror volume="_secondaryVolumeName_"]
+pass:quotes[asyncMirrorGroup="_asyncMirrorGroupName_"]
+pass:quotes[primaryVolume="_primaryVolumeName_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume existente na matriz de armazenamento remoto que você deseja usar para o volume secundário. Coloque o nome do volume entre aspas duplas (" ").
+
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome de um grupo de espelhos assíncrono existente que você deseja usar para conter o par espelhado assíncrono. Inclua o nome do grupo de espelhos assíncronos em aspas duplas (" ").
+
+
+
+ a| 
+`primaryVolume`
+ a| 
+O nome de um volume existente na matriz de armazenamento local que você deseja usar para o volume principal. Coloque o nome do volume entre aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Um par assíncrono espelhado é composto por dois volumes, um volume primário e um volume secundário, que contêm cópias idênticas dos mesmos dados. O par espelhado faz parte de um grupo de espelhos assíncrono, o que permite que o par espelhado sincronize ao mesmo tempo que qualquer outro par espelhado dentro do grupo de espelhos assíncronos.
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Quando você escolhe o volume principal e o volume secundário, o volume secundário deve ser de tamanho igual ou maior que o volume primário. O nível RAID do volume secundário não precisa ser o mesmo que o volume primário.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

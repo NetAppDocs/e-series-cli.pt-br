@@ -1,0 +1,81 @@
+---
+permalink: commands-a-z/start-volumegroup-export.html 
+sidebar: sidebar 
+keywords: start, volume, group, export 
+summary: O comando start volumeGroup export move um grupo de volume para um estado exportado. 
+---
+= Iniciar a exportação do grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start volumeGroup export` comando move um grupo de volumes para um estado exportado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Em seguida, você pode remover as unidades que compõem o grupo de volumes e reinstalar as unidades em um storage diferente.
+
+[CAUTION]
+====
+Não execute estas etapas sem executar primeiro as etapas listadas em xref:../get-started/learn-about-volume-group-migration.html[Saiba mais sobre migração de grupo de volume.]
+
+====
+[NOTE]
+====
+No grupo de volumes, não é possível mover volumes associados aos recursos de um storage array para outro storage array.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[start volumeGroup [_volumeGroupName_]] export
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes que pretende exportar. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Quando esse comando for bem-sucedido, você pode executar o `start volumeGroup import` comando para terminar de mover o grupo de volume para um estado completo, o que torna o grupo de volume disponível para o novo storage array.
+
+Se este comando não for bem-sucedido porque problemas de hardware impediram a conclusão da exportação, use o `set volumeGroup forceState` comando. O `set volumeGroup forceState` comando permite que você use o `start volumeGroup import` comando para importar um grupo de volumes.
+
+Depois que o grupo de volumes estiver em um estado exportado ou em um estado forçado, você poderá remover as unidades que compõem o grupo de volumes do storage array. Você pode reinstalar as unidades em uma matriz de armazenamento diferente.
+
+
+
+== Nível mínimo de firmware
+
+7,10

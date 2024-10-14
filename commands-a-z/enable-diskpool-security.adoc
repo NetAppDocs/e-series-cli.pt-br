@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/enable-diskpool-security.html 
+sidebar: sidebar 
+keywords: enable, diskpool, security, command, convert, non secure, diskpool, support, arrays, role, context 
+summary: O comando Enable diskPool security converte um pool de discos não seguro em um pool de discos seguro. 
+---
+= Ative a segurança do pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `enable diskPool security` comando converte um pool de discos não seguro em um pool de discos seguro.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Todas as unidades que compõem o pool de discos devem ser seguras.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[enable diskPool [_diskPoolName_]] security
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPool`
+ a| 
+O nome do pool de discos que você deseja colocar no estado Segurança ativada. Inclua o identificador do pool de discos entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Cada nome do pool de discos deve ser exclusivo. Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para o rótulo do usuário. As etiquetas de utilizador podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

@@ -1,0 +1,161 @@
+---
+permalink: get-started/structure-of-a-script-command.html 
+sidebar: sidebar 
+keywords: structure, script command 
+summary: Todos os comandos de script têm a seguinte estrutura. 
+---
+= Estrutura de um comando de script
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+Todos os comandos de script têm a seguinte estrutura:
+
+[listing]
+----
+
+      *command operand-data* (*statement-data*)
+----
+* `command` identifica a ação a ser executada.
+* `operand-data` representa os objetos associados a um storage array que você deseja configurar ou gerenciar.
+* `statement-data` fornece as informações necessárias para executar o comando.
+
+
+A sintaxe para `_operand-data_` tem a seguinte estrutura:
+
+[listing]
+----
+(*object-type* | all *object-types* | [*qualifier*] (*object-type* [*identifier*] (*object-type* [*identifier*] | *object-types* [*identifier-list*])))
+----
+Um objeto pode ser identificado de quatro maneiras:
+
+* Object type -- Use quando o comando não está referenciando um objeto específico.
+* `*all*` Prefixo de parâmetro -- Use quando o comando estiver referenciando todos os objetos do tipo especificado no storage array (por exemplo, `*allVolumes*` ).
+* Colchetes -- Use ao executar um comando em um objeto específico para identificar o objeto (por exemplo, `*volume [engineering]*` ).
+* Uma lista de identificadores -- Use para especificar um subconjunto de objetos. Inclua os identificadores de objeto entre colchetes (por exemplo, `*volumes [sales engineering marketing]*` ).
+
+
+Um qualificador é necessário se você quiser incluir informações adicionais para descrever os objetos.
+
+O tipo de objeto e os identificadores associados a cada tipo de objeto são listados nesta tabela.
+
+[cols="2*"]
+|===
+| Tipo Objeto | Identificador 
+
+
+ a| 
+`*controller*`
+ a| 
+a ou b
+
+
+
+ a| 
+`*drive*`
+ a| 
+Para armários com gavetas, utilize a ID da bandeja, a ID da gaveta e a ID da ranhura. Como alternativa, apenas ID da bandeja e ID do slot.
+
+
+
+ a| 
+`*replacementDrive*`
+ a| 
+Para armários com gavetas, utilize a ID da bandeja, a ID da gaveta e a ID da ranhura. Como alternativa, apenas ID da bandeja e ID do slot.
+
+
+
+ a| 
+`*driveChannel*`
+ a| 
+Identificador do canal da unidade
+
+
+
+ a| 
+`*host*`
+ a| 
+Etiqueta do utilizador
+
+
+
+ a| 
+`*hostChannel*`
+ a| 
+Identificador do canal do host
+
+
+
+ a| 
+`*hostGroup*`
+ a| 
+Etiqueta do utilizador
+
+
+
+ a| 
+`*hostPort*`
+ a| 
+Etiqueta do utilizador
+
+
+
+ a| 
+`*iscsiInitiator*`
+ a| 
+Etiqueta de utilizador ou nome qualificado iSCSI (IQN)
+
+
+
+ a| 
+`*iscsiTarget*`
+ a| 
+Etiqueta do utilizador ou IQN
+
+
+
+ a| 
+`*storageArray*`
+ a| 
+Não aplicável
+
+
+
+ a| 
+`*tray*`
+ a| 
+ID da bandeja
+
+
+
+ a| 
+`*volume*`
+ a| 
+Somente o comando volume User label ou volume World Wide Identifier (WWID)(`set`)
+
+
+
+ a| 
+`*volumeCopy*`
+ a| 
+Etiqueta do usuário do volume de destino e, opcionalmente, a etiqueta do usuário do volume de origem
+
+
+
+ a| 
+`*volumeGroup*`
+ a| 
+Etiqueta do utilizador
+
+Os carateres válidos são alfanuméricos, um hífen e um sublinhado.
+
+|===
+Os dados da declaração são sob a forma de:
+
+* Parâmetro: Valor (como `*raidLevel=5*` )
+* Nome do parâmetro (como `*batteryInstallDate*` )
+* Nome da operação (como `*redundancyCheck*` )
+
+
+Uma entrada definida pelo usuário (como rótulo do usuário) é chamada de variável. Na sintaxe, ela é mostrada em itálico (como `trayID` ou `volumeGroupName`).

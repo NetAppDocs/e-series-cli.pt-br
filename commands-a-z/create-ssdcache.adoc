@@ -1,0 +1,109 @@
+---
+permalink: commands-a-z/create-ssdcache.html 
+sidebar: sidebar 
+keywords: create, ssd, cache 
+summary: 'O comando Create ssdCache cria um cache de leitura para um storage array usando discos de estado sólido (SSDs).' 
+---
+= Crie cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create ssdCache` comando cria um cache de leitura para um storage array usando discos de estado sólido (SSDs).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+
+
+== Contexto
+
+O uso de SSDs de alta performance para armazenar dados de leitura em cache melhora a performance de e/S da aplicação e os tempos de resposta, além de oferecer melhorias contínuas de performance entre diferentes workloads, especialmente para workloads de alta IOP. O cache SSD maximiza o uso de SSDs rápidos caros. O cache SSD funciona além do cache primário na DRAM da controladora. Com o cache do controlador, os dados são armazenados na DRAM após uma leitura do host. Com o cache SSD, os dados são copiados de volumes base especificados pelo usuário e armazenados em cache em SSDs.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create ssdCache userLabel=pass:quotes[_"ssdCacheName"_]
+drives=pass:quotes[_(trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1 ... trayIDn,[drawerIDn,_]]pass:quotes[_slotIDn_)]
+[updateExistingVolumes=(TRUE|FALSE)]
+[securityType=(none|capable|enabled)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja nomear o novo cache SSD. Coloque o nome do cache SSD em aspas duplas (" ").
+
+
+
+ a| 
+`drives`
+ a| 
+As unidades que você deseja usar para criar o cache SSD. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`updateExistingVolumes`
+ a| 
+Este parâmetro opcional especifica se o cache SSD deve ser habilitado para todos os volumes existentes na matriz de armazenamento. Para ativar o cache SSD para todos os volumes existentes, defina este parâmetro como `TRUE`. Se quiser ativar o cache SSD para volumes individuais posteriormente, defina este parâmetro como `FALSE`. O valor padrão é `TRUE`.
+
+
+
+ a| 
+`securityType`
+ a| 
+Este parâmetro opcional especifica o nível de segurança ao criar um cache SSD. Estas definições são válidas:
+
+* `none` - O cache SSD não é seguro.
+* `capable` - O cache SSD é capaz de ter segurança definida, mas a segurança não foi ativada.
+* `enabled` - O cache SSD tem segurança ativada.
+
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para o nome. Os nomes podem ter um máximo de 30 carateres.
+
+Um storage array pode ter apenas um cache SSD.
+
+Somente os volumes criados usando unidades de disco rígido podem usar o cache SSD. Não é possível ativar a cache SSD em imagens de instantâneos.
+
+Se todos os SSDs no cache SSD forem compatíveis com a garantia de dados (DA) e o recurso DA estiver ativado, O DA será ativado automaticamente para o cache SSD e não poderá ser desativado. Além disso, não é possível adicionar SSDs que não sejam compatíveis com DA a um cache SSD habilitado PARA DA.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+8,20 _M3PT - as unidades FDE agora são suportadas. Adicionado o `securityType` parâmetro.
+
+O 11,80 adiciona suporte a array EF600 e EF300

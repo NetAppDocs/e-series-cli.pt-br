@@ -1,0 +1,67 @@
+---
+permalink: commands-a-z/set-storagearray-hostconnectivityreporting.html 
+sidebar: sidebar 
+keywords: enable, disable, host, connectivity, report 
+summary: O comando Set storageArray hostConnectivityReporting ativa ou desativa os relatórios de conetividade do host no controlador. 
+---
+= Ative ou desative o relatório de conetividade do host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray hostConnectivityReporting` comando ativa ou desativa o relatório de conetividade do host no controlador.
+
+
+
+== Arrays compatíveis
+
+Esse comando se aplica a um storage array individual E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray hostConnectivityReporting (enable | disable)
+----
+
+
+== Contexto
+
+Quando você ativa a geração de relatórios de conetividade de host no storage array, o storage monitora continuamente a conexão entre os controladores do storage array e os hosts configurados e o alerta se a conexão for interrompida devido a um cabo solto, danificado ou ausente ou outros problemas com o host. Você também será notificado se o tipo de host for especificado incorretamente na matriz de armazenamento (o que pode resultar em problemas de failover).
+
+[NOTE]
+====
+Para desativar os relatórios de conetividade do host, você deve primeiro desativar o balanceamento de carga automático.
+
+====
+[NOTE]
+====
+Você pode manter o relatório de conetividade do host habilitado se o balanceamento de carga automático estiver desativado.
+
+====
+[NOTE]
+====
+Relatórios de conetividade de host e balanceamento de carga automático só funcionam nos tipos de host Linux DHALUA, Windows/Windows Clustered e VMware.
+
+====
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+8,42 novo parâmetro de comando.

@@ -1,0 +1,53 @@
+---
+permalink: commands-category/performance-tuning-commands.html 
+sidebar: sidebar 
+keywords: performance, tuning, commands, automatic, load balance, cache commands 
+summary: Comandos de ajuste de desempenho 
+---
+= Comandos de ajuste de desempenho
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== Comandos automáticos de balanceamento de carga
+
+link:../commands-a-z/save-storagearray-autoloadbalancestatistics-file.html["Guardar estatísticas de balanceamento de carga automática"]
+
+link:../commands-a-z/set-storagearray-autoloadbalancingenable.html["Defina a matriz de armazenamento para ativar ou desativar o balanceamento de carga automática"]
+
+
+
+== Comandos de cache SSD
+
+link:../commands-a-z/add-drives-to-ssd-cache.html["Adicione unidades ao cache SSD"]
+
+link:../commands-a-z/change-ssd-cache-application-type.html["Alterar o tipo de aplicativo cache SSD"]
+
+link:../commands-a-z/create-ssdcache.html["Crie cache SSD"]
+
+link:../commands-a-z/delete-ssdcache.html["Eliminar cache SSD"]
+
+link:../commands-a-z/remove-drives-from-ssd-cache.html["Remova as unidades do cache SSD"]
+
+link:../commands-a-z/rename-ssd-cache.html["Renomeie o cache SSD"]
+
+link:../commands-a-z/resume-ssdcache.html["Retomar cache SSD"]
+
+link:../commands-a-z/set-volume-ssdcacheenabled.html["Definir cache SSD para um volume"]
+
+link:../commands-a-z/show-ssd-cache.html["Mostrar cache SSD"]
+
+link:../commands-a-z/show-ssd-cache-statistics.html["Mostrar estatísticas de cache SSD"]
+
+link:../commands-a-z/start-ssdcache-locate.html["Inicie o cache SSD Locate"]
+
+link:../commands-a-z/start-ssdcache-performancemodeling.html["Inicie a modelagem de desempenho de cache SSD"]
+
+link:../commands-a-z/stop-ssdcache-locate.html["Parar a localização da cache SSD"]
+
+link:../commands-a-z/stop-ssdcache-performancemodeling.html["Pare a modelagem de desempenho de cache SSD"]
+
+link:../commands-a-z/suspend-ssdcache.html["Suspenda a cache SSD"]

@@ -1,0 +1,49 @@
+---
+permalink: commands-a-z/clear-storagearray-eventlog.html 
+sidebar: sidebar 
+keywords: clear, storage array, event log 
+summary: O comando Limpar storageArray EventLog limpa o log de eventos no storage array, excluindo os dados no buffer Log de eventos. 
+---
+= Limpar o log de eventos do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `clear storageArray eventLog` comando limpa o log de eventos na matriz de armazenamento, excluindo os dados no buffer Log de eventos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possível dano à configuração da matriz de armazenamento* -- assim que você executar este comando, o log de eventos existente na matriz de armazenamento é excluído.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+clear storageArray eventLog
+----
+
+
+== Parâmetros
+
+Nenhum.

@@ -1,0 +1,109 @@
+---
+permalink: commands-a-z/set-volumecopy-target.html 
+sidebar: sidebar 
+keywords: set, volume, copy 
+summary: O comando Set volumeCopy target define as propriedades de um par de cópias de volume. 
+---
+= Definir cópia de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set volumeCopy target` comando define as propriedades de um par de cópias de volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Com a versão de firmware 7,83, o `copyType=(online | offline)` parâmetro já não é utilizado.
+
+====
+Este comando é válido para pares de cópias de volume instantâneo.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set volumeCopy target pass:quotes[[_targetName_]]
+source pass:quotes[[_sourceName_]]
+[copyPriority=(highest | high | medium | low | lowest)]
+[targetReadOnlyEnabled=(TRUE | FALSE)]
+[copyType=(online | offline)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`target`
+ a| 
+O nome do volume para o qual os dados serão copiados. Coloque o nome do volume alvo entre colchetes ([ ]). Se o nome do volume de destino tiver carateres ou números especiais, você deve incluir o nome do volume de destino entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`source`
+ a| 
+O nome do volume a partir do qual os dados serão copiados. Inclua o nome do volume de origem entre colchetes ([ ]). Se o nome do volume de origem tiver carateres especiais ou números, você deve incluir o nome do volume de origem entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`copyPriority`
+ a| 
+A prioridade que a cópia de volume tem em relação à atividade de e/S do host. Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` ou .
+
+
+
+ a| 
+`targetReadOnlyEnabled`
+ a| 
+A definição para que possa escrever no volume de destino ou apenas ler a partir do volume de destino. Para gravar no volume de destino, defina este parâmetro como `FALSE`. Para impedir a gravação no volume de destino, defina este parâmetro como `TRUE`.
+
+
+
+ a| 
+`copyType`
+ a| 
+[NOTE]
+====
+Este parâmetro foi obsoleto.
+
+====
+|===
+
+
+== Notas
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.
+
+
+
+== Nível mínimo de firmware
+
+5,40
+
+7,83 remove o `copyType=(online | offline)` parâmetro.

@@ -1,0 +1,99 @@
+---
+permalink: commands-a-z/stop-snapimage-rollback.html 
+sidebar: sidebar 
+keywords: stop, snapshot, image, rollback 
+summary: O comando stop snapImage rollback pára uma operação de reversão de imagem instantânea iniciada pelo comando start snapImage rollback. 
+---
+= Parar a reversão da imagem instantânea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop snapImage rollback` comando pára uma operação de reversão de imagem instantânea iniciada pelo `start snapImage rollback` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Cancelar uma operação de reversão de imagem instantânea deixa o volume base em um estado indeterminado com dados potencialmente inválidos ou inconsistentes. O volume da imagem instantânea relacionada torna-se desativado e inutilizável.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[stop snapImage [_snapCGID:imageID_] rollback]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapImage`
+ a| 
+O nome da imagem instantânea para a qual pretende parar uma operação de reversão. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de instantâneos
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser parar uma operação de reversão para a imagem instantânea 12345 em um grupo de instantâneos que tenha o nome snapGroup1, você usaria este comando:
+
+[listing]
+----
+stop snapImage ["snapGroup1:12345"] rollback;
+----
+Para parar uma operação de reversão para a imagem de snapshot mais recente em um grupo de snapshots que tenha o nome snapGroup1, você usaria este comando:
+
+[listing]
+----
+stop snapImage ["snapGroup1:newest"] rollback;
+----
+
+
+== Nível mínimo de firmware
+
+7,83

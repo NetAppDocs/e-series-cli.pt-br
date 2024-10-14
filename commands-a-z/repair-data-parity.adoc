@@ -1,0 +1,117 @@
+---
+permalink: commands-a-z/repair-data-parity.html 
+sidebar: sidebar 
+keywords: repair, data, parity 
+summary: O comando Repair Data Parity repara erros de paridade de dados. 
+---
+= Reparar paridade de dados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `Repair Data Parity` comando repara erros de paridade de dados.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Antes de utilizar este comando, consulte o suporte da NetApp para obter orientações sobre o firmware, as unidades e o stripe RAID afetado.
+
+
+
+== Sintaxe
+
+[listing]
+----
+repair volume[volumeName] parity
+   [startingLBA=LBAvalue]
+   [endingLBA=LBAvalue]
+   [repairMethods=(repairMethod . . . repairMethod)]
+           Space delimited list where possible repair methods are: reconstruct, unmap, updateP, updateQ, updateData, and writeZeros
+   [repairPI=(TRUE|FALSE)]
+   [suspectDrives=(trayID1,[drawerID1,]slotID1 . . . trayIDn,[drawerIDn,]slotIDn)]
+   [timeout=(0-65535)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume para o qual você está reparando paridade. Inclua o nome do volume entre colchetes ([ ])
+
+
+
+ a| 
+`startingLBA`
+ a| 
+O endereço do bloco lógico inicial.
+
+
+
+ a| 
+`endingLBA`
+ a| 
+O endereço do bloco lógico final.
+
+
+
+ a| 
+`repairMethods`
+ a| 
+O método usado para reparar o erro de paridade. Os métodos disponíveis incluem:
+
+* Reconstruir: Reconstrói unidades especificadas sob o `suspectDrives` parâmetro.
+* Desmapear: Para volumes R5/R6 dulbe, usado para tornar uma faixa RAID R5/R6 não mapeada
+* UpdateP: Usado para corrigir o tipo de incompatibilidade de paridade de dados.
+* UpdateQ: Usado para corrigir o tipo de incompatibilidade de paridade de dados.
+* UpdateData: Usado para corrigir o tipo de incompatibilidade de paridade de dados.
+* WriteZeros: Para volumes R5/R6 dulbe, usado quando uma faixa inesperada RAID5/6 contendo uma mistura de dados mapeados e não mapeados é encontrada. Pega os blocos não mapeados na faixa e escreve zeros para ela e, em seguida, atualiza a paridade
+
+
+
+
+ a| 
+`repairPI`
+ a| 
+Defina como TRUE para reparar PI na extensão começando em startingLBA.
+
+
+
+ a| 
+`suspectDrives`
+ a| 
+Utilizado para especificar as unidades para reconstrução.
+
+
+
+ a| 
+`timeout`
+ a| 
+O período de tempo em minutos que você deseja executar a operação.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,63

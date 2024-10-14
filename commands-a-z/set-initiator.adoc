@@ -1,0 +1,92 @@
+---
+permalink: commands-a-z/set-initiator.html 
+sidebar: sidebar 
+keywords: set, initiator 
+summary: O comando Set Initiator atualiza o objeto iniciador. 
+---
+= Definir iniciador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `set initiator`O comando atualiza o objeto iniciador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando substitui o comando obsoletoxref:set-iscsiinitiator.adoc[Definir iniciador iSCSI].
+
+====
+[NOTE]
+====
+Este comando é aplicável apenas a iSCSI, iSER, NVMe em RoCE, NVMe em InfiniBand e NVMe em Fibre Channel.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+
+set initiator (["initiatorName"] | <"initiatorQualifiedName">) ([userLabel="newInitiatorName"] |
+[host="newHostName"] | [chapSecret="newSecurityKey"])
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`initiator`
+ a| 
+Permite especificar o identificador do iniciador para o qual você deseja definir propriedades. Coloque o nome entre aspas duplas ("»". Você também deve incluir o nome entre colchetes ([ ]) se o valor for um rótulo de usuário ou colchetes de ângulo ( ) se o valor for um nome qualificado (por exemplo, iqn ou nqn).
+
+
+
+ a| 
+`userLabel`
+ a| 
+Permite-lhe introduzir uma nova etiqueta de utilizador para o objeto iniciador. Coloque a nova etiqueta de utilizador entre aspas duplas (" ").
+
+
+
+ a| 
+`host`
+ a| 
+Permite-lhe introduzir um novo anfitrião ao qual a porta do anfitrião está ligada. Inclua o nome do host em aspas duplas (" ").
+
+
+
+ a| 
+`chapSecret`
+ a| 
+Permite-lhe introduzir uma nova chave de segurança que pretende utilizar para autenticar uma ligação peer. Coloque a chave de segurança entre aspas duplas (" "). Este parâmetro é aplicável apenas aos `iSCSI` tipos de interface de host e `iSER` .
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,41

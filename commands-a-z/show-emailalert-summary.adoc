@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/show-emailalert-summary.html 
+sidebar: sidebar 
+keywords: show, email, alert, configuration 
+summary: O comando show emailAlert summary exibe as informações de configuração do alerta de e-mail. 
+---
+= Mostrar configuração de alerta de e-mail
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show emailAlert summary` comando exibe as informações de configuração do alerta de e-mail.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show emailAlert summary
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "show emailAlert summary;"
+
+EMAIL ALERT SETTINGS
+   Mail server address: email@company.com
+   Mail server encryption: starttls
+   Mail server port: 587
+   Mail server user name: accountName
+   Mail server password: secret123
+   Email sender address: no-reply@company.com
+   Recipient Email
+      recipient@company.com
+      recipient-two@company.com
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40
+
+11.70.01 adicionou parâmetros que especificam a criptografia SMTP (nenhum, SMTPS, STARTTLS), porta SMTP e credenciais SMTP (nome de usuário e senha).

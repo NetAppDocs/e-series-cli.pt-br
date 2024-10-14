@@ -1,0 +1,72 @@
+---
+permalink: commands-a-z/delete-snapvolume.html 
+sidebar: sidebar 
+keywords: delete, snapvolume, command, snapshot, volume, optionally, associate, repository, members 
+summary: O comando delete snapvolume exclui um volume instantâneo e, opcionalmente, os membros do repositório instantâneo associado. 
+---
+= Eliminar volume instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete snapVolume` comando exclui um volume instantâneo e, opcionalmente, os membros do repositório instantâneo associado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Não pode utilizar este comando para imagens instantâneas envolvidas na cópia de volume online.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete snapVolume ["_snapVolumeName_"]]
+[deleteRepositoryMembers=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapVolume`
+ a| 
+O nome do volume instantâneo que você deseja excluir. Coloque o nome do volume instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`deleteRepositoryMembers`
+ a| 
+O parâmetro para salvar ou excluir os membros do repositório. Para salvar os membros do repositório, defina este parâmetro como `FALSE`. Para excluir os membros do repositório, defina este parâmetro como `TRUE`. O valor padrão é `TRUE`. Se você não usar esse parâmetro, os membros do repositório serão excluídos automaticamente.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

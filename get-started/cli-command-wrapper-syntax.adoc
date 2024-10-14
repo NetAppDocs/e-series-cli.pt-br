@@ -1,0 +1,139 @@
+---
+permalink: get-started/cli-command-wrapper-syntax.html 
+sidebar: sidebar 
+keywords: cli, command, wrapper, syntax 
+summary: As formas de sintaxe geral do comando CLI wrappers estão listadas nesta seção. 
+---
+= Sintaxe do wrapper de comando CLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+As formas de sintaxe geral do comando CLI wrappers estão listadas nesta seção. As convenções usadas na sintaxe do wrapper do comando CLI estão listadas na tabela a seguir.
+
+[cols="2*"]
+|===
+| Convenção | Definição 
+
+
+ a| 
+`a | b`
+ a| 
+Alternativa ("a" ou "b")
+
+
+
+ a| 
+`_italicized-words_`
+ a| 
+Precisa de entrada do usuário para cumprir um parâmetro (uma resposta a uma variável)
+
+
+
+ a| 
+`+[ ... ]+` (suportes quadrados)
+ a| 
+Zero ou uma ocorrência (colchetes também são usados como delimitador para alguns parâmetros de comando)
+
+
+
+ a| 
+`+{ ... }+` (chaves)
+ a| 
+Zero ou mais ocorrências
+
+
+
+ a| 
+`(a | b | c)`
+ a| 
+Escolha apenas uma das alternativas
+
+
+
+ a| 
+`a &| b`
+ a| 
+E/ou. Isso é usado para o modo cliente https, quando você pode usar com um ou ambos os endereços IP do controlador. Desta forma, se um controlador não estiver respondendo, o SMcli usará o endereço IP alternativo. Isso também abrange o caso quando ambos os endereços IP são necessários, como para download de firmware.
+
+|===
+[NOTE]
+====
+Para executar todos os comandos CLI, você deve ter Privileges administrador. Alguns comandos CLI serão executados sem Privileges de administrador. Muitos comandos, no entanto, não serão executados. Se o comando CLI não for executado porque você não tem Privileges correto, a CLI retornará um código de saída de 12.
+
+====
+
+
+== Exemplo no modo cliente https
+
+Os exemplos a seguir demonstram os `https` parâmetros da linha de comando do modo cliente descritos em xref:command-line-parameters.adoc[Parâmetros da linha de comando].
+
+[listing]
+----
+SMcli (Controller A host-name-or-IP-address&|
+Controller B host-name-or-IP-address)  -u username -p password -c "commands;" [-clientType (auto | https | symbol)]
+----
+[NOTE]
+====
+Se você não especificar um `clientType`, mas incluir a `-u` opção e a `username` variável, o sistema usará um `https` ou `symbol` o modo cliente, o que estiver disponível.
+
+====
+
+
+== Exemplos no modo cliente símbolo
+
+Os exemplos a seguir demonstram os `symbol` parâmetros da linha de comando do modo cliente descritos em xref:command-line-parameters.adoc[Parâmetros da linha de comando].
+
+[listing]
+----
+SMcli **-a** **email:** email-address [host-name-or-IP-address1 [host-name-or-IP-address2]] [**-n** storage-system-name | **-w** wwID | **-h** host-name] [**-I** information-to-include] [**-q** frequency] [**-S**]
+----
+[NOTE]
+====
+A `-a` opção de linha de comando não é suportada para a matriz de armazenamento E2800 ou E5700.
+
+====
+[listing]
+----
+SMcli **-x** **email:** email-address [host-name-or-IP-address1 [host-name-or-IP-address2]] [**-n** storage-system-name | **-w** wwID | **-h** host-name] [**-S**]
+----
+[NOTE]
+====
+A `-x` opção de linha de comando não é suportada para a matriz de armazenamento E2800 ou E5700.
+
+====
+[listing]
+----
+SMcli (**-a** | **-x**) **trap:** community, host-name-or-IP-address [host-name-or-IP-address1 [host-name-or-IP-address2]] [**-n** storage-system-name | **-w** wwID | **-h** host-name] [**-S**]
+----
+[NOTE]
+====
+ `-a`As opções da linha de comando e `-x` não são suportadas para a matriz de armazenamento E2800 ou E5700.
+
+====
+[listing]
+----
+SMcli **-d** [**-w**] [**-i**] [**-s**] [**-v**] [**-S**]
+----
+[NOTE]
+====
+A `-s` opção de linha de comando não é suportada para a matriz de armazenamento E2800 ou E5700.
+
+====
+[listing]
+----
+SMcli host-name-or-IP-address **-F** email-address [**-g** contactInfoFile] [**-S**]
+----
+[listing]
+----
+SMcli **-A** [host-name-or-IP-address [host-name-or-IP-address]] [**-S**]
+----
+[listing]
+----
+SMcli **-X **(**-n** storage-system-name | **-w** wwID | **-h** host-name)
+----
+[listing]
+----
+SMcli **-?**
+----

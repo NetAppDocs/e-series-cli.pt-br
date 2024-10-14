@@ -1,0 +1,60 @@
+---
+permalink: commands-a-z/clear-storagearray-recoverymode.html 
+sidebar: sidebar 
+keywords: clear, storage array, recovery, mode 
+summary: O comando Clear storageArray recoveryMode força um storage array a sair do modo de recuperação. 
+---
+= Limpar o modo de recuperação da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `clear storageArray recoveryMode` comando força um storage array a sair do modo de recuperação.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+clear storageArray recoveryMode
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+[NOTE]
+====
+O modo de recuperação é introduzido durante as operações de início do dia quando a configuração do sistema é limpa e está disponível uma cópia de segurança válida a bordo. Esse modo é encerrado restaurando a configuração do sistema a partir de um local de backup ou limpando os backups existentes a bordo. Enquanto o modo de recuperação está em vigor, uma condição de atenção precisa é levantada e o Recovery Guru está disponível na interface do usuário. No entanto, a configuração do sistema está vazia durante o modo de recuperação.
+
+====
+[NOTE]
+====
+Se você quiser retornar a matriz de armazenamento para uma configuração anterior, você deve restaurar a configuração do backup antes de limpar o modo de recuperação. Você deve executar verificações de validação ou verificar com o suporte técnico para garantir que a restauração foi bem-sucedida. Depois de determinar que a restauração foi bem-sucedida, o modo de recuperação pode ser limpo.
+
+====
+
+
+== Nível mínimo de firmware
+
+7,83

@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/check-syncmirror.html 
+sidebar: sidebar 
+keywords: check, synchronous, mirroring status 
+summary: O comando check SyncMirror retorna o status de um volume de espelho remoto. Use este comando para determinar quando o status do volume do espelho remoto se torna ideal. 
+---
+= Verifique o status do espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `check syncMirror` comando retorna o status de um volume de espelho remoto. Use este comando para determinar quando o status do volume do espelho remoto se torna ideal.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+check syncMirror localVolume pass:quotes[[_volumeName_]] optimalStatus timeout=pass:quotes[_timeoutValue_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`localVolume`
+ a| 
+O nome de qualquer volume de espelho remoto. O volume do espelho remoto pode ser o volume primário ou o volume secundário de um par espelhado remoto. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais, você deve incluir o nome do volume em aspas duplas (" ").
+
+
+
+ a| 
+`timeout`
+ a| 
+O intervalo de tempo dentro do qual o software pode retornar o status do volume do espelho remoto. O valor de tempo limite é em minutos.
+
+|===
+
+
+== Notas
+
+Este comando aguarda até que o estado se torne ideal ou o intervalo de tempo limite expire. Use este comando quando executar o utilitário de espelhamento síncrono assíncrono.

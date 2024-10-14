@@ -1,0 +1,84 @@
+---
+permalink: commands-a-z/create-snmptrapdestination.html 
+sidebar: sidebar 
+keywords: register, snmp, trap, destination 
+summary: 'O comando Create snmpTrapDestination cria um novo destino de intercetação SNMP (Simple Network Management Protocol). Um destino de trap é o gerenciador SNMP para receber as mensagens de trap.' 
+---
+= Registar destino de trap SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create snmpTrapDestination` comando cria um novo destino de trap SNMP (Simple Network Management Protocol). Um destino de trap é o gerenciador SNMP para receber as mensagens de trap.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create snmpTrapDestination trapReceiverIP=ipAddress
+    (communityName=pass:quotes[_"communityName" | (userName="userName"_] [engineId=(local | engineId)]))
+    [sendAuthenticationFailureTraps=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`trapReceiverIP`
+ a| 
+O endereço IP do gerenciador SNMP para o qual você deseja enviar mensagens de intercetação.
+
+
+
+ a| 
+`communityName`
+ a| 
+O nome da comunidade SNMP para a qual você deseja enviar mensagens de intercetação.
+
+
+
+ a| 
+`userName`
+ a| 
+O nome do usuário SNMP para o qual você deseja enviar mensagens de intercetação.
+
+
+
+ a| 
+`engineId`
+ a| 
+A ID do motor do utilizador SNMP para o qual pretende enviar mensagens de intercetação. A ID do motor é necessária se existir mais do que um utilizador USM com o mesmo nome de utilizador. O valor pode ser[.code]``local`` " " para especificar o agente SNMP local é o agente autorizado ou uma cadeia de carateres de dígitos hexidecimais para especificar um ID de mecanismo de agente SNMP remoto.
+
+
+
+ a| 
+`sendAuthenticationFailureTraps`
+ a| 
+Este parâmetro liga ou desliga o envio de mensagens de falha de autenticação para um gestor SNMP. Para enviar mensagens de falha de autenticação, defina o parâmetro como `TRUE`. Para evitar o envio de mensagens de falha de autenticação, defina o parâmetro como `FALSE`. A predefinição é `TRUE`.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,30

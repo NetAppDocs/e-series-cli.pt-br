@@ -1,0 +1,46 @@
+---
+permalink: commands-a-z/stop-volumegroup-locate.html 
+sidebar: sidebar 
+keywords: stop, volume, group, locate 
+summary: O comando STOP volumeGroup Locate desliga as luzes indicadoras nas unidades que foram ligadas pelo comando START volumeGroup Locate. 
+---
+= Parar a localização do grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop volumeGroup locate` comando desliga as luzes indicadoras nas unidades que foram ligadas pelo `start volumeGroup locate` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+stop volumeGroup locate
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,16

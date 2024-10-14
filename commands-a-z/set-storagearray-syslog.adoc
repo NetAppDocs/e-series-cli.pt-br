@@ -1,0 +1,102 @@
+---
+permalink: commands-a-z/set-storagearray-syslog.html 
+sidebar: sidebar 
+keywords: update, storage, array, syslog, configuration 
+summary: O comando set storageArray syslog permite alterar o endereço do servidor syslog, o protocolo ou o número da porta. 
+---
+= Atualize a configuração do syslog do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray syslog` comando permite alterar o endereço do servidor syslog, o protocolo ou o número da porta.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray syslog id="<id>"
+serverAddress="<address>"
+port=<port> protocol=("udp" | "tcp" | "tls")
+components=(componentName=("auditLog") ...)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`serverAddress`
+ a| 
+Nome do host ou endereço IP do recetor syslog.
+
+
+
+ a| 
+`port`
+ a| 
+Número da porta do recetor syslog.
+
+
+
+ a| 
+`protocol`
+ a| 
+Protocolo de transmissão syslog. Os valores aceitáveis incluem UDP, TCP ou TLS.
+
+
+
+ a| 
+`components`
+ a| 
+Lista de entradas de componentes que serão registradas no servidor syslog. Atualmente, apenas os logs de auditoria são suportados.
+
+
+
+ a| 
+`componentName`
+ a| 
+Nome do componente; atualmente apenas é suportado "Auditlog".
+
+|===
+
+
+=== Exemplo
+
+[listing]
+----
+SMcli -n Array1 -c "set storageArray syslog
+id=\"331998fe-3154-4489-b773-b0bb60c6b48e\"
+serverAddress=\"192.168.2.1\" port=514 protocol=\"udp\"
+components=(componentName=\"auditLog\");"
+ID: 331998fe-3154-4489-b773-b0bb60c6b48e Server Address: 192.168.2.1
+Port: 514 Protocol: udp
+Components
+1. Component Name: auditLog
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,42

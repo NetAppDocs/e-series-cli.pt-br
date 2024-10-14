@@ -1,0 +1,32 @@
+---
+permalink: get-started/detailed-error-reporting.html 
+sidebar: sidebar 
+keywords: detailed, error, report 
+summary: Os dados coletados de um erro encontrado pela CLI são gravados em um arquivo. 
+---
+= Relatórios de erros detalhados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+Os dados coletados de um erro encontrado pela CLI são gravados em um arquivo. O relatório detalhado de erros sob a CLI funciona da seguinte forma:
+
+* Se a CLI tiver de terminar de forma anormal os comandos CLI e os comandos de script, os dados de erro são coletados e salvos antes que a CLI termine.
+* A CLI salva os dados de erro gravando os dados em um nome de arquivo padrão.
+* A CLI salva automaticamente os dados em um arquivo. As opções especiais da linha de comando não são necessárias para salvar os dados de erro.
+* Não é necessário executar nenhuma ação para salvar os dados de erro em um arquivo.
+* A CLI não tem nenhuma disposição para evitar a sobrescrita de uma versão existente do arquivo que contém dados de erro.
+
+
+Para o processamento de erros, os erros aparecem como dois tipos:
+
+* Erros de terminal ou erros de sintaxe que você pode inserir.
+* Exceções que ocorrem como resultado de um erro operacional.
+
+
+Quando a CLI encontra qualquer tipo de erro, a CLI grava informações que descrevem o erro diretamente na linha de comando e define um código de retorno. Dependendo do código de retorno, a CLI também pode escrever informações adicionais sobre qual terminal causou o erro. A CLI também escreve informações sobre o que estava esperando na sintaxe de comando para ajudá-lo a identificar quaisquer erros de sintaxe que você possa ter inserido.
+
+Quando uma exceção ocorre enquanto um comando está em execução, a CLI captura o erro. No final do processamento do comando (após o comando processar informações ter sido gravado na linha de comando), a CLI salva automaticamente as informações de erro em um arquivo.
+
+O nome do arquivo para o qual as informações de erro são salvas é `excprpt.txt`. A CLI tenta colocar o `excprpt.txt` arquivo no diretório especificado pela propriedade do sistema `devmgr.datadir` . Se, por qualquer motivo, a CLI não puder colocar o arquivo no diretório especificado pelo `devmgr.datadir`, a CLI salvará o `excprpt.txt` arquivo no mesmo diretório do qual a CLI está sendo executada. Não é possível alterar o nome do ficheiro ou a localização. O `excprpt.txt` arquivo é substituído sempre que uma exceção ocorre. Se pretender guardar as informações no `excprpt.txt` ficheiro, tem de copiar as informações para um novo ficheiro ou para um novo diretório.

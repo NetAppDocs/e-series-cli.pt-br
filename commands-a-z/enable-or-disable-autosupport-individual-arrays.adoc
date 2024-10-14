@@ -1,0 +1,91 @@
+---
+permalink: commands-a-z/enable-or-disable-autosupport-individual-arrays.html 
+sidebar: sidebar 
+keywords: command, enable, disable, autosupport, feature, storage, array, possible, transit, messages, technical, support, site, capable, automatically, prepare, collect, data, remote, troubleshooting, problem, analysis 
+summary: 'Este comando ativa ou desativa o recurso AutoSupport (ASUP) para o storage array e possibilita a transmissão de mensagens para o site de suporte técnico. Depois de ativar o recurso ASUP, o storage array com capacidade para ASUP será automaticamente preparado para coletar e enviar dados relacionados ao suporte técnico. Os dados podem então ser usados para solução de problemas remota e análise de problemas.' 
+---
+= Ativar ou desativar AutoSupport (todos os arrays individuais)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este comando ativa ou desativa o recurso AutoSupport (ASUP) para o storage array e possibilita a transmissão de mensagens para o site de suporte técnico. Depois de ativar o recurso ASUP, o storage array com capacidade para ASUP será automaticamente preparado para coletar e enviar dados relacionados ao suporte técnico. Os dados podem então ser usados para solução de problemas remota e análise de problemas.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Depois de habilitar esse recurso, você pode ativar o recurso AutoSupport OnDemand (se desejado) e, em seguida, ativar o recurso de Diagnóstico remoto do AutoSupport (se desejado).
+
+Você deve habilitar os três recursos nesta ordem:
+
+. *Ativar AutoSupport*
+. *Ativar o AutoSupport OnDemand*
+. *Ativar diagnóstico remoto AutoSupport*
+
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray autoSupport (enable | disable)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`enable | disable`
+ a| 
+Permite-lhe ativar ou desativar o AutoSupport. Se os recursos OnDemand e Remote Diagnostics estiverem ativados, a ação Disable também desativará os recursos OnDemand e Remote Diagnostics.
+
+|===
+
+
+=== Exemplos
+
+[listing]
+----
+
+   SMcli -n Array1 -c "set storageArray autoSupport enable;"
+
+   SMcli completed successfully.
+----
+
+
+== Verificação
+
+Use o `show storageArray autoSupport` comando para ver se você ativou o recurso. A linha inicial da saída apresentada mostra o estado de ativação:
+
+[listing]
+----
+The AutoSupport feature is enabled on this storage array.
+----
+
+
+== Nível mínimo de firmware
+
+7,86 - Adicionado comando para todos os storages de armazenamento até o modelo E2700 e E5600
+
+8,40 - Adicionado suporte para o E2800 e E5700

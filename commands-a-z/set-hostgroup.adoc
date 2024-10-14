@@ -1,0 +1,69 @@
+---
+permalink: commands-a-z/set-hostgroup.html 
+sidebar: sidebar 
+keywords: set, host, group 
+summary: O comando set hostGroup renomeia um grupo de host. 
+---
+= Definir grupo anfitrião
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set hostGroup` comando renomeia um grupo de host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set hostGroup pass:quotes[[_hostGroupName_]]
+userLabel=pass:quotes["_newHostGroupName_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome do grupo anfitrião que pretende mudar o nome. Inclua o nome do grupo host entre colchetes ([ ]). Se o nome do grupo anfitrião tiver carateres ou números especiais, você deve incluir o nome do grupo anfitrião em aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome para o grupo anfitrião. Inclua o novo nome do grupo anfitrião em aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+6,10

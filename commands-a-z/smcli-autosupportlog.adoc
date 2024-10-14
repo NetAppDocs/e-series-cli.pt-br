@@ -1,0 +1,119 @@
+---
+permalink: commands-a-z/smcli-autosupportlog.html 
+sidebar: sidebar 
+keywords: capture, view, autosupport, log 
+summary: O comando SMcli -AutoSupportLog permite que você visualize um arquivo de log do AutoSupport. Este arquivo fornece informações sobre o status, o histórico da atividade de transmissão e quaisquer erros encontrados durante a entrega das mensagens do AutoSupport. O log está disponível para todos os storage arrays compatíveis com AutoSupport e com AutoSupport. 
+---
+= Capture ou visualize um log do AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `SMcli -autoSupportLog` comando permite visualizar um ficheiro de registo do AutoSupport. Este arquivo fornece informações sobre o status, o histórico da atividade de transmissão e quaisquer erros encontrados durante a entrega das mensagens do AutoSupport. O log está disponível para todos os storage arrays compatíveis com AutoSupport e com AutoSupport.
+
+
+
+== Arrays compatíveis
+
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+
+
+
+== Contexto
+
+Este comando permite visualizar dois tipos de registos:
+
+* Registo atual - Ver o registo capturado neste momento.
+* Registo de arquivo - Ver o registo a partir de um ficheiro arquivado.
+
+
+[NOTE]
+====
+Este comando é um comando SMcli, não um comando script. Você deve executar este comando a partir de uma linha de comando. Não é possível executar este comando a partir do editor de scripts no software de gerenciamento de armazenamento.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+SMcli -autoSupportLog pass:quotes[(all|-n "_storageArrayName_" | -w "_wwID_")]
+pass:quotes[inputArchive=_n_] pass:quotes[outputLog=_filename_]
+----
+
+
+== Parâmetros
+
+A tabela a seguir lista os parâmetros de comando.
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`all`
+ a| 
+Use este parâmetro se quiser criar um log de transmissão para todos os storages de armazenamento no domínio de gerenciamento com capacidade AutoSupport que foram habilitados para AutoSupport.
+
+
+
+ a| 
+`_n_`
+ a| 
+O nome do storage array para o qual você deseja exibir um log do AutoSupport.
+
+
+
+ a| 
+`_w_`
+ a| 
+O World Wide Identifier (WWID) da matriz de armazenamento para a qual você deseja exibir um log do AutoSupport.
+
+
+
+ a| 
+`inputArchive`
+ a| 
+Permite especificar o log AutoSupport arquivado, onde o arquivo é `_n_`, um número inteiro de 0 a 5.
+
+[NOTE]
+====
+Omitir este parâmetro significa que você seleciona o log AutoSupport atual (capturado neste momento).
+
+====
+
+
+ a| 
+`outputLog`
+ a| 
+Permite especificar o nome do ficheiro de registo do AutoSupport de saída.
+
+[NOTE]
+====
+Este parâmetro é obrigatório.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+8,25
+
+
+
+== Exemplo
+
+[listing]
+----
+SMcli -autosupportLog -n StorageArrayName inputArchive=0 outputLog=ASUPTransmissionLog
+----
+
+
+== Verificação
+
+Visualize o log do AutoSupport solicitado, que está no diretório do cliente onde o software de gerenciamento de storage foi instalado.

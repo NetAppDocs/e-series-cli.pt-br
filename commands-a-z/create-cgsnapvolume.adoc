@@ -1,0 +1,229 @@
+---
+permalink: commands-a-z/create-cgsnapvolume.html 
+sidebar: sidebar 
+keywords: create, consistency group, snapshot, volume 
+summary: O comando Create cgSnapvolume cria um volume instantâneo de imagens específicas nos volumes base em um grupo de consistência. 
+---
+= Criar volume instantâneo do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create cgSnapVolume` comando cria um volume instantâneo de imagens específicas nos volumes base em um grupo de consistência.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+É possível selecionar um volume base ou mais de um volume base no grupo consistência a incluir no volume instantâneo. Ao criar um volume instantâneo de um grupo de consistência, você está criando um volume com conteúdo que pode ser exibido.
+
+
+
+== Sintaxe com volumes base especificados pelo usuário
+
+[listing, subs="+macros"]
+----
+create cgSnapVolume userLabel=pass:quotes[_"cgVolumeName"_]
+cgSnapImageID=pass:quotes[_"snapCGID:imageID"_]
+members=pass:quotes[_(baseVolume1:repos_XXXX ... baseVolumen:repos_YYYY)_]
+----
+
+
+== Sintaxe ao definir o volume instantâneo do grupo de consistência para somente leitura
+
+[listing, subs="+macros"]
+----
+create cgSnapVolume userLabel=pass:quotes[_"cgVolumeName"_]
+cgSnapImageID=pass:quotes[_"snapCGID:imageID"_]
+readOnly
+----
+
+
+== Sintaxe ao definir o limite completo do repositório
+
+[listing, subs="+macros"]
+----
+create cgSnapVolume userLabel=pass:quotes[_"cgVolumeName"_]
+cgSnapImageID=pass:quotes[_"snapCGID:imageID"_]
+members=pass:quotes[_(baseVolume1:repos_XXXX_] |
+baseVolume1: (pass:quotes[_volumeGroupName_] pass:quotes[[_capacity=capacityValue_])] |
+(baseVolume1:pass:quotes[_diskPoolName_] [capacity=pass:quotes[_capacityValue_]])
+... baseVolumen:repos_YYYY |
+baseVolumen: (pass:quotes[_volumeGroupName_] [capacity=pass:quotes[_capacityValue_]]) |
+baseVolumen: (pass:quotes[_diskPoolName_] [capacity=pass:quotes{_capacityValue_]]))
+repositoryFullLimit=pass:quotes[_percentValue_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar ao volume instantâneo do grupo de consistência que você está criando. Inclua o nome do volume instantâneo do grupo de consistência entre aspas duplas (" ").
+
+
+
+ a| 
+`cgSnapImageID`
+ a| 
+O nome da imagem instantânea num grupo de consistência. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo consistência
+* Um identificador para a imagem instantânea no grupo consistência
+
+
+O identificador da imagem instantânea pode ser um dos seguintes:
+
+* `newest` - Use esta opção quando quiser mostrar a imagem instantânea mais recente criada no grupo consistência.
+* `oldest` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo consistência.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ").
+
+Pode introduzir mais do que um nome de imagem instantânea ou um número de sequência. Inclua todos os nomes de imagens instantâneas dentro de parênteses. Separe cada nome de imagem instantânea com um espaço.
+
+
+
+ a| 
+`members`
+ a| 
+O identificador de um volume base ou mais de um volume base que você deseja adicionar. O identificador de membros é composto pelo nome do volume base concatenado com o nome do volume do repositório. Você deve usar dois pontos (:) entre os dois nomes. Inclua todos os identificadores de membros entre parênteses. Se você inserir mais de um membro, separou os membros com um espaço.
+
+Quando você não usa o parâmetro members, todos os membros são adicionados automaticamente ao novo volume instantâneo do grupo de consistência.
+
+
+
+ a| 
+`repositoryVolume`
+ a| 
+O nome do volume do repositório que conterá os volumes de membros do grupo de consistência.
+
+Você tem duas opções para definir o nome de um volume de repositório:
+
+* Use um volume de repositório existente: Nome
+* Crie um novo volume de repositório quando executar este comando
+
+
+O nome de um volume de repositório existente é composto por duas partes:
+
+* O termo "repos"
+* Um identificador numérico de quatro dígitos que o software de gerenciamento de armazenamento atribui ao nome do volume do repositório
+
+
+Inclua o nome do volume do repositório existente entre aspas duplas (" ").
+
+Se você quiser criar um novo volume de repositório ao executar este comando, você deve digitar o nome de um grupo de volumes ou de um pool de discos no qual deseja o volume do repositório. Opcionalmente, você também pode definir a capacidade do volume do repositório. Se você quiser definir a capacidade, você pode usar estes valores:
+
+* Um valor inteiro que representa uma porcentagem da capacidade do volume base
+* Um valor de fração decimal que representa uma porcentagem da capacidade de volume base
+* Um tamanho específico para o volume do repositório. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou .
+
+
+Se você não usar a opção capacidade, o software de gerenciamento de storage define a capacidade para 20% da capacidade de volume base.
+
+Quando você executa esse comando, o software de gerenciamento de storage cria o volume do repositório para o volume do snapshot.
+
+
+
+ a| 
+`repositoryFullLimit`
+ a| 
+A porcentagem da capacidade do repositório na qual o volume do repositório instantâneo do grupo de consistência está quase cheio. Use valores inteiros. Por exemplo, um valor de 70 significa 70%.
+
+
+
+ a| 
+`readOnly`
+ a| 
+A definição para determinar se pode gravar no volume instantâneo ou apenas ler a partir do volume instantâneo. Para gravar no volume instantâneo, não inclua este parâmetro. Para impedir a gravação no volume do instantâneo, inclua este parâmetro.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de instantâneos
+* O identificador da imagem instantânea
+
+
+Se você não especificar os `repositoryVolumeType` parâmetros ou `readOnly`, o software de gerenciamento de storage selecionará os repositórios para o volume instantâneo do grupo de consistência. Se o grupo de volumes ou o pool de discos onde reside o volume base não tiver espaço suficiente, este comando falhará.
+
+O `create cgSnapVolume` comando tem formulários exclusivos que são explicados por estes exemplos:
+
+* Criando um volume instantâneo do grupo de consistência de leitura/gravação em um grupo de consistência de snapshot chamado "snapCG1" que tem três membros: cgm1, cgm2 e cgm3. Os volumes do repositório já existem e são selecionados pelo usuário neste comando.
++
+[listing]
+----
+create cgSnapVolume userLabel="cgSnapVolume1"
+cgSnapImageID="snapCG1:oldest"
+members=(cgm1:repos_0010 cgm2:repos_0011 cgm3:repos_0007);
+----
++
+Observe o uso dos dois pontos (:) no nome da imagem instantânea a ser incluída no volume instantâneo do grupo de consistência. O cólon é um delimitador que separa o nome do volume instantâneo de uma imagem instantânea específica que você pode querer usar. Você pode usar uma destas opções seguindo os dois pontos:
+
++
+** Um valor inteiro que é o número de sequência real da imagem instantânea.
+** `newest` - Use esta opção quando você quiser mostrar a imagem de snapshot do grupo de consistência mais recente.
+** `oldest` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada. O uso dos dois pontos seguindo os nomes dos membros do grupo de consistência de snapshot define o mapeamento entre o membro e um volume de repositório. Por exemplo, no `cgm1:repos_10`, o membro cgm1 mapeia para o volume do repositório repos_0010.
+
+
+* Criando um volume instantâneo de grupo de consistência de leitura/gravação em um grupo de consistência de snapshot chamado "snapCG1" de apenas membros cgm1 e cgm2:
++
+[listing]
+----
+create cgSnapVolume userLabel="cgSnapVolume2"
+cgSnapImageID="snapCG1:14214"
+members=(cgm1:repos_1000 cgm2:repos_1001);
+----
+* Criando um volume instantâneo de grupo de consistência somente leitura em um grupo de consistência de snapshot chamado snapCG1 que tem três membros: cgm1, cgm2 e cgm3:
++
+[listing]
+----
+create cgSnapVolume userLabel="cgSnapVolume3"
+cgSnapImageID="snapCG1:oldest" readOnly;
+----
+* Criando um volume instantâneo de grupo de consistência que tenha um limite total de repositório definido para 60% em um grupo de consistência de snapshot chamado snapCG1 que tem três membros: cgm1, cgm2 e cgm3:
++
+[listing]
+----
+create cgSnapVolume userLabel="cgSnapVolume3"
+cgSnapImageID="snapCG1:oldest"
+repositoryFullLimit=60;
+----
+* Criando um volume instantâneo de grupo de consistência de leitura/gravação com seleção automática de repositório em um grupo de consistência de snapshot chamado snapCG1 que tem três membros: cgm1, cgm2 e cgm3:
++
+[listing]
+----
+create cgSnapVolume userLabel="cgSnapVolume4"
+cgSnapImageID="snapCG1:oldest";
+----
+
+
+
+
+== Nível mínimo de firmware
+
+7,83

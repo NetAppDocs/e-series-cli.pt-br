@@ -1,0 +1,62 @@
+---
+permalink: commands-a-z/delete-storagearray-syslog.html 
+sidebar: sidebar 
+keywords: delete, storage, array, syslog, command, allow, delete, specified, configuration, storing, audit, logs, role 
+summary: O comando delete storageArray syslog permite excluir a configuração syslog especificada usada para armazenar logs de auditoria. 
+---
+= Exclua a configuração do syslog do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete storageArray syslog` comando permite excluir a configuração syslog especificada usada para armazenar logs de auditoria.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+delete storageArray syslog (allServers | id="<id>")
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allServers`
+ a| 
+Exclua todas as configurações do syslog.
+
+
+
+ a| 
+`id`
+ a| 
+ID do servidor syslog a eliminar. O ID está disponível usando o `show storageArray syslog` comando.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,42

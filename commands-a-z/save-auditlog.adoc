@@ -1,0 +1,123 @@
+---
+permalink: commands-a-z/save-auditlog.html 
+sidebar: sidebar 
+keywords: save, audit log, records 
+summary: O comando SAVE Auditlog recupera os Registros de log de auditoria. 
+---
+= Guardar registos de auditoria
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save auditLog` comando recupera os Registros de log de auditoria.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+save auditLog (all | (beginDate=pass:quotes[_date_ | endDate=_date_)]
+|(beginRecord=pass:quotes[_timestamp_] | endRecord=pass:quotes[_timestamp_))] file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`all`
+ a| 
+Permite recuperar todos os registos de auditoria.
+
+
+
+ a| 
+`beginDate`
+ a| 
+Permite especificar a data de início a ser recuperada. O formato para introduzir a data é MM:DD:YY no fuso horário do cliente. O primeiro Registro de log de auditoria recuperado será o primeiro Registro publicado na data especificada ou após a data especificada.
+
+[NOTE]
+====
+O intervalo da meia-noite à meia-noite é baseado no fuso horário do cliente.
+
+====
+
+
+ a| 
+`endDate`
+ a| 
+Permite especificar a data de término a ser recuperada. Se não for especificado, o último Registro no log será recuperado. O formato para introduzir a data é MM:DD:YY no fuso horário do cliente. O último registo de registo de auditoria recuperado será o último registo publicado na data especificada ou antes.
+
+[NOTE]
+====
+O intervalo da meia-noite à meia-noite é baseado no fuso horário do cliente.
+
+====
+
+
+ a| 
+`beginRecord`
+ a| 
+Permite especificar o registo inicial a recuperar. O valor é o valor integral que representa o carimbo de data/hora do primeiro registo de auditoria, inclusive. Se não for especificado, o primeiro Registro no log será recuperado.
+
+
+
+ a| 
+`endRecord`
+ a| 
+Permite especificar o registo final a recuperar. O valor é o valor integral que representa o carimbo de data/hora do último registo de auditoria, inclusive. Se não for especificado, o último Registro no log será recuperado.
+
+
+
+ a| 
+`file`
+ a| 
+Permite especificar o nome do ficheiro de saída do registo de auditoria.
+
+[NOTE]
+====
+Os registos de auditoria são guardados no ficheiro por ordem decrescente, do mais recente ao mais antigo.
+
+====
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "save auditLog all file="myAuditLog.txt";"
+
+SMcli -n Array1 -c "save auditLog endRecord=1493070393313 file="myAuditLog.txt";"
+
+SMcli -n Array1 -c "save auditLog beginDate=12:12:16 endDate=04:01:17 file="myAuditLog.txt";"
+
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

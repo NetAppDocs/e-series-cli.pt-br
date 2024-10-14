@@ -1,0 +1,527 @@
+---
+permalink: commands-a-z/save-storagearray-supportdata.html 
+sidebar: sidebar 
+keywords: save, storage, array, support, data 
+summary: O comando save storageArray supportData salva as informações relacionadas ao suporte do storage array em um arquivo. 
+---
+= Salvar dados de suporte de storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray supportData` comando salva as informações relacionadas ao suporte da matriz de armazenamento em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+A tabela a seguir lista o tipo de dados de suporte que você pode coletar.
+
+[cols="2*"]
+|===
+| Tipo de dados | Nome do arquivo e descrição 
+
+
+ a| 
+Estatísticas de balanceamento de carga automático
+ a| 
+`alb-statistics-A.txt`
+
+`alb-statistics-B.txt`
+
+Este arquivo, um por controlador, especifica várias estatísticas relacionadas ao recurso balanceamento de carga automático que permitem uma análise adicional através da ferramenta de análise off-line.
+
+
+
+ a| 
+Metadados do despejo de memória
+ a| 
+`all-coredump.xml`
+
+Este arquivo contém metadados de despejo de núcleo para o array.
+
+[NOTE]
+====
+A partir da versão 8,25, o core-dump-info.xml foi renomeado para All-coredump.xml.
+
+====
+
+
+ a| 
+Estado do AutoSupport
+ a| 
+`autosupport.xml`
+
+Este arquivo especifica o status atual do ASUP para o array dado.
+
+
+
+ a| 
+O arquivo de histórico do AutoSupport
+ a| 
+`autosupport-history.xml`
+
+Esse arquivo especifica todas as mensagens ASUP, tanto as mensagens padrão quanto as mensagens AutoSupport OnDemand, para o array específico. Cada entrada na tabela corresponde a uma mensagem ASUP atualmente em um dos repositórios para um determinado array.
+
+
+
+ a| 
+Registos do AutoSupport
+ a| 
+`asup-transmission-logs.txt`
+
+Este arquivo contém todas as mensagens AutoSupport transmitidas.
+
+
+
+ a| 
+Informações do cliente do servidor Web
+ a| 
+`client-info.txt`
+
+Este arquivo especifica várias informações de cliente de serviços da Web.
+
+[NOTE]
+====
+Este parâmetro não se aplica a matrizes E2700 e E5600.
+
+====
+
+
+ a| 
+Topologia de cabeamento da unidade
+ a| 
+`connection.txt` Este arquivo contém informações sobre as conexões entre o módulo de serviços ambientais da bandeja de unidades (ESM) e o par de controladores.
+
+
+
+ a| 
+Pacotes de estatísticas cumulativas
+ a| 
+`cumulative-drive-vol-stats.xml`
+
+Este arquivo contém estatísticas cumulativas para os controladores.
+
+
+
+ a| 
+Registo de condução incorreto
+ a| 
+`controller-drive-error-event-log.txt`
+
+Este arquivo contém as mensagens de erro do lado da unidade do controlador de storage e log de eventos.
+
+
+
+ a| 
+Metadados da imagem de integridade do controlador
+ a| 
+`all-coredump.xml`
+
+Este ficheiro contém informações sobre a imagem de integridade do controlador DPL.
+
+[NOTE]
+====
+A partir da versão 8,25, o core-dump-info.xml foi renomeado para All-coredump.xml.
+
+====
+
+
+ a| 
+Arquivos de diário Dom 0 para o controlador A (apenas E2800 ou E5700)
+ a| 
+`dom0-complete-journal-A.7z`
+
+Este arquivo, um por controlador, contém Registros detalhados do sistema Linux. Isso inclui logs para pacotes Linux e utilitários e serviços padrão do Linux.
+
+
+
+ a| 
+Arquivos de diário Dom 0 para o controlador B (somente E2800 ou E5700)
+ a| 
+`dom0-complete-journal-B.7z`
+
+Este arquivo, um por controlador, contém Registros detalhados do sistema Linux. Isso inclui logs para pacotes Linux e utilitários e serviços padrão do Linux.
+
+
+
+ a| 
+Diversos arquivos de log Dom 0 para o controlador A (somente E2800 ou E5700)
+ a| 
+`dom0-misc-logs-A.7z`
+
+Este arquivo, um por controlador, contém logs do sistema que não podem ser contidos no diário. Isso inclui o log serial para o aplicativo RAID e logs de depuração para o Hypervisor.
+
+
+
+ a| 
+Diversos arquivos de log Dom 0 para o controlador B (somente E2800 ou E5700)
+ a| 
+`dom0-misc-logs-B.7z`
+
+Este arquivo, um por controlador, contém logs do sistema que não podem ser contidos no diário. Isso inclui o log serial para o aplicativo RAID e logs de depuração para o Hypervisor.
+
+
+
+ a| 
+Valores de tempo limite de envelhecimento do comando da unidade
+ a| 
+`drive-command-aging-timeout.txt` Este arquivo contém os valores padrão e os valores atuais para o campo de tempo limite de envelhecimento do comando para cada unidade.
+
+
+
+ a| 
+Registos de integridade da unidade
+ a| 
+`drive-health-data.bin` Este arquivo contém várias informações de unidade relacionadas à integridade da unidade.
+
+[NOTE]
+====
+Este arquivo é um arquivo binário e exigirá um analisador offline para converter para formato legível humano.
+
+====
+
+
+ a| 
+Conduza dados do analisador de desempenho
+ a| 
+`drive-performance-log.txt`
+
+Este arquivo contém dados de desempenho da unidade que o ajudam a identificar quaisquer unidades com desempenho abaixo das expetativa.
+
+
+
+ a| 
+Configuração da janela Enterprise Management
+ a| 
+`emwdata_v04.bin`
+
+Este ficheiro contém o ficheiro de armazenamento de dados de configuração EMW.
+
+[NOTE]
+====
+Em pacotes de suporte para o E2800 e E5700, este arquivo não está presente.
+
+====
+
+
+ a| 
+Registos de eventos da bandeja
+ a| 
+`expansion-tray-log.txt`
+
+Registos de eventos ESM.
+
+
+
+ a| 
+Falha na análise do repositório
+ a| 
+`failed-repository-analysis.txt`
+
+Este ficheiro contém as informações de análise do repositório com falha.
+
+
+
+ a| 
+Caraterísticas do storage array
+ a| 
+`feature-bundle.txt` Este arquivo contém uma lista do número de volumes, unidades e bandejas de unidades permitidas no storage array e uma lista dos recursos disponíveis e seus limites.
+
+
+
+ a| 
+Inventário de firmware
+ a| 
+`firmware-inventory.txt` Este arquivo contém uma lista de todas as versões de firmware para todos os componentes da matriz de armazenamento.
+
+
+
+ a| 
+Estatísticas de interface InfiniBand (somente InfiniBand)
+ a| 
+`ib-statistics.csv`
+
+Este arquivo contém as estatísticas da interface InfiniBand.
+
+
+
+ a| 
+Estatísticas de caminho de e/S.
+ a| 
+`io-path-statistics.7z` Esse arquivo contém dados brutos de performance para cada controlador que podem ser usados para analisar problemas de performance da aplicação.
+
+
+
+ a| 
+Informações de despejo do IOC para o chip da interface do host
+ a| 
+`ioc-dump-info.txt` Este arquivo contém informações de despejo do IOC para o chip da interface do host.
+
+
+
+ a| 
+Logs de despejo do IOC para o chip da interface do host
+ a| 
+`ioc-dump.gz` Este arquivo contém o despejo de log do chip da interface do host no controlador. O arquivo é compactado no formato gz. O arquivo zip é salvo como um arquivo dentro do pacote de suporte ao cliente.
+
+
+
+ a| 
+Ligações iSCSI (apenas iSCSI)
+ a| 
+`iscsi-session-connections.txt` Este ficheiro contém uma lista de todas as sessões iSCSI atuais.
+
+
+
+ a| 
+Estatísticas iSCSI (apenas iSCSI)
+ a| 
+`iscsi-statistics.csv` Este ficheiro contém estatísticas para o controlo de acesso de multimédia Ethernet (MAC), o Protocolo de controlo de transmissão Ethernet (TCP)/IP (Internet Protocol) e o destino iSCSI.
+
+
+
+ a| 
+Estatísticas de interface de Iser (somente iSER over InfiniBand)
+ a| 
+`iser-statistics.csv` Este arquivo contém as estatísticas da placa de interface do host que executa iSER em InfiniBand.
+
+
+
+ a| 
+Registo de eventos principais
+ a| 
+`major-event-log.txt` Este arquivo contém uma lista detalhada de eventos que ocorrem no storage array. A lista é armazenada em áreas reservadas nos discos na matriz de armazenamento. A lista Registra eventos de configuração e falhas de componentes no storage array.
+
+
+
+ a| 
+Arquivo de manifesto
+ a| 
+`manifest.xml`
+
+Este arquivo contém uma tabela que descreve os arquivos incluídos no arquivo de arquivo e o status coletado de cada um desses arquivos.
+
+
+
+ a| 
+Informações sobre o tempo de execução do software de gerenciamento de armazenamento
+ a| 
+`msw-runtime-info.txt`
+
+Este arquivo contém as informações de tempo de execução do aplicativo de gerenciamento de armazenamento. Contém a versão JRE atualmente usada pelo software de gerenciamento de storage.
+
+
+
+ a| 
+Estatísticas NVMe-of
+ a| 
+`nvmeof-statistics.csv`
+
+Esse arquivo contém uma lista de estatísticas, incluindo estatísticas do controlador NVMe, estatísticas de filas NVMe e estatísticas de interface para o protocolo de transporte (por exemplo, InfiniBand).
+
+
+
+ a| 
+Dados NVSRAM
+ a| 
+`nvsram-data.txt` Este arquivo de controlador especifica as configurações padrão para os controladores.
+
+
+
+ a| 
+Pacote de objetos
+ a| 
+`object-bundle`.bin .`object-bundle`json
+
+Este pacote contém uma descrição detalhada do status do storage array e seus componentes, que era válido no momento em que o arquivo foi gerado.
+
+
+
+ a| 
+Resumo das estatísticas de desempenho
+ a| 
+`perf-stat-daily-summary-a.csv` `perf-stat-daily-summary-b.csv`
+
+Este arquivo contém várias estatísticas de desempenho do controlador, um arquivo por controlador.
+
+
+
+ a| 
+Reservas e Registros persistentes
+ a| 
+`persistent-reservations.txt` Esse arquivo contém uma lista detalhada de volumes no storage array com reservas e Registros persistentes.
+
+
+
+ a| 
+Preferências do usuário do software de gerenciamento de storage
+ a| 
+`pref-01.bin`
+
+Este arquivo contém o armazenamento de dados persistente de preferência do usuário.
+
+[NOTE]
+====
+Nos pacotes de suporte para o E2800 ou E5700, este arquivo não está presente.
+
+====
+
+
+ a| 
+Procedimentos do Recovery Guru
+ a| 
+`recovery-guru-procedures.html` Este arquivo contém uma lista detalhada de todos os tópicos do guru de recuperação que são emitidos em resposta a problemas detetados no storage array. Para os arrays E2800 e E5700, este arquivo contém apenas os detalhes do guru de recuperação, não os arquivos HTML.
+
+
+
+ a| 
+Perfil de recuperação
+ a| 
+`recovery-profile.csv` Este arquivo contém uma descrição detalhada do Registro de perfil de recuperação mais recente e dados históricos.
+
+
+
+ a| 
+Logs de erro SAS PHY
+ a| 
+`sas-phy-error-logs.csv`
+
+Este arquivo contém as informações de erro para SAS PHY.
+
+
+
+ a| 
+Dados de captura de estado
+ a| 
+`state-capture-data.txt` Este arquivo contém uma descrição detalhada do estado atual do storage array.
+
+
+
+ a| 
+Configuração de storage array
+ a| 
+`storage-array-configuration.cfg` Este arquivo contém uma descrição detalhada da configuração lógica em seu storage array.
+
+
+
+ a| 
+Perfil do storage array
+ a| 
+`storage-array-profile.txt` Este arquivo contém uma descrição de todos os componentes e propriedades de uma matriz de armazenamento.
+
+
+
+ a| 
+Rastrear conteúdo do buffer
+ a| 
+`trace-buffers.7z` Este arquivo contém o conteúdo dos buffers de rastreamento dos controladores que são usados para Registrar informações de depuração.
+
+
+
+ a| 
+Dados de captura da bandeja
+ a| 
+`tray-component-state-capture.7z` Se a bandeja contiver gavetas, os dados de diagnóstico serão arquivados neste arquivo compactado. O arquivo Zip contém um arquivo de texto separado para cada bandeja que contém gavetas. O arquivo Zip é salvo como um arquivo dentro do Pacote de suporte ao Cliente.
+
+
+
+ a| 
+Setores ilegíveis
+ a| 
+`unreadable-sectors.txt` Este arquivo contém uma lista detalhada de todos os setores ilegíveis que foram registrados no storage array.
+
+
+
+ a| 
+Registo de Rastreamento de Serviços Web (apenas E2800 ou E5700)
+ a| 
+`web-server-trace-log-A.7z`
+
+`web-server-trace-log-B.7z`
+
+Este arquivo, um por controlador, contém buffers de rastreamento de serviços da Web que são usados para Registrar informações de depuração.
+
+
+
+ a| 
+Arquivo de log de análise de captura de workload
+ a| 
+`wlc-analytics-a.lz4` `wlc-analytics-b.lz4`
+
+Esse arquivo, um por controlador, contém as principais características computadas da carga de trabalho, como histograma LBA, taxa de leitura/gravação e taxa de transferência de e/S em todos os volumes ativos.
+
+
+
+ a| 
+Arquivo de dados do cabeçalho X.
+ a| 
+`x-header-data.txt` Este cabeçalho de mensagem AutoSupport consiste em pares de chave-valor de texto simples; que incluem informações sobre o array e o tipo de mensagem.
+
+|===
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray supportData file=pass:quotes["_filename_"] [force=(TRUE | FALSE)]
+----
+[listing, subs="+macros"]
+----
+save storageArray supportData file=pass:quotes["_filename_"]
+[force=(TRUE | FALSE) |
+csbSubsetid=(basic | weekly | event | daily | complete) |
+csbTimeStamp=pass:quotes[_hh:mm_]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os dados relacionados ao suporte para o storage array. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\supdat.7z"`
+
+
+
+ a| 
+`force`
+ a| 
+Esse parâmetro força a coleta de dados de suporte se houver alguma falha na proteção de um bloqueio nas operações do controlador. Para forçar a coleta de dados de suporte, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+|===
+
+
+== Notas
+
+A partir do nível de firmware 7,86, a extensão do nome do arquivo deve ser `.7z`. Se você estiver executando uma versão de firmware anterior a 7,86, a extensão arquivos deve ser `.zip`.
+
+
+
+== Nível mínimo de firmware
+
+7,80 adiciona o `force` parâmetro.
+
+O 8,30 adiciona informações para o storage array E2800.

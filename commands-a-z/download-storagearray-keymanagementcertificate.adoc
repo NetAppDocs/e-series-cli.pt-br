@@ -1,0 +1,85 @@
+---
+permalink: commands-a-z/download-storagearray-keymanagementcertificate.html 
+sidebar: sidebar 
+keywords: download, storage, array, management, key, certificate, command, intall, external, support, role 
+summary: O comando download storageArray keyManagementCertificate instala os certificados de gerenciamento de chaves externas na matriz de armazenamento. 
+---
+= Instale o certificado de gerenciamento de chaves externas do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `download storageArray keyManagementCertificate` comando instala os certificados de gerenciamento de chaves externas na matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando aplica-se apenas ao gerenciamento de chaves externas.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[download storageArray keyManagementClientCertificate certificateType=(client|server) file="_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`certificateType`
+ a| 
+Permite especificar o tipo de ficheiro de certificado. As opções válidas são `client` ou `server`.
+
+
+
+ a| 
+`file`
+ a| 
+Permite especificar o certificado assinado pelo cliente ou o certificado CA raiz/intermediário do servidor. O ficheiro tem de estar no formato PEM/DER.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "download storageArray keyManagementClientCertificate certificateType=client
+   file="C:\serverSignedKeyMgmtClientCert.cer";"
+
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

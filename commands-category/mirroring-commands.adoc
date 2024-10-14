@@ -1,0 +1,87 @@
+---
+permalink: commands-category/mirroring-commands.html 
+sidebar: sidebar 
+keywords: commands, mirroring, asynchronous, synchronous, command 
+summary: Comandos de espelhamento 
+---
+= Comandos de espelhamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== Comandos de espelhamento assíncrono
+
+link:../commands-a-z/activate-asynchronous-mirroring.html["Ativar o espelhamento assíncrono"]
+
+link:../commands-a-z/add-volume-asyncmirrorgroup.html["Adicionar volume ao grupo de espelhos assíncronos"]
+
+link:../commands-a-z/stop-asyncmirrorgroup-rolechange.html["Cancelar inversão de função do grupo de espelhos assíncrono"]
+
+link:../commands-a-z/check-asyncmirrorgroup-repositoryconsistency.html["Verifique a consistência do grupo de espelhos assíncronos"]
+
+link:../commands-a-z/clear-asyncmirrorfault.html["Apagar falha de espelhamento assíncrono"]
+
+link:../commands-a-z/create-asyncmirrorgroup.html["Crie um grupo de espelhos assíncrono"]
+
+link:../commands-a-z/deactivate-storagearray.html["Desativar o espelhamento assíncrono"]
+
+link:../commands-a-z/delete-asyncmirrorgroup.html["Eliminar grupo de espelhos assíncrono"]
+
+link:../commands-a-z/establish-asyncmirror-volume.html["Estabeleça par espelhado assíncrono"]
+
+link:../commands-a-z/remove-asyncmirrorgroup.html["Remova o par espelhado assíncrono incompleto do grupo de espelhos assíncronos"]
+
+link:../commands-a-z/remove-volume-asyncmirrorgroup.html["Remova o volume do grupo de espelhos assíncronos"]
+
+link:../commands-a-z/reset-storagearray-arvmstats-asyncmirrorgroup.html["Repor estatísticas assíncronas do grupo de espelhos"]
+
+link:../commands-a-z/reset-iscsiipaddress.html["Repor o endereço IP iSCSI"]
+
+link:../commands-a-z/resume-asyncmirrorgroup.html["Retomar grupo de espelhos assíncronos"]
+
+link:../commands-a-z/save-storagearray-arvmstats-asyncmirrorgroup.html["Salvar estatísticas assíncronas do grupo de espelhos"]
+
+link:../commands-a-z/set-asyncmirrorgroup.html["Defina o grupo de espelhos assíncronos"]
+
+link:../commands-a-z/show-asyncmirrorgroup-summary.html["Mostrar grupos de espelhos assíncronos"]
+
+link:../commands-a-z/show-asyncmirrorgroup-synchronizationprogress.html["Mostrar o progresso assíncrono da sincronização do grupo de espelhos"]
+
+link:../commands-a-z/start-asyncmirrorgroup-synchronize.html["Inicie a sincronização assíncrona do espelhamento"]
+
+link:../commands-a-z/suspend-asyncmirrorgroup.html["Suspenda o grupo de espelhos assíncronos"]
+
+link:../commands-a-z/diagnose-asyncmirrorgroup.html["Teste a conetividade assíncrona do grupo de espelhos"]
+
+
+
+== Comandos de espelhamento síncrono
+
+link:../commands-a-z/activate-synchronous-mirroring.html["Ative o espelhamento síncrono"]
+
+link:../commands-a-z/check-syncmirror.html["Verifique o status do espelhamento síncrono"]
+
+link:../commands-a-z/create-syncmirror.html["Criar espelhamento síncrono"]
+
+link:../commands-a-z/deactivate-storagearray-feature.html["Desativar o espelhamento síncrono"]
+
+link:../commands-a-z/diagnose-syncmirror.html["Diagnosticar o espelhamento síncrono"]
+
+link:../commands-a-z/recreate-storagearray-mirrorrepository.html["Recriar o volume do repositório de espelhamento síncrono"]
+
+link:../commands-a-z/remove-syncmirror.html["Remova o espelhamento síncrono"]
+
+link:../commands-a-z/resume-syncmirror.html["Retomar o espelhamento síncrono"]
+
+link:../commands-a-z/set-syncmirror.html["Definir o espelhamento síncrono"]
+
+link:../commands-a-z/show-syncmirror-candidates.html["Mostrar candidatos a volume de espelhamento síncrono"]
+
+link:../commands-a-z/show-syncmirror-synchronizationprogress.html["Mostrar o progresso da sincronização de volume do espelhamento síncrono"]
+
+link:../commands-a-z/start-syncmirror-primary-synchronize.html["Inicie a sincronização de espelhamento síncrono"]
+
+link:../commands-a-z/suspend-syncmirror-primaries.html["Suspender o espelhamento síncrono"]

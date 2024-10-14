@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/start-snmptrapdestination.html 
+sidebar: sidebar 
+keywords: test, snmp, trap, destination 
+summary: 'O comando start snmpTrapDestination testa a conexão e a identificação do recetor trap para uma comunidade ou usuário específico do Simple Network Management Protocol (SNMP). Este comando testa o destino da armadilha enviando uma mensagem de armadilha para o recetor da armadilha.' 
+---
+= Teste o destino da trap SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start snmpTrapDestination` comando testa a conexão e a identificação do recetor trap para uma comunidade ou usuário específico do Simple Network Management Protocol (SNMP). Este comando testa o destino da armadilha enviando uma mensagem de armadilha para o recetor da armadilha.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start snmpTrapDestination trapReceiverIP=ipAddress
+    pass:quotes[(communityName="_communityName_" | (userName="_userName_"] [engineId=(local | engineId)]))
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`trapReceiverIP`
+ a| 
+O endereço IP do gerenciador SNMP para o qual você deseja enviar mensagens de intercetação.
+
+
+
+ a| 
+`communityName`
+ a| 
+O nome da comunidade SNMP para a qual você deseja enviar mensagens de intercetação.
+
+
+
+ a| 
+`userName`
+ a| 
+O nome do usuário SNMP para o qual você deseja enviar mensagens de intercetação.
+
+
+
+ a| 
+`engineId`
+ a| 
+A ID do motor do utilizador SNMP para o qual pretende enviar mensagens de intercetação. A ID do motor é necessária se existir mais do que um utilizador USM com o mesmo nome de utilizador. O valor pode ser[.code]``local`` " " para especificar o agente SNMP local é o agente autorizado ou uma cadeia de carateres de dígitos hexidecimais para especificar um ID de mecanismo de agente SNMP remoto.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,30

@@ -1,0 +1,116 @@
+---
+permalink: commands-a-z/check-volume-parity.html 
+sidebar: sidebar 
+keywords: check, volume, parity 
+summary: O comando check volume parity verifica um volume para erros de paridade e Mídia e, em seguida, grava os resultados da verificação em um arquivo. 
+---
+= Verifique a paridade do volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `check volume parity` comando verifica um volume para erros de paridade e Mídia e, em seguida, grava os resultados da verificação em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+check volume pass:quotes[[_volumeName_]] parity
+[parityErrorFile=pass:quotes[_filename_]]
+[mediaErrorFile=pass:quotes[_filename_]]
+[priority=(highest | high | medium | low | lowest)]
+[startingLBA=pass:quotes[_LBAvalue_]]
+[endingLBA=pass:quotes[_LBAvalue_]]
+[verbose=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume específico para o qual você deseja verificar a paridade. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume contiver carateres especiais ou consistir apenas em números, você deve incluir o identificador entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`parityErrorFile`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as informações de erro de paridade. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\parerr.txt"`
+
+Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+
+
+ a| 
+`mediaErrorFile`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as informações de erro de Mídia. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\mederr.txt"`
+
+Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+
+
+ a| 
+`priority`
+ a| 
+A prioridade que a verificação de paridade tem em relação à atividade de e/S do host. Os valores válidos são `highest`, `high`, `medium`, `low` ou `lowest`.a taxa de prioridade mais baixa beneficia o desempenho do sistema, mas a verificação de paridade demora mais tempo. A taxa de prioridade mais alta beneficia a verificação de paridade, mas o desempenho do sistema pode estar comprometido.
+
+
+
+ a| 
+`startingLBA`
+ a| 
+O endereço do bloco lógico inicial.
+
+
+
+ a| 
+`endingLBA`
+ a| 
+O endereço do bloco lógico final.
+
+
+
+ a| 
+`verbose`
+ a| 
+A configuração para capturar detalhes do progresso, como porcentagem concluída, e para mostrar as informações à medida que a paridade do volume está sendo digitalizada. Para capturar detalhes do progresso, defina este parâmetro como `TRUE`. Para evitar a captura de detalhes de progresso, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+O endereço do bloco lógico inicial e o endereço do bloco lógico final são úteis para LUNs ou namespaces de volume único muito grandes. Executar uma verificação de paridade de volume em um LUN ou namespace de volume único muito grande pode levar muito tempo. Ao definir o endereço inicial e o endereço final dos blocos de dados, você pode reduzir o tempo que uma verificação de paridade de volume leva para ser concluída.
+
+
+
+== Nível mínimo de firmware
+
+11,80 - este comando está obsoleto.

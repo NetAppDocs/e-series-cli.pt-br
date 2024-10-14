@@ -1,0 +1,84 @@
+---
+permalink: commands-a-z/start-ioclog.html 
+sidebar: sidebar 
+keywords: start, input, output, controller, ioc, dump 
+summary: O comando start IOCLog produz um despejo do log IOC de transmissões de dados entre um host e um controlador. 
+---
+= Iniciar despejo do controlador de saída de entrada (IOC)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start IOCLog` comando produz um despejo do log do COI de transmissões de dados entre um host e um controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Os controladores são identificados como "a " ou "b". Cada controlador pode ter até quatro canais host; cada canal é identificado exclusivamente por um número de 1 a 8.
+
+
+
+== Sintaxe
+
+[listing]
+----
+start IOCLog [(a1 | a2 | a3 | a4 | a5 | a6 | a7 | a8 | b1 | b2 | b3 | b4 | b5 | b6 | b7 | b8)]
+[overwrite=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller-channel identifiers`
+ a| 
+Este parâmetro especifica o controlador e o canal do host a partir do qual produzir o despejo do COI. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. os canais do anfitrião têm identificadores numéricos. Inclua o identificador do controlador e o identificador do canal do host entre colchetes ([ ]).
+
+Os valores válidos do identificador do controlador e do canal do host são `a1`, `a2` `a3` `a4` `a5` , , , , `a6` `a7`, , `a8` `b1` , `b2`, , , `b3` `b4`, , `b5`, `b6`, `b7`, `b8` ou .
+
+Se você não especificar um controlador, o software de gerenciamento de armazenamento retornará um erro de sintaxe.
+
+
+
+ a| 
+`overwrite`
+ a| 
+Este parâmetro faz com que o novo despejo de log do COI sobrescreva um despejo existente. Para substituir o despejo existente, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+|===
+
+
+== Notas
+
+Este comando gera um log de depuração do COI do controlador selecionado e armazena os dados em um formato compactado em um buffer de memória persistente no controlador. Você pode recuperar os dados do log de depuração usando o `save IOCLog` comando. O controlador retorna um erro para estas condições:
+
+* A plataforma do controlador e o HIC não suportam um despejo COI.
+* O controlador especificado tem um despejo IOC excecional e o parâmetro overwrite é falso.
+* O identificador do controlador especificado ou o identificador do canal estão fora do intervalo válido.
+
+
+
+
+== Nível mínimo de firmware
+
+8,20

@@ -1,0 +1,46 @@
+---
+permalink: commands-a-z/stop-storagearray-locate.html 
+sidebar: sidebar 
+keywords: stop, storage, array, locate 
+summary: O comando STOP storageArray Locate desliga as luzes indicadoras no storage array que foram ativadas pelo comando start storageArray Locate. 
+---
+= Parar a localização da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop storageArray locate` comando desliga as luzes indicadoras na matriz de armazenamento que foram ligadas pelo `start storageArray locate` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+stop storageArray locate
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10

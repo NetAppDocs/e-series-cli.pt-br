@@ -1,0 +1,107 @@
+---
+permalink: commands-a-z/create-hostport.html 
+sidebar: sidebar 
+keywords: create, host, port 
+summary: 'O comando Create hostPort cria uma nova identificação de porta de host em um adaptador de barramento de host (HBA) ou em um adaptador de canal de host (HCA).' 
+---
+= Criar porta de host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create hostPort` comando cria uma nova identificação de porta de host em um adaptador de barramento de host (HBA) ou em um adaptador de canal de host (HCA).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+A identificação da porta do host é um valor de software que representa a porta física do host HBA ou HCA para o controlador. Sem a identificação correta da porta do host, o controlador não pode receber instruções ou dados da porta do host.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create hostPort identifier=pass:quotes[_("wwID"_ | "_gid"_)
+userLabel="_portLabel"_]
+[host=pass:quotes[_"hostName"_]]
+[interfaceType=(FC | SAS | IB)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`identifier`
+ a| 
+O identificador mundial de 8 bytes (WWID) ou o identificador de grupo de 16 bytes (GID) da porta de host HBA ou HCA. Inclua o WWID ou o GID em aspas duplas (" ").
+
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar à nova porta de host HBA ou HCA. Coloque o rótulo da porta do host em aspas duplas (" ").
+
+
+
+ a| 
+`host`
+ a| 
+O nome do host para o qual você está definindo uma porta de host HBA ou HCA. Inclua o nome do host em aspas duplas (" ").
+
+
+
+ a| 
+`interfaceType`
+ a| 
+O identificador do tipo de interface para a porta do host.
+
+As opções para os tipos de interfaces de porta de host são:
+
+* `FC` -- Canal de fibra
+* `SAS` -- Serial-Attached SCSI
+* `IB` -- InfiniBand
+
+
+Uma seleção FC ou SAS requer um WWID de 8 bytes. Uma seleção IB requer um identificador de grupo de 16 bytes (GID).
+
+Se você não especificar o tipo de interface, `FC` será usado como a interface padrão para a porta do host.
+
+|===
+
+
+== Notas
+
+Uma porta de host HBA ou uma porta de host HCA é uma conexão física em um adaptador de barramento de host ou em um adaptador de canal de host que reside em um computador host. Uma porta de host HBA ou uma porta de host HCA fornece acesso de host aos volumes em um storage array. Se o HBA ou o HCA tiver apenas uma conexão física (uma porta de host), os termos porta de host e adaptador de barramento de host ou adaptador de canal de host são sinônimos.
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+5,20
+
+7,10 desconsidera o `hostType` parâmetro. O `hostType` parâmetro foi adicionado ao `create host` comando.
+
+7,32 adiciona o `interfaceType` parâmetro.

@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/change-ssd-cache-application-type.html 
+sidebar: sidebar 
+keywords: ssd cache application type 
+summary: O comando Set ssdCache altera o tipo de aplicativo associado ao cache SSD. O tipo de aplicativo pode ser servidor web, banco de dados ou Multimídia. Alterar o tipo de aplicativo altera o tamanho do bloco, o tamanho do subbloco, preencher no limite de leitura e preencher no limite de gravação para os volumes subjacentes ao cache SSD. 
+---
+= Alterar o tipo de aplicativo cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set ssdCache` comando altera o tipo de aplicativo associado ao cache SSD. O tipo de aplicativo pode ser servidor web, banco de dados ou Multimídia. Alterar o tipo de aplicativo altera o tamanho do bloco, o tamanho do subbloco, preencher no limite de leitura e preencher no limite de gravação para os volumes subjacentes ao cache SSD.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set ssdCache pass:quotes[[_ssdCacheName_]]usageHint=(webServer|dataBase|fileSystem)
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`ssdCache`
+ a| 
+O nome do cache SSD para o qual você deseja alterar o tipo de aplicativo. Inclua o nome do cache SSD entre colchetes ([ ]). Se o nome do cache SSD contiver carateres especiais ou consistir apenas em números, você deve incluir o nome do cache SSD em aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`usageHint`
+ a| 
+Os valores são baseados no padrão de uso de e/S típico do aplicativo que está usando o cache SSD. Os valores válidos são `webServer`, `dataBase`, `fileSystem` ou .
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

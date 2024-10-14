@@ -1,0 +1,125 @@
+---
+permalink: commands-a-z/set-snapgroup-increase-decreaserepositorycapacity.html 
+sidebar: sidebar 
+keywords: set, snapshot, group, repository, volume, capacity 
+summary: O comando set snapGroup increase/dimineRepositoryCapacity aumenta ou diminui a capacidade de um volume de repositório do grupo de instantâneos. 
+---
+= Definir a capacidade do volume do repositório do grupo de snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snapGroup increase/decreaseRepositoryCapacity` comando aumenta ou diminui a capacidade de um volume de repositório de grupo instantâneo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe para aumentar a capacidade
+
+[listing, subs="+macros"]
+----
+set snapGroup pass:quotes[["_snapGroupName_"]] increaseRepositoryCapacity
+(repositoryVolumes="repos_xxxx" | repositoryVolumes=pass:quotes[((_volumeGroupName_]
+pass:quotes[[capacity=_capacityValue_]])) | repositoryVolumes=pass:quotes[((_diskPoolName_]
+pass:quotes[[capacity=_capacityValue_]])))
+----
+
+
+== Sintaxe para diminuir a capacidade
+
+[listing, subs="+macros"]
+----
+set snapGroup pass:quotes[["_snapGroupName_"]]
+decreaseRepositoryCapacity
+count=pass:quotes[_numberOfVolumes_]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo de instantâneos para o qual você deseja aumentar a capacidade ou diminuir a capacidade. Coloque o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`repositoryVolume`
+ a| 
+O nome do volume do repositório para o qual você deseja aumentar a capacidade. Um volume padrão disponível é adicionado ao volume do repositório para aumentar a capacidade do volume do repositório.
+
+Você tem duas opções para definir o nome de um volume de repositório:
+
+* Use um volume de repositório existente: Nome
+* Crie um novo volume de repositório quando executar este comando
+
+
+O nome de um volume de repositório existente consiste em duas partes:
+
+* O termo "repos"
+* Um identificador numérico de quatro dígitos que o software de gerenciamento de armazenamento atribui ao nome do volume do repositório
+
+
+Inclua o nome do volume do repositório existente entre aspas duplas (" ").
+
+Se você quiser criar um novo volume de repositório ao executar este comando, você deve digitar o nome de um grupo de volumes ou de um pool de discos no qual deseja o volume do repositório. Opcionalmente, você também pode definir a capacidade do volume do repositório. Se você quiser definir a capacidade, você pode usar estes valores:
+
+* Um valor inteiro que representa uma porcentagem da capacidade do volume base
+* Um valor de fração decimal que representa uma porcentagem da capacidade de volume base
+* Um tamanho específico para o volume do repositório. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou .
+
+
+Se você não usar a opção capacidade, o software de gerenciamento de storage define a capacidade para 20% da capacidade de volume base.
+
+Quando você executa esse comando, o software de gerenciamento de storage cria o volume do repositório para o volume do snapshot.
+
+
+
+ a| 
+`count`
+ a| 
+O número de volumes de repositório que você deseja remover do grupo de instantâneos. Use valores inteiros.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para o rótulo do usuário. As etiquetas de utilizador podem ter um máximo de 30 carateres.
+
+O nome do volume do repositório é criado automaticamente pelo software de gerenciamento de storage e pelo firmware quando você cria um novo grupo de snapshot. Não é possível renomear o volume do repositório porque renomear o volume do repositório quebra a ligação com as imagens instantâneas.
+
+Um volume de repositório de grupo instantâneo é um volume expansível que é estruturado como uma coleção concatenada de até 16 entidades de volume padrão. Inicialmente, um volume de repositório expansível tem apenas um único elemento. A capacidade do volume do repositório expansível é exatamente a do único elemento. Você pode aumentar a capacidade de um volume de repositório expansível anexando volumes padrão adicionais a ele. A capacidade de volume do repositório expansível composto torna-se então a soma das capacidades de todos os volumes padrão concatenados.
+
+Um volume de repositório do grupo de snapshot deve atender a um requisito de capacidade mínima que é a soma dos seguintes:
+
+* 32 MB para suportar sobrecarga fixa para o grupo de instantâneos e para o processamento de cópia na gravação.
+* Capacidade para processamento de reversão, que é 1/5000th da capacidade do volume base.
+
+
+A capacidade mínima é a imposição pelo firmware do controlador e pelo software de gerenciamento de storage.
+
+
+
+== Nível mínimo de firmware
+
+7,83

@@ -1,0 +1,82 @@
+---
+permalink: commands-a-z/delete-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: delete, asynchronous, mirror group 
+summary: O comando delete asyncMirrorGroup exclui um ou mais grupos de espelhos assíncronos da matriz de armazenamento local e da matriz de armazenamento remoto. 
+---
+= Eliminar grupo de espelhos assíncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete asyncMirrorGroup` comando exclui um ou mais grupos de espelhos assíncronos da matriz de armazenamento local e da matriz de armazenamento remoto.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+O grupo de espelhos assíncronos deve estar vazio antes de poder ser eliminado com êxito. Você deve remover todos os pares espelhados assíncronos do grupo de espelhos assíncronos antes de usar este comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete (allAsyncMirrorGroups | asyncMirrorGrouppass:quotes[[_"asyncMirrorGroupName"_] |
+asyncMirrorGroups pass:quotes[[_"asyncMirrorGroupName_1" ... "asyncMirrorGroupName_n"_]])
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allAsyncMirrorGroups`
+ a| 
+Use este parâmetro se quiser remover todos os grupos de espelhos assíncronos da matriz de armazenamento local e da matriz de armazenamento remoto.
+
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos que você deseja excluir. Inclua o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`asyncMirrorGroups`
+ a| 
+Os nomes de vários grupos de espelhos assíncronos que você deseja excluir. Digite os nomes dos grupos de espelhos assíncronos usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

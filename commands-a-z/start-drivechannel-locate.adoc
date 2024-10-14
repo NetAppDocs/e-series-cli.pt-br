@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/start-drivechannel-locate.html 
+sidebar: sidebar 
+keywords: start, drive, channel, locate 
+summary: O comando iniciar driveChannel Locate identifica as bandejas de unidades que estão conetadas a um canal de unidade específico, acendendo as luzes indicadoras da bandeja de unidades que está conetada ao canal da unidade. 
+---
+= Inicie a localização do canal de transmissão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start driveChannel locate` comando identifica as bandejas de unidades que estão conetadas a um canal de unidade específico, acendendo as luzes indicadoras da bandeja de unidades conetada ao canal da unidade.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Use o `stop driveChannel locate` comando para desligar as luzes indicadoras na bandeja de unidades
+
+
+
+== Sintaxe
+
+[listing]
+----
+start driveChannel [(1 | 2 | 3 | 4 | 5 | 6 | 7 | 8)] locate
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`driveChannel`
+ a| 
+O número do identificador do canal da unidade que você deseja localizar. Os valores válidos para o número de identificação do canal da unidade são `1`, `2`, `3` `4` `5` , , , , `6`, `7`, `8` ou . Inclua o número do identificador do canal da unidade entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10
+
+7,15 adiciona uma atualização ao identificador do canal da unidade.

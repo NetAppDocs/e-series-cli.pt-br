@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/show-syncmirror-candidates.html 
+sidebar: sidebar 
+keywords: show, synchronous, mirror, volume, candidates 
+summary: O comando show SyncMirror candidates retorna informações sobre os volumes candidatos em um storage array remoto que você pode usar como volumes secundários em uma configuração de espelhamento síncrono. 
+---
+= Mostrar candidatos a volume de espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show syncMirror candidates` comando retorna informações sobre os volumes candidatos em um storage array remoto que você pode usar como volumes secundários em uma configuração de espelhamento síncrono.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[show syncMirror candidates primary="_volumeName_"
+remoteStorageArrayName="_storageArrayName_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`primary`
+ a| 
+O nome do volume local desejado para o volume principal no par espelhado remoto. Coloque o nome do volume primário entre aspas duplas (" ").
+
+
+
+ a| 
+`remoteStorageArrayName`
+ a| 
+O storage array remoto que contém volumes possíveis para um volume secundário. Se o nome da matriz de armazenamento remoto tiver carateres especiais, você também deve incluir o nome da matriz de armazenamento remoto em aspas duplas (" ").
+
+|===
+
+
+== Nível mínimo de firmware
+
+5,40

@@ -1,0 +1,151 @@
+---
+permalink: commands-a-z/show-snapgroup.html 
+sidebar: sidebar 
+keywords: show, snapshot, group 
+summary: O comando show snapGroup retorna informações sobre um ou mais grupos de imagens instantâneas. 
+---
+= Mostrar grupo instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show snapGroup` comando retorna informações sobre um ou mais grupos de imagens instantâneas.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allSnapGroups | snapGroup pass:quotes[[_snapGroupName_]] |
+snapGroups pass:quotes[["_snapGroupName1_" ... "_snapGroupNamen_"]])
+[summary | schedule]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allSnapGroups`
+ a| 
+O parâmetro para retornar informações sobre todos os grupos de snapshot na matriz de armazenamento.
+
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo instantâneo para o qual você deseja recuperar informações. Inclua o nome do grupo de instantâneos entre colchetes ([ ]). Se o nome do grupo instantâneo tiver carateres ou números especiais, você deve incluir o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`snapGroups`
+ a| 
+Os nomes de vários grupos de instantâneos para os quais você deseja recuperar informações. Introduza os nomes dos grupos de instantâneos utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos grupos instantâneos tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`summary`
+ a| 
+O parâmetro para retornar uma lista concisa de informações sobre os grupos de snapshot.
+
+
+
+ a| 
+`schedule`
+ a| 
+O parâmetro para retornar uma lista concisa de informações sobre as programações para as operações de cópia do grupo instantâneo.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Este comando retorna informações do grupo instantâneo como mostrado neste exemplo:
+
+[listing]
+----
+SNAPSHOT GROUP DETAILS
+
+SNAPSHOT GROUPS-----------------------------
+
+SUMMARY
+----
+[listing]
+----
+  Total Snapshot Groups: 1
+  Total Snapshot Images: 0
+  Enabled Snapshot Image Schedules: 0
+  Status: 1 Optimal, 0 Non Optimal
+
+  Name      Type       Status    Associated Base Volume
+  2_SG_01   Standard   Optimal   2
+  Total Repository Capacity  Available Repository Capacity  Snapshot Image Limit
+  10.318 GB                  10.318 GB (100%)               0
+
+  Snapshot Images   Scheduled
+  0                 No
+DETAILS
+
+  Snapshot Group "2_SG_01"
+
+   Status:  Optimal
+   Type:    Standard
+   Associated base volume: 2
+   Cluster size: 65,536 bytes
+
+   Repository
+
+    Total repository volumes: 3
+    Aggregate repository status: Optimal
+    Total repository capacity:   10.318 GB
+    Used capacity:           0.000 MB (0%)
+    Available repository capacity: 10.318 GB (100%)
+    Repository full policy:    Auto-purge Snapshot Images
+    Utilization alert threshold: 75%
+
+   Snapshot images
+
+    Total Snapshot images: 0
+    Auto-delete Snapshot images: Disabled
+    Snapshot image schedule:   Not Applicable
+----
+
+
+== Nível mínimo de firmware
+
+7,83

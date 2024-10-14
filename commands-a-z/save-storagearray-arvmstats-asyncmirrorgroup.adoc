@@ -1,0 +1,137 @@
+---
+permalink: commands-a-z/save-storagearray-arvmstats-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: save, asynchronous, mirror, group, statistics 
+summary: O comando save storageArray arvmStats asyncMirrorGroup salva as estatísticas de sincronização em um arquivo para um ou mais volumes de membros em um grupo de espelhos assíncrono. 
+---
+= Salvar estatísticas assíncronas do grupo de espelhos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray arvmStats asyncMirrorGroup` comando salva as estatísticas de sincronização em um arquivo para um ou mais volumes de membros em um grupo de espelhos assíncronos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+As estatísticas coletadas estão disponíveis apenas para volumes de membros do grupo de espelhos assíncronos em uma função primária no storage array local.
+
+Um conjunto de dados é coletado durante o processo de sincronização que pode ser usado para avaliar o funcionamento da configuração do espelho. Os dados são coletados como um conjunto de _samples_. Uma amostra é criada no início de um processo de sincronização e atualizada regularmente enquanto o processo de sincronização prossegue.
+
+Uma amostra coleta dados até que o processo de sincronização seja concluído ou até que ocorra uma interrupção no processo de sincronização, como uma transferência de propriedade de volume ou `read-write` um erro. Quando uma interrupção do processo de sincronização é resolvida (por exemplo, o volume é transferido para o controlador alternativo), uma nova amostra é criada e atualizada à medida que o processo de sincronização continua.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray arvmStats asyncMirrorGroup pass:quotes[[_asyncMirrorGroupName_]]
+arvmStats file=pass:quotes["_filename_"]
+"
+[volume=pass:quotes["_volumeName_"]]
+[sampleType=(all | mostRecent | longestSyncTime | errors)]
+[recordLimit=(1-90)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos para o qual você está salvando estatísticas de sincronização. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos tiver carateres ou números especiais, você deve incluir o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as estatísticas de sincronização. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\asynchdata.csv"`
+
+Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você pode usar qualquer nome de arquivo, mas você deve usar a `.csv` extensão.
+
+
+
+ a| 
+`volume`
+ a| 
+Este parâmetro é opcional. O nome do volume específico do membro no grupo de espelhos assíncronos para o qual você está recuperando estatísticas de sincronização. Se nenhum volume for especificado, as estatísticas de cada volume de membro no grupo de espelhos assíncronos serão salvas.
+
+Se as estatísticas forem coletadas para mais de um volume em um grupo de espelhos assíncronos, todos os dados serão gravados no mesmo arquivo.
+
+Coloque o nome do volume entre aspas duplas (" ").
+
+
+
+ a| 
+`sampleType`
+ a| 
+Este parâmetro é opcional. O valor padrão para `sampleType` é `all`.
+
+* `all` -- os dados para todos os três tipos de amostra são coletados e gravados no mesmo arquivo.
+* `mostRecent` -- as estatísticas são registradas para as mais recentes amostras de ressincronização de 50.
+* `longestSyncTime` -- as estatísticas são coletadas para as mais recentes 20 amostras de ressincronização mais longas.
+* `errors` -- as estatísticas são registradas para as mais recentes 20 amostras de ressincronização falhadas. Essas amostras incluem um código de falha.
+
+
+
+
+ a| 
+`recordLimit`
+ a| 
+Este parâmetro é opcional. O valor padrão para o limite de Registro é `no limit`. O `recordLimit` tem de ser superior a 0 e inferior ou igual a 90.
+
+|===
+
+
+== Notas
+
+As estatísticas são capturadas para volumes espelhados na função primária. As estatísticas coletadas incluem os seguintes dados:
+
+* Hora de início da sincronização
+* Tipo de sincronização (manual ou periódica)
+* Duração da sincronização
+* Número de bytes enviados
+* Tempo máximo de gravação (para uma única gravação)
+* Tempo mínimo de gravação (para uma única gravação)
+* Taxa mínima de dados de sincronização
+* Taxa máxima de dados de sincronização
+* Tempo total de gravação
+* Utilização do repositório (%)
+* Idade do ponto de recuperação
+
+
+Durante a sincronização inicial, as amostras de estatísticas são capturadas aproximadamente a cada 15 minutos.
+
+As estatísticas de sincronização estão incluídas no pacote de suporte.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

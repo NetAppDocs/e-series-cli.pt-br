@@ -1,0 +1,74 @@
+---
+permalink: commands-a-z/save-storagearray-firmwareinventory.html 
+sidebar: sidebar 
+keywords: save, storage, array, firmware, inventory 
+summary: O comando save storageArray firmwareInventory salva um relatório em um arquivo de todo o firmware atualmente em execução no storage array. 
+---
+= Guarde o inventário do firmware da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray firmwareInventory` comando salva um relatório em um arquivo de todo o firmware atualmente em execução no storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+O relatório lista o firmware para estes componentes:
+
+* Controladores
+* Unidades
+* Gavetas (se aplicável)
+* Módulos de serviços ambientais (ESMs)
+* Fontes de alimentação
+
+
+Você pode usar as informações para ajudar a identificar firmware desatualizado ou firmware que não corresponda ao outro firmware em sua matriz de armazenamento. Você também pode enviar o relatório para o suporte técnico para revisão adicional.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray firmwareInventory file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar o inventário do firmware. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\fwinvent.txt"`
+
+O nome padrão do arquivo que contém o inventário de firmware é `firmware-inventory.txt`. Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,70

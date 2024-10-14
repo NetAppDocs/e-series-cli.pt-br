@@ -1,0 +1,74 @@
+---
+permalink: commands-a-z/start-volumegroup-import.html 
+sidebar: sidebar 
+keywords: start, volume, group, import 
+summary: O comando start volumeGroup import move um grupo de volumes para um estado completo para tornar um grupo de volumes recém-introduzido disponível para sua nova matriz de armazenamento. 
+---
+= Iniciar a importação do grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start volumeGroup import` comando move um grupo de volumes para um estado completo para tornar um grupo de volumes recém-introduzido disponível para seu novo array de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+O grupo de volume deve estar em um estado exportado ou em um estado forçado antes de executar este comando. Ao executar o comando com êxito, o grupo de volume está operacional.
+
+[NOTE]
+====
+No grupo de volumes, não é possível mover volumes associados aos recursos de um storage array para outro storage array.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[start volumeGroup [_volumeGroupName_]] import
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes que pretende importar. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Os volumes de nível mais alto especificamente relacionados a recursos (Espelhamento síncrono, cópia de volume, mapeamento e reservas persistentes) são removidos como parte da operação de importação.
+
+Você deve executar o `show volumeGroup importDependencies` comando antes de executar o `start volumeGroup import` comando.
+
+
+
+== Nível mínimo de firmware
+
+7,10

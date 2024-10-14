@@ -1,0 +1,83 @@
+---
+permalink: commands-a-z/show-storagearray-lunmappings.html 
+sidebar: sidebar 
+keywords: show, storage, array, lun, map 
+summary: 'O comando show storageArray lunMappings retorna informações do perfil do storage array sobre os mapeamentos de número de unidade lógica (LUN) ou ID de namespace (NSID) no storage array.' 
+---
+= Mostrar mapeamentos de LUN de matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray lunMappings` comando retorna informações do perfil do storage array sobre os mapeamentos de número de unidade lógica (LUN) ou ID de namespace (NSID) no storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Mapeamentos padrão de LUN ou NSID são sempre exibidos. Se você executar este comando sem nenhum parâmetro, este comando retornará todos os mapeamentos LUN ou NSID.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show storageArray lunMappings (host pass:quotes[["_hostName_"]] |
+hostgroup pass:quotes[["_hostGroupName_"]])
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`host`
+ a| 
+O nome de um host específico para o qual você deseja ver os mapeamentos LUN ou NSID. Coloque o nome do host entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome de um grupo de hosts específico para o qual você deseja ver os mapeamentos LUN ou NSID. Coloque o nome do grupo anfitrião entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Este comando retorna informações de topologia do host semelhantes a este exemplo.
+
+[listing]
+----
+MAPPINGS (Storage Partitioning - Enabled (0 of 16 used))
+VOLUME NAME  LUN  CONTROLLER  ACCESSIBLE BY  VOLUME STATUS
+Access Volume 7   A,B         Default Group  Optimal
+21           21   B           Default Group  Optimal
+22           22   B           Default Group  Optimal
+----
+
+
+== Nível mínimo de firmware
+
+6,10

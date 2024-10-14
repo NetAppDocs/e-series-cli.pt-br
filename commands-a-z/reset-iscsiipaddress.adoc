@@ -1,0 +1,81 @@
+---
+permalink: commands-a-z/reset-iscsiipaddress.html 
+sidebar: sidebar 
+keywords: reset, iscsi, ip address 
+summary: O comando RESET iscsiIpAddress redefine o endereço IP do storage array remoto para restabelecer a conexão com o storage array local. 
+---
+= Repor o endereço IP iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset iscsiIpAddress` comando redefine o endereço IP da matriz de armazenamento remoto para restabelecer a conexão com a matriz de armazenamento local.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você pode usar este comando para notificar a matriz de armazenamento local que o endereço IP iSCSI da matriz de armazenamento remoto foi alterado e precisa ser atualizado.
+
+Ao estabelecer uma relação de espelhamento assíncrono com uma conexão iSCSI, os storage arrays locais e remotos armazenam um Registro do endereço IP do storage array remoto na configuração de espelhamento assíncrono. Se o endereço IP de uma porta iSCSI mudar, o storage de armazenamento remoto que está tentando usar essa porta encontra um erro de comunicação.
+
+O storage array com o endereço IP alterado envia uma mensagem para cada storage de armazenamento remoto associado aos grupos de espelhos assíncronos configurados para espelhar uma conexão iSCSI. As matrizes de armazenamento que recebem esta mensagem atualizam automaticamente o endereço IP de destino remoto.
+
+Se a matriz de armazenamento com o endereço IP alterado não conseguir enviar sua mensagem entre controladores para um storage de armazenamento remoto, o sistema enviará um alerta sobre o problema de conetividade. Use o `reset` comando para restabelecer a conexão com a matriz de armazenamento local.
+
+
+
+== Sintaxe
+
+[listing]
+----
+reset (remoteStorageArrayName="storageArrayName" | remoteStorageArrayWwid=<wwID>)
+iscsiIpAddress
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`remoteStorageArrayName`
+ a| 
+O nome da matriz de armazenamento remoto para a qual está a repor o endereço IP iSCSI. Coloque o nome da matriz de armazenamento entre aspas duplas (" ").
+
+
+
+ a| 
+`remoteStorageArrayWwid`
+ a| 
+O World Wide Identifier (WWID) da matriz de armazenamento para a qual você está redefinindo o endereço IP iSCSI. Você pode usar o WWID em vez do nome do storage array para identificar o storage array. Coloque o WWID entre parênteses angulares ( ).
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

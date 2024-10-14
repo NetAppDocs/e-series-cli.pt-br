@@ -1,0 +1,62 @@
+---
+permalink: commands-a-z/delete-snmpuser-username.html 
+sidebar: sidebar 
+keywords: delete, user, name, command, simple, network, management, protocol, create, register, effective, unregister, trap, destination, associate, remove 
+summary: 'O comando delete snmpUser username exclui um usuário SNMP (Simple Network Management Protocol) USM existente que você criou e registrou anteriormente usando o comando "Create snmpUser". Excluir um usuário SNMP efetivamente desRegistra o usuário. Todos os destinos de armadilha associados a esse usuário também são removidos.' 
+---
+= Anular o registo do utilizador da SNMPv3 USM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete snmpUser userName` comando elimina um utilizador USM (Simple Network Management Protocol) existente que criou e registou anteriormente utilizando o[.code]``create snmpUser`` comando " ". Excluir um usuário SNMP efetivamente desRegistra o usuário. Todos os destinos de armadilha associados a esse usuário também são removidos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete snmpUser userName="_snmpUserName_" [engineId=(local | engineId)]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userName`
+ a| 
+O nome do utilizador SNMP USM que pretende eliminar. Inclua o nome de utilizador SNMP USM em aspas duplas (" ")
+
+
+
+ a| 
+`engineId`
+ a| 
+A ID do motor do utilizador SNMP USM que pretende atualizar. A ID do motor é necessária se existir mais do que um utilizador USM com o mesmo nome de utilizador. O valor pode ser[.code]``_local_`` " " para especificar o agente SNMP local é o agente autorizado ou uma cadeia de carateres de dígitos hexidecimais para especificar um ID de mecanismo de agente SNMP remoto.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,72

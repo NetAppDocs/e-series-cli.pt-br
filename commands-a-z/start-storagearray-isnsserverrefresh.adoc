@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/start-storagearray-isnsserverrefresh.html 
+sidebar: sidebar 
+keywords: start, storage, array, isns, server, refresh 
+summary: O comando iniciar storageArray isnsServerRefresh inicia uma atualização das informações de endereço de rede para o servidor iSNS. 
+---
+= Inicie a atualização do servidor iSNS do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start storageArray isnsServerRefresh` comando inicia uma atualização das informações de endereço de rede para o servidor iSNS.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Se o servidor DHCP for marginal ou sem resposta, a operação de atualização pode demorar de dois a três minutos para ser concluída.
+
+[NOTE]
+====
+Este comando é apenas para IPv4.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+start storageArray isnsServerRefresh
+----
+
+
+== Parâmetro
+
+Nenhum.
+
+
+
+== Notas
+
+Se você usou o `set storageArray isnsIPv4ConfigurationMethod` comando para definir a configuração, mas não definiu a configuração como DHCP, executar o `start storageArray isnsServerRefresh` retornará um erro.
+
+
+
+== Nível mínimo de firmware
+
+7,10

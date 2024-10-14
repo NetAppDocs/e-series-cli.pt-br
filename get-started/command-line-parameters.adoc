@@ -1,0 +1,381 @@
+---
+permalink: get-started/command-line-parameters.html 
+sidebar: sidebar 
+keywords: legacy, command line, parameters 
+summary: A versão do SANtricity os 11,40 introduziu, para os controladores E2800 e E5700 com serviços da Web incorporados, a capacidade de interagir na linha de comando usando um protocolo HTTPS seguro. Esses controladores podem, opcionalmente, usar o protocolo de símbolo para interações de linha de comando. 
+---
+= Parâmetros da linha de comando legada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== 11,53 e parâmetros de linha de comando mais antigos
+
+A versão do SANtricity os 11,40 introduziu, para os controladores E2800 e E5700 com serviços da Web incorporados, a capacidade de interagir na linha de comando usando um protocolo HTTPS seguro. Esses controladores podem, opcionalmente, usar o protocolo de símbolo para interações de linha de comando. O protocolo Symbol é o único protocolo suportado para os controladores E2700 e E5600. Para preservar scripts existentes e minimizar o tempo de transição, as opções e gramática da CLI são preservadas o máximo possível. No entanto, existem algumas diferenças nas capacidades dos controladores E2800 e E5700 em relação à segurança, autenticação, AutoSupport e mensagens de alerta que tornam obsoleta parte da gramática CLI para esses controladores. No entanto, em alguns casos, a gramática só é obsoleta no E2800 ou E5700 quando o novo protocolo https é usado.
+
+Para os novos parâmetros que se aplicam somente ao `*https*` tipo de cliente, segue-se que eles também se aplicam somente aos controladores E2800 ou E5700.
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`-clientType`
+ a| 
+Este argumento força a criação de um mecanismo de script apropriado. Utilize este parâmetro opcional com um dos seguintes valores:
+
+* `*auto*` - A deteção de dispositivo é realizada automaticamente para detetar o tipo de mecanismo de script apropriado.
+* `*https*` - Um mecanismo de script baseado EM REST é criado.
+* `*symbol*` - Um mecanismo de script baseado em símbolos é criado.
+
+
+
+
+ a| 
+`-u`
+ a| 
+Siga este parâmetro com a `_username_` variável. O nome de usuário só é necessário para o `*https*` tipo de cliente. Este argumento não é aplicável ao `*symbol*` tipo de cliente e será ignorado silenciosamente.
+
+Se o argumento username for especificado, a deteção de dispositivo será executada para determinar o tipo de cliente (`*https*`correto vs `*symbol*`. ).
+
+
+
+ a| 
+`-P`
+ a| 
+Este argumento requer um dos dois argumentos:
+
+* `_password_file_` - Contém a senha a ser usada para autenticação.
+* `-` (Um traço) - Leia a senha do `stdin`.
+
+
+Observe que a adição desse argumento é aplicável a todos os controladores, independentemente de o `*https*` tipo de cliente ou `*symbol*` tipo de cliente ser usado.
+
+
+
+ a| 
+`-k`
+ a| 
+Este argumento opcional permite que um `*https*` cliente opere em modo inseguro. Isso significa que o certificado do storage array não será validado. Por padrão, se omitido, a autenticação adequada será executada. Este argumento não é aplicável ao `*symbol*` tipo de cliente e será ignorado silenciosamente.
+
+|===
+
+
+== Parâmetros de linha de comando que se aplicam somente aos controladores E2700 ou E5600
+
+Como os controladores E2700 e E5600 não têm recursos de gerenciamento de alertas incorporados, esses parâmetros de linha de comando são aplicáveis. Esses parâmetros não são aplicáveis aos controladores E2800 ou E5700.
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`-a`
+ a| 
+Adiciona um destino de armadilha SNMP (Simple Network Management Protocol) ou um destino de alerta de endereço de e-mail.
+
+* Quando você adiciona um destino de trap SNMP, a comunidade SNMP é definida automaticamente como o nome da comunidade para o trap e o `*host*` é o endereço IP ou o nome de host DNS (Domain Name Server) do sistema para o qual o trap deve ser enviado.
+* Quando você adiciona um endereço de e-mail para um destino de alerta, o `*email-address*` é o endereço de e-mail para o qual você deseja que a mensagem de alerta seja enviada.
+
+
+[NOTE]
+====
+Esta opção de linha de comando está obsoleta para as matrizes de armazenamento E2800 e E5700. Use os comandos API RESTful, Gerenciador de sistemas SANtricity ou curl.
+
+====
+
+
+ a| 
+`-m`
+ a| 
+Especifica o nome do host ou o endereço IP do servidor de e-mail a partir do qual as notificações de alerta de e-mail são enviadas.
+
+[NOTE]
+====
+Esta opção de linha de comando está obsoleta para as matrizes de armazenamento E2800 e E5700. Use os comandos API RESTful, Gerenciador de sistemas SANtricity ou curl.
+
+====
+
+
+ a| 
+`-s` (minúscula)
+ a| 
+Apresenta as definições de alerta no ficheiro de configuração quando utilizado com o `-d` parâmetro.
+
+[NOTE]
+====
+Esta opção de linha de comando está obsoleta para as matrizes de armazenamento E2800 e E5700. Use os comandos API RESTful, Gerenciador de sistemas SANtricity ou curl.
+
+====
+
+
+ a| 
+`-x` (minúscula)
+ a| 
+Remove um destino de trap SNMP ou um destino de alerta de endereço de e-mail.  `_community_`O é o nome da comunidade SNMP para a armadilha e `_host_` o é o endereço IP ou o nome do host DNS do sistema para o qual você deseja que a armadilha seja enviada.
+
+[NOTE]
+====
+Esta opção de linha de comando está obsoleta para as matrizes de armazenamento E2800 e E5700. Use os comandos API RESTful, Gerenciador de sistemas SANtricity ou curl.
+
+====
+|===
+
+
+== Parâmetros de linha de comando que se aplicam a todos os controladores executados com um tipo de cliente de símbolo
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`-R` (maiúsculas)
+ a| 
+Define a função de utilizador para a palavra-passe. As funções podem ser:
+
+* `*admin*` -- o usuário tem privilégio de alterar a configuração da matriz de armazenamento.
+* `*monitor*` -- o usuário tem privilégio de visualizar a configuração da matriz de armazenamento, mas não pode fazer alterações.
+
+
+O `*-R*` parâmetro é válido somente quando usado com o `*–p*` parâmetro, que especifica que você define uma senha para um storage array.
+
+O `*-R*` parâmetro só é necessário se o recurso de senha dupla estiver ativado na matriz de armazenamento. O `*-R*` parâmetro não é necessário nestas condições:
+
+* O recurso de senha dupla não está habilitado no storage de armazenamento.
+* Apenas uma função de administrador é definida e a função de monitor não está definida para o storage array.
+
+
+|===
+
+
+== Parâmetros de linha de comando aplicáveis a todos os controladores e a todos os tipos de cliente
+
+[cols="2*"]
+|===
+| Parâmetro | Definição 
+
+
+ a| 
+`_host-name-or-IP-address_`
+ a| 
+Especifica o nome do host ou o endereço IP (Internet Protocol) (`_xxx.xxx.xxx.xxx_`de um storage array gerenciado na banda ou um storage gerenciado fora da banda.
+
+* Se você estiver gerenciando um storage array usando um host por meio de gerenciamento de storage na banda, use o `-n` parâmetro ou o `-w` parâmetro se mais de um storage array estiver conetado ao host.
+* Se você estiver gerenciando um storage array usando o gerenciamento de storage fora da banda por meio da conexão Ethernet em cada controlador, especifique o `_host-name-or-IP-address_` dos controladores.
+* Se tiver configurado anteriormente uma matriz de armazenamento na janela Enterprise Management, pode especificar a matriz de armazenamento pelo nome fornecido pelo utilizador utilizando o `-n` parâmetro.
+* Se você já tiver configurado um storage array na janela Enterprise Management, poderá especificar o storage array por seu World Wide Identifier (WWID) usando o `-w` parâmetro.
+
+
+
+
+ a| 
+`-A`
+ a| 
+Adiciona um storage array ao arquivo de configuração. Se você não seguir o `-A` parâmetro com um `_host-name-or-IP-address_`, a descoberta automática verificará a sub-rede local em busca de matrizes de armazenamento.
+
+
+
+ a| 
+`-c`
+ a| 
+Indica que você está inserindo um ou mais comandos de script para execução na matriz de armazenamento especificada. Termine cada comando com um ponto e vírgula (`;`). Você não pode colocar mais de um `-c` parâmetro na mesma linha de comando. Você pode incluir mais de um comando de script após o `-c` parâmetro.
+
+
+
+ a| 
+`-d`
+ a| 
+Mostra o conteúdo do arquivo de configuração do script. O conteúdo do arquivo tem este formato: `_storage-system-name host-name1 host-name2_`
+
+
+
+ a| 
+`-e`
+ a| 
+Executa os comandos sem executar uma verificação de sintaxe primeiro.
+
+
+
+ a| 
+`-F` (maiúsculas)
+ a| 
+Especifica o endereço de e-mail a partir do qual todos os alertas serão enviados.
+
+
+
+ a| 
+`-f` (minúscula)
+ a| 
+Especifica um nome de arquivo que contém comandos de script que você deseja executar na matriz de armazenamento especificada. O `-f` parâmetro é semelhante ao `-c` parâmetro em que ambos os parâmetros são destinados à execução de comandos de script. O `-c` parâmetro executa comandos de script individuais. O `-f` parâmetro executa um arquivo de comandos de script. Por padrão, todos os erros encontrados ao executar os comandos de script em um arquivo são ignorados e o arquivo continua a ser executado. Para substituir esse comportamento, use o `set session errorAction=stop` comando no arquivo de script.
+
+
+
+ a| 
+`-g`
+ a| 
+Especifica um arquivo ASCII que contém informações de Contato do remetente de e-mail que serão incluídas em todas as notificações de alerta de e-mail. A CLI assume que o arquivo ASCII é apenas texto, sem delimitadores ou qualquer formato esperado. Não utilize o `-g` parâmetro se existir um `userdata.txt` ficheiro.
+
+
+
+ a| 
+`-h`
+ a| 
+Especifica o nome do host que está executando o agente SNMP ao qual o storage array está conetado. Utilize o `-h` parâmetro com estes parâmetros:
+
+* `-a`
+* `-x`
+
+
+
+
+ a| 
+`-I` (maiúsculas)
+ a| 
+Especifica o tipo de informação a incluir nas notificações de alerta por e-mail. Você pode selecionar estes valores:
+
+* `eventOnly` -- apenas as informações do evento estão incluídas no e-mail.
+* `profile` -- as informações do perfil do evento e do array estão incluídas no e-mail.
+
+
+Você pode especificar a frequência para as entregas de e-mail usando o `-q` parâmetro.
+
+
+
+ a| 
+`-i` (minúscula)
+ a| 
+Mostra o endereço IP das matrizes de armazenamento conhecidas. Utilize o `-i` parâmetro com o `-d` parâmetro. O conteúdo do arquivo tem este formato: `_storage-system-name IP-address1 IPaddress2_`
+
+
+
+ a| 
+`-n`
+ a| 
+Especifica o nome do storage array no qual você deseja executar os comandos de script. Esse nome é opcional quando você usa um `_host-name-or-IP-address_`. se estiver usando o método na banda para gerenciar o storage array, você deverá usar o `-n` parâmetro se mais de um storage array estiver conetado ao host no endereço especificado. O nome do storage array é necessário quando o `_host-name-or-IP-address_` não é usado. O nome do storage array configurado para uso na janela Enterprise Management (ou seja, o nome está listado no arquivo de configuração) não deve ser um nome duplicado de qualquer outro storage array configurado.
+
+
+
+ a| 
+`-o`
+ a| 
+Especifica um nome de arquivo para todo o texto de saída que é o resultado da execução dos comandos de script. Utilize o `-o` parâmetro com estes parâmetros:
+
+* `-c`
+* `-f`
+
+
+Se você não especificar um arquivo de saída, o texto de saída vai para a saída padrão (stdout). Todas as saídas de comandos que não são comandos de script são enviadas para stdout, independentemente de este parâmetro estar definido.
+
+
+
+ a| 
+`-p`
+ a| 
+Define a senha para o storage no qual você deseja executar comandos. Não é necessária uma palavra-passe nestas condições:
+
+* Não foi definida uma palavra-passe na matriz de armazenamento.
+* A senha é especificada em um arquivo de script que você está executando.
+* Você especifica a senha usando o `-c` parâmetro e este comando:
+
+
+[listing]
+----
+set session password=password
+----
+
+
+ a| 
+`-P`
+ a| 
+Este argumento requer um dos dois argumentos:
+
+* `_password_file_` - contém a senha a ser usada para autenticação.
+* `-`(dash) - leia a senha do `stdin`.
+
+
+Observe que a adição desse argumento é aplicável a todos os controladores, independentemente de o `*https*` tipo de cliente ou `*symbol*` tipo de cliente ser usado.
+
+
+
+ a| 
+`-q`
+ a| 
+Especifica a frequência que você deseja receber notificações de eventos e o tipo de informação retornada nas notificações de eventos. Uma notificação de alerta por e-mail contendo pelo menos as informações básicas do evento é sempre gerada para cada evento crítico. Estes valores são válidos para o `-q` parâmetro:
+
+* `everyEvent` -- as informações são retornadas com cada notificação de alerta por e-mail.
+* `2` -- a informação é devolvida não mais do que uma vez a cada duas horas.
+* `4` -- a informação é devolvida não mais do que uma vez a cada quatro horas.
+* `8` -- a informação é devolvida não mais do que uma vez a cada oito horas.
+* `12` -- a informação é devolvida não mais do que uma vez a cada 12 horas.
+* `24` -- a informação é devolvida não mais do que uma vez a cada 24 horas.
+
+
+Usando o `-I` parâmetro, você pode especificar o tipo de informação nas notificações de alerta por e-mail.
+
+* Se definir o `-I` parâmetro como `eventOnly` , o único valor válido para o `-q` parâmetro é `everyEvent`.
+* Se você definir `-I` o parâmetro para o `profile` valor ou o `supportBundle` valor, essas informações serão incluídas com os e-mails com a frequência especificada pelo `-q` parâmetro.
+
+
+
+
+ a| 
+`-quick`
+ a| 
+Reduz o tempo necessário para executar uma operação de linha única. Um exemplo de uma operação de linha única é o `recreate snapshot volume` comando. Este parâmetro reduz o tempo ao não executar processos em segundo plano durante a duração do comando. Não utilize este parâmetro para operações que envolvam mais de uma operação de linha única. O uso extensivo deste comando pode sobrecarregar o controlador com mais comandos do que o controlador pode processar, o que causa falha operacional. Além disso, atualizações de status e atualizações de configuração que são coletadas geralmente de processos em segundo plano não estarão disponíveis para a CLI. Este parâmetro faz com que as operações que dependem das informações de fundo falhem.
+
+
+
+ a| 
+`-S` (maiúsculas)
+ a| 
+Suprime mensagens informativas descrevendo o progresso do comando que aparecem quando você executa comandos de script. (Suprimir mensagens informativas também é chamado de modo silencioso.) Este parâmetro suprime estas mensagens:
+
+* `Performing syntax check`
+* `Syntax check complete`
+* `Executing script`
+* `Script execution complete`
+* `SMcli completed successfully`
+
+
+
+
+ a| 
+`-useLegacyTransferPort`
+ a| 
+Usado para definir a porta de transferência como `8443`, em vez do `443` padrão .
+
+
+
+ a| 
+`-v`
+ a| 
+Mostra o status global atual dos dispositivos conhecidos em um arquivo de configuração quando usado com o `-d` parâmetro.
+
+
+
+ a| 
+`-w`
+ a| 
+Especifica o WWID da matriz de armazenamento. Este parâmetro é uma alternativa ao `-n` parâmetro. Use o `-w` parâmetro com o `-d` parâmetro para mostrar os WWIDs das matrizes de armazenamento conhecidas. O conteúdo do arquivo tem este formato: `_storage-system-name world-wide-ID IP-address1 IP-address2_`
+
+
+
+ a| 
+`-X` (maiúsculas)
+ a| 
+Exclui uma matriz de armazenamento de uma configuração.
+
+
+
+ a| 
+`-?`
+ a| 
+Mostra informações de uso sobre os comandos CLI.
+
+|===

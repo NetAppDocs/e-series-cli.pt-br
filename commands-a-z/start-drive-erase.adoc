@@ -1,0 +1,75 @@
+---
+permalink: commands-a-z/start-drive-erase.html 
+sidebar: sidebar 
+keywords: start, drive, erase 
+summary: O comando start drive erase apaga todos os dados de uma ou mais unidades. 
+---
+= Inicie a eliminação da unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start drive erase` comando apaga todos os dados de uma ou mais unidades.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um array individual E2800, E5700, EF600 ou EF300. Ele não opera em storages E2700 e E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Execute este comando somente se você quiser remover permanentemente todos os dados em uma unidade. Se a unidade estiver ativada para segurança, a `start drive erase` opção de comando executa uma eliminação criptográfica e repõe os atributos de segurança da unidade de volta para segura.
+
+[NOTE]
+====
+A operação de eliminação não pode ser desfeita. Certifique-se de que seleciona a unidade correta ao utilizar este comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drivespass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]] erase
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drive`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+[NOTE]
+====
+A lista de unidades não pode conter todas as unidades na matriz de armazenamento, ou o comando será rejeitado.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+11.70.1

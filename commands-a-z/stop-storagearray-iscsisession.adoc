@@ -1,0 +1,56 @@
+---
+permalink: commands-a-z/stop-storagearray-iscsisession.html 
+sidebar: sidebar 
+keywords: stop, storage, array, iscsi session 
+summary: O comando stop storageArray iscsiSession força o encerramento de uma sessão iSCSI de storage array. 
+---
+= Parar a sessão iSCSI da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop storageArray iscsiSession` comando força o encerramento de uma sessão iSCSI de storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[stop storageArray iscsiSession [_SessionNumber_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`*iscsiSession*`
+ a| 
+O número do identificador da sessão iSCSI. Inclua o número do identificador da sessão iSCSI entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,10

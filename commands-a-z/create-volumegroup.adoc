@@ -1,0 +1,396 @@
+---
+permalink: commands-a-z/create-volumegroup.html 
+sidebar: sidebar 
+keywords: create, volume, group 
+summary: O comando criar volumeGroup cria um grupo de volume de capacidade livre ou um grupo de volumes com um volume quando você insere um conjunto de unidades não atribuídas. 
+---
+= Criar grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create volumeGroup` comando cria um grupo de volume de capacidade livre ou um grupo de volumes com um volume quando você insere um conjunto de unidades não atribuídas.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create volumeGroup
+drives=pass:quotes[(_trayID1_,]pass:quotes[[_drawerID1,_]]pass:quotes[_slotID1 ... trayIDn_],pass:quotes[[_drawerIDn,_]pass:quotes[_slotIDn)_]
+raidLevel=(0 | 1 | 3 | 5 | 6)
+userLabel=pass:quotes[_"volumeGroupName"_]
+[driveMediaType=(HDD | SSD | unknown | allMedia)]
+[driveType=(SAS | NVMe4K)]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[securityType=(none | capable | enabled )]
+[dataAssurance=(none | enabled)]
+[resourceProvisioningCapable=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drives`
+ a| 
+As unidades que você deseja atribuir ao grupo de volumes que deseja criar. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`raidLevel`
+ a| 
+O nível RAID do grupo de volumes que contém o volume. Os valores válidos são `0`, `1`, `3`, `5` `6` ou .
+
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar ao novo grupo de volumes. Coloque o nome do grupo de volume entre aspas duplas (" ").
+
+
+
+ a| 
+`driveMediaType`
+ a| 
+O tipo de material de unidade que pretende utilizar para o grupo de volumes
+
+Você deve usar esse parâmetro quando tiver mais de um tipo de Mídia de unidade em seu storage de armazenamento.
+
+Estes suportes de dados da unidade são válidos:
+
+* `HDD` -- Use esta opção quando tiver discos rígidos na bandeja de unidades
+* `SSD` -- Use esta opção quando tiver unidades de estado sólido na bandeja de unidades
+* `unknown` -- Use esta opção se não tiver certeza de quais tipos de Mídia de unidade estão na bandeja de unidades
+* `allMedia` -- Use esta opção quando quiser usar todos os tipos de Mídia de unidade que estão na bandeja de unidades
+
+
+
+
+ a| 
+`driveType`
+ a| 
+O tipo de unidade que você deseja usar no grupo de volumes. Não é possível misturar tipos de unidade.
+
+Você deve usar esse parâmetro quando tiver mais de um tipo de unidade em seu storage array.
+
+Estes tipos de unidade são válidos:
+
+* `SAS`
+* `NVMe4K`
+
+
+Se você não especificar um tipo de unidade, o código não verificará se as unidades especificadas são desse tipo de unidade.
+
+
+
+ a| 
+`trayLossProtect`
+ a| 
+A configuração para aplicar a proteção contra perda de bandeja quando você cria o grupo de volume. Para aplicar a proteção contra perda de bandeja, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+
+
+ a| 
+`drawerLossProtect`
+ a| 
+A configuração para aplicar a proteção contra perda de gaveta quando você cria o grupo de volume. Para aplicar a proteção contra perda de gaveta, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+
+
+ a| 
+`securityType`
+ a| 
+A configuração para especificar o nível de segurança ao criar os grupos de volumes e todos os volumes associados. Estas definições são válidas:
+
+* `none` -- o grupo de volumes e os volumes não são seguros.
+* `capable` -- o grupo de volumes e os volumes são capazes de ter a segurança definida, mas a segurança não foi ativada.
+* `enabled` -- o grupo de volumes e os volumes têm a segurança ativada.
+
+
+
+
+ a| 
+`resourceProvisioningCapable`
+ a| 
+A configuração para especificar se os recursos de provisionamento de recursos estão ativados. Para desativar o provisionamento de recursos, defina este parâmetro como `FALSE`. O valor padrão é `TRUE`.
+
+|===
+
+
+== Unidades e grupos de volumes
+
+Um grupo de volumes é um conjunto de unidades que são logicamente agrupadas pelos controladores no storage array. O número de unidades em um grupo de volumes é uma limitação do nível RAID e do firmware da controladora. Ao criar um grupo de volumes, siga estas diretrizes:
+
+* A partir da versão de firmware 7,10, você pode criar um grupo de volume vazio para que você possa reservar a capacidade para uso posterior.
+* Não é possível misturar tipos de unidade em um único grupo de volume.
+* Não é possível misturar unidades HDD e SSD num único grupo de volumes.
+* O número máximo de unidades em um grupo de volumes depende dessas condições:
++
+** O tipo de controlador
+** O nível RAID
+
+
+* Os níveis de RAID incluem: 0, 1, 3, 5 e 6 .
++
+** Um grupo de volumes com RAID nível 3, RAID nível 5 ou RAID nível 6 não pode ter mais de 30 unidades.
+** Um grupo de volumes com RAID nível 6 deve ter, no mínimo, cinco unidades.
+** Se um grupo de volumes com RAID nível 1 tiver quatro ou mais unidades, o software de gerenciamento de armazenamento converte automaticamente o grupo de volumes para RAID nível 10, que é RAID nível 1 e RAID nível 0.
+
+
+* Para ativar a proteção contra perda de bandeja/gaveta, consulte as tabelas a seguir para obter critérios adicionais:
+
+
+|===
+| Nível | Critérios para proteção contra perda de bandejas | Número mínimo de bandejas necessário 
+
+
+ a| 
+`Disk Pool`
+ a| 
+O pool de discos não contém mais de duas unidades em uma única bandeja
+ a| 
+6
+
+
+
+ a| 
+`RAID 6`
+ a| 
+O grupo de volumes não contém mais do que duas unidades em uma única bandeja
+ a| 
+3
+
+
+
+ a| 
+`RAID 3` ou `RAID 5`
+ a| 
+Cada unidade do grupo de volume está localizada em uma bandeja separada
+ a| 
+3
+
+
+
+ a| 
+`RAID 1`
+ a| 
+Cada unidade em um par RAID 1 deve estar localizada em uma bandeja separada
+ a| 
+2
+
+
+
+ a| 
+`RAID 0`
+ a| 
+Não é possível obter a proteção contra perda do tabuleiro.
+ a| 
+Não aplicável
+
+|===
+|===
+| Nível | Critérios para proteção contra perda de gaveta | Número mínimo de gavetas necessário 
+
+
+ a| 
+`Disk Pool`
+ a| 
+O pool inclui unidades de todas as cinco gavetas e há um número igual de unidades em cada gaveta. Uma bandeja de 60 unidades pode obter proteção contra perda de gaveta quando o pool de discos contém 15, 20, 25, 30, 35, 40, 45, 50, 55 ou 60 unidades.
+ a| 
+5
+
+
+
+ a| 
+`RAID 6`
+ a| 
+O grupo de volumes não contém mais do que duas unidades em uma única gaveta.
+ a| 
+3
+
+
+
+ a| 
+`RAID 3` ou `RAID 5`
+ a| 
+Cada unidade do grupo de volume está localizada em uma gaveta separada.
+ a| 
+3
+
+
+
+ a| 
+`RAID 1`
+ a| 
+Cada unidade em um par espelhado deve estar localizada em uma gaveta separada.
+ a| 
+2
+
+
+
+ a| 
+`RAID 0`
+ a| 
+Não é possível obter proteção contra perda de gaveta.
+ a| 
+Não aplicável
+
+|===
+
+
+== Peças sobressalentes quentes
+
+Com grupos de volumes, uma estratégia valiosa para proteger os dados é atribuir unidades disponíveis no storage como unidades hot spare. Um hot spare é uma unidade, que não contém dados, que atua como standby na matriz de armazenamento no caso de uma unidade falhar em um grupo de volumes RAID 1, RAID 3, RAID 5 ou RAID 6. O hot spare adiciona outro nível de redundância ao storage array.
+
+Geralmente, as unidades hot spare devem ter capacidades iguais ou superiores à capacidade usada nas unidades que estão protegendo. As unidades hot spare devem ser do mesmo tipo de Mídia, do mesmo tipo de interface e da mesma capacidade que as unidades que estão protegendo.
+
+Se uma unidade falhar no storage de armazenamento, o hot spare normalmente será substituído automaticamente pela unidade com falha sem a necessidade de sua intervenção. Se um hot spare estiver disponível quando uma unidade falhar, o controlador usará paridade de dados de redundância para reconstruir os dados no hot spare. O suporte de evacuação de dados também permite que os dados sejam copiados para um hot spare antes que o software marque a unidade "com falha".
+
+Depois que a unidade com falha for fisicamente substituída, você pode usar uma das seguintes opções para restaurar os dados:
+
+Depois de substituir a unidade com falha, os dados do hot spare são copiados de volta para a unidade de substituição. Esta ação é chamada copyback.
+
+Se você designar a unidade hot spare como um membro permanente de um grupo de volume, a operação de cópia não será necessária.
+
+A disponibilidade de proteção contra perda de bandeja e proteção contra perda de gaveta para um grupo de volumes depende da localização das unidades que compõem o grupo de volumes. A proteção contra perda de bandeja e a proteção contra perda de gaveta podem ser perdidas devido a uma unidade com falha e à localização da unidade hot spare. Para garantir que a proteção contra perda de bandeja e a proteção contra perda de gaveta não sejam afetadas, você deve substituir uma unidade com falha para iniciar o processo de cópia de segurança.
+
+O storage de armazenamento seleciona automaticamente unidades compatíveis com Data Assurance (DA) para cobertura hot spare de volumes habilitados PARA DA.
+
+Certifique-se de ter unidades compatíveis com DA no storage para cobertura hot spare de volumes habilitados PARA DA. Para obter mais informações sobre unidades compatíveis com DA, consulte o recurso Data Assurance.
+
+As unidades com capacidade segura (FIPS e FDE) podem ser usadas como hot spare para unidades com capacidade segura e sem capacidade de segurança. As unidades com capacidade para não proteger podem fornecer cobertura para outras unidades com capacidade para não proteger e para unidades com capacidade segura se o grupo de volumes não tiver a segurança ativada. Um grupo de volumes FIPS só pode usar uma unidade FIPS como hot spare. No entanto, você pode usar um hot spare FIPS para grupos de volumes habilitados para segurança, com capacidade segura e não protegida.
+
+Se você não tiver um hot spare, ainda poderá substituir uma unidade com falha enquanto o storage de armazenamento estiver operando. Se a unidade fizer parte de um grupo de volumes RAID 1, RAID 3, RAID 5 ou RAID 6, a controladora usará paridade de dados de redundância para reconstruir automaticamente os dados na unidade de substituição. Esta ação chama-se reconstrução.
+
+
+
+== Tamanho do segmento
+
+O tamanho de um segmento determina quantos blocos de dados o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Cada bloco de dados armazena 512 bytes de dados. Um bloco de dados é a menor unidade de armazenamento. O tamanho de um segmento determina quantos blocos de dados contém. Por exemplo, um segmento de 8 KB contém 16 blocos de dados. Um segmento de 64 KB contém 128 blocos de dados.
+
+Quando você insere um valor para o tamanho do segmento, o valor é verificado em relação aos valores suportados fornecidos pelo controlador no tempo de execução. Se o valor inserido não for válido, o controlador retornará uma lista de valores válidos. O uso de uma única unidade para uma única solicitação deixa outras unidades disponíveis para atender simultaneamente a outras solicitações. Se o volume estiver em um ambiente onde um único usuário está transferindo grandes unidades de dados (como Multimídia), o desempenho é maximizado quando uma única solicitação de transferência de dados é atendida com uma única faixa de dados. (Uma faixa de dados é o tamanho do segmento que é multiplicado pelo número de unidades no grupo de volumes que são usadas para transferências de dados.) Neste caso, várias unidades são usadas para a mesma solicitação, mas cada unidade é acessada apenas uma vez.
+
+Para obter o desempenho ideal em um ambiente de armazenamento de sistemas de arquivos ou banco de dados multiusuário, defina o tamanho do segmento para minimizar o número de unidades necessárias para atender a uma solicitação de transferência de dados.
+
+
+
+== Dica de utilização
+
+[NOTE]
+====
+Não é necessário introduzir um valor para o `cacheReadPrefetch` parâmetro ou para o `segmentSize` parâmetro. Se não introduzir um valor, o firmware do controlador utiliza o `usageHint` parâmetro com `fileSystem` como valor predefinido. Introduzir um valor para o `usageHint` parâmetro e um valor para o `cacheReadPrefetch` parâmetro ou um valor para o `segmentSize` parâmetro não causa um erro. O valor inserido para o parâmetro ou para `cacheReadPrefetch` o `segmentSize` parâmetro tem prioridade sobre o valor do `usageHint` parâmetro. O tamanho do segmento e as configurações de pré-busca de leitura de cache para várias dicas de uso são mostrados na tabela a seguir:
+
+====
+|===
+| Dica de uso | Definição do tamanho do segmento | Configuração de pré-busca de leitura de cache dinâmico 
+
+
+ a| 
+Sistema de arquivos
+ a| 
+128 KB
+ a| 
+Ativado
+
+
+
+ a| 
+Banco de dados
+ a| 
+128 KB
+ a| 
+Ativado
+
+
+
+ a| 
+Multimédia
+ a| 
+256 KB
+ a| 
+Ativado
+
+|===
+
+
+== Cache lê pré-busca
+
+A pré-busca de leitura de cache permite que o controlador copie blocos de dados adicionais no cache enquanto o controlador lê e copia blocos de dados solicitados pelo host da unidade para o cache. Essa ação aumenta a chance de que uma futura solicitação de dados possa ser atendida a partir do cache. A pré-busca de leitura de cache é importante para aplicativos Multimídia que usam transferências de dados sequenciais. Os valores válidos para o `cacheReadPrefetch` parâmetro são `TRUE` ou `FALSE`. A predefinição é `TRUE`.
+
+
+
+== Tipo de segurança
+
+Use o `securityType` parâmetro para especificar as configurações de segurança do storage array.
+
+Antes de definir o `securityType` parâmetro como `enabled`, você deve criar uma chave de segurança do storage array. Use o `create storageArray securityKey` comando para criar uma chave de segurança de storage array. Estes comandos estão relacionados com a chave de segurança:
+
+* `create storageArray securityKey`
+* `export storageArray securityKey`
+* `import storageArray securityKey`
+* `set storageArray securityKey`
+* `enable volumeGroup [volumeGroupName] security`
+* `enable diskPool [diskPoolName] security`
+
+
+
+
+== Unidades seguras
+
+As unidades com capacidade segura podem ser unidades com criptografia total de disco (FDE) ou unidades FIPS (Federal Information Processing Standard). Use o `secureDrives` parâmetro para especificar o tipo de unidades seguras a serem usadas. Os valores que você pode usar são `fips` e `fde`.
+
+
+
+== Gerenciamento de garantia de dados
+
+O recurso Data Assurance (DA) aumenta a integridade dos dados em todo o sistema de armazenamento. O DA permite que o storage array verifique se há erros que possam ocorrer quando os dados são movidos entre os hosts e as unidades. Quando esse recurso está ativado, o storage de armazenamento anexa códigos de verificação de erros (também conhecidos como verificações de redundância cíclica ou CRCs) a cada bloco de dados no volume. Depois que um bloco de dados é movido, o storage array usa esses códigos CRC para determinar se ocorreram erros durante a transmissão. Os dados potencialmente corrompidos não são gravados no disco nem devolvidos ao host.
+
+Se você quiser usar o recurso DA, comece com um pool ou grupo de volume que inclui apenas unidades que suportam DA. Em seguida, crie volumes compatíveis com DA. Finalmente, mapeie esses volumes com capacidade PARA DA para o host usando uma interface de e/S capaz de DA. As interfaces de e/S capazes de DA incluem Fibre Channel, SAS e iSER over InfiniBand (extensões iSCSI para RDMA/IB). DA não é compatível com iSCSI via Ethernet ou SRP em InfiniBand.
+
+[NOTE]
+====
+Quando todas as unidades são capazes de DA, você pode definir o `dataAssurance` parâmetro para `enabled` e, em seguida, usar DA com certas operações. Por exemplo, você pode criar um grupo de volumes que inclua unidades compatíveis com DA e, em seguida, criar um volume dentro desse grupo de volumes habilitado PARA DA. Outras operações que usam um volume habilitado PARA DA têm opções para suportar o recurso DA.
+
+====
+Se o `dataAssurance` parâmetro estiver definido como `enabled`, somente unidades capazes de garantia de dados serão consideradas para candidatos a volume; caso contrário, serão consideradas unidades capazes de garantia de dados e unidades que não sejam capazes de garantia de dados. Se apenas unidades de garantia de dados estiverem disponíveis, o novo grupo de volumes será criado usando as unidades de garantia de dados ativadas.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+7,50 adiciona o `securityType` parâmetro.
+
+7,60 adiciona a `drawerID` entrada do usuário, o `driveMediaType` parâmetro e o `drawerLossProtect` parâmetro.
+
+7,75 adiciona o `dataAssurance` parâmetro.
+
+8,63 adiciona o `resourceProvisioningCapable` parâmetro.

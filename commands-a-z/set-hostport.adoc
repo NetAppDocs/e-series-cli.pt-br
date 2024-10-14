@@ -1,0 +1,85 @@
+---
+permalink: commands-a-z/set-hostport.html 
+sidebar: sidebar 
+keywords: set, host, port 
+summary: O comando set hostPort altera as propriedades de uma porta de host. 
+---
+= Defina a porta do host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set hostPort` comando altera as propriedades de uma porta de host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando não funciona em um ambiente iSCSI, onde as portas do host são consideradas iniciadores. Em vez disso, use o `set iscsiInitiator` comando. xref:set-iscsiinitiator.adoc[Definir iniciador iSCSI]Consulte .
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set hostPort pass:quotes[[_portLabel_]] userLabel=pass:quotes[_newPortLabel_]
+[host=pass:quotes[_hostName_]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`hostPort`
+ a| 
+O nome da porta de host para a qual você deseja alterar o tipo de host ou para a qual deseja criar um novo nome. Inclua o nome da porta do host entre colchetes ([ ]). Se o nome da porta do host tiver carateres ou números especiais, coloque o nome da porta do host entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome que você deseja dar à porta host. Inclua o novo nome da porta host entre aspas duplas (" ").
+
+
+
+ a| 
+`host`
+ a| 
+O nome do host para o qual você está definindo uma porta de host HBA ou HCA. Inclua o nome do host em aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para o rótulo do usuário. As etiquetas de utilizador podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+6,10

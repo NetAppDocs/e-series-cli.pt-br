@@ -1,0 +1,138 @@
+---
+permalink: commands-a-z/create-storagearray-securitykey.html 
+sidebar: sidebar 
+keywords: create, storage, array, security, key 
+summary: 'O comando Create storageArray securityKey cria ou altera uma nova chave de segurança para um storage array que tem unidades de criptografia total de disco (FDE).' 
+---
+= Crie a chave de segurança do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create storageArray securityKey` comando cria ou altera uma nova chave de segurança para uma matriz de armazenamento com unidades de encriptação total de disco (FDE).
+
+
+
+== Arrays compatíveis
+
+Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Para o gerenciamento de chaves internas, esse comando habilita o recurso Gerenciamento de chaves internas e cria a chave de segurança. Depois de criar a chave, use o `set storageArray securityKey` comando para colocar a chave em uso. Este comando também pode ser usado para alterar a chave de segurança.
+
+Para gerenciamento de chaves externas, esse comando cria uma chave diferente para substituir a chave criada inicialmente quando você ativou o recurso. Use o `enable storageArray externalKeyManagement` comando para ativar o recurso Gerenciamento de chaves externas e criar a chave de segurança inicial. Este comando também pode ser usado para alterar a chave de segurança.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create storageArray securityKey
+[keyIdentifier=pass:quotes[_"keyIdentifierString"_]]
+passPhrase=pass:quotes[_"passPhraseString"_
+file=_"fileName"_]
+[commitSecurityKey=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`keyIdentifier` - aplicável apenas para a gestão de chaves internas
+ a| 
+Uma cadeia de carateres que você pode ler é um wrapper em torno de uma chave de segurança. Insira o identificador da chave em aspas duplas (" ").
+
+Você pode inserir carateres para o identificador de chave para chaves de segurança internas para ajudá-lo a identificar a chave mais tarde. Estas são as regras de formatação:
+
+* Pode introduzir até 189 carateres alfanuméricos para um identificador de chave. O identificador da chave não pode ter estes carateres:
++
+** Espaços
+** Pontuação
+** Símbolos
+
+
+* Se não introduzir o `keyIdentifer` parâmetro para chaves internas, o controlador gera automaticamente o `keyIdentifer` parâmetro.
+
+
+Os carateres adicionais são gerados automaticamente e anexados ao final da cadeia de carateres que você insere para o identificador da chave. Se você não inserir nenhuma string para o `keyIdentifier` parâmetro, o identificador da chave consiste apenas nos carateres que são gerados automaticamente.
+
+[NOTE]
+====
+Este parâmetro é ignorado para o gerenciamento de chaves externas, porque o identificador de chave é gerado completamente automaticamente. Se o storage array tiver um rótulo de usuário, essa cadeia gerada automaticamente será composta pelos carateres `sa.`, seguida pelo rótulo do usuário do storage array, o identificador do storage array e uma cadeia gerada aleatoriamente. Todos os carateres no rótulo do usuário que não sejam alfanuméricos são convertidos em um (`_`caractere sublinhado ). Por exemplo, um rótulo de usuário do abc 8 será convertido antes de ser prepended para `sa.abc_8` o resto do identificador de chave. Para matrizes de armazenamento sem uma etiqueta de utilizador, o identificador de chave é composto pelo identificador de matriz de armazenamento e uma cadeia de carateres gerada aleatoriamente.
+
+====
+
+
+ a| 
+`passPhrase`
+ a| 
+Uma cadeia de carateres que criptografa a chave de segurança para que você possa armazenar a chave de segurança em um arquivo externo. Inclua a frase-passe em aspas duplas (" ").
+
+Para obter informações sobre o formulário correto para criar uma frase-passe válida, consulte as Notas nesta descrição do comando.
+
+Sua frase-passe deve atender a estes critérios:
+
+* Deve ter entre oito e 32 carateres.
+* Não deve conter espaço em branco.
+* Deve conter pelo menos uma letra maiúscula.
+* Deve conter pelo menos uma letra minúscula.
+* Deve conter pelo menos um número.
+* Tem de conter pelo menos um caráter não alfanumérico, por exemplo, a.
+
+
+[NOTE]
+====
+Se sua frase-passe não atender a esses critérios, você receberá uma mensagem de erro e será solicitado a repetir o comando.
+
+====
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar a chave de segurança. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[NOTE]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk` .
+
+====
+Insira o caminho do arquivo e o nome em aspas duplas (" ").
+
+
+
+ a| 
+`commitSecurityKey` - aplicável apenas para a gestão de chaves internas
+ a| 
+Este parâmetro compromete a chave de segurança para o storage de armazenamento para todas as unidades FDE, bem como para os controladores. Depois que a chave de segurança é confirmada, uma chave é necessária para acessar dados em unidades habilitadas de segurança no storage de armazenamento. Os dados só podem ser lidos ou alterados usando uma chave, e a unidade nunca pode ser usada em um modo não seguro sem tornar os dados inúteis ou apagar totalmente a unidade.
+
+O valor padrão é FALSE. Se esse parâmetro for definido como FALSE, envie um comando separado `set storageArray securityKey` para confirmar a chave de segurança para o storage array.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,40, introduzido para o gerenciamento de chaves internas
+
+8,40, introduzido para o gerenciamento de chaves externas

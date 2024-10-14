@@ -1,0 +1,80 @@
+---
+permalink: commands-a-z/download-tray-configurationsettings.html 
+sidebar: sidebar 
+keywords: download, tray, configuration, settings, commands, factory, default, drive, array, specific, storage, roles, support 
+summary: O comando download tray configurationSettings faz download das configurações padrão de fábrica para todas as bandejas de unidades em um storage array ou para uma bandeja de unidades específica em um storage array. 
+---
+= Transferir definições de configuração da bandeja
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `download tray configurationSettings` comando faz o download das configurações padrão de fábrica para todas as bandejas de unidades em um storage array ou para uma bandeja de unidades específica em um storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[download (allTrays | tray [_trayID_]] configurationSettings
+pass:quotes[file="_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allTrays`
+ a| 
+Esse parâmetro faz o download de um novo firmware para todas as bandejas do storage array.
+
+
+
+ a| 
+`tray`
+ a| 
+A bandeja de unidades que contém a placa ESM para a qual você deseja carregar um novo firmware. Os valores de ID da bandeja são `0` para `99`. Coloque o valor de ID da bandeja entre colchetes ([ ]).
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do ficheiro e o nome do ficheiro que contém a imagem de firmware. Insira o caminho do arquivo e o nome do arquivo da imagem de firmware em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\dnld\trayset.dlp"`
+
+Nomes de arquivo válidos têm `.dlp` uma extensão.
+
+|===
+
+
+== Notas
+
+O `tray` parâmetro faz o download das configurações padrão de fábrica para uma bandeja de unidades específica Se for necessário baixar as configurações padrão de fábrica para mais de uma bandeja de unidades, mas não todas as bandejas de unidades, insira este comando para cada bandeja de unidades
+
+
+
+== Nível mínimo de firmware
+
+7,75

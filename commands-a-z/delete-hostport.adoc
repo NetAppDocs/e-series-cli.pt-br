@@ -1,0 +1,72 @@
+---
+permalink: commands-a-z/delete-hostport.html 
+sidebar: sidebar 
+keywords: delete, hostport, command, host, port, identification 
+summary: O comando delete hostPort exclui uma identificação da porta do host. 
+---
+= Eliminar porta de anfitrião
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete hostPort` comando exclui uma identificação da porta do host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+A identificação é um valor de software que representa a porta física do host para o controlador. Ao excluir a identificação, o controlador não reconhece mais instruções e dados da porta do host.
+
+[IMPORTANT]
+====
+Este comando não funciona em um ambiente iSCSI, onde as portas do host são consideradas iniciadores. Em vez disso, use o `delete iscsiInitiator` comando. xref:delete-iscsiinitiator.adoc[Eliminar iniciador iSCSI]Consulte .
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+delete hostPort [hostPortName]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`hostPort`
+ a| 
+O nome da porta de host que você deseja excluir. Inclua o nome da porta do host entre colchetes ([ ]). Se o nome da porta do host contiver carateres especiais ou consistir apenas em números, você também deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Uma porta de host é uma conexão física em um adaptador de host que reside em um computador host. Uma porta de host fornece acesso de host aos volumes em um storage array.
+
+
+
+== Nível mínimo de firmware
+
+5,20

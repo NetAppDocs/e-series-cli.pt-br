@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/set-snapgroup-mediascanenabled.html 
+sidebar: sidebar 
+keywords: set, snapshot, group, media, scan 
+summary: O comando Set snapGroup mediaScanEnabled executa uma digitalização de Mídia em um grupo de instantâneos. 
+---
+= Definir a digitalização do material do grupo instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snapGroup mediaScanEnabled` comando executa uma digitalização de multimédia num grupo de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set snapGroup pass:quotes[["_snapGroupName_"]]
+mediaScanEnabled=(TRUE | FALSE)
+redundancyCheckEnabled=(TRUE | FALSE)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo instantâneo no qual pretende executar uma digitalização de material. Coloque o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`mediaScanEnabled`
+ a| 
+A definição para ligar ou desligar a digitalização de multimédia para o volume. Para ativar a digitalização de multimédia, defina este parâmetro para `TRUE`. Para desativar a digitalização de multimédia, defina este parâmetro para `FALSE`. (Se a digitalização de Mídia estiver desativada no nível da matriz de armazenamento, este parâmetro não terá efeito.)
+
+
+
+ a| 
+`redundancyCheckEnabled`
+ a| 
+A definição para ligar ou desligar a verificação de redundância durante uma digitalização de material. Para ativar a verificação de redundância, defina este parâmetro como `TRUE`. Para desativar a verificação de redundância, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

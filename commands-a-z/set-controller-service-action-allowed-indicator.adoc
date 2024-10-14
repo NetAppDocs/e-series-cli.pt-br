@@ -1,0 +1,68 @@
+---
+permalink: commands-a-z/set-controller-service-action-allowed-indicator.html 
+sidebar: sidebar 
+keywords: set, controller, service, action, allowed, indicator 
+summary: 'O comando Set Controller (Definir controlador) liga ou desliga a luz indicadora de Ação de Serviço permitida em um controlador em uma bandeja de controlador ou em uma bandeja de unidades e controlador' 
+---
+= Definir o indicador de ação de serviço do controlador permitido
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set controller` comando liga ou desliga a luz indicadora Ação de Serviço permitida em um controlador em uma bandeja de controlador ou em uma bandeja de unidades e controlador
+
+
+
+== Arrays compatíveis
+
+Esse comando se aplica a qualquer storage array individual, incluindo os storages E2700 e E5600.
+
+
+
+== Contexto
+
+Se a matriz de armazenamento não suportar a funcionalidade de luz indicadora de Ação de Serviço permitida, este comando devolve um erro. Se a matriz de armazenamento suportar o comando, mas não conseguir ligar ou desligar a luz indicadora, este comando retorna um erro. (Para ligar ou desligar a luz indicadora de ação de serviço permitida no recipiente da ventoinha de alimentação ou no recipiente da bateria de interligação, utilize o `set tray serviceAllowedIndicator` comando.)
+
+[NOTE]
+====
+Esse comando é válido apenas para E2700, E5600 ou EF560 (e outras gerações anteriores de controladores e-Series ou EF-Series). A bandeja do controlador E2800 tem um único indicador de atenção que se acenderá apenas quando 1) houver uma falha e 2) o componente que falhou pode ser removido com segurança.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+set controller [(a| b)]
+serviceAllowedIndicator=(on | off)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador que tem a luz indicadora de Ação de Serviço permitida que você deseja ligar ou desligar. Os identificadores válidos do controlador são `a` ou `b` , onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o firmware do controlador retornará um erro de sintaxe.
+
+
+
+ a| 
+`serviceAllowedIndicator`
+ a| 
+A definição para ligar ou desligar a luz indicadora de Ação de Serviço permitida. Para ligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `on`. Para desligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `off`.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,14

@@ -1,0 +1,82 @@
+---
+permalink: commands-a-z/set-snapvolume-mediascanenabled.html 
+sidebar: sidebar 
+keywords: set, snapshot, volume, media, scan 
+summary: O comando Set snapvolume mediaScanEnabled executa uma digitalização de Mídia nas unidades usadas para um volume instantâneo. 
+---
+= Definir a digitalização do suporte de volume instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snapVolume mediaScanEnabled` comando executa uma verificação de Mídia nas unidades usadas para um volume instantâneo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Opcionalmente, você também pode executar uma verificação de redundância nos dados.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set snapVolume pass:quotes[["_snapVolumeName_"]]
+mediaScanEnabled=(TRUE | FALSE) [redundancyCheckEnabled=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapVolume`
+ a| 
+O nome do volume instantâneo para o qual você está definindo propriedades. Coloque o identificador de volume instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`mediaScanEnabled`
+ a| 
+A definição para ligar ou desligar a digitalização de multimédia para o volume instantâneo. Para ativar a digitalização de multimédia, defina este parâmetro para `TRUE`. Para desativar a digitalização de multimédia, defina este parâmetro para `FALSE`. (Se a digitalização de Mídia estiver desativada no nível da matriz de armazenamento, este parâmetro não terá efeito.)
+
+
+
+ a| 
+`redundancyCheckEnabled`
+ a| 
+A definição para ligar ou desligar a verificação de redundância durante uma digitalização de material. Para ativar a verificação de redundância, defina este parâmetro como `TRUE` . Para desativar a verificação de redundância, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

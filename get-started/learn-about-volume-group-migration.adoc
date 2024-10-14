@@ -1,0 +1,104 @@
+---
+permalink: get-started/learn-about-volume-group-migration.html 
+sidebar: sidebar 
+keywords: volume, group, migration, learn, data, access, export, import, component 
+summary: Saiba mais sobre migração de grupo de volume 
+---
+= Saiba mais sobre migração de grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[CAUTION]
+====
+Se o grupo de volumes consistir em unidades compatíveis com NVMe ou FIPS, a chave de segurança e a frase-passe precisarão ser gravadas/salvas do array de origem para desbloquear as unidades antes que o início da migração para o array de destino possa começar. Se a chave de segurança e a frase-passe não forem conhecidas e/ou a integridade dos dados não for necessária, uma eliminação de segurança pode ser executada. A combinação de diferentes unidades de segurança de criptografia não é suportada nos sistemas de armazenamento e-Series. Para obter mais informações sobre como desbloquear unidades usando uma chave de segurança, apagar unidades FIPS e desbloquear ou redefinir unidades NVMe bloqueadas, consulte a ajuda on-line do Gerenciador de sistemas SANtricity.
+
+====
+A migração do grupo de volumes permite exportar um grupo de volumes para que você possa importar o grupo de volumes para um storage array diferente. Você também pode exportar um grupo de volumes para que você possa armazenar os dados offline.
+
+[NOTE]
+====
+*Possível perda de acesso a dados* -- você deve exportar um grupo de volumes antes de mover o grupo de volumes ou importar o grupo de volumes.
+
+====
+
+
+== Exportar grupo de volumes
+
+A operação de grupo de volumes de exportação prepara as unidades do grupo de volumes para remoção. Você pode remover as unidades para armazenamento offline ou importar o grupo de volumes para uma matriz de armazenamento diferente. Depois de concluir a operação de grupo de volumes de exportação, todas as unidades ficam offline. Quaisquer volumes associados ou nós de capacidade livre não são mais exibidos no software de gerenciamento de storage.
+
+
+
+== Componentes não exportáveis
+
+Você deve remover quaisquer componentes não exportáveis antes de concluir o procedimento de grupo de volumes de exportação. Você deve remover estes componentes:
+
+* Reservas persistentes
+* Mapeamentos
+* Pares de cópias de volume
+* Pares espelhados remotos
+* Repositórios espelhados
+
+
+
+
+== Etapas básicas de exportação para um grupo de volumes
+
+A exportação de um grupo de volumes inclui estas etapas na matriz de armazenamento _source_.
+
+. Salve a configuração do storage array.
+. Pare todas as I/O..
+. Faça backup dos dados nos volumes no grupo de volumes.
+. Desmonte ou desconete os sistemas de arquivos nos volumes no grupo de volumes.
+. Localize o grupo de volumes e rotule as unidades com os nomes da matriz de armazenamento de origem e destino, o nome do grupo de volumes e o número total de unidades no grupo de volumes.
+. Coloque o grupo de volume offline.
+. Para manter o fluxo de ar adequado dentro da bandeja, obtenha cartuchos de unidade vazios ou novas unidades para que você possa substituir as unidades depois de remover as unidades associadas ao grupo de volumes que você exportar.
+
+
+A exportação de um grupo de volumes inclui estas etapas no storage array _target_.
+
+. Certifique-se de que o storage de armazenamento de destino tenha slots de unidade disponíveis.
+. Certifique-se de que a matriz de armazenamento de destino suporta as unidades que você vai importar.
+. Certifique-se de que o storage array de destino possa suportar os novos volumes.
+. Certifique-se de que a versão mais recente do firmware está instalada no controlador.
+. Certifique-se de que a matriz de armazenamento de destino suporta RAID nível 6 se estiver a exportar um grupo de volumes RAID nível 6.
+. Certifique-se de que a versão mais recente do software de gerenciamento de storage esteja instalada no storage de armazenamento de destino.
+. Se você estiver exportando um grupo de volumes com o Drive Security ativado, verifique se o Drive Security está habilitado no storage de armazenamento de destino.
+
+
+
+
+== Importar grupo de volume
+
+A operação de grupo de volumes de importação adiciona o grupo de volumes importados à matriz de armazenamento de destino. Depois de concluir a operação de grupo de volumes de importação, todas as unidades têm o status ideal. Todos os volumes associados ou nós de capacidade livre aparecem agora no software de gerenciamento de storage que é instalado no storage array de storage de destino.
+
+
+
+== Etapas básicas de importação para um grupo de volumes
+
+[NOTE]
+====
+É necessário inserir todas as unidades do grupo de volumes na bandeja antes que o grupo de volumes possa ser importado.
+
+====
+A importação de um grupo de volumes inclui estas etapas no storage array _target_:
+
+. Insira as unidades exportadas nos slots de unidade disponíveis.
+. Reveja o Relatório de importação para obter uma visão geral do grupo de volumes que está a importar.
+. Verifique se existem componentes não importáveis.
+. Confirme se pretende prosseguir com o procedimento de importação.
+
+
+
+
+== Componentes não importáveis
+
+Alguns componentes não podem ser importados durante o procedimento de grupo de volumes de importação. Estes componentes são removidos durante o procedimento:
+
+* Reservas persistentes
+* Mapeamentos
+* Pares de cópias de volume
+* Pares espelhados remotos
+* Repositórios espelhados
+

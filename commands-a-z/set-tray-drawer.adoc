@@ -1,0 +1,118 @@
+---
+permalink: commands-a-z/set-tray-drawer.html 
+sidebar: sidebar 
+keywords: set, drawer, service, action, allowed, indicator 
+summary: 'O comando Set Tray Drawer (Definir gaveta da bandeja) liga ou desliga a luz indicadora Service Action allowed (Ação de Serviço permitida) em uma gaveta que contém unidades.' 
+---
+= Indicador de ação de serviço da gaveta definida permitida
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set tray drawer` comando liga ou desliga a luz indicadora Ação de Serviço permitida em uma gaveta que contém unidades.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+As gavetas são usadas em bandejas de unidades de alta capacidade. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Use este comando somente para bandejas de unidades que usam gavetas. Se a matriz de armazenamento não suportar a funcionalidade de luz indicadora de Ação de Serviço permitida, este comando devolve um erro. Se a matriz de armazenamento suportar o comando, mas não conseguir ligar ou desligar a luz indicadora, este comando retorna um erro.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set tray pass:quotes[[_trayID_]] drawer pass:quotes[[_drawerID_]]
+serviceAllowedIndicator=(on | off | forceOnWarning)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`tray`
+ a| 
+A bandeja onde reside a gaveta. Os valores de ID da bandeja são `0` para `99` . Coloque o valor de ID da bandeja entre colchetes ([ ]). Se você não inserir um valor de ID de bandeja, o ID da bandeja da bandeja do controlador será o valor padrão.
+
+
+
+ a| 
+`drawer`
+ a| 
+A localização da gaveta para a qual pretende ligar ou desligar a luz indicadora de Ação de Serviço permitida. Os valores de ID da gaveta são `1` para `5`. Coloque o valor de ID da gaveta entre colchetes ([ ]).
+
+
+
+ a| 
+`serviceAllowedIndicator`
+ a| 
+A definição para ligar ou desligar a luz indicadora de Ação de Serviço permitida. Para ligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `on`. Para desligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `off`.
+
+Para obter informações sobre como usar `forceOnWarning`o , consulte as Notas.
+
+|===
+
+
+== Notas
+
+Antes de poder inserir esse comando, a bandeja de unidades deve atender às seguintes condições:
+
+* A bandeja de unidades não pode estar com temperatura excessiva.
+* Os ventiladores devem ter um status de ótimo.
+* Todos os componentes da bandeja de unidades devem estar no lugar.
+* Os volumes na gaveta da unidade não podem estar em estado degradado. Se você remover unidades da gaveta de unidades e um volume já estiver em estado degradado, o volume poderá falhar.
+
+
+[NOTE]
+====
+Não emita este comando se você não puder cumprir nenhuma destas condições.
+
+====
+Todos os volumes com unidades na gaveta de unidades afetadas são verificados para garantir que os volumes tenham proteção contra perda de gaveta antes do envio do comando. Se os volumes tiverem proteção contra perda de gaveta, o comando Set Service Action allowed prossegue sem interromper a atividade de e/S para o volume.
+
+Se algum volume na gaveta afetada não tiver proteção contra perda de gaveta, você deve interromper a atividade de e/S para esses volumes. Aparece um aviso que indica que este comando não deve ser concluído.
+
+Para ligar ou desligar a luz indicadora Ação de Serviço permitida para toda a bandeja de unidades de alta capacidade, use o `set tray serviceAllowedIndicator` comando.
+
+
+
+== Utilização do parâmetro forceOnWarning
+
+Se estiver a preparar um componente para remoção e pretender anular o aviso de que os volumes não têm proteçãoão contra perdas de gaveta, introduza este parâmetro:
+
+[listing]
+----
+serviceAllowedIndicator=forceOnWarning
+----
+O `forceOnWarning` parâmetro envia a solicitação para se preparar para remover um componente para o firmware do controlador e força o `set drawer serviceAllowedIndicator` comando a prosseguir.
+
+[NOTE]
+====
+Este parâmetro marca todas as unidades na gaveta inacessíveis e pode resultar em volumes com falha e recuperação complexa, incluindo a necessidade de reiniciar o host. Use este parâmetro com cuidado.
+
+====
+
+
+== Nível mínimo de firmware
+
+7,60

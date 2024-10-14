@@ -1,0 +1,52 @@
+---
+permalink: commands-a-z/stop-storagearray-drivefirmwaredownload.html 
+sidebar: sidebar 
+keywords: stop, storage, array, drive, firmware, download 
+summary: O comando stop storageArray driveFirmwareDownload pára um download de firmware para as unidades em um storage array que foi iniciado com o comando download storageArray drivefirmware. 
+---
+= Pare o download do firmware da unidade de matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop storageArray driveFirmwareDownload` comando pára um download de firmware para as unidades em um storage array que foi iniciado com o `download storageArray driveFirmware` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando não pára um download de firmware que já está em andamento para uma unidade. Este comando interrompe todos os downloads de firmware para unidades que estão aguardando o download.
+
+
+
+== Sintaxe
+
+[listing]
+----
+stop storageArray driveFirmwareDownload
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10

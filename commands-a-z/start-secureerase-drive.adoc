@@ -1,0 +1,81 @@
+---
+permalink: commands-a-z/start-secureerase-drive.html 
+sidebar: sidebar 
+keywords: start, fde, secure, drive, erase 
+summary: 'O comando start secureErase drive apaga todos os dados de uma ou mais unidades de criptografia completa de disco (FDE) para que possam ser reutilizados como unidades FDE.' 
+---
+= Inicie a eliminação segura da unidade FDE
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start secureErase drive` comando apaga todos os dados de uma ou mais unidades de criptografia completa de disco (FDE) para que possam ser reutilizados como unidades FDE.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Execute este comando somente quando as unidades FDE não fizerem mais parte de um grupo de volumes ou de um pool de discos seguro, ou quando a chave de segurança for desconhecida.
+
+[NOTE]
+====
+Para apagar uma unidade FIPS quando a unidade estiver bloqueada e a chave de segurança para desbloqueá-la não estiver disponível, use o `set drive securityID` comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+[start secureErase (drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drives pass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]])
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drive` ou `drives`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+[NOTE]
+====
+A lista de unidades não pode conter todas as unidades na matriz de armazenamento, ou o comando será rejeitado. Para proteger apagar todas as unidades, execute este comando duas vezes, especificando a lista de unidades em dois grupos separados.
+
+====
+|===
+
+
+== Notas
+
+O firmware da controladora cria um bloqueio que restringe o acesso às unidades FDE. As unidades FDE têm um estado chamado Security Capable. Quando você cria uma chave de segurança, o estado é definido como Segurança ativada, o que restringe o acesso a todas as unidades FDE existentes no storage de armazenamento.
+
+
+
+== Nível mínimo de firmware
+
+7,40

@@ -1,0 +1,64 @@
+---
+permalink: commands-a-z/create-cgsnapimage-consistencygroup.html 
+sidebar: sidebar 
+keywords: create, consistency group, snapshot image 
+summary: Ele cria um comando cgSnapImage consistencyGroup cria uma nova imagem de snapshot para cada volume base que é membro de um grupo de consistência de snapshot. 
+---
+= Criar imagem instantânea do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create cgSnapImage consistencyGroup` comando cria uma nova imagem instantânea para cada volume base que é membro de um grupo de consistência de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create cgSnapImage consistencyGroup=pass:quotes[_"consistencyGroupName"_]
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`consistencyGroup`
+ a| 
+O nome do grupo de consistência para o qual você está criando imagens instantâneas. Inclua o nome do grupo de consistência entre aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O comando faz com que todas as operações de e/S pendentes para cada volume base que é membro do grupo de consistência sejam drenadas e suspensas antes de criar as imagens de snapshot. Se a criação de todas as imagens de instantâneos não puder ser concluída com êxito para todos os membros do grupo de consistência, a operação falhará e novas imagens de instantâneos não serão criadas.
+
+Normalmente, todos os membros de um grupo de consistência de instantâneos têm o mesmo número de imagens instantâneas. Quando você adiciona um novo membro a um grupo de consistência de snapshot, esse novo membro não possui as imagens de snapshot que foram criadas anteriormente nos membros estabelecidos do grupo de consistência de snapshot. Esta não é uma condição de erro. As solicitações de exclusão ou reversão de imagens instantâneas que existem apenas em um subconjunto dos membros do grupo de consistência de snapshot afetam apenas os membros para os quais a imagem de snapshot especificada realmente existe.
+
+
+
+== Nível mínimo de firmware
+
+7,83

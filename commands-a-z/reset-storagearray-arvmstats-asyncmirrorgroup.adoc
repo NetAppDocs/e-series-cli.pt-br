@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/reset-storagearray-arvmstats-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: reset, asynchronous, mirror group, statistics 
+summary: O comando reset storageArray arvmStats asyncMirrorGroup redefine as estatísticas de sincronização de um ou mais volumes de membros em um grupo de espelhos assíncrono para um 0 relativo. 
+---
+= Repor estatísticas assíncronas do grupo de espelhos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset storageArray arvmStats asyncMirrorGroup` comando redefine as estatísticas de sincronização de um ou mais volumes de membros em um grupo de espelhos assíncronos para um 0 relativo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+reset storageArray arvmStats asyncMirrorGroup pass:quotes[[_asyncMirrorGroupName_]]
+volume=pass:quotes[_"volumeName"_] sampleType=(all | mostRecent | longestSyncTime | errors)
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos para o qual você está redefinindo as estatísticas de sincronização. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos tiver carateres ou números especiais, você deve incluir o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volume`
+ a| 
+Este parâmetro é opcional. O nome do volume específico do membro no grupo de espelhos assíncronos para o qual você está redefinindo as estatísticas de sincronização. Se nenhum volume for especificado, as estatísticas de cada volume de membro no grupo de espelhos assíncronos serão redefinidas.
+
+Coloque o nome do volume entre aspas duplas (" ").
+
+
+
+ a| 
+`sampleType`
+ a| 
+Este parâmetro é opcional. O valor padrão para `sampleType` é `all`.
+
+* `all`-- os dados para todos os três tipos de amostra são redefinidos.
+* `mostRecent` -- as estatísticas são redefinidas para as amostras de ressincronização 50 mais recentes.
+* `longestSyncTime` -- as estatísticas são redefinidas para as mais recentes 20 amostras de ressincronização mais longas.
+* `errors`-- as estatísticas são redefinidas para as mais recentes amostras de ressincronização 20 falhadas.
+
+
+|===
+
+
+== Notas
+
+As estatísticas são redefinidas para volumes espelhados na função primária. As estatísticas que são repostas incluem os seguintes dados:
+
+* Hora de início da sincronização
+* Tipo de sincronização (manual ou periódica)
+* Duração da sincronização
+* Número de bytes enviados
+* Tempo de gravação máximo e mínimo (para uma única gravação)
+* Taxa de dados de sincronização máxima e mínima
+* Tempo total de gravação
+* Utilização do repositório (%)
+* Idade do ponto de recuperação
+
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

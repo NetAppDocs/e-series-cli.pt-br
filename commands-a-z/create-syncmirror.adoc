@@ -1,0 +1,166 @@
+---
+permalink: commands-a-z/create-syncmirror.html 
+sidebar: sidebar 
+keywords: create, synchronous, mirroring 
+summary: 'O comando Create SyncMirror cria o volume primário e o volume secundário para um par espelhado remoto síncrono. Esse comando também define o modo de gravação (modo de gravação síncrona ou modo de gravação assíncrona) e a prioridade de sincronização.' 
+---
+= Criar espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create syncMirror` comando cria o volume primário e o volume secundário para um par espelhado remoto síncrono. Esse comando também define o modo de gravação (modo de gravação síncrona ou modo de gravação assíncrona) e a prioridade de sincronização.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um array E2800 ou E5700storage, você deve ter a função Administrador de armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create syncMirror primary=pass:quotes[_"primaryVolumeName_"
+secondary="_secondaryVolumeName_"
+(remoteStorageArrayName="_storageArrayName_" |
+remoteStorageArrayWwn="_wwID_")]
+[remotePassword="password"]
+[syncPriority=(highest | high | medium | low | lowest)]
+[autoResync=(enabled | disabled)]
+[writeOrder=(preserved | notPreserved)]
+[writeMode=(synchronous | asynchronous)]
+[role=(primary | secondary)]
+[force=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`primary`
+ a| 
+O nome de um volume existente na matriz de armazenamento local que você deseja usar para o volume principal. Coloque o nome do volume primário entre aspas duplas (" ").
+
+
+
+ a| 
+`secondary`
+ a| 
+O nome de um volume existente na matriz de armazenamento remoto que você deseja usar para o volume secundário. Coloque o nome do volume secundário entre aspas duplas (" ").
+
+
+
+ a| 
+`remoteStorageArrayName`
+ a| 
+O nome da matriz de armazenamento remoto. Coloque o nome da matriz de armazenamento remoto entre aspas duplas (" ").
+
+
+
+ a| 
+`remoteStorageArrayWwn`
+ a| 
+O World Wide Identifier (WWID) da matriz de armazenamento remoto. Inclua o WWID em aspas duplas (" ").
+
+
+
+ a| 
+`remotePassword`
+ a| 
+A senha para o storage de armazenamento remoto. Use este parâmetro quando a matriz de armazenamento remoto estiver protegida por senha. Insira a senha entre aspas duplas (" ").
+
+
+
+ a| 
+`syncPriority`
+ a| 
+A prioridade que a sincronização completa tem em relação à atividade de e/S do host. Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` ou .
+
+
+
+ a| 
+`autoResync`
+ a| 
+As configurações de ressincronização automática entre os volumes primários e os volumes secundários de um par de espelhos remotos. Este parâmetro tem estes valores:
+
+* `enabled` -- a ressincronização automática está ativada. Não é necessário fazer mais nada para ressincronizar o volume primário e o volume secundário.
+* `disabled` -- a ressincronização automática está desligada. Para ressincronizar o volume primário e o volume secundário, você deve executar o `resume syncMirror` comando.
+
+
+
+
+ a| 
+`writeOrder`
+ a| 
+A ordem de gravação para transmissão de dados entre o volume primário e o volume secundário. Os valores válidos são `preserved` ou `notPreserved`.
+
+
+
+ a| 
+`writeMode`
+ a| 
+Como o volume primário grava no volume secundário. Os valores válidos são `synchronous` ou `asynchronous`.
+
+
+
+ a| 
+`role`
+ a| 
+Use este parâmetro para promover o grupo de espelhos assíncronos para uma função primária ou rebaixar o grupo de espelhos assíncronos para uma função secundária. Para definir o grupo de espelhos assíncronos como a função principal, defina este parâmetro como `primary`. Para definir o grupo de espelhos assíncronos como função secundária, defina este parâmetro como `secondary`.
+
+
+
+ a| 
+`force`
+ a| 
+A reversão de função é forçada se o vínculo de comunicação entre os storages estiver inativo e a promoção ou rebaixamento no lado local resultar em uma condição dual-primária ou uma condição dupla-secundária. Para forçar uma reversão de função, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Quando você escolhe o volume principal e o volume secundário, o volume secundário deve ser de tamanho igual ou maior que o volume primário. O nível RAID do volume secundário não precisa ser o mesmo que o volume primário.
+
+As senhas são armazenadas em cada matriz de armazenamento em um domínio de gerenciamento. Se uma senha não tiver sido definida anteriormente, você não precisará de uma senha. A palavra-passe pode ser qualquer combinação de carateres alfanuméricos com um máximo de 30 carateres. (Você pode definir uma senha de storage array usando o `set storageArray` comando.)
+
+Prioridade de sincronização define a quantidade de recursos do sistema que são usados para sincronizar os dados entre o volume primário e o volume secundário de uma relação de espelhamento. Se você selecionar o nível de prioridade mais alto, a sincronização de dados usará a maioria dos recursos do sistema para executar a sincronização completa, o que diminui o desempenho para transferências de dados do host.
+
+O `writeOrder` parâmetro aplica-se apenas aos modos de gravação assíncronos e faz com que o par espelhado faça parte de um grupo de consistência. A configuração `writeOrder` do parâmetro `preserved` faz com que o par espelhado remoto transmita dados do volume primário para o volume secundário na mesma ordem em que o host grava no volume primário. No caso de uma falha de link de transmissão, os dados são armazenados em buffer até que uma sincronização completa possa ocorrer. Essa ação pode exigir sobrecarga adicional do sistema para manter os dados armazenados em buffer, o que retarda as operações. Definir `writeOrder` o parâmetro para `notPreserved` liberar o sistema de ter que manter os dados em um buffer, mas requer forçar uma sincronização completa para garantir que o volume secundário tenha os mesmos dados que o volume primário.
+
+
+
+== Nível mínimo de firmware
+
+6,10

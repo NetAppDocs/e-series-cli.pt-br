@@ -1,0 +1,109 @@
+---
+permalink: commands-a-z/show-storagearray-autosupport.html 
+sidebar: sidebar 
+keywords: show, autosupport, configuration, e2800, e5700, storage, arrays 
+summary: O comando show storageArray AutoSupport exibe as configurações de coleção de pacotes AutoSupport para o storage array. 
+---
+= Mostrar configuração do AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray autoSupport` comando exibe as configurações de coleção de pacotes AutoSupport para a matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Esse comando está operacional para os storages E2800, E5700, EF600 e EF300.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.
+
+
+
+== Contexto
+
+O comando output deste comando mostra as seguintes informações de configuração:
+
+* O status de ativação para esse domínio de gerenciamento do recurso AutoSupport, do recurso AutoSupport OnDemand e do recurso Diagnóstico remoto do AutoSupport
+* Parâmetros de entrega que dependem do método de entrega configurado:
++
+** O método de entrega é e-mail (SMTP): O endereço de e-mail de destino, o servidor de reencaminhamento de e-mail e o endereço de e-mail do remetente são exibidos
+** O método de entrega é HTTP ou HTTPS:
++
+*** Ligação direta - é apresentado o endereço IP de destino
+*** Conexão do servidor proxy - o endereço do host, o número da porta e os detalhes de autenticação são exibidos
+*** Ligação do PAC (Automatic proxy Configuration script) - a localização do script é apresentada
+
+
+
+
+* Intervalos de tempo preferidos diários e semanais do AutoSupport
+* Informações sobre os recursos ASUP, o número de série do chassi e as programações diárias e semanais configuradas
+
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray autoSupport
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+=== Exemplos
+
+[listing]
+----
+
+   SMcli -n Array1 -c "show storageArray autoSupport;"
+
+   The AutoSupport feature is enabled on this storage array.
+   The AutoSupport OnDemand feature is enabled on this storage array.
+   The AutoSupport Remote Diagnostics feature is enabled on this storage array.
+
+   Delivery Method: Email (SMTP)
+     Destination email address: http://support.mycompany.com/put/AsupPut/
+     Mail relay server: ra.eng.netapp.com
+     Sender email address: user@netapp.com
+   -or-
+   Delivery Method: HTTP
+     Destination IP address: http://support.mycompany.com/put/AsupPut/
+     Connection: Direct
+         -or-
+     Connection: Proxy server
+      Host Address: 10.227.76.178
+       Port number: 8080
+       Authentication required: Yes
+        User name: admin
+        Password: ********
+         -or-
+     Connection: Automatic proxy configuration script (PAC)
+      Script location: http://esgweb.eng.mycompany.com/proxy.pac
+
+   The AutoSupport daily schedule preferred time range is from 12:00 AM to 01:00 AM.
+   The AutoSupport weekly schedule preferred time range is from 10:00 PM to 11:00 PM on Thursday, Saturday.
+
+   AutoSupport Capable  AutoSupport OnDemand Capable  Chassis Serial Number  Daily Schedule  Weekly Schedule
+   Yes (enabled)        Yes                           SX94500434             12:55 AM        10:08 PM on Thursdays
+
+   SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

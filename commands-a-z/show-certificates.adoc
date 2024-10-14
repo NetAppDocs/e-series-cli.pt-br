@@ -1,0 +1,49 @@
+---
+permalink: commands-a-z/show-certificates.html 
+sidebar: sidebar 
+keywords: show, certificates 
+summary: O comando Mostrar certificados permite exibir os certificados instalados no armazenamento de confiança do pacote CLI. 
+---
+= Mostrar certificados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `Show certificates` comando permite visualizar os certificados instalados no armazenamento de confiança do pacote CLI.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica aos storages EF600.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show localCertificate all | alias alias
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`alias`
+ a| 
+Permite especificar um certificado através do alias definido pelo utilizador.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,60

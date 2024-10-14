@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/stop-pendingsnapimagecreation.html 
+sidebar: sidebar 
+keywords: stop, snapshot, group, snapshot, images 
+summary: O comando stop pendingSnapImageCreation cancela todas as imagens de instantâneos pendentes que devem ser criadas em um grupo de consistência de snapshot ou snapshot. 
+---
+= Parar o grupo instantâneo com imagens instantâneas pendentes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop pendingSnapImageCreation` comando cancela todas as imagens instantâneas pendentes que devem ser criadas num grupo de consistência de instantâneos ou instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Se o grupo de instantâneos não tiver imagens instantâneas pendentes, o firmware exibirá uma mensagem de erro e não executará o comando. Você pode executar este comando em um grupo de snapshot ou em um grupo de consistência de snapshot.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+stop (snapGroup pass:quotes[[_snapGroupName_]] |
+consistencyGroup pass:quotes[[_snapConsistencyGroupName_]])
+pendingSnapImageCreation
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo de instantâneos para o qual pretende parar imagens instantâneas pendentes. Inclua o nome do grupo de instantâneos entre colchetes ([ ]). Se o nome do grupo instantâneo tiver carateres ou números especiais, você deve incluir o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`consistencyGroup`
+ a| 
+O nome do grupo de consistência de instantâneos para o qual pretende parar imagens de instantâneos pendentes. Inclua o nome do grupo de consistência de snapshot entre colchetes ([ ]). Se o nome do grupo de consistência do instantâneo tiver carateres ou números especiais, você deve incluir o nome do grupo de instantâneos entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

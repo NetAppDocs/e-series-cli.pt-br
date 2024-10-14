@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/delete-initiator.html 
+sidebar: sidebar 
+keywords: delete, initiator, command, object, supported, array, role 
+summary: O comando delete iniciador exclui o objeto iniciador. 
+---
+= Eliminar iniciador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `delete initiator`O comando exclui o objeto iniciador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[IMPORTANT]
+====
+Este comando substitui o comando obsoletoxref:delete-iscsiinitiator.adoc[Eliminar iniciador iSCSI].
+
+====
+[NOTE]
+====
+Este comando é aplicável apenas a iSCSI, iSER, NVMe em RoCE, NVMe em InfiniBand e NVMe em Fibre Channel.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+
+delete initiator (["initiatorName"] | <"initiatorQualifiedName">)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`initiator`
+ a| 
+Permite-lhe especificar o identificador do iniciador para o qual pretende eliminar. Coloque o nome entre aspas duplas ("»". Você também deve incluir o nome entre colchetes ([ ]) se o valor for um rótulo de usuário ou colchetes de ângulo ( ) se o valor for um nome qualificado (por exemplo, iqn ou nqn).
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,41

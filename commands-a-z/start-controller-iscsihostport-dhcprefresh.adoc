@@ -1,0 +1,131 @@
+---
+permalink: commands-a-z/start-controller-iscsihostport-dhcprefresh.html 
+sidebar: sidebar 
+keywords: start, iscsi, dhcp, refresh 
+summary: O comando start controller iscsiHostPort dhcpRefresh inicia uma atualização dos parâmetros DHCP para a interface iSCSI. 
+---
+= Inicie a atualização iSCSI DHCP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start controller iscsiHostPort dhcpRefresh` comando inicia uma atualização dos parâmetros DHCP para a interface iSCSI.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Se o método de configuração da interface não estiver definido como DHCP, o procedimento retornará um erro.
+
+
+
+== Sintaxe
+
+[listing]
+----
+start controller [(a|b)] iscsiHostPort [portLabel] dhcpRefresh
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+A letra do identificador do controlador que tem as portas de anfitrião iSCSI. Os valores válidos do identificador do controlador são `a` ou `b` onde `a` está o controlador no slot A, e `b` é o controlador no slot B.
+
+
+
+ a| 
+`iscsiHostPort`
+ a| 
+O rótulo da porta do host ou o número da porta do host iSCSI para a qual você deseja atualizar os parâmetros DHCP.
+
+Consulte o seguinte para obter mais informações:
+
+<<Identificação de uma etiqueta de porta de host iSCSI,"Identificando uma etiqueta de porta de host iSCSI">>
+
+|===
+
+
+== Identificação de uma etiqueta de porta de host iSCSI
+
+Você deve especificar um rótulo para a porta do host. Siga estas etapas para especificar o rótulo da porta do host:
+
+.Passos
+. Se você não souber o rótulo da porta para a porta do host iSCSI, execute o `show controller` comando.
+. Na seção Interface do host dos resultados, localize a porta do host que você deseja selecionar.
++
+[NOTE]
+====
+O rótulo da porta é o valor completo retornado para `Port` o campo.
+
+====
+. Inclua o valor inteiro da etiqueta da porta entre aspas e colchetes: ["portLabel"]. Por exemplo, se o rótulo da porta for `Ch 2`, especifique a porta do host iSCSI da seguinte forma:
++
+[listing]
+----
+iscsiHostPort[\"ch 2\"]
+----
++
+[NOTE]
+====
+Se você estiver usando uma linha de comando do Windows e o rótulo contiver um pipe (|), o caractere deve ser escapado (usando o cursor); caso contrário, ele será interpretado como um comando. Por exemplo, se o rótulo da porta for `e0b|0b`, especifique a porta do host iSCSI da seguinte forma:
+
+====
++
+[listing]
+----
+iscsiHostPort[\"e0b^|0b\"]
+----
+
+
+[NOTE]
+====
+Para compatibilidade com versões anteriores, o iscsiPortNumber, incluído por chaves [ ] em vez de aspas e chaves [" "] ainda pode ser usado para controladores E2700, E5600 ou EF560 (e outras gerações anteriores de controladores e-Series ou EF-Series). Para esses controladores, os valores válidos para iscsiPortNumber são os seguintes:
+
+* Para controladores com portas de host integradas, a numeração é 3, 4, 5 ou 6.
+* Para controladores com portas de host apenas em uma placa de interface de host, a numeração é 1, 2, 3 ou 4.
+
+
+Um exemplo da sintaxe anterior é o seguinte:
+
+[listing]
+----
+iscsiHostPort[3]
+----
+====
+
+
+== Notas
+
+Esta operação termina as conexões iSCSI para o portal e reduz temporariamente o portal.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+O 8,10 revê o sistema de numeração para portas de host iSCSI.
+
+O 8,30 revê o método de identificação para portas de host iSCSI no E2800.

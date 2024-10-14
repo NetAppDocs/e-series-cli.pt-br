@@ -1,0 +1,50 @@
+---
+permalink: commands-a-z/show-array-label.html 
+sidebar: sidebar 
+keywords: show, array, label 
+summary: O comando Show array label retorna informações sobre se um rótulo de storage array foi definido ou todos os rótulos de storage existentes. 
+---
+= Mostrar etiqueta da matriz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `Show array label` comando retorna informações sobre se um rótulo de storage array foi definido ou todos os rótulos de storage array existentes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica aos storages EF600.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[show storageArrayLabel label _userDefinedString_]
+show storageArrayLabel all
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userDefinedString`
+ a| 
+Permite especificar um rótulo definido pelo usuário para a matriz de armazenamento.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,60

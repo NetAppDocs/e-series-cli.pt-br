@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/repair-volume-parity.html 
+sidebar: sidebar 
+keywords: repair, volume, parity 
+summary: O comando Repair volume Parity repara os erros de paridade em um volume. 
+---
+= Repare a paridade do volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `repair volume parity` comando repara os erros de paridade em um volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[CAUTION]
+====
+Se a paridade de volume e os dados de volume não corresponderem, os dados de volume podem estar com defeito em vez de paridade de volume. Reparar a paridade de volume destrói a capacidade de reparar os dados de volume defeituosos, se necessário.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+repair volume pass:quotes[[_volumeName_]] parity
+parityErrorFile=pass:quotes[_"filename"_]
+[verbose=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume para o qual você está reparando paridade. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`parityErrorFile`
+ a| 
+O caminho do arquivo e o nome do arquivo que contém as informações de erro de paridade que você usa para reparar os erros. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\sup\parfile.txt"`
+
+[NOTE]
+====
+A `parityErrorFile` é o resultado de uma operação anterior `check volume parity`.
+
+====
+
+
+ a| 
+`verbose`
+ a| 
+A configuração para capturar detalhes do progresso, como porcentagem concluída, e para mostrar as informações à medida que a paridade do volume está sendo reparada. Para capturar detalhes do progresso, defina este parâmetro como `TRUE`. Para evitar a captura de detalhes de progresso, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

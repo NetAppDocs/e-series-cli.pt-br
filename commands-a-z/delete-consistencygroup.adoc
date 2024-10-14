@@ -1,0 +1,72 @@
+---
+permalink: commands-a-z/delete-consistencygroup.html 
+sidebar: sidebar 
+keywords: delete, consistency, group 
+summary: O comando delete consistentcyGroup exclui um grupo de consistência de snapshot. 
+---
+= Eliminar grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete consistencyGroup` comando exclui um grupo de consistência de snapshot.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando funciona de duas maneiras:
+
+* Você pode excluir tanto o grupo de consistência quanto os volumes de repositório contidos pelo grupo de consistência.
+* Você pode excluir apenas o grupo de consistência e deixar os volumes do repositório que estão contidos pelo grupo de consistência intactos.
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete consistencyGroup pass:quotes[[_"consistencyGroupName"_]]
+[deleteRepositoryMembers=(TRUE | FALSE)]
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`consistencyGroup`
+ a| 
+O nome do grupo de consistência de instantâneos que você deseja excluir. Inclua o nome do grupo de consistência de instantâneos entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`deleteRepositoryMembers`
+ a| 
+A configuração para excluir ou reter os volumes do repositório. Para excluir os volumes do repositório, defina este parâmetro como `TRUE`. Para reter os volumes do repositório, defina este parâmetro como `FALSE`. A predefinição é `FALSE`.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

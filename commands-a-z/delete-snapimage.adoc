@@ -1,0 +1,127 @@
+---
+permalink: commands-a-z/delete-snapimage.html 
+sidebar: sidebar 
+keywords: delete, snapimage, command, snapshot, images, group, support, array, roles 
+summary: O comando DELETE snapImage elimina uma ou mais imagens instantâneas de um grupo de instantâneos. 
+---
+= Eliminar imagem instantânea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete snapImage` comando elimina uma ou mais imagens instantâneas de um grupo de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete snapImage (snapGroup="snapGroupName" |
+snapGroups=("_snapGroupName1"
+... "snapGroupNamen_"))]
+[deleteCount=numberOfSnapImages]
+[retainCount=numberOfSnapImages]
+[ignoreSnapVolume=(TRUE | FALSE)]
+[snapImageID=OLDEST]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo instantâneo que tem a imagem instantânea que pretende eliminar. Coloque o nome do grupo instantâneo entre aspas duplas (" ").
+
+
+
+ a| 
+`snapGroups`
+ a| 
+Os nomes de vários grupos de instantâneos que têm a imagem instantânea que pretende eliminar. Introduza os nomes dos grupos de instantâneos utilizando estas regras:
+
+* Inclua todos os nomes entre parênteses.
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`deleteCount`
+ a| 
+O número de imagens instantâneas que pretende eliminar do grupo de instantâneos. Use valores inteiros.
+
+Este parâmetro elimina primeiro a imagem instantânea mais antiga e continua a eliminar as imagens instantâneas mais antigas até atingir o número introduzido.
+
+Se o número introduzido for superior ao número real de todas as imagens instantâneas no grupo instantâneo, todas as imagens instantâneas serão eliminadas. O grupo instantâneo fica vazio.
+
+
+
+ a| 
+`retainCount`
+ a| 
+O número de imagens instantâneas que pretende manter no grupo de instantâneos. Use valores inteiros.
+
+Este parâmetro mantém as imagens de instantâneos mais recentes no grupo de instantâneos e elimina imagens de instantâneos mais antigas.
+
+Se o número de imagens instantâneas existentes no grupo de instantâneos for inferior ao número introduzido, nenhuma das imagens instantâneas será eliminada.
+
+
+
+ a| 
+`ignoreSnapVolume`
+ a| 
+Utilize este parâmetro para se certificar de que não elimina uma imagem instantânea que tenha um volume instantâneo associado à imagem instantânea. Você pode usar um destes valores:
+
+* `TRUE` - Use este valor para excluir a imagem instantânea, mesmo que a imagem instantânea tenha um volume instantâneo associado.
+* `FALSE` - Use este valor para manter a imagem instantânea quando a imagem instantânea tiver um volume instantâneo associado.
+
+
+O valor padrão é `TRUE`.
+
+
+
+ a| 
+`snapImageID`
+ a| 
+O `snapImageID` parâmetro aceita apenas a `OLDEST` opção. Este parâmetro elimina a imagem instantânea mais antiga criada.
+
+|===
+
+
+== Notas
+
+Você pode excluir a imagem de snapshot mais antiga de um volume de repositório de grupo de snapshot. A definição de uma imagem instantânea que você exclui é removida do sistema. O espaço ocupado pela imagem instantânea que você exclui do volume do repositório do grupo instantâneo é liberado e disponibilizado para reutilização dentro do grupo instantâneo.
+
+Se você não usar nenhum outro parâmetro com o `snapGroup` parâmetro ou `snapGroups` parâmetro, por padrão a imagem instantânea mais antiga é excluída.
+
+Todos os volumes instantâneos existentes para uma transição de imagem instantânea para o estado parado quando a imagem instantânea é eliminada.
+
+Este comando não será executado quando o controlador estiver no modo de bloqueio.
+
+
+
+== Nível mínimo de firmware
+
+7,83

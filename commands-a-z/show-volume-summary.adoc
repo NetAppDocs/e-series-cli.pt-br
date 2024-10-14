@@ -1,0 +1,118 @@
+---
+permalink: commands-a-z/show-volume-summary.html 
+sidebar: sidebar 
+keywords: show, volume 
+summary: O comando show volume summary retorna informações sobre um volume. 
+---
+= Mostrar volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show volume summary` comando retorna informações sobre um volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Para os volumes em uma matriz de armazenamento, este comando retorna as seguintes informações:
+
+* O número de volumes
+* O nome
+* O estado
+* A capacidade
+* O nível RAID
+* O grupo de volume onde o volume está localizado
+* Detalhes:
++
+** A ID do volume
+** A ID do subsistema
+** O tipo de unidade (SAS)
+** Proteção contra perda de bandeja
+** O proprietário preferido
+** O proprietário atual
+** O tamanho do segmento
+** A prioridade de modificação
+** O estado da cache de leitura (ativado ou desativado)
+** O status do cache de gravação (ativado ou desativado)
+** O cache de gravação sem o estado das pilhas (ativado ou desativado)
+** Cache de gravação com status de espelho (habilitado ou desativado)
+** O cache de gravação flush após o tempo
+** A configuração de pré-busca de leitura de cache (VERDADEIRO ou FALSO)
+** Ativar estado de digitalização de multimédia em segundo plano (ativado ou desativado)
+** A digitalização de material com estado de verificação de redundância (ativada ou desativada)
+
+
+* Os volumes do repositório espelhado
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]]) summary
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+Este parâmetro retorna estatísticas de desempenho sobre todos os volumes no storage array.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume para o qual você deseja recuperar informações. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes para os quais você deseja recuperar informações. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`summary`
+ a| 
+A configuração para retornar uma lista concisa de informações sobre os volumes.
+
+|===

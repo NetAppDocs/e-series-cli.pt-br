@@ -1,0 +1,48 @@
+---
+permalink: commands-a-z/delete-certificates.html 
+sidebar: sidebar 
+keywords: delete, certificates 
+summary: O comando Excluir certificados permite excluir um certificado do armazenamento de confiança do pacote CLI. 
+---
+= Eliminar certificados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `Delete certificates` comando permite excluir um certificado do armazenamento de confiança do pacote CLI.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica aos storages EF600 e EF300.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete localCertificate all | alias pass:quotes[_alias_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`alias`
+ a| 
+Permite especificar um certificado através do alias definido pelo utilizador.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,60

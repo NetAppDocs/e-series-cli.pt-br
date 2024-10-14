@@ -1,0 +1,99 @@
+---
+permalink: commands-a-z/delete-auditlog.html 
+sidebar: sidebar 
+keywords: delete, audit, log, records 
+summary: O comando delete Auditlog exclui alguns ou todos os Registros no log de auditoria. 
+---
+= Eliminar registos de auditoria
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete auditLog` comando exclui alguns ou todos os Registros no log de auditoria.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+delete auditLog (all | (endRecord=pass:quotes[_timestamp_ | endDate=_date_) |
+ (retentionCount=_integer_))]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`all`
+ a| 
+Permite eliminar todos os registos de auditoria.
+
+
+
+ a| 
+`endRecord`
+ a| 
+Permite-lhe especificar o registo final a eliminar, a partir do registo mais antigo. O valor é o valor integral que representa o carimbo de data/hora do último registo de auditoria, inclusive.
+
+
+
+ a| 
+`endDate`
+ a| 
+Permite especificar a data de término a ser excluída, a partir do Registro mais antigo. O formato para introduzir a data é MM:DD:YY no fuso horário do cliente.
+
+[NOTE]
+====
+Os registos de auditoria, incluindo a data especificada, serão eliminados.
+
+====
+
+
+ a| 
+`retentionCount`
+ a| 
+Permite especificar o número dos registos de auditoria mais recentes a reter.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "delete auditLog all;"
+
+SMcli -n Array1 -c "delete auditLog endRecord=1493070393313;"
+
+SMcli -n Array1 -c "delete auditLog endDate=04:30:17;"
+
+SMcli -n Array1 -c "delete auditLog retentionCount=1000;"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

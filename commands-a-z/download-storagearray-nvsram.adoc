@@ -1,0 +1,73 @@
+---
+permalink: commands-a-z/download-storagearray-nvsram.html 
+sidebar: sidebar 
+keywords: download, storagearray, down, values, controller, support, role, command, array 
+summary: O comando download storageArray NVSRAM faz download dos valores NVSRAM para o controlador de storage array. 
+---
+= Transfira a NVSRAM da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `download storageArray NVSRAM` comando baixa os valores NVSRAM para o controlador de storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[download storageArray NVSRAM file="_filename_"]
+[healthCheckMelOverride=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo que contém os valores NVSRAM. Inclua o nome do arquivo NVSRAM em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\dnld\afrm.dlp"`
+
+Nomes de arquivo válidos têm `.dlp` uma extensão.
+
+
+
+ a| 
+`healthCheckMelOverride`
+ a| 
+A definição para substituir os resultados da verificação de integridade do registo de eventos principais (mel). A validação DO MEL ainda ocorre, não é ignorada. Se a verificação mel falhar, você pode ignorar a falha usando este parâmetro ao executar o comando.
+
+Antes de qualquer download, o controlador verifica o log de eventos para determinar se ocorreu um evento que pode impedir que a nova NVSRAM seja baixada com êxito. Se tal evento tiver ocorrido, o controlador normalmente não fará o download da nova NVSRAM.
+
+Esse parâmetro força o controlador a baixar a nova NVSRAM. O valor padrão é `FALSE`. Defina esse valor como `TRUE` se você quiser forçar o controlador a baixar uma nova NVSRAM.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10
+
+8,10 adiciona o `healthCheckMelOverride` parâmetro.

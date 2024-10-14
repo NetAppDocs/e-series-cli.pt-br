@@ -1,0 +1,137 @@
+---
+permalink: commands-a-z/set-volumegroup.html 
+sidebar: sidebar 
+keywords: set, volume, group 
+summary: O comando Set volumeGroup define as propriedades de um grupo de volumes. 
+---
+= Definir grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set volumeGroup` comando define as propriedades de um grupo de volumes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Você deve executar apenas uma operação (adicionar unidades, alterar o nível RAID ou alterar a propriedade do grupo de volumes) por comando. Não é possível executar mais de uma operação com um único comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set volumeGroup pass:quotes[[_volumeGroupName_]]
+[addDrives=pass:quotes[(_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]) ]|
+[raidLevel=(0 | 1 | 3 | 5 | 6) ]|
+[owner=(a|b)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes para o qual você deseja definir propriedades. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+
+
+ a| 
+`addDrives`
+ a| 
+O local da unidade que você deseja adicionar ao grupo de volume. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`raidLevel`
+ a| 
+O nível RAID para o grupo de volumes. Os valores válidos são `0`, `1`, `3`, `5` `6` ou .
+
+
+
+ a| 
+`owner`
+ a| 
+O controlador que possui o grupo de volume. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A e `b` é o controlador no slot B. Use este parâmetro somente se você quiser alterar o proprietário do grupo de volume.
+
+|===
+
+
+== Notas
+
+Erros de e/S do host podem resultar em grupos de volume com mais de 32 volumes. Esta operação também pode resultar em reinicializações internas do controlador porque o período de tempo limite termina antes que a definição do grupo de volume seja definida. Se você tiver esse problema, silencie as operações de e/S do host e tente o comando novamente.
+
+Quando você usa este comando, você pode especificar apenas um dos parâmetros.
+
+[NOTE]
+====
+Especificar o `addDrives` parâmetro ou o `raidLevel` parâmetro inicia uma operação de longa duração que você não pode parar.
+
+====
+ `addDrives`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+
+
+== Solução de problemas
+
+A tentativa de expandir grandes grupos de volumes adicionando unidades, também chamadas de expansão dinâmica de capacidade (DCE), pode falhar com a seguinte mensagem:
+
+`Return code: Error 26 - The modification operation cannot complete because of the number of drives in the volume group and the segment size of the associated volumes. Reduce the segment size of all volumes in the volume group to 128 KB or below using the Change Segment Size option. Then, retry the operation.`
+
+Os sistemas que executam o firmware 7,35.xx.xx podem falhar com a seguinte mensagem em vez da mencionada acima:
+
+`Return code: Error 462 - A SYMbol procedure could not be carried out because the firmware could not allocate sufficient cache memory. Operation when error occurred: PROC_startVolum`
+
+Além das mensagens acima, um evento de Registro de eventos principal (mel) indicando cache insuficiente disponível para concluir a operação do DCE pode ocorrer.
+
+Qualquer controlador que esteja executando o firmware 7.xx pode encontrar esse problema.
+
+O DCE requer memória suficiente para armazenar os dados lidos do volume original e os dados a serem gravados no volume expandido. Alguma combinação de número de unidades na operação de expansão, tamanho de faixa e se as operações de espelho estão ativadas pode resultar em memória insuficiente disponível para concluir a operação do DCE.
+
+Se a situação acima for encontrada, possíveis soluções alternativas são as seguintes:
+
+* Crie o grupo de volume de tamanho desejado usando outras unidades não atribuídas.
+* Exclua o grupo de volumes atual e, em seguida, recrie o grupo de volumes com o número desejado de unidades.
+* Reduza o tamanho do segmento que está sendo usado e tente novamente a operação.
+* Se possível, adicione memória adicional ao controlador e tente novamente a operação.
+
+
+
+
+== Nível mínimo de firmware
+
+O 7,10 adiciona capacidade RAID 6.
+
+7,30 remove o `availability` parâmetro.
+
+7,60 adiciona a `drawerID` entrada do usuário.

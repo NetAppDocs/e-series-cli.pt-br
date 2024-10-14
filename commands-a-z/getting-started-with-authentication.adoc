@@ -1,0 +1,27 @@
+---
+permalink: commands-a-z/getting-started-with-authentication.html 
+sidebar: sidebar 
+keywords: authentication, users, access, system, assign, login credentials, associated, profile, include, specific, role, access, permissions, start 
+summary: A autenticação requer que os usuários acessem o sistema com credenciais de login atribuídas. Cada login de usuário é associado a um perfil de usuário que inclui funções específicas e permissões de acesso. 
+---
+= Introdução à autenticação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+A autenticação requer que os usuários acessem o sistema com credenciais de login atribuídas. Cada login de usuário é associado a um perfil de usuário que inclui funções específicas e permissões de acesso.
+
+Os administradores podem implementar a autenticação do sistema da seguinte forma:
+
+* Uso dos recursos RBAC (controle de acesso baseado em função) aplicados no storage array, que incluem usuários e funções pré-definidas.
+* Conexão a um servidor LDAP (Lightweight Directory Access Protocol) e serviço de diretório, como o ative Directory da Microsoft, e mapeando os usuários LDAP para as funções incorporadas do storage array.
+* Conexão com um provedor de identidade (IDP) usando a Security Assertion Markup Language (SAML) 2,0 e, em seguida, mapeando os usuários para as funções incorporadas do storage array.
++
+[NOTE]
+====
+O SAML é um recurso incorporado no storage array (nível de firmware 8,42 e superior) e só é configurável a partir da interface de usuário do Gerenciador de sistemas do SANtricity.
+
+====
+

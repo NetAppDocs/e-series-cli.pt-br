@@ -1,0 +1,118 @@
+---
+permalink: commands-a-z/show-snapvolume.html 
+sidebar: sidebar 
+keywords: show, snapshot, volumes 
+summary: O comando show snapvolume retorna informações sobre um ou mais volumes de snapshot. 
+---
+= Mostrar volumes de instantâneos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show snapVolume` comando retorna informações sobre um ou mais volumes de snapshot.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allSnapVolumes | snapVolume pass:quotes[["_snapVolumeName_"]] |
+snapVolumes pass:quotes[["_snapVolumeName1_" ... "_snapVolumeNamen_"]])
+[summary]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allSnapVolumes`
+ a| 
+O parâmetro para retornar informações sobre todos os volumes de snapshot no storage array.
+
+
+
+ a| 
+`snapVolume`
+ a| 
+O nome de um volume instantâneo sobre o qual você deseja recuperar informações. Coloque o nome do volume instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`snapVolumes`
+ a| 
+Os nomes de vários volumes instantâneos para os quais você deseja recuperar informações. Insira os nomes dos volumes instantâneos usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`summary`
+ a| 
+O parâmetro para retornar uma lista concisa de informações sobre os volumes de snapshot.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Este comando retorna informações de volume instantâneo como mostrado neste exemplo:
+
+[listing]
+----
+SNAPSHOT VOLUME (SNAPSHOT-IMAGE BASED) SUMMARY
+----
+[listing]
+----
+SUMMARY
+
+ Total Snapshot Volumes: 1
+   Most Recent Snapshot Volume: Day month date hh:mm:ss yyyy
+   Status: 1 Optimal, 0 Non Optimal
+
+   Name        Type       Status     Capacity    Associated Base Volume
+   2_SV_0001   Standard   Optimal    3.000 GB    2
+----
+[listing]
+----
+   Snapshot Volume Timestamp   Snapshot Image Timestamp    Mode
+   1/23/12 6:44:31 PM IST      1/23/12 6:27:36 PM IST      Read Write
+----
+[listing]
+----
+   Total Repository Capacity   Available Repository Capacity
+   1.199 GB                    0.125 MB (0%)
+----
+O tamanho do seu monitor determina como as informações são envoltas e afetará a forma como as informações são exibidas.
+
+
+
+== Nível mínimo de firmware
+
+7,83

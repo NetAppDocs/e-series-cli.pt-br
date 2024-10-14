@@ -1,0 +1,55 @@
+---
+permalink: commands-a-z/add-certificate-from-file.html 
+sidebar: sidebar 
+keywords: add certificate file, supported arrays, syntax, parameters, minimum firmware level 
+summary: O comando Adicionar certificado do arquivo permite que você pegue um certificado do arquivo e adicione-o ao armazenamento de confiança do pacote CLI. O certificado adicionado só será usado pelo pacote CLI. 
+---
+= Adicionar certificado do ficheiro
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `Add certificate from file` comando permite que você pegue um certificado do arquivo e adicione-o ao armazenamento de confiança do pacote CLI. O certificado adicionado só será usado pelo pacote CLI.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica aos storages EF600 e EF300.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[trust localCertificate file _filename_ alias user _specified alias_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`filename`
+ a| 
+Permite especificar o nome do ficheiro que contém o certificado.
+
+
+
+ a| 
+`user specified alias`
+ a| 
+Permite especificar um certificado através do alias definido pelo utilizador.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,60

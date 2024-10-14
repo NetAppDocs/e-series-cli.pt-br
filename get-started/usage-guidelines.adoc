@@ -1,0 +1,26 @@
+---
+permalink: get-started/usage-guidelines.html 
+sidebar: sidebar 
+keywords: script command, guidelines 
+summary: Esta lista fornece diretrizes para escrever comandos de script na linha de comando. 
+---
+= Guidelines do comando de script
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+Esta lista fornece diretrizes para escrever comandos de script na linha de comando:
+
+* Você deve terminar todos os comandos com um ponto e vírgula (`;`).
+* Você pode inserir mais de um comando em uma linha, mas deve separar cada comando com um ponto e vírgula (`;`).
+* Você deve separar cada comando base e seus parâmetros primários e parâmetros secundários associados com um espaço.
+* O mecanismo de script não diferencia maiúsculas de minúsculas. Você pode inserir comandos usando letras maiúsculas, minúsculas ou letras maiúsculas.
+* Adicione comentários aos seus scripts para facilitar a compreensão do propósito dos comandos de script para você e futuros usuários. (Para obter informações sobre como adicionar comentários, link:adding-comments-to-a-script-file.html["Adicionando comentários a um arquivo de script"]consulte .)
+
+
+[NOTE]
+====
+Embora os comandos CLI e os comandos de script não sejam sensíveis a maiúsculas e minúsculas, os rótulos de usuário (como volumes, hosts ou portas de host) são sensíveis a maiúsculas e minúsculas. Se você tentar mapear para um objeto que é identificado por um rótulo de usuário, você deve inserir o rótulo de usuário exatamente como está definido, ou os comandos CLI e os comandos de script falharão.
+
+====

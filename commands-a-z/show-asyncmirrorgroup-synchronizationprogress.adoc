@@ -1,0 +1,84 @@
+---
+permalink: commands-a-z/show-asyncmirrorgroup-synchronizationprogress.html 
+sidebar: sidebar 
+keywords: show, asynchronous, mirror, group, synchronization, progress 
+summary: O comando show asyncMirrorGroup synchronizationProgress exibe o progresso da sincronização periódica do grupo de espelhos assíncronos entre o storage array local e remoto. 
+---
+= Mostrar o progresso assíncrono da sincronização do grupo de espelhos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show asyncMirrorGroup synchronizationProgress` comando exibe o progresso da sincronização _periódica_ do grupo de espelhos assíncronos entre o storage de armazenamento local e remoto.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando retorna o progresso da sincronização de dados em todos os pares espelhados dentro do grupo de espelhos assíncronos. Este comando mostra o progresso como uma porcentagem de sincronização de dados que foi concluída.
+
+[NOTE]
+====
+Existem dois tipos de sincronização: Sincronização inicial e sincronização periódica. O progresso inicial da sincronização assíncrona do grupo de espelhos é exibido na caixa de diálogo *Long Running Operations* e executando o `show storageArray longRunningOperations` comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show asyncMirrorGroup pass:quotes[[_asyncMirrorGroupName_]]
+[synchronizationProgress]
+[summary]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome de um grupo de espelhos assíncrono para o qual você deseja mostrar a sincronização do grupo de espelhos assíncronos entre o storage array local e remoto. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos tiver carateres ou números especiais, você deve incluir o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`synchronizationProgress`
+ a| 
+Este parâmetro exibe o progresso da sincronização periódica do grupo de espelhos assíncronos.
+
+
+
+ a| 
+`summary`
+ a| 
+Este parâmetro exibe uma lista concisa de informações sobre a sincronização do grupo de espelhos assíncronos entre a matriz de armazenamento local e remota.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

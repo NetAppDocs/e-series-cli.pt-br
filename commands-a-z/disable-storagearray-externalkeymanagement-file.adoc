@@ -1,0 +1,116 @@
+---
+permalink: commands-a-z/disable-storagearray-externalkeymanagement-file.html 
+sidebar: sidebar 
+keywords: disable, storage, array, external, management, file, command, disable, security, key, full, disk, encryption, drives 
+summary: O comando Disable storageArray externalKeyManagement file desativa o gerenciamento de chaves de segurança externas para um storage array que tenha unidades de criptografia de disco total. 
+---
+= Desativar o gerenciamento de chaves de segurança externas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `disable storageArray externalKeyManagement file` comando desativa o gerenciamento de chaves de segurança externas para uma matriz de armazenamento que tenha unidades de criptografia de disco total.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+disable storageArray externalKeyManagement
+pass:quotes[file="_fileName_"]
+pass:quotes[passPhrase="_passPhraseString_"]
+pass:quotes[saveFile=(_TRUE_ | _FALSE_)]
+----
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando permite o gerenciamento de chaves internas como a forma alternativa de Segurança da Unidade.
+
+====
+[NOTE]
+====
+Este comando aplica-se apenas ao gerenciamento de chaves externas.
+
+====
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo onde o arquivo da chave de segurança interna é armazenado. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[IMPORTANT]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk`.
+
+====
+
+
+ a| 
+`passPhrase`
+ a| 
+Uma cadeia de carateres que criptografa a chave de segurança para que você possa armazenar a chave de segurança em um arquivo externo.
+
+
+
+ a| 
+`saveFile`
+ a| 
+Verifica e salva a chave de segurança em um arquivo. Defina como `FALSE` para não salvar e verifique a chave de segurança em um arquivo. O valor padrão é `TRUE`.
+
+|===
+
+
+== Notas
+
+Sua frase-passe deve atender a estes critérios:
+
+* Deve ter entre oito e 32 carateres.
+* Sem espaço em branco.
+* Deve conter pelo menos uma letra maiúscula.
+* Deve conter pelo menos uma letra minúscula.
+* Deve conter pelo menos um número.
+* Tem de conter pelo menos um caráter não alfanumérico, por exemplo, a.
+
+
+[NOTE]
+====
+Se sua frase-passe não atender a esses critérios, você receberá uma mensagem de erro.
+
+====
+
+
+== Nível mínimo de firmware
+
+8,40
+
+8,70 adiciona o `saveFile` parâmetro.

@@ -1,0 +1,56 @@
+---
+permalink: commands-a-z/save-storagearray-statecapture.html 
+sidebar: sidebar 
+keywords: save, storage, array, state, capture 
+summary: O comando save storageArray stateCapture salva a captura de estado de um storage array em um arquivo. 
+---
+= Salve a captura de estado da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray stateCapture` comando salva a captura de estado de uma matriz de armazenamento em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray stateCapture file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar a captura de estado. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\state.txt"`
+
+Você pode usar qualquer nome de arquivo, mas você deve usar a `.txt` extensão.
+
+O nome padrão do arquivo que contém a captura de estado é `state-capture-data.txt`. Este comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar uma extensão de arquivo ao digitar o nome do arquivo.
+
+|===

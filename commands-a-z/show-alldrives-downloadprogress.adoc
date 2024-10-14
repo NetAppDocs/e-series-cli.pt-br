@@ -1,0 +1,84 @@
+---
+permalink: commands-a-z/show-alldrives-downloadprogress.html 
+sidebar: sidebar 
+keywords: show, drive, download, progress 
+summary: O comando show allDrives downloadProgress retorna o status dos downloads de firmware para as unidades que são segmentadas pelo comando download drive firmware ou pelo comando download storageArray drivefirmware. 
+---
+= Mostrar o progresso da transferência da unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show allDrives downloadProgress` comando retorna o status dos downloads de firmware para as unidades que são segmentadas pelo `download drive firmware` comando ou pelo `download storageArray driveFirmware` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show allDrives downloadProgress
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Quando todos os downloads de firmware tiverem sido concluídos com êxito, este comando retornará um bom status. Se algum download de firmware falhar, este comando mostra o status de download de firmware de cada unidade que foi segmentada. Este comando retorna os Estados mostrados nesta tabela.
+
+[cols="2*"]
+|===
+| Estado | Definição 
+
+
+ a| 
+`Successful`
+ a| 
+Os downloads foram concluídos sem erros.
+
+
+
+ a| 
+`Not Attempted`
+ a| 
+Os downloads não foram iniciados.
+
+
+
+ a| 
+`Partial Download`
+ a| 
+Os downloads estão em andamento.
+
+
+
+ a| 
+`Failed`
+ a| 
+Os downloads foram concluídos com erros.
+
+|===
+
+
+== Nível mínimo de firmware
+
+6,10

@@ -1,0 +1,83 @@
+---
+permalink: commands-a-z/show-controller-nvsram.html 
+sidebar: sidebar 
+keywords: show, controller, nvsram 
+summary: O comando show controller NVSRAM retorna informações sobre os valores de byte NVSRAM. 
+---
+= Mostrar NVSRAM da controladora
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show controller NVSRAM` comando retorna informações sobre os valores de byte NVSRAM.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando retorna uma lista dos valores de byte NVSRAM para o tipo de host especificado. Se você não inserir os parâmetros opcionais, este comando retornará uma lista de todos os valores de bytes NVSRAM.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allControllers | controller [(a|b)])
+NVSRAM pass:quotes[[hostType=_hostTypeIndexLabel_ | host="_hostName_"]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allControllers`
+ a| 
+A configuração para retornar informações sobre ambos os controladores no storage array.
+
+
+
+ a| 
+`controller`
+ a| 
+A configuração para retornar informações sobre um controlador específico na matriz de armazenamento. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]).
+
+
+
+ a| 
+`hostType`
+ a| 
+O rótulo de índice ou número do tipo de host. Use o `show storageArray hostTypeTable` comando para gerar uma lista de identificadores de tipo de host disponíveis.
+
+
+
+ a| 
+`host`
+ a| 
+O nome do host que está conetado aos controladores. Inclua o nome do host em aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Use o `show controller NVSRAM` comando para mostrar partes da NVSRAM ou toda a NVSRAM antes de usar o `set controller` comando para alterar os valores da NVSRAM. Antes de fazer qualquer alteração na NVSRAM, entre em Contato com o suporte técnico para saber quais regiões da NVSRAM você pode modificar.

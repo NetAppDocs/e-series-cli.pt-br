@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/delete-hostgroup.html 
+sidebar: sidebar 
+keywords: delete, hostgroup, command, support, role 
+summary: O comando delete hostGroup exclui um grupo host. 
+---
+= Eliminar grupo anfitrião
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete hostGroup` comando exclui um grupo de hosts.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possível dano à configuração da matriz de armazenamento* -- este comando exclui todas as definições do host no grupo de hosts.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete hostGroup [_hostGroupName_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome do grupo anfitrião que pretende eliminar. Inclua o nome do grupo host entre colchetes ([ ]). Se o nome do grupo host contiver carateres especiais ou consistir apenas em números, você deve incluir o nome do grupo host entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Um grupo anfitrião é um elemento topológico opcional que é uma coleção de hosts que compartilham o acesso aos mesmos volumes. O grupo host é uma entidade lógica.
+
+
+
+== Nível mínimo de firmware
+
+5,20

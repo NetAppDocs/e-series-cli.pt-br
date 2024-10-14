@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/set-storagearray-localusername.html 
+sidebar: sidebar 
+keywords: set, storage, array, local, user, password, symbol 
+summary: O comando Set storageArray localUsername e o comando Set storageArray symbol permitem definir uma senha de nome de usuário local ou uma senha de símbolo para uma função específica. 
+---
+= Defina a senha do usuário local do storage array ou a senha do símbolo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray localUsername` comando e o `set storageArray symbol` comando permitem definir uma senha de nome de usuário local ou uma senha de símbolo para uma função específica.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento, Administrador de suporte, Administrador de segurança ou Monitor de armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set storageArray (localUsername=pass:quotes[{ _admin_ | _storage_ | _security_ | _support_ | _monitor_}]
+| symbol [userRole={admin | monitor}])
+password="string" adminPassword="string"
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`localUsername`
+ a| 
+Permite especificar o utilizador para alterar a palavra-passe. As opções válidas são: `admin`, `storage`, `support`, `monitor`, `security` E .
+
+
+
+ a| 
+`symbol`
+ a| 
+Permite-lhe alterar a palavra-passe do símbolo. As opções válidas são: `admin` E `monitor`.
+
+[NOTE]
+====
+Este é o comando de substituição para o comando obsoleto. `set storageArray password`
+
+====
+
+
+ a| 
+`password`
+ a| 
+Permite especificar a senha para a função.
+
+
+
+ a| 
+`adminPassword`
+ a| 
+Permite especificar a senha de administrador, que é necessária para definir qualquer nova senha.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "set storageArray localUsername=storage password="newPassword" adminPassword="theAdminPassword";"
+SMcli -n Array1 -c "set storageArray localUsername=admin password="newAdminPassword" adminPassword="theAdminPassword";"
+SMcli -n Array1 -c "set storageArray symbol userRole=admin password="newSymbolPassword" adminPassword="theAdminPassword";"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40 adiciona o comando.

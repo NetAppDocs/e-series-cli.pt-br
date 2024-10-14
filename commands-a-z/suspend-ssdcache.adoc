@@ -1,0 +1,70 @@
+---
+permalink: commands-a-z/suspend-ssdcache.html 
+sidebar: sidebar 
+keywords: suspend, ssd cache 
+summary: O comando suspender ssdCache pára temporariamente o cache de todos os volumes que estão usando o cache SSD. 
+---
+= Suspenda a cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `suspend ssdCache` comando interrompe temporariamente o armazenamento em cache para todos os volumes que estão usando o cache SSD.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+
+
+== Contexto
+
+Enquanto o armazenamento em cache é interrompido, as leituras do host são atendidas a partir dos volumes base em vez do cache SSD.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[suspend ssdCache [_ssdCacheName_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`ssdCache`
+ a| 
+O nome do cache SSD que você deseja suspender. Inclua o nome do cache SSD entre colchetes ([ ]). Se o nome do cache SSD tiver carateres ou números especiais, você deve incluir o nome do cache SSD em aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Para reiniciar o cache, use o `resume ssdCache` comando.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

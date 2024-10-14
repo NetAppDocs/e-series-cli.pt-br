@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/start-diskpool-resourceprovisioning.html 
+sidebar: sidebar 
+keywords: start, disk pool, resource, provision 
+summary: O comando start diskPool resourceProvisioning habilita o provisionamento de recursos em um determinado pool de discos e inicia uma operação assíncrona de habilitação de provisionamento de recursos em cada volume no pool de discos. O provisionamento de recursos requer que todas as unidades no pool de disco sejam compatíveis com o recurso DULBE do NVMe. 
+---
+= Inicie o provisionamento de recursos do pool de disco
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start diskPool resourceProvisioning` comando habilita o provisionamento de recursos em um determinado pool de discos e inicia uma operação assíncrona de capacitação de provisionamento de recursos em cada volume no pool de discos. O provisionamento de recursos requer que todas as unidades no pool de disco sejam compatíveis com o recurso DULBE do NVMe.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays EF600 e EF300; desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array EF600 e EF300, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+Para desativar o provisionamento de recursos em um pool de discos, use o comando de provisionamento completo com a opção de desativar o provisionamento de recursos. Um pool de discos será provisionado por recursos quando criado se todas as unidades forem capazes de DULBE e a configuração do storage array `resourceProvisionedVolumes` for `true`.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start diskPoolpass:quotes[[_diskPoolName_]] resourceProvisioning
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPoolName`
+ a| 
+O pool de discos que você deseja ativar o recurso de provisionamento de recursos. Inclua o nome do pool de discos entre colchetes ([ ]).
+
+|===
+
+
+== Nível mínimo de firmware
+
+11,73

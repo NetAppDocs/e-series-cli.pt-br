@@ -1,0 +1,98 @@
+---
+permalink: commands-a-z/create-initiator.html 
+sidebar: sidebar 
+keywords: create, initiator 
+summary: O comando criar iniciador cria o objeto iniciador. 
+---
+= Criar iniciador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `create initiator`O comando cria o objeto iniciador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando substitui o comando obsoletoxref:create-iscsiinitiator.adoc[Criar iniciador iSCSI].
+
+====
+[NOTE]
+====
+Esse comando só se aplica a iSCSI, iSER, NVMe em RoCE, NVMe em InfiniBand e NVMe em Fibre Channel.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+
+create initiator identifier="initiatorQualifiedName" userLabel="initiatorName" host="hostName"
+interfaceType=(iscsi | iser | nvmeof) [chapSecret="securityKey"]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`identifier`
+ a| 
+Permite especificar o nome qualificado do identificador (como iqn ou nqn) para criar um iniciador . Coloque o identificador em aspas duplas (" ").
+
+
+
+ a| 
+`userLabel`
+ a| 
+Permite especificar uma etiqueta de utilizador para o iniciador. Coloque o nome entre aspas duplas (" ").
+
+
+
+ a| 
+`host`
+ a| 
+Permite especificar o nome do host onde o iniciador está instalado. Coloque o nome entre aspas duplas (" ").
+
+
+
+ a| 
+`interfaceType`
+ a| 
+Permite especificar para qual tipo de interface o iniciador se destina. As opções válidas são: iscsi, iser ou nvmeof.
+
+
+
+ a| 
+`chapSecret`
+ a| 
+Permite-lhe introduzir a chave de segurança que pretende utilizar para autenticar uma ligação peer. Coloque a chave de segurança entre aspas duplas (" "). Este parâmetro é aplicável apenas aos tipos de interface de host iSCSI e iSER.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,41

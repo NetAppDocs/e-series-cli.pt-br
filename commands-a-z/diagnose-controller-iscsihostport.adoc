@@ -1,0 +1,163 @@
+---
+permalink: commands-a-z/diagnose-controller-iscsihostport.html 
+sidebar: sidebar 
+keywords: diagnose, controller, hostport, command, diagnostic, tests, copper, cable, host, interface, cards, support, roles 
+summary: O comando Diagnostic controller iscsiHostPort executa testes de diagnóstico nos cabos de cobre entre placas de interface de host iSCSI e um controlador. 
+---
+= Diagnosticar o cabo do host iSCSI do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `diagnose controller iscsiHostPort` comando executa testes de diagnóstico nos cabos de cobre entre placas de interface de host iSCSI e um controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você pode executar diagnósticos em uma porta selecionada ou em todas as portas. As portas devem ser capazes de suportar o diagnóstico do cabo. Se as portas não suportarem o diagnóstico do cabo, um erro é retornado.
+
+
+
+== Sintaxe
+
+[listing]
+----
+diagnose controller [(a|b)]
+iscsiHostPort ([all] | [portLabel])
+testID=cableDiagnostics
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador no qual você deseja executar o teste de diagnóstico do cabo. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o software de gerenciamento de armazenamento retornará um erro de sintaxe.
+
+
+
+ a| 
+`iscsiHostPort`
+ a| 
+A porta de host iSCSI na qual você deseja executar os testes de diagnóstico. Você pode executar o diagnóstico em todas as portas de host iSCSI ou executar o diagnóstico em uma porta de host iSCSI específica.
+
+Consulte o seguinte para obter mais informações:
+
+<<Identificação de uma etiqueta de porta de host iSCSI,"Identificando uma etiqueta de porta de host iSCSI">>
+
+
+
+ a| 
+`testID`
+ a| 
+O identificador do teste de diagnóstico que pretende executar. Para este teste de diagnóstico, a única opção é `cableDiagnostics`.
+
+|===
+
+
+== Identificação de uma etiqueta de porta de host iSCSI
+
+Você deve especificar um rótulo para a porta do host. Siga estas etapas para especificar o rótulo da porta do host:
+
+. Se você não souber o rótulo da porta para a porta do host iSCSI, execute o `show controller` comando.
+. Na seção Interface do host dos resultados, localize a porta do host que você deseja selecionar.
++
+[NOTE]
+====
+O rótulo da porta é o valor completo retornado para `Port` o campo.
+
+====
+. Inclua o valor inteiro da etiqueta da porta entre aspas e colchetes: ["portLabel"]. Por exemplo, se o rótulo da porta for `Ch 2`, especifique a porta do host iSCSI da seguinte forma:
++
+[listing]
+----
+iscsiHostPort[\"ch 2\"]
+----
++
+[NOTE]
+====
+Se você estiver usando uma linha de comando do Windows e o rótulo contiver um pipe (|), o caractere deve ser escapado (usando o cursor); caso contrário, ele será interpretado como um comando. Por exemplo, se o rótulo da porta for `e0b|0b`, especifique a porta do host iSCSI da seguinte forma:
+
+====
++
+[listing]
+----
+iscsiHostPort[\"e0b^|0b\"]
+----
+
+
+[NOTE]
+====
+Para compatibilidade com versões anteriores, o iscsiPortNumber, incluído por chaves [ ] em vez de aspas e chaves [" "] ainda pode ser usado para controladores E2700, E5600 ou EF560 (e outras gerações anteriores de controladores e-Series ou EF-Series). Para esses controladores, os valores válidos para iscsiPortNumber são os seguintes:
+
+* Para controladores com portas de host integradas, a numeração é 3, 4, 5 ou 6.
+* Para controladores com portas de host apenas em uma placa de interface de host, a numeração é 1, 2, 3 ou 4.
+
+
+Um exemplo da sintaxe anterior é o seguinte:
+
+[listing]
+----
+iscsiHostPort[3]
+----
+====
+
+
+== Notas
+
+Quando você executa o teste de diagnóstico de cabo, o firmware retorna as seguintes informações:
+
+* *Host Port*: A porta na qual o teste de diagnóstico foi executado.
+* *HIC*: A placa de interface do host associada a esta porta.
+* A data e a hora em que o teste foi executado.
+* *Status*:
++
+** *OK*: Todos os pares de cabos estão em boas condições e não têm quaisquer falhas.
+** *Open*: Um ou mais dos quatro pares de cabos estão abertos.
+** *Short*: Um ou mais dos quatro pares de cabos estão em curto-circuito.
+** *Incompleto*: Um ou mais dos quatro pares devolveram resultados de teste incompletos ou inválidos.
+
+
+* *Comprimento*: O comprimento dos cabos está listado em metros e as seguintes informações sobre os cabos são retornadas:
++
+** Quando o status do cabo está OK, os comprimentos aproximados dos pares de cabos são retornados. Os comprimentos dos pares de cabos são mostrados como uma faixa (L1-L2mm), que são os comprimentos mais curtos e mais longos dos pares de cabos.
+** Se o estado do cabo estiver aberto ou curto, a distância aproximada até à falha nos pares de cabos. Se houver uma falha, o comprimento é relatado para esse par de cabos. Se houver mais de uma falha, a informação retornada é o menor e o maior comprimento das falhas. Os comprimentos são listados como um intervalo (L1-L2) onde L1L2.
+** Se o status do cabo estiver incompleto, as informações retornadas serão os comprimentos dos pares de cabos mais curtos e mais longos que o firmware pode testar com êxito. Os comprimentos são listados para os pares de cabos válidos como um intervalo (L1-L2) onde L1L2.
+
+
+* Registar valores para os registos de diagnóstico de cabos. Os valores estão em um formato hexadecimal:
++
+** Dois bytes mostram o status combinado do cabo (quatro bits por porta).
+** Quatro números de dois bytes mostram o comprimento de cada canal.
+
+
+
+
+
+
+== Nível mínimo de firmware
+
+7,77
+
+O 8,10 revê o sistema de numeração para portas de host iSCSI.

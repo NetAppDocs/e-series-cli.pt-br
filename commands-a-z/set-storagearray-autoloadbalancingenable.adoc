@@ -1,0 +1,107 @@
+---
+permalink: commands-a-z/set-storagearray-autoloadbalancingenable.html 
+sidebar: sidebar 
+keywords: set, storage, array, enable, disable, automatic, load, balance 
+summary: O comando Set storageArray autoLoadBalancingEnable ativa ou desativa o recurso balanceamento de carga automático. 
+---
+= Defina a matriz de armazenamento para ativar ou desativar o balanceamento de carga automático
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray autoLoadBalancingEnable` comando ativa ou desativa o recurso balanceamento de carga automático.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray autoLoadBalancingEnable=(TRUE | FALSE)
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`storageArray`
+ a| 
+Indica que esse parâmetro funciona em um storage array.
+
+
+
+ a| 
+`autoLoadBalancingEnable`
+ a| 
+Este parâmetro liga ou desliga o balanceamento de carga automático no controlador. Defina o parâmetro como `TRUE` para ativar o balanceamento de carga automático. Defina o parâmetro como `FALSE` para desativar o balanceamento de carga automático.
+
+|===
+
+
+== O que é balanceamento de carga automático?
+
+O recurso balanceamento de carga automático fornece gerenciamento de recursos de e/S aprimorado, reagindo dinamicamente às alterações de carga ao longo do tempo e ajustando automaticamente a propriedade do controlador de volume para corrigir quaisquer problemas de desequilíbrio de carga quando as cargas de trabalho mudam entre os controladores.
+
+A carga de trabalho de cada controlador é continuamente monitorizada e, com a colaboração dos drivers multipath instalados nos hosts, pode ser automaticamente colocada em equilíbrio sempre que necessário. Quando o workload é rebalanceado automaticamente entre os controladores, o administrador de storage fica aliviado da sobrecarga de ajustar manualmente a propriedade do controlador de volume para acomodar alterações de carga no storage array.
+
+Quando o balanceamento de carga automático está ativado, ele executa as seguintes funções:
+
+* Monitora e equilibra automaticamente a utilização de recursos do controlador.
+* Ajusta automaticamente a propriedade do controlador de volume quando necessário, otimizando assim a largura de banda de e/S entre os hosts e o storage array.
+
+
+
+
+== Ativar e desativar o balanceamento de carga automático
+
+O balanceamento de carga automático é ativado por padrão em todos os storages de armazenamento fornecidos com o SANtricity os (software de controladora) 8,30 ou posterior. Os drivers multipath Linux, Windows e VMware podem usar o recurso balanceamento de carga automático. Se você atualizar seu controlador do SANtricity os (software controlador) 8,25 ou anterior para 8,30 ou posterior, o balanceamento de carga automático será desativado por padrão no storage de armazenamento.
+
+Você pode querer desativar o balanceamento de carga automático em seu storage array pelos seguintes motivos:
+
+* Você não deseja alterar automaticamente a propriedade de um volume específico para equilibrar a carga de trabalho.
+* Você está operando em um ambiente altamente ajustado onde a distribuição de carga é propositadamente configurada para alcançar uma distribuição específica entre os controladores.
+
+
+No SANtricity Storage Manager, selecione a opção de menu *Matriz de armazenamento* *Configuração* *balanceamento de carga automático* para ativar ou desativar o recurso balanceamento de carga automático para uma matriz de armazenamento individual.
+
+No Gerenciador do sistema do SANtricity, selecione *Configurações* *sistema*, role para baixo até a seção *Configurações adicionais*, clique no link e**balanceamento de carga automático** e marque a caixa de seleção Ativar/desativar balanceamento de carga automático** para ativar ou desativar o recurso de uma matriz de armazenamento individual.
+
+
+
+== Exemplos
+
+[listing]
+----
+SMcli -n Array1 -c "set storageArray autoLoadBalancingEnable=true;"
+
+SMcli completed successfully.
+----
+[NOTE]
+====
+Uma condição ativa "Drive Lost Primary Path" resultará no balanceamento de carga automático incapaz de equilibrar cargas de trabalho. Essa condição deve estar inativa para garantir que as cargas de trabalho sejam equilibradas por meio do recurso balanceamento de carga automático.
+
+====
+
+
+== Nível mínimo de firmware
+
+8,30

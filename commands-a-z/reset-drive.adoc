@@ -1,0 +1,88 @@
+---
+permalink: commands-a-z/reset-drive.html 
+sidebar: sidebar 
+keywords: reset, drive 
+summary: A energia do comando RESET DRIVE alterna uma unidade em um grupo de volume ou em um pool de discos para auxiliar na recuperação de uma unidade que esteja exibindo comportamento inconsistente ou não ótimo. 
+---
+= Reponha a transmissão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset drive` comando POWER alterna uma unidade em um grupo de volume ou um pool de discos para auxiliar na recuperação de uma unidade que esteja exibindo comportamento inconsistente ou não ótimo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Ao ligar uma unidade, pode eliminar alguns erros que causam um comportamento inconsistente ou não ótimo. Isso evita a substituição de uma unidade quando ela está enfrentando apenas um erro transitório e não fatal, e a unidade pode permanecer operacional. Redefinir uma unidade desta forma reduz as interrupções e evita a substituição de uma unidade.
+
+Se o problema não puder ser corrigido com o ciclo de alimentação da unidade, os dados são copiados da unidade e a unidade é desligada para substituição.
+
+[NOTE]
+====
+Este comando não pode ser usado para unidades SSD fabricadas pela pliant. Use o `show storageArray profile` comando ou o `show drive` comando para exibir o fabricante da(s) unidade(s).
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+reset drive([trayID,[drawerID,]slotID] | <"wwID">)
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drive`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`drive`
+ a| 
+O World Wide Identifier (WWID) da unidade que você deseja substituir. Coloque o WWID entre aspas duplas (" ") entre colchetes angulares ( ).
+
+|===
+
+
+== Notas
+
+ `drive`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+Depois de ligar a unidade, o controlador tem de verificar se a unidade está a funcionar antes de poder ser colocada novamente em utilização. Se a unidade não puder ser verificada, ela está marcada como uma unidade com falha. Uma unidade com falha requer unidades hot spare globais e cópia completa de volta para uma unidade de substituição depois de colocada em serviço.
+
+As unidades com falha não podem ser repostas por um ciclo de energia mais de uma vez em um período de 24 horas e, em alguns casos, não podem ser redefinidas mais de uma vez. Os limites e contadores dos ciclos de energia da unidade são mantidos em armazenamento persistente e estão incluídos nos dados de captura de estado. Os eventos informativos são registados quando uma unidade é ligada à corrente.
+
+
+
+== Nível mínimo de firmware
+
+8,20

@@ -1,0 +1,119 @@
+---
+permalink: commands-a-z/set-volume-logicalunitnumber.html 
+sidebar: sidebar 
+keywords: set, volume, map 
+summary: 'O comando Set volume logicalUnitNumber define o mapeamento de número de unidade lógica (LUN) ou ID de namespace (NSID) entre um volume e um host ou grupo de host.' 
+---
+= Definir mapeamento de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set volume logicalUnitNumber` comando define o mapeamento de número de unidade lógica (LUN) ou ID de namespace (NSID) entre um volume e um host ou grupo de host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando é aplicável a volumes em um grupo de volumes ou em um pool de discos.
+
+[NOTE]
+====
+Você não pode usar este comando para um volume instantâneo usado na cópia de volume on-line.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set (volume pass:quotes[[_volumeName_]] | volume <"wwID"> | accessVolume)
+pass:quotes[logicalUnitNumber=_lun_]
+pass:quotes[(host="_hostName_"] |
+hostGroup=pass:quotes[("_hostGroupName_"] | defaultGroup)
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume para o qual pretende definir o número da unidade lógica. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volume`
+ a| 
+O World Wide Identifier (WWID) do volume para o qual você deseja definir o número de unidade lógica. Coloque o WWID entre aspas duplas (" ") entre colchetes angulares ( ).
+
+
+
+ a| 
+`accessVolume`
+ a| 
+O número de unidade lógica para o volume de acesso. O número de unidade lógica é a única propriedade que você pode definir para o volume de acesso.
+
+
+
+ a| 
+`logicalUnitNumber`
+ a| 
+O número de unidade lógica ou ID de namespace que você deseja usar para mapear para um host específico. Esse parâmetro também atribui o host a um grupo de hosts.
+
+[NOTE]
+====
+O número de unidade lógica ou o ID do namespace especificado não deve estar já em uso e deve estar dentro do intervalo suportado pelo sistema operacional host. Não haverá erro se você mapear o volume para um número de unidade lógica ou ID de namespace não suportado pelo host, mas o host não poderá acessar o volume.
+
+====
+
+
+ a| 
+`host`
+ a| 
+O nome do host para o qual o volume é mapeado. Inclua o nome do host em aspas duplas (" ").
+
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome do grupo anfitrião ao qual o volume é mapeado. Coloque o nome do grupo anfitrião em aspas duplas (" "). `defaultGroup` é o grupo de hosts que contém o host para o qual o volume é mapeado.
+
+|===
+
+
+== Notas
+
+Um grupo de host é um elemento topológico opcional que você pode definir se deseja designar uma coleção de hosts que compartilham acesso aos mesmos volumes. O grupo host é uma entidade lógica. Defina um grupo de hosts somente se você tiver dois ou mais hosts que possam compartilhar o acesso aos mesmos volumes.
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O volume de acesso é o volume em um ambiente SAN usado para comunicação na banda entre o software de gerenciamento de storage e o controlador do storage array. Esse volume usa um endereço LUN ou NSID e consome 20 MB de espaço de armazenamento que não está disponível para armazenamento de dados do aplicativo. Um volume de acesso é necessário apenas para storages gerenciados na banda. Se você especificar o `accessVolume` parâmetro, a única propriedade que você pode definir é o `logicalUnitNumber` parâmetro.
+
+
+
+== Nível mínimo de firmware
+
+o 7,83 adiciona volume de snapshot para pools de discos.

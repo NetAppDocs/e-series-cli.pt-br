@@ -1,0 +1,52 @@
+---
+permalink: commands-a-z/show-textstring.html 
+sidebar: sidebar 
+keywords: show, str 
+summary: O comando show textstring mostra uma cadeia de texto de um arquivo de script. Este comando é semelhante ao comando echo em MS-dos e UNIX. 
+---
+= Mostrar cadeia de carateres
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show textstring` comando mostra uma cadeia de texto de um arquivo de script. Este comando é semelhante ao `echo` comando em MS-dos e UNIX.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[show "_textString_"]
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Coloque a string entre aspas duplas (" ").
+
+
+
+== Nível mínimo de firmware
+
+6,10

@@ -1,0 +1,109 @@
+---
+permalink: commands-a-z/save-storagearray-controllerhealthimage.html 
+sidebar: sidebar 
+keywords: save, storage, array, controller, health, image 
+summary: O comando save storageArray controllerHealthImage salva uma imagem de integridade do controlador em um arquivo especificado em um host, para arrays de armazenamento que suportam o recurso de imagem de integridade do controlador. 
+---
+= Salve a imagem de integridade do controlador do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray controllerHealthImage` comando salva uma imagem de integridade do controlador em um arquivo especificado em um host, para storages que suportam o recurso de imagem de integridade do controlador.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Com a versão de firmware 8,20, o `coreDump` parâmetro é substituído pelo `controllerHealthImage` parâmetro.
+
+====
+Se o storage array não suportar o recurso de imagem de integridade do controlador, o comando retornará um erro.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray controllerHealthImage file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você salva a imagem de integridade do controlador. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+[listing]
+----
+file="C:\Array Backups\DBMbackup_03302010.core"
+----
+|===
+
+
+== Notas
+
+Um arquivo de imagem de integridade do controlador pode ter um a dois gigabytes de tamanho e levar vários minutos para salvar. Além de salvar a própria imagem de integridade do controlador, esse comando gera um arquivo de descritor XML baseado nos metadados da imagem de integridade do controlador. Este arquivo descritor é salvo no formato de arquivo ZIP para o mesmo caminho que a imagem de integridade do controlador. O exemplo a seguir mostra o formato XML para o arquivo descritor.
+
+[listing]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+- <DPLcontrollerHealthImageInfo>
+<dplcontrollerHealthImageTag>sometag#</dplcontrollerHealthImageTag>
+<captureTime>12/22/10 3:58:53 PM IST</captureTime>
+- <StorageArrayData>
+<ArraySAID>600a0b80006e006a000000004c65efc1</ArraySAID>
+<ManagementApiVersion>devmgr.v1083api01.Manager</ManagementApiVersion>
+<fwVersion>07.83.01.00</fwVersion>
+<platformType>7091</platformType>
+</StorageArrayData>
+<fullcontrollerHealthImageCtlr>controllerserialNumber1
+     </fullcontrollerHealthImageCtlr>
+<fullcontrollerHealthImageSize>fullCaptureSize</fullcontrollerHealthImageSize>
+<altcontrollerHealthImageCtlr>controllerserialNumber2</altcontrollerHealthImage
+     Ctlr>
+<altcontrollerHealthImageSize>altCaptureSize</altcontrollerHealthImageSize>
+<triggerReason>Exception</triggerReason>-<DPLcontrollerHealthImageDetail>
+<dplcontrollerHealthImageReason>DPLcontrollerHealthImageReason
+     </dplcontrollerHealthImageReason>
+- <fwLocation >
+<filename>filename</filename>
+<lineNumber>line#</lineNumber>
+</fwLocation >
+<panicReason>panicString</panicReason>
+</DPLcontrollerHealthImageDetail>
+</DPLcontrollerHealthImageInfo>
+----
+Quando você recupera uma imagem de integridade do controlador do cache do controlador para um host, um sinalizador é definido no controlador para indicar que a imagem de integridade do controlador não precisa ser recuperada. Esta definição persiste durante 48 horas. Se uma nova imagem de integridade do controlador ocorrer durante esse período, a nova imagem de integridade do controlador será salva no cache do controlador e sobrescreverá quaisquer dados de imagem de integridade do controlador anteriores no cache.
+
+
+
+== Nível mínimo de firmware
+
+7,83
+
+8,20 substitui o `coreDump` parâmetro pelo `controllerHealthImage` parâmetro.

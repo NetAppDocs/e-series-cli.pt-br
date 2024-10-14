@@ -1,0 +1,46 @@
+---
+permalink: commands-a-z/set-storagearray-time.html 
+sidebar: sidebar 
+keywords: set, storage, array, time 
+summary: O comando Set storageArray Time define os relógios em ambos os controladores em um storage array sincronizando os relógios do controlador com o relógio do host a partir do qual você executa esse comando. 
+---
+= Defina o tempo do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray time` comando define os relógios em ambos os controladores em um storage array sincronizando os relógios do controlador com o relógio do host a partir do qual você executa este comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set storageArray time
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10

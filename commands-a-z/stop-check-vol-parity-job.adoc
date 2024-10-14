@@ -1,0 +1,54 @@
+---
+permalink: commands-a-z/stop-check-vol-parity-job.html 
+sidebar: sidebar 
+keywords: stop, check, volume, parity, job, 
+summary: O comando stop check volume parity job pára um trabalho de paridade de volume de verificação em andamento. 
+---
+= Parar trabalho de paridade de volume de verificação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop check volume parity job` comando pára um trabalho de paridade de volume de verificação em andamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays EF600 e EF300; desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array EF600 e EF300, você deve ter a função Storage Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+stop check volume parity job jobId=<job_id>;
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`jobId`
+ a| 
+O ID do trabalho correspondente ao trabalho de verificação de paridade de volume a parar. Este valor é necessário.
+
+|===
+
+
+== Nível mínimo de firmware
+
+11,80

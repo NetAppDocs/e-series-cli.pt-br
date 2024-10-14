@@ -1,0 +1,81 @@
+---
+permalink: commands-a-z/show-volumecopy.html 
+sidebar: sidebar 
+keywords: show, volume, copy 
+summary: O comando show volumeCopy retorna informações sobre operações de cópia de volume. 
+---
+= Mostrar cópia de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show volumeCopy` comando retorna informações sobre operações de cópia de volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Este comando retorna essas informações sobre operações de cópia de volume:
+
+* O estado da cópia
+* O carimbo de hora de início
+* O carimbo de hora de conclusão
+* A prioridade de cópia
+* O volume de origem World Wide Identifier (WWID) ou o volume de destino WWID
+* A configuração de atributo somente leitura do volume alvo
+
+
+Você pode recuperar informações sobre um par de cópias de volume específico ou todos os pares de cópias de volume na matriz de armazenamento. Este comando é válido para pares de cópias de volume instantâneo.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show volumeCopy (allVolumes | source pass:quotes[["_sourceName_"]] |
+target pass:quotes[["_targetName_"]])
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+A configuração para retornar informações sobre operações de cópia de volume para todos os pares de cópias de volume.
+
+
+
+ a| 
+`source`
+ a| 
+O nome do volume de origem sobre o qual você deseja recuperar informações. Coloque o nome do volume de origem entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`target`
+ a| 
+O nome do volume de destino sobre o qual você deseja recuperar informações. Coloque o nome do volume alvo em aspas duplas (" ") dentro de colchetes ([ ]).
+
+|===

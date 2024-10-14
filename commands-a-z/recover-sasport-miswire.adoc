@@ -1,0 +1,87 @@
+---
+permalink: commands-a-z/recover-sasport-miswire.html 
+sidebar: sidebar 
+keywords: recover, sas, port, mis-wire 
+summary: O comando Recover sasPort miswire informa a um controlador que foi tomada uma ação corretiva para recuperar de uma condição de fio incorreto. 
+---
+= Recupere o fio incorreto da porta SAS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `recover sasPort miswire` comando informa a um controlador que foi tomada uma ação corretiva para recuperar de uma condição de fio incorreto.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+O controlador pode então reativar todas as portas SAS que foram desativadas porque foi detetado um cabo incorreto. Execute este comando depois de corrigir quaisquer condições de falha de fio SAS.
+
+As condições de falta de fio SAS podem ser uma das seguintes:
+
+* Topologias SAS inválidas
+* Porta de host do controlador para conexão da bandeja de expansão
+* Iniciador para impulsionar a conexão de topologia
+* ESM mis-wire
+
+
+
+
+== Sintaxe
+
+[listing]
+----
+recover sasPort miswire
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Quando é detetada uma condição de erro de fio, o firmware do controlador comunica o seguinte:
+
+* Um evento de mel crítico que indica a presença de uma condição de fio incorreto
+* Uma condição "'precisa de atenção ""
+* Uma ação de recuperação que indica o erro de fio
+
+
+Além disso, o controlador relata informações de "perda de redundância" para as unidades, ESMs e bandejas para as quais ele tem apenas um caminho de acesso devido ao fio errado (por exemplo, as duas bandejas inferiores em um storage). As informações de perda de redundância não são exclusivas das topologias SAS.
+
+A seguir estão as notificações de eventos relacionadas à porta SAS mis-wire:
+
+* Detectada falha de fio SAS
+* HBA ligado ao canal de transmissão
+* Canais de condução com fios cruzados
+
+
+Para condições sem fios em que o controlador desativa uma ou mais portas SAS para proteger a integridade do domínio SAS, siga estas etapas para recuperar da condição:
+
+. Determine qual cabo está no lugar errado e remova-o. Se a última ação tomada foi instalar um novo cabo, este é o candidato mais provável. Caso contrário, procure cabos conetados a dispositivos que não fazem parte da matriz de armazenamento ou cabos conetados entre canais. O evento de recuperação deve comunicar o canal no qual o fio errado foi detetado e, possivelmente, a bandeja
+. Depois de remover um cabo ou mover o cabo para o local correto, execute o `recover sasPort miswire` comando. O controlador tentará reativar todas as portas SAS que foram desativadas quando o fio errado foi detetado.
+. Se o cabo que você removeu ou moveu para corrigir o cabo mis-wire forneceu ao controlador seu único acesso à porta desativada, o controlador não será capaz de reativar a porta SAS que foi desativada. Para concluir a recuperação, é necessário ligar e desligar as bandejas no storage array.
+
+
+
+
+== Nível mínimo de firmware
+
+8,10

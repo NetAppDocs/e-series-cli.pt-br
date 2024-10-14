@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/stop-drivechannel-faultdiagnostics.html 
+sidebar: sidebar 
+keywords: stop, drive, channel, fault, isolation, diagnostics 
+summary: O comando STOP driveChannel faultDiagnostics pára o diagnóstico de isolamento de falhas do canal da unidade, que pára o comando iniciar diagnóstico de isolamento de falhas do canal da unidade antes de ser concluído. 
+---
+= Pare o diagnóstico de isolamento de falha do canal de acionamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop driveChannel faultDiagnostics` comando pára o diagnóstico de isolamento de falhas do canal da unidade, que pára o `start drive channel fault isolation diagnostics` comando antes de ser concluído.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Com a versão de firmware 8,10, o `stop driveChannel faultDiagnostics` comando está obsoleto.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+stop driveChannel faultDiagnostics
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Utilizar o `start driveChannel faultDiagnostics` comando e o `save driveChannel faultDiagnostics` comando com o `stop driveChannel faultDiagnostics` comando. Esses comandos são necessários para iniciar o teste de diagnóstico e salvar os resultados do teste de diagnóstico em um arquivo.
+
+Você também pode parar o `start driveChannel faultDiagnostics` comando a qualquer momento pressionando `Ctrl+C`.
+
+
+
+== Nível mínimo de firmware
+
+7,15

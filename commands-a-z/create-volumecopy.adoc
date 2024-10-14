@@ -1,0 +1,141 @@
+---
+permalink: commands-a-z/create-volumecopy.html 
+sidebar: sidebar 
+keywords: create, volume, copy 
+summary: O comando Create volumeCopy cria uma cópia de volume e inicia a operação de cópia de volume. Este comando é válido para pares de cópias de volume de imagem instantânea. 
+---
+= Criar cópia de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create volumeCopy` comando cria uma cópia de volume e inicia a operação de cópia de volume. Este comando é válido para pares de cópias de volume de imagem instantânea.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Iniciar uma operação de cópia de volume substitui todos os dados existentes no volume de destino, faz com que o volume de destino seja somente leitura para hosts e falha em todos os volumes de imagem instantânea associados ao volume de destino, se houver algum. Se você já usou o volume de destino como uma cópia antes, certifique-se de que não precisa mais dos dados ou de fazer backup deles.
+
+====
+Esse comando cria cópias de volume de duas maneiras:
+
+* Cópia de volume sem imagem instantânea, também chamada de cópia de volume _offline_
+* Cópia de volume com imagem instantânea, também chamada de cópia de volume _online_
+
+
+Se utilizar a cópia de volume sem imagem instantânea, não poderá gravar no volume de origem até que a operação de cópia esteja concluída. Se pretender ser capaz de gravar no volume de origem antes de a operação de cópia estar concluída, utilize a cópia de volume com imagem instantânea. Você pode selecionar a cópia de volume com imagem instantânea através dos parâmetros opcionais na sintaxe de comando.
+
+Após a conclusão da cópia de volume com a operação de imagem instantânea, a imagem instantânea é eliminada e o volume instantâneo é desativado.
+
+[NOTE]
+====
+Você pode ter um máximo de oito cópias de volume em andamento ao mesmo tempo. Se você tentar criar mais de oito cópias de volume ao mesmo tempo, os controladores retornarão um status de pendente até que uma das cópias de volume que está em andamento termine e retornará um status de concluído.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create volumeCopy source=pass:quotes[_"sourceName"_
+target="_targetName_"]
+[copyPriority=(highest | high | medium | low | lowest)]
+[targetReadOnlyEnabled=(TRUE | FALSE)]
+[copyType=(offline | online)]
+[repositoryPercentOfBase=(20 | 40 | 60 | 120 | default)]
+[repositoryGroupPreference=(sameAsSource | otherThanSource | default)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`source`
+ a| 
+O nome de um volume existente que você deseja usar como volume de origem. Coloque o nome do volume de origem entre aspas duplas (" ").
+
+
+
+ a| 
+`target`
+ a| 
+O nome de um volume existente que você deseja usar como volume de destino. Coloque o nome do volume alvo em aspas duplas (" ").
+
+
+
+ a| 
+`copyPriority`
+ a| 
+A prioridade que a cópia de volume tem em relação à atividade de e/S do host. Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` ou .
+
+
+
+ a| 
+`targetReadOnlyEnabled`
+ a| 
+A definição para que possa escrever no volume de destino ou apenas ler a partir do volume de destino. Para gravar no volume de destino, defina este parâmetro como `FALSE`. Para impedir a gravação no volume de destino, defina este parâmetro como `TRUE`.
+
+
+
+ a| 
+`copyType`
+ a| 
+Utilize este parâmetro para criar uma cópia de volume com uma imagem instantânea. A criação de uma cópia de volume com uma imagem instantânea permite-lhe continuar a escrever no volume de origem enquanto cria a cópia de volume. Para criar uma cópia de volume com uma imagem instantânea, defina este parâmetro como `online`. Para criar uma cópia de volume sem uma imagem instantânea, defina este parâmetro como `offline`.
+
+Se não utilizar este parâmetro, a cópia de volume é criada sem uma imagem instantânea.
+
+
+
+ a| 
+`repositoryPercentOfBase`
+ a| 
+Este parâmetro determina o tamanho do volume do repositório para a imagem instantânea quando você está criando uma cópia de volume com uma imagem instantânea. O tamanho do volume do repositório é expresso como uma porcentagem do volume de origem, que também é chamado de volume base. Os valores válidos para este parâmetro são `20` `40` , , `60`, `120` `default` e . O valor padrão é 20. Se não utilizar este parâmetro, o firmware utiliza um valor de 20 por cento.
+
+Você deve usar o `copyType` parâmetro com o `repositoryPercentOfBase` parâmetro.
+
+
+
+ a| 
+`repositoryGroupPreference`
+ a| 
+Este parâmetro determina para qual grupo de volume o volume do repositório de imagens instantâneas é gravado. Você tem estas opções:
+
+* `sameAsSource` -- o volume da imagem instantânea é gravado no mesmo grupo de volumes que o volume de origem, se o espaço estiver disponível.
+* `otherThanSource` -- parâmetro deprecado. Não utilizar
+* `default` -- o volume do repositório de imagens instantâneas é gravado em qualquer grupo de volumes que tenha espaço.
+
+
+Para obter o melhor desempenho, use a `sameAsSource` opção.
+
+Você deve usar o `copyType` parâmetro com o `repositoryGroupPreference` parâmetro.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, happens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Prioridade de cópia define a quantidade de recursos do sistema que são usados para copiar os dados entre o volume de origem e o volume de destino de um par de cópias de volume. Se você selecionar o nível de prioridade mais alto, a cópia de volume usará a maioria dos recursos do sistema para executar a cópia de volume, o que diminui o desempenho para transferências de dados do host.

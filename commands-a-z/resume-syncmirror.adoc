@@ -1,0 +1,96 @@
+---
+permalink: commands-a-z/resume-syncmirror.html 
+sidebar: sidebar 
+keywords: resume, synchronous, mirroring 
+summary: O comando RESUME SyncMirror retoma uma operação de espelhamento síncrono suspenso. 
+---
+= Retomar o espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `resume syncMirror` comando retoma uma operação de espelhamento síncrono suspenso.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de recurso era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+resume syncMirror (primary pass:quotes[[_volumeName_]] |
+primaries pass:quotes[[_volumeName1 ... volumeNameN_]])
+[writeConsistency=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`primary`
+ a| 
+O nome do volume primário para o qual você deseja retomar uma operação de espelhamento síncrono. Coloque o nome do volume primário entre colchetes ([ ]). Se o nome do volume principal tiver carateres ou números especiais, você deve incluir o nome do volume principal entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`primaries`
+ a| 
+Os nomes de vários volumes primários para os quais você deseja retomar uma operação de espelhamento síncrono. Insira os nomes dos volumes primários usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes de volume primário tiverem carateres especiais ou forem compostos apenas por números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`writeConsistency`
+ a| 
+A configuração para identificar os volumes neste comando que estão em um grupo de consistência de gravação ou são separados. Para que os volumes estejam no mesmo grupo de consistência de gravação, defina este parâmetro como `TRUE`. Para que os volumes sejam separados, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Se você definir `writeConsistency` o parâmetro como `TRUE`, os volumes deverão estar em um grupo de consistência de gravação (ou grupos). Este comando retoma todos os grupos write-consistency que contêm os volumes. Por exemplo, se os volumes A, B e C estiverem num grupo de consistência de escrita e tiverem contrapartes remotas A'', B' e C'', o `resume syncMirror volume ["A"] writeConsistency=TRUE` comando retoma A-A'', B-B'' e C-C.».
+
+
+
+== Nível mínimo de firmware
+
+6,10

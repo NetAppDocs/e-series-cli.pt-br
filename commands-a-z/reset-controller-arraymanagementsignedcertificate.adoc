@@ -1,0 +1,66 @@
+---
+permalink: commands-a-z/reset-controller-arraymanagementsignedcertificate.html 
+sidebar: sidebar 
+keywords: reset, installed, signed, certificate 
+summary: O comando reset controller arrayManagementSignedCertificate repõe o certificado assinado instalado e os certificados raiz/intermediários no controlador. Todos os certificados raiz e intermediário, bem como quaisquer certificados assinados, serão substituídos por um único certificado auto-assinado. 
+---
+= Repor o certificado assinado instalado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset controller arrayManagementSignedCertificate` comando repõe o certificado assinado instalado e os certificados raiz/intermediários no controlador. Todos os certificados raiz e intermediário, bem como quaisquer certificados assinados, serão substituídos por um único certificado auto-assinado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+
+reset controller [(a|b)] arrayManagementSignedCertificate
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+Permite que o usuário especifique o controlador no qual você deseja recuperar os certificados raiz/intermediário. Identificadores válidos do controlador são a ou b, onde a é o controlador no slot A, e b é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]).
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "reset controller [a] arrayManagementSignedCertificate;"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

@@ -1,0 +1,90 @@
+---
+permalink: commands-a-z/create-host.html 
+sidebar: sidebar 
+keywords: create, host 
+summary: O comando criar host cria um novo host. 
+---
+= Criar host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create host` comando cria um novo host.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Para storages E2700 e E5600, se você não especificar um grupo de hosts no qual criar o novo host, o novo host será criado no Grupo padrão.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create host userLabel=pass:quotes[_"hostName"_]
+[hostGroup=pass:quotes[(_"hostGroupName"_] | defaultGroup)]
+[hostType=(hostTypeIndexLabel | hostTypeIndexNumber)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar ao host que você está criando. Inclua o nome do host em aspas duplas (" ").
+
+
+
+ a| 
+`hostGroup`
+ a| 
+O nome do grupo de hosts no qual você deseja criar um novo host. Coloque o nome do grupo anfitrião em aspas duplas (" "). (Se um grupo de host não existir, você pode criar um novo grupo de host usando o `create hostGroup` comando.) A `defaultGroup` opção é o grupo de hosts que contém o host para o qual o volume é mapeado.
+
+
+
+ a| 
+`hostType`
+ a| 
+O rótulo do índice ou o número do índice que identifica o tipo de host. Use o `show storageArray hostTypeTable` comando para gerar uma lista de identificadores de tipo de host disponíveis. Se o tipo de host tiver carateres especiais, inclua o tipo de host entre aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Um host é um computador conetado ao storage array e acessa os volumes no storage array por meio das portas do host. Você pode definir mapeamentos específicos para um host individual. Você também pode atribuir o host a um grupo de host que compartilha o acesso a um ou mais volumes.
+
+Um grupo de host é um elemento topológico opcional que você pode definir se deseja designar uma coleção de hosts que compartilham acesso aos mesmos volumes. O grupo host é uma entidade lógica. Defina um grupo de hosts somente se você tiver dois ou mais hosts que compartilham o acesso aos mesmos volumes.
+
+Se você não especificar um grupo de host no qual colocar o host que você está criando, o host recém-definido pertence ao grupo de hosts padrão.
+
+
+
+== Nível mínimo de firmware
+
+5,20
+
+7,10 adiciona o `hostType` parâmetro.

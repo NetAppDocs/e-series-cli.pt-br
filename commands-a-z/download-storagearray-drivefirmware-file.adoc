@@ -1,0 +1,75 @@
+---
+permalink: commands-a-z/download-storagearray-drivefirmware-file.html 
+sidebar: sidebar 
+keywords: download, storage, array, drive, firmware, command, images, roles, supported 
+summary: O comando download storageArray drivefirmware file faz download de imagens de firmware para todas as unidades na matriz de armazenamento. 
+---
+= Transfira o firmware da unidade de matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `download storageArray driveFirmware file` comando transfere imagens de firmware para todas as unidades na matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[download storageArray driveFirmware file="_filename_"]
+pass:quotes[[file="_filename2_"... file="_filenameN_"]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do ficheiro e o nome do ficheiro que contém a imagem de firmware. Insira o caminho do arquivo e o nome do arquivo da imagem de firmware em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\dnld\sadrvfrm.dlp"`
+
+Nomes de arquivo válidos têm `.dlp` uma extensão.
+
+|===
+
+
+== Notas
+
+Quando você executa este comando, você pode baixar mais de um arquivo de imagem de firmware para as unidades em um storage array. O número de arquivos de imagem de firmware que você pode baixar depende da matriz de armazenamento. O software de gerenciamento de armazenamento retorna um erro se você tentar baixar mais arquivos de imagem de firmware do que o storage pode aceitar.
+
+Você pode agendar downloads para várias unidades ao mesmo tempo, incluindo várias unidades em um grupo de volumes redundantes. Cada arquivo de imagem de firmware contém informações sobre os tipos de unidade em que a imagem de firmware é executada. As imagens de firmware especificadas só podem ser transferidas para uma unidade compatível. Utilize o `download drive firmware` comando para transferir uma imagem de firmware para uma unidade específica.
+
+O `download storageArray driveFirmware` comando bloqueia toda a atividade de e/S até que qualquer tentativa de download tenha sido feita para cada unidade candidata ou você execute o `stop storageArray downloadDriveFirmware` comando. Quando o `download storageArray driveFirmware` comando terminar de baixar a imagem de firmware, cada unidade candidata mostra o status de download para cada unidade. Um destes Estados é devolvido:
+
+* Bem-sucedido
+* Sem sucesso com motivo
+* Nunca tentou com razão
+
+
+
+
+== Nível mínimo de firmware
+
+5,20

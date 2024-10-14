@@ -1,0 +1,912 @@
+---
+section: commands-a-z
+title: Comandos A-Z
+entries:
+- title: A
+  entries:
+  - title: ativar o espelhamento assíncrono
+    url: "/commands-a-z/activate-asynchronous-mirroring.html"
+  - title: ative o firmware storagearray
+    url: "/commands-a-z/activate-storagearray-firmware.html"
+  - title: ativar o espelhamento síncrono
+    url: "/commands-a-z/activate-synchronous-mirroring.html"
+  - title: adicionar rótulo de matriz
+    url: "/commands-a-z/add-array-label.html"
+  - title: adicionar certificado da matriz
+    url: "/commands-a-z/add-certificate-from-array.html"
+  - title: adicionar certificado do ficheiro
+    url: "/commands-a-z/add-certificate-from-file.html"
+  - title: adicione unidades ao cache ssd
+    url: "/commands-a-z/add-drives-to-ssd-cache.html"
+  - title: adicionar volume asyncmirrorgroup
+    url: "/commands-a-z/add-volume-asyncmirrorgroup.html"
+  - title: auto configure hotspares de storagearray
+    url: "/commands-a-z/autoconfigure-storagearray-hotspares.html"
+  - title: configurar automaticamente storagearray
+    url: "/commands-a-z/autoconfigure-storagearray.html"
+- title: C
+  entries:
+  - title: alterar o tipo de aplicativo cache ssd
+    url: "/commands-a-z/change-ssd-cache-application-type.html"
+  - title: verifique a consistência de reintegração asyncmirrorgroup
+    url: "/commands-a-z/check-asyncmirrorgroup-repositoryconsistency.html"
+  - title: verifique a consistência de reintegração
+    url: "/commands-a-z/check-repositoryconsistency.html"
+  - title: verifique a conetividade do storagearray
+    url: "/commands-a-z/check-storagearray-connectivity.html"
+  - title: verifique o SyncMirror
+    url: "/commands-a-z/check-syncmirror.html"
+  - title: verifique a paridade do volume
+    url: "/commands-a-z/check-volume-parity.html"
+  - title: estatísticas de alldrivechanis claras
+    url: "/commands-a-z/clear-alldrivechannels-stats.html"
+  - title: apagar asyncmirrorfault
+    url: "/commands-a-z/clear-asyncmirrorfault.html"
+  - title: limpe a configuração do emailalert
+    url: "/commands-a-z/clear-emailalert-configuration.html"
+  - title: limpar a configuração do storagearray
+    url: "/commands-a-z/clear-storagearray-configuration.html"
+  - title: limpar storagearray eventlog
+    url: "/commands-a-z/clear-storagearray-eventlog.html"
+  - title: limpar storagearray firmwarependingarea
+    url: "/commands-a-z/clear-storagearray-firmwarependingarea.html"
+  - title: clear storagearray recoverymode
+    url: "/commands-a-z/clear-storagearray-recoverymode.html"
+  - title: limpar a configuração do syslog
+    url: "/commands-a-z/clear-syslog-configuration.html"
+  - title: limpar reservas de volume
+    url: "/commands-a-z/clear-volume-reservations.html"
+  - title: limpar o volume sem reajuste
+    url: "/commands-a-z/clear-volume-unreadablesectors.html"
+  - title: crie asyncmirrorgroup
+    url: "/commands-a-z/create-asyncmirrorgroup.html"
+  - title: crie cgsnapimage consistentcygroup
+    url: "/commands-a-z/create-cgsnapimage-consistencygroup.html"
+  - title: crie cgsnapvolume
+    url: "/commands-a-z/create-cgsnapvolume.html"
+  - title: crie consistentencigroup
+    url: "/commands-a-z/create-consistencygroup.html"
+  - title: crie o diskpool
+    url: "/commands-a-z/create-diskpool.html"
+  - title: criar host
+    url: "/commands-a-z/create-host.html"
+  - title: criar grupo de hosts
+    url: "/commands-a-z/create-hostgroup.html"
+  - title: crie o hostport
+    url: "/commands-a-z/create-hostport.html"
+  - title: criar iniciador
+    url: "/commands-a-z/create-initiator.html"
+  - title: criar iscsiiniciador
+    url: "/commands-a-z/create-iscsiinitiator.html"
+  - title: criar mapeamento cgsnapvolume
+    url: "/commands-a-z/create-mapping-cgsnapvolume.html"
+  - title: criar volume de mapeamento
+    url: "/commands-a-z/create-mapping-volume.html"
+  - title: criar volume raid seleção de unidade automática
+    url: "/commands-a-z/create-raid-volume-automatic-drive-select.html"
+  - title: criar volume raid livre extensão com base na seleção
+    url: "/commands-a-z/create-raid-volume-free-extent-based-select.html"
+  - title: criar volume raid manual drive select
+    url: "/commands-a-z/create-raid-volume-manual-drive-select.html"
+  - title: criar volume instantâneo somente leitura
+    url: "/commands-a-z/create-read-only-snapshot-volume.html"
+  - title: crie um grupo de encaixe
+    url: "/commands-a-z/create-snapgroup.html"
+  - title: criar imagem instantânea
+    url: "/commands-a-z/create-snapimage.html"
+  - title: criar volume instantâneo
+    url: "/commands-a-z/create-snapshot-volume.html"
+  - title: crie snmpcommunity
+    url: "/commands-a-z/create-snmpcommunity.html"
+  - title: crie snmptrapdestination
+    url: "/commands-a-z/create-snmptrapdestination.html"
+  - title: criar snmpuser username
+    url: "/commands-a-z/create-snmpuser-username.html"
+  - title: crie ssdcache
+    url: "/commands-a-z/create-ssdcache.html"
+  - title: crie storagearray directoryserver
+    url: "/commands-a-z/create-storagearray-directoryserver.html"
+  - title: crie storagearray securitykey
+    url: "/commands-a-z/create-storagearray-securitykey.html"
+  - title: crie syslog de storagearray
+    url: "/commands-a-z/create-storagearray-syslog.html"
+  - title: crie o SyncMirror
+    url: "/commands-a-z/create-syncmirror.html"
+  - title: crie o volume diskpool
+    url: "/commands-a-z/create-volume-diskpool.html"
+  - title: crie volumecopy
+    url: "/commands-a-z/create-volumecopy.html"
+  - title: crie volumegroup
+    url: "/commands-a-z/create-volumegroup.html"
+- title: D
+  entries:
+  - title: desativar a funcionalidade storagearray
+    url: "/commands-a-z/deactivate-storagearray-feature.html"
+  - title: desativar storagearray
+    url: "/commands-a-z/deactivate-storagearray.html"
+  - title: eliminar asyncmirrorgroup
+    url: "/commands-a-z/delete-asyncmirrorgroup.html"
+  - title: eliminar auditlog
+    url: "/commands-a-z/delete-auditlog.html"
+  - title: eliminar certificados
+    url: "/commands-a-z/delete-certificates.html"
+  - title: excluir cgsnapimage consistentcygroup
+    url: "/commands-a-z/delete-cgsnapimage-consistencygroup.html"
+  - title: excluir consistentcygroup
+    url: "/commands-a-z/delete-consistencygroup.html"
+  - title: eliminar o cacertificate do controlador
+    url: "/commands-a-z/delete-controller-cacertificate.html"
+  - title: exclua o diskpool
+    url: "/commands-a-z/delete-diskpool.html"
+  - title: eliminar alerta de correio eletrónico
+    url: "/commands-a-z/delete-emailalert.html"
+  - title: eliminar anfitrião
+    url: "/commands-a-z/delete-host.html"
+  - title: eliminar grupo anfitrião
+    url: "/commands-a-z/delete-hostgroup.html"
+  - title: eliminar porta de anfitrião
+    url: "/commands-a-z/delete-hostport.html"
+  - title: eliminar iniciador
+    url: "/commands-a-z/delete-initiator.html"
+  - title: excluir iscsiiniciador
+    url: "/commands-a-z/delete-iscsiinitiator.html"
+  - title: eliminar sgsnapvolume
+    url: "/commands-a-z/delete-sgsnapvolume.html"
+  - title: eliminar grupo de ajuste
+    url: "/commands-a-z/delete-snapgroup.html"
+  - title: eliminar imagem instantânea
+    url: "/commands-a-z/delete-snapimage.html"
+  - title: eliminar o volume de fotografias
+    url: "/commands-a-z/delete-snapvolume.html"
+  - title: excluir snmpcommunity
+    url: "/commands-a-z/delete-snmpcommunity.html"
+  - title: eliminar snmptrapdestination
+    url: "/commands-a-z/delete-snmptrapdestination.html"
+  - title: excluir snmpuser username
+    url: "/commands-a-z/delete-snmpuser-username.html"
+  - title: eliminar ssdcache
+    url: "/commands-a-z/delete-ssdcache.html"
+  - title: excluir storagearray directoryservers
+    url: "/commands-a-z/delete-storagearray-directoryservers.html"
+  - title: excluir storagearray keymanagementcertificate
+    url: "/commands-a-z/delete-storagearray-keymanagementcertificate.html"
+  - title: excluir storagearray loginbanner
+    url: "/commands-a-z/delete-storagearray-loginbanner.html"
+  - title: excluir storagearray syslog
+    url: "/commands-a-z/delete-storagearray-syslog.html"
+  - title: excluir storagearray trustecertificate
+    url: "/commands-a-z/delete-storagearray-trustedcertificate.html"
+  - title: eliminar syslog
+    url: "/commands-a-z/delete-syslog.html"
+  - title: excluir volume do pool de discos
+    url: "/commands-a-z/delete-volume-from-disk-pool.html"
+  - title: eliminar volume
+    url: "/commands-a-z/delete-volume.html"
+  - title: eliminar o volumegroup
+    url: "/commands-a-z/delete-volumegroup.html"
+  - title: diagnosticar asyncmirrorgroup
+    url: "/commands-a-z/diagnose-asyncmirrorgroup.html"
+  - title: diagnostique a porta iscsihostport do controlador
+    url: "/commands-a-z/diagnose-controller-iscsihostport.html"
+  - title: diagnostique o controlador
+    url: "/commands-a-z/diagnose-controller.html"
+  - title: diagnostique o SyncMirror
+    url: "/commands-a-z/diagnose-syncmirror.html"
+  - title: desative o arquivo storagearray externalkeymanagement
+    url: "/commands-a-z/disable-storagearray-externalkeymanagement-file.html"
+  - title: desativar o storagearray
+    url: "/commands-a-z/disable-storagearray.html"
+  - title: faça o download do controlador arraymanagementsercertificate
+    url: "/commands-a-z/download-controller-arraymanagementservercertificate.html"
+  - title: baixar controlador cacertificate
+    url: "/commands-a-z/download-controller-cacertificate.html"
+  - title: baixar controller trustecertificate
+    url: "/commands-a-z/download-controller-trustedcertificate.html"
+  - title: transfira o firmware da unidade
+    url: "/commands-a-z/download-drive-firmware.html"
+  - title: transfira o ficheiro storagearray drivefirmware
+    url: "/commands-a-z/download-storagearray-drivefirmware-file.html"
+  - title: transfira o firmware storagearray
+    url: "/commands-a-z/download-storagearray-firmware.html"
+  - title: baixe storagearray keymanagementcertificate
+    url: "/commands-a-z/download-storagearray-keymanagementcertificate.html"
+  - title: baixar storagearray nvsram
+    url: "/commands-a-z/download-storagearray-nvsram.html"
+  - title: transferir definições de configuração da bandeja
+    url: "/commands-a-z/download-tray-configurationsettings.html"
+  - title: transfira o ficheiro de firmware da bandeja
+    url: "/commands-a-z/download-tray-firmware-file.html"
+- title: E
+  entries:
+  - title: ative o datatransfer do controlador
+    url: "/commands-a-z/enable-controller-datatransfer.html"
+  - title: ative a segurança do diskpool
+    url: "/commands-a-z/enable-diskpool-security.html"
+  - title: ative ou desative matrizes individuais do AutoSupport
+    url: "/commands-a-z/enable-or-disable-autosupport-individual-arrays.html"
+  - title: habilite o arquivo storagearray externalkeymanagement
+    url: "/commands-a-z/enable-storagearray-externalkeymanagement-file.html"
+  - title: ative o arquivo de recurso storagearray
+    url: "/commands-a-z/enable-storagearray-feature-file.html"
+  - title: ative a segurança do volumegroup
+    url: "/commands-a-z/enable-volumegroup-security.html"
+  - title: estabeleça o volume asyncmirror
+    url: "/commands-a-z/establish-asyncmirror-volume.html"
+  - title: exportar storagearray securitykey
+    url: "/commands-a-z/export-storagearray-securitykey.html"
+- title: G
+  entries:
+  - title: introdução à autenticação
+    url: "/commands-a-z/getting-started-with-authentication.html"
+  - title: introdução ao gerenciamento de chaves externas
+    url: "/commands-a-z/getting-started-with-external-key-management.html"
+  - title: introdução ao gerenciamento de chaves internas
+    url: "/commands-a-z/getting-started-with-internal-key-management.html"
+- title: I
+  entries:
+  - title: importar arquivo storagearray securitykey
+    url: "/commands-a-z/import-storagearray-securitykey-file.html"
+- title: L
+  entries:
+  - title: carregue storagearray dbmdatabase
+    url: "/commands-a-z/load-storagearray-dbmdatabase.html"
+- title: R
+  entries:
+  - title: recuperar o alvo do volumecopy
+    url: "/commands-a-z/recopy-volumecopy-target.html"
+  - title: recupere as portas de acesso desativadas
+    url: "/commands-a-z/recover-disabled-driveports.html"
+  - title: recupere o fio da sasport
+    url: "/commands-a-z/recover-sasport-miswire.html"
+  - title: recuperar volume
+    url: "/commands-a-z/recover-volume.html"
+  - title: recrie storagearray mirrorrepositório
+    url: "/commands-a-z/recreate-storagearray-mirrorrepository.html"
+  - title: recrie a segurança storagearray
+    url: "/commands-a-z/recreate-storagearray-securitykey.html"
+  - title: reduzir a capacidade do pool de disco
+    url: "/commands-a-z/reduce-disk-pool-capacity.html"
+  - title: remova a etiqueta da matriz
+    url: "/commands-a-z/remove-array-label.html"
+  - title: remova asyncmirrorgroup
+    url: "/commands-a-z/remove-asyncmirrorgroup.html"
+  - title: remova as unidades do cache ssd
+    url: "/commands-a-z/remove-drives-from-ssd-cache.html"
+  - title: remover lunmapping
+    url: "/commands-a-z/remove-lunmapping.html"
+  - title: remova o volume do membro do grupo de consistência
+    url: "/commands-a-z/remove-member-volume-from-consistency-group.html"
+  - title: remova storagearray directoryserver
+    url: "/commands-a-z/remove-storagearray-directoryserver.html"
+  - title: remova o SyncMirror
+    url: "/commands-a-z/remove-syncmirror.html"
+  - title: remova o volume asyncmirrorgroup
+    url: "/commands-a-z/remove-volume-asyncmirrorgroup.html"
+  - title: remova o alvo do volumecopy
+    url: "/commands-a-z/remove-volumecopy-target.html"
+  - title: renomeie o cache ssd
+    url: "/commands-a-z/rename-ssd-cache.html"
+  - title: repare a paridade dos dados
+    url: "/commands-a-z/repair-data-parity.html"
+  - title: repare a paridade do volume
+    url: "/commands-a-z/repair-volume-parity.html"
+  - title: substitua a unidade de substituição
+    url: "/commands-a-z/replace-drive-replacementdrive.html"
+  - title: redefinir o controlador arraymanagementsignedcertificate
+    url: "/commands-a-z/reset-controller-arraymanagementsignedcertificate.html"
+  - title: reponha o controlador
+    url: "/commands-a-z/reset-controller.html"
+  - title: reponha a transmissão
+    url: "/commands-a-z/reset-drive.html"
+  - title: redefina o endereço iscsiipaddress
+    url: "/commands-a-z/reset-iscsiipaddress.html"
+  - title: repor storagearray arvmstats asyncmirrorgroup
+    url: "/commands-a-z/reset-storagearray-arvmstats-asyncmirrorgroup.html"
+  - title: reponha o agendamento do storagearray AutoSupport
+    url: "/commands-a-z/reset-storagearray-autosupport-schedule.html"
+  - title: repor dados de diagnóstico de storagearray
+    url: "/commands-a-z/reset-storagearray-diagnosticdata.html"
+  - title: redefina o storagearray hostportstatisticsbaseline
+    url: "/commands-a-z/reset-storagearray-hostportstatisticsbaseline.html"
+  - title: repor a base de dados de storagearray
+    url: "/commands-a-z/reset-storagearray-ibstatsbaseline.html"
+  - title: redefina a linha de base dos iscistostatos de storagearray
+    url: "/commands-a-z/reset-storagearray-iscsistatsbaseline.html"
+  - title: redefina o status de storagearray
+    url: "/commands-a-z/reset-storagearray-iserstatsbaseline.html"
+  - title: repor rlsbaseline de storagearray
+    url: "/commands-a-z/reset-storagearray-rlsbaseline.html"
+  - title: redefina a sasphybaseline de storagearray
+    url: "/commands-a-z/reset-storagearray-sasphybaseline.html"
+  - title: reponha a base de socearray storagebray
+    url: "/commands-a-z/reset-storagearray-socbaseline.html"
+  - title: reponha a volumetria de storagearray
+    url: "/commands-a-z/reset-storagearray-volumedistribution.html"
+  - title: retomar asyncmirrorgroup
+    url: "/commands-a-z/resume-asyncmirrorgroup.html"
+  - title: retomar o cgsnapvolume
+    url: "/commands-a-z/resume-cgsnapvolume.html"
+  - title: retomar a reversão da imagem instantânea
+    url: "/commands-a-z/resume-snapimage-rollback.html"
+  - title: retomar o volume de ajuste
+    url: "/commands-a-z/resume-snapvolume.html"
+  - title: retomar ssdcache
+    url: "/commands-a-z/resume-ssdcache.html"
+  - title: retomar SyncMirror
+    url: "/commands-a-z/resume-syncmirror.html"
+  - title: reavive a condução
+    url: "/commands-a-z/revive-drive.html"
+  - title: revive o grupo de encaixe
+    url: "/commands-a-z/revive-snapgroup.html"
+  - title: reavive o volume de encaixe
+    url: "/commands-a-z/revive-snapvolume.html"
+  - title: reavive o volumegroup
+    url: "/commands-a-z/revive-volumegroup.html"
+- title: S
+  entries:
+  - title: guardar ...
+    entries:
+    - title: salve o arquivo de log alldrives
+      url: "/commands-a-z/save-alldrives-logfile.html"
+    - title: salve o arquivo de log de todas as bandejas
+      url: "/commands-a-z/save-alltrays-logfile.html"
+    - title: guardar o auditlog
+      url: "/commands-a-z/save-auditlog.html"
+    - title: guardar erros de paridade de trabalhos de paridade de volume de verificação
+      url: "/commands-a-z/save-check-vol-parity-job-errors.html"
+    - title: salve o controlador arraymanagementcsr
+      url: "/commands-a-z/save-controller-arraymanagementcsr.html"
+    - title: salve o controlador arraymanagementsignedcertificate
+      url: "/commands-a-z/save-controller-arraymanagementsignedcertificate.html"
+    - title: guarde o cacertificate do controlador
+      url: "/commands-a-z/save-controller-cacertificate.html"
+    - title: salve o arquivo nvsram do controlador
+      url: "/commands-a-z/save-controller-nvsram-file.html"
+    - title: salve o arquivo de diagnóstico de falhas do drivechannel
+      url: "/commands-a-z/save-drivechannel-faultdiagnostics-file.html"
+    - title: guardar ioclog
+      url: "/commands-a-z/save-ioclog.html"
+    - title: salve os dados de diagnóstico do storage array
+      url: "/commands-a-z/save-storage-array-diagnostic-data.html"
+    - title: salve storagearray arvmstats asyncmirrorgroup
+      url: "/commands-a-z/save-storagearray-arvmstats-asyncmirrorgroup.html"
+    - title: guardar ficheiro autoloadbalancestatistics storagearray
+      url: "/commands-a-z/save-storagearray-autoloadbalancestatistics-file.html"
+    - title: salve o log storagearray AutoSupport
+      url: "/commands-a-z/save-storagearray-autosupport-log.html"
+    - title: salve a configuração do storagearray
+      url: "/commands-a-z/save-storagearray-configuration.html"
+    - title: salvar storagearray controllerhealthimage
+      url: "/commands-a-z/save-storagearray-controllerhealthimage.html"
+    - title: salve storagearray dbmdatabase
+      url: "/commands-a-z/save-storagearray-dbmdatabase.html"
+    - title: salvar storagearray dbmvalidatorinfo
+      url: "/commands-a-z/save-storagearray-dbmvalidatorinfo.html"
+    - title: salvar storagearray firmwareinventory
+      url: "/commands-a-z/save-storagearray-firmwareinventory.html"
+    - title: salve storagearray hostportstatistics
+      url: "/commands-a-z/save-storagearray-hostportstatistics.html"
+    - title: salve storagearray ibstats
+      url: "/commands-a-z/save-storagearray-ibstats.html"
+    - title: salvar statistics storagearray
+      url: "/commands-a-z/save-storagearray-iscsistatistics.html"
+    - title: salvar storagearray iserstatistics
+      url: "/commands-a-z/save-storagearray-iserstatistics.html"
+    - title: salve storagearray keymanagementcertificate
+      url: "/commands-a-z/save-storagearray-keymanagementcertificate.html"
+    - title: salvar storagearray keymanagementclientcsr
+      url: "/commands-a-z/save-storagearray-keymanagementclientcsr.html"
+    - title: salvar storagearray loginsbanner
+      url: "/commands-a-z/save-storagearray-loginbanner.html"
+    - title: salve o desempenho de storagearray
+      url: "/commands-a-z/save-storagearray-performancestats.html"
+    - title: salve storagearray rlscounts
+      url: "/commands-a-z/save-storagearray-rlscounts.html"
+    - title: salve sasphycounts de storagearray
+      url: "/commands-a-z/save-storagearray-sasphycounts.html"
+    - title: salve soccounts de storagearray
+      url: "/commands-a-z/save-storagearray-soccounts.html"
+    - title: salve estatecapture storagearray
+      url: "/commands-a-z/save-storagearray-statecapture.html"
+    - title: salvar storagearray supportdata
+      url: "/commands-a-z/save-storagearray-supportdata.html"
+    - title: salvar storagearray trustecertificate
+      url: "/commands-a-z/save-storagearray-trustedcertificate.html"
+    - title: salve storagearray warningevents
+      url: "/commands-a-z/save-storagearray-warningevents.html"
+  - title: definir ...
+    entries:
+    - title: defina asyncmirrorgroup
+      url: "/commands-a-z/set-asyncmirrorgroup.html"
+    - title: definir auditlog
+      url: "/commands-a-z/set-auditlog.html"
+    - title: defina o método de entrega AutoSupport https e2800 ou e5700
+      url: "/commands-a-z/set-autosupport-https-delivery-method-e2800-e5700.html"
+    - title: defina o cgsnapvolume
+      url: "/commands-a-z/set-cgsnapvolume.html"
+    - title: definir atributos de grupo de consistência
+      url: "/commands-a-z/set-consistency-group-attributes.html"
+    - title: defina consistencygroup addcgmembrervolume
+      url: "/commands-a-z/set-consistencygroup-addcgmembervolume.html"
+    - title: configure dnsservers do controlador
+      url: "/commands-a-z/set-controller-dnsservers.html"
+    - title: configure a porta de host do controlador
+      url: "/commands-a-z/set-controller-hostport.html"
+    - title: configure a porta iscsihostport do controlador
+      url: "/commands-a-z/set-controller-iscsihostport.html"
+    - title: configure o controlador ntpservers
+      url: "/commands-a-z/set-controller-ntpservers.html"
+    - title: definir o indicador de ação de serviço do controlador permitido
+      url: "/commands-a-z/set-controller-service-action-allowed-indicator.html"
+    - title: definir o controlador
+      url: "/commands-a-z/set-controller.html"
+    - title: definir pool de discos modificar pool de discos
+      url: "/commands-a-z/set-disk-pool-modify-disk-pool.html"
+    - title: defina o pool de discos
+      url: "/commands-a-z/set-disk-pool.html"
+    - title: defina o hotspare da unidade
+      url: "/commands-a-z/set-drive-hotspare.html"
+    - title: defina o estado da unidade
+      url: "/commands-a-z/set-drive-nativestate.html"
+    - title: definir estado de funcionamento da transmissão
+      url: "/commands-a-z/set-drive-operationalstate.html"
+    - title: defina a segurança da unidade
+      url: "/commands-a-z/set-drive-securityid.html"
+    - title: definir o serviço de acionamento allowedindicator
+      url: "/commands-a-z/set-drive-serviceallowedindicator.html"
+    - title: ajuste o drivechannel
+      url: "/commands-a-z/set-drivechannel.html"
+    - title: defina o método de entrega smtp de e-mail e2800 ou e5700
+      url: "/commands-a-z/set-email-smtp-delivery-method-e2800-e5700.html"
+    - title: definir emailalert
+      url: "/commands-a-z/set-emailalert.html"
+    - title: definir alerta de eventos
+      url: "/commands-a-z/set-event-alert.html"
+    - title: definir host
+      url: "/commands-a-z/set-host.html"
+    - title: defina o canal anfitrião
+      url: "/commands-a-z/set-hostchannel.html"
+    - title: defina o grupo anfitrião
+      url: "/commands-a-z/set-hostgroup.html"
+    - title: defina o porta-host
+      url: "/commands-a-z/set-hostport.html"
+    - title: definir iniciador
+      url: "/commands-a-z/set-initiator.html"
+    - title: definir o iniciador iscsitiador
+      url: "/commands-a-z/set-iscsiinitiator.html"
+    - title: defina o iscsitarget
+      url: "/commands-a-z/set-iscsitarget.html"
+    - title: definir isertarget
+      url: "/commands-a-z/set-isertarget.html"
+    - title: defina a erroraction da sessão
+      url: "/commands-a-z/set-session-erroraction.html"
+    - title: defina o ativeschedule do grupo de ajuste
+      url: "/commands-a-z/set-snapgroup-enableschedule.html"
+    - title: ajuste o aumento do snapgroup diminui a capacidade de reintegração
+      url: "/commands-a-z/set-snapgroup-increase-decreaserepositorycapacity.html"
+    - title: defina o snapgroup mediascanenabled
+      url: "/commands-a-z/set-snapgroup-mediascanenabled.html"
+    - title: defina o grupo de ajuste
+      url: "/commands-a-z/set-snapgroup.html"
+    - title: defina o conversor de volume de encaixe para gravação
+      url: "/commands-a-z/set-snapvolume-converttoreadwrite.html"
+    - title: ajuste o aumento do volume de corte diminui a capacidade de reintegração
+      url: "/commands-a-z/set-snapvolume-increase-decreaserepositorycapacity.html"
+    - title: definir o ajuste de mediascanactivado
+      url: "/commands-a-z/set-snapvolume-mediascanenabled.html"
+    - title: definir o volume de ajuste
+      url: "/commands-a-z/set-snapvolume.html"
+    - title: defina a comunidade
+      url: "/commands-a-z/set-snmpcommunity.html"
+    - title: defina snmpsystemvariables
+      url: "/commands-a-z/set-snmpsystemvariables.html"
+    - title: definir snmptrapdestination trapreceiverip
+      url: "/commands-a-z/set-snmptrapdestination-trapreceiverip.html"
+    - title: defina o nome de usuário snmpuser
+      url: "/commands-a-z/set-snmpuser-username.html"
+    - title: definir storagearray autoloadbalancingenable
+      url: "/commands-a-z/set-storagearray-autoloadbalancingenable.html"
+    - title: defina o cronograma do storagearray AutoSupport
+      url: "/commands-a-z/set-storagearray-autosupport-schedule.html"
+    - title: defina storagearray autosupportmaintenancewindow
+      url: "/commands-a-z/set-storagearray-autosupportmaintenancewindow.html"
+    - title: defina storagearray autossupportondemand
+      url: "/commands-a-z/set-storagearray-autosupportondemand.html"
+    - title: defina storagearray autosupportremotediag
+      url: "/commands-a-z/set-storagearray-autosupportremotediag.html"
+    - title: defina storagearray cachecrordataassurancecheckenable
+      url: "/commands-a-z/set-storagearray-cachemirrordataassurancecheckenable.html"
+    - title: definir storagearray controllerheallowoverwrite
+      url: "/commands-a-z/set-storagearray-controllerhealthimageallowoverwrite.html"
+    - title: defina funções storagearray directoryserver
+      url: "/commands-a-z/set-storagearray-directoryserver-roles.html"
+    - title: defina storagearray directoryserver
+      url: "/commands-a-z/set-storagearray-directoryserver.html"
+    - title: definir storagearray externalkeymanagement
+      url: "/commands-a-z/set-storagearray-externalkeymanagement.html"
+    - title: defina storagearray hostconnectivityreporting
+      url: "/commands-a-z/set-storagearray-hostconnectivityreporting.html"
+    - title: defina storagearray icmppingresponse
+      url: "/commands-a-z/set-storagearray-icmppingresponse.html"
+    - title: definir storagearray isnsipv4configurationmethod
+      url: "/commands-a-z/set-storagearray-isnsipv4configurationmethod.html"
+    - title: definir storagearray isnsipv6address
+      url: "/commands-a-z/set-storagearray-isnsipv6address.html"
+    - title: defina storagearray isnslisteningport
+      url: "/commands-a-z/set-storagearray-isnslisteningport.html"
+    - title: definir storagearray isnsregistration
+      url: "/commands-a-z/set-storagearray-isnsregistration.html"
+    - title: defina storagearray isnsserverrefresh
+      url: "/commands-a-z/set-storagearray-isnsserverrefresh.html"
+    - title: defina o controlador storagearray learncycledate
+      url: "/commands-a-z/set-storagearray-learncycledate-controller.html"
+    - title: defina storagearray localusername
+      url: "/commands-a-z/set-storagearray-localusername.html"
+    - title: definir storagearray loginbanner
+      url: "/commands-a-z/set-storagearray-loginbanner.html"
+    - title: defina storagearray managementinterface
+      url: "/commands-a-z/set-storagearray-managementinterface.html"
+    - title: defina storagearray odxenabled
+      url: "/commands-a-z/set-storagearray-odxenabled.html"
+    - title: defina storagearray passwordlength
+      url: "/commands-a-z/set-storagearray-passwordlength.html"
+    - title: defina storagearray pqvalidateonreconstruct
+      url: "/commands-a-z/set-storagearray-pqvalidateonreconstruct.html"
+    - title: defina o modo de redundância de storagearray
+      url: "/commands-a-z/set-storagearray-redundancymode.html"
+    - title: defina storagearray resourceprovisionedvolumes
+      url: "/commands-a-z/set-storagearray-resourceprovisionedvolumes.html"
+    - title: defina as configurações de revocaçãocheckpoints de storagearray
+      url: "/commands-a-z/set-storagearray-revocationchecksettings.html"
+    - title: defina a chave de segurança storagearray
+      url: "/commands-a-z/set-storagearray-securitykey.html"
+    - title: defina o syslog storagearray
+      url: "/commands-a-z/set-storagearray-syslog.html"
+    - title: defina o tempo de storagearray
+      url: "/commands-a-z/set-storagearray-time.html"
+    - title: defina posições de trajetória de storagearray
+      url: "/commands-a-z/set-storagearray-traypositions.html"
+    - title: defina storagearray unnameddiscoverysession
+      url: "/commands-a-z/set-storagearray-unnameddiscoverysession.html"
+    - title: definir sessão de usuários do storagearray
+      url: "/commands-a-z/set-storagearray-usersession.html"
+    - title: defina storagearray vaaienabled
+      url: "/commands-a-z/set-storagearray-vaaienabled.html"
+    - title: definir storagearray
+      url: "/commands-a-z/set-storagearray.html"
+    - title: definir SyncMirror
+      url: "/commands-a-z/set-syncmirror.html"
+    - title: defina o syslog
+      url: "/commands-a-z/set-syslog.html"
+    - title: defina o alvo
+      url: "/commands-a-z/set-target.html"
+    - title: defina atributos de volume fino
+      url: "/commands-a-z/set-thin-volume-attributes.html"
+    - title: definir atributo de bandeja
+      url: "/commands-a-z/set-tray-attribute.html"
+    - title: definir gaveta da bandeja
+      url: "/commands-a-z/set-tray-drawer.html"
+    - title: definir a identificação da bandeja
+      url: "/commands-a-z/set-tray-identification.html"
+    - title: definir serviço de bandeja allowedindicator
+      url: "/commands-a-z/set-tray-serviceallowedindicator.html"
+    - title: definir atributos do grupo de volumes para o volume em um grupo de volumes
+      url: "/commands-a-z/set-volume-group-attributes-for-volume-in-a-volume-group.html"
+    - title: definir o número de registo do volume
+      url: "/commands-a-z/set-volume-logicalunitnumber.html"
+    - title: defina o volume ssdcacheenabled
+      url: "/commands-a-z/set-volume-ssdcacheenabled.html"
+    - title: defina o alvo do volumecopy
+      url: "/commands-a-z/set-volumecopy-target.html"
+    - title: defina o estado do volumegrupo
+      url: "/commands-a-z/set-volumegroup-forcedstate.html"
+    - title: defina o volumegroup
+      url: "/commands-a-z/set-volumegroup.html"
+    - title: definir volumes
+      url: "/commands-a-z/set-volumes.html"
+  - title: mostrar ...
+    entries:
+    - title: mostrar alldrives downloadprogress
+      url: "/commands-a-z/show-alldrives-downloadprogress.html"
+    - title: mostrar alldrives performancestats
+      url: "/commands-a-z/show-alldrives-performancestats.html"
+    - title: mostrar todas as unidades
+      url: "/commands-a-z/show-alldrives.html"
+    - title: mostrar allhostports
+      url: "/commands-a-z/show-allhostports.html"
+    - title: mostrar allsnmpcommunities
+      url: "/commands-a-z/show-allsnmpcommunities.html"
+    - title: mostrar allsnmpusers
+      url: "/commands-a-z/show-allsnmpusers.html"
+    - title: mostrar etiqueta da matriz
+      url: "/commands-a-z/show-array-label.html"
+    - title: mostrar resumo do asyncmirrorgroup
+      url: "/commands-a-z/show-asyncmirrorgroup-summary.html"
+    - title: mostrar o progresso da sincronização asyncmirrorgroup
+      url: "/commands-a-z/show-asyncmirrorgroup-synchronizationprogress.html"
+    - title: mostrar configuração do auditlog
+      url: "/commands-a-z/show-auditlog-configuration.html"
+    - title: mostrar resumo do auditlog
+      url: "/commands-a-z/show-auditlog-summary.html"
+    - title: mostrar blockedeventalertlist
+      url: "/commands-a-z/show-blockedeventalertlist.html"
+    - title: mostrar certificados
+      url: "/commands-a-z/show-certificates.html"
+    - title: mostrar cgsnapimage
+      url: "/commands-a-z/show-cgsnapimage.html"
+    - title: mostrar trabalhos de paridade de volume de verificação
+      url: "/commands-a-z/show-check-vol-parity-jobs.html"
+    - title: mostrar consistenticgroup
+      url: "/commands-a-z/show-consistencygroup.html"
+    - title: show controller arraymanagementsignedcertificate summary
+      url: "/commands-a-z/show-controller-arraymanagementsignedcertificate-summary.html"
+    - title: mostrar cacertificate do controlador
+      url: "/commands-a-z/show-controller-cacertificate.html"
+    - title: mostrar o status de diagnóstico do controlador
+      url: "/commands-a-z/show-controller-diagnostic-status.html"
+    - title: mostrar nvsram do controlador
+      url: "/commands-a-z/show-controller-nvsram.html"
+    - title: mostrar controlador
+      url: "/commands-a-z/show-controller.html"
+    - title: mostrar diskpool
+      url: "/commands-a-z/show-diskpool.html"
+    - title: mostrar estatísticas do drivechannel
+      url: "/commands-a-z/show-drivechannel-stats.html"
+    - title: mostrar resumo do alerta de emailalert
+      url: "/commands-a-z/show-emailalert-summary.html"
+    - title: mostrar iscsisessions
+      url: "/commands-a-z/show-iscsisessions.html"
+    - title: mostrar replaceabledrives
+      url: "/commands-a-z/show-replaceabledrives.html"
+    - title: mostrar snapgroup
+      url: "/commands-a-z/show-snapgroup.html"
+    - title: mostrar imagem instantânea
+      url: "/commands-a-z/show-snapimage.html"
+    - title: mostrar volume de fotografias
+      url: "/commands-a-z/show-snapvolume.html"
+    - title: mostrar snmpsystemvariables
+      url: "/commands-a-z/show-snmpsystemvariables.html"
+    - title: mostrar estatísticas de cache ssd
+      url: "/commands-a-z/show-ssd-cache-statistics.html"
+    - title: mostrar cache ssd
+      url: "/commands-a-z/show-ssd-cache.html"
+    - title: mostrar a autoconfiguração do storagearray
+      url: "/commands-a-z/show-storagearray-autoconfiguration.html"
+    - title: mostrar storagearray AutoSupport
+      url: "/commands-a-z/show-storagearray-autosupport.html"
+    - title: mostrar storageearray cachecrordataassurancecheckenable
+      url: "/commands-a-z/show-storagearray-cachemirrordataassurancecheckenable.html"
+    - title: mostrar storagearray controllerhealthimage
+      url: "/commands-a-z/show-storagearray-controllerhealthimage.html"
+    - title: mostrar storagearray dbmdatabase
+      url: "/commands-a-z/show-storagearray-dbmdatabase.html"
+    - title: mostrar storagearray directoryservices summary
+      url: "/commands-a-z/show-storagearray-directoryservices-summary.html"
+    - title: mostrar storagearray hostconnectivityreporting
+      url: "/commands-a-z/show-storagearray-hostconnectivityreporting.html"
+    - title: mostrar storagearray hosttopology
+      url: "/commands-a-z/show-storagearray-hosttopology.html"
+    - title: mostrar os padrões de iscsinegotiationdefaults de storagearray
+      url: "/commands-a-z/show-storagearray-iscsinegotiationdefaults.html"
+    - title: mostrar storagearray lunmapeamentos
+      url: "/commands-a-z/show-storagearray-lunmappings.html"
+    - title: mostrar odxsetting storagearray
+      url: "/commands-a-z/show-storagearray-odxsetting.html"
+    - title: mostrar storagearray powerinfo
+      url: "/commands-a-z/show-storagearray-powerinfo.html"
+    - title: mostrar definições de revocationcheckpoints de storagearray
+      url: "/commands-a-z/show-storagearray-revocationchecksettings.html"
+    - title: mostrar syslog storagearray
+      url: "/commands-a-z/show-storagearray-syslog.html"
+    - title: mostrar resumo do storagearray trustecertificate
+      url: "/commands-a-z/show-storagearray-trustedcertificate-summary.html"
+    - title: mostrar iniciadores de storagearray
+      url: "/commands-a-z/show-storagearray-unconfiguredinitiators.html"
+    - title: mostrar storagearray unconfigurediscsiinitiators
+      url: "/commands-a-z/show-storagearray-unconfigurediscsiinitiators.html"
+    - title: mostrar storagearray unreadablesectors
+      url: "/commands-a-z/show-storagearray-unreadablesectors.html"
+    - title: show storagearray usersession
+      url: "/commands-a-z/show-storagearray-usersession.html"
+    - title: mostrar storagearray
+      url: "/commands-a-z/show-storagearray.html"
+    - title: mostrar candidatos à SyncMirror
+      url: "/commands-a-z/show-syncmirror-candidates.html"
+    - title: mostrar progresso da sincronização do SyncMirror
+      url: "/commands-a-z/show-syncmirror-synchronizationprogress.html"
+    - title: mostrar resumo do syslog
+      url: "/commands-a-z/show-syslog-summary.html"
+    - title: mostrar cadeia de texto
+      url: "/commands-a-z/show-textstring.html"
+    - title: mostrar volume actionprogress
+      url: "/commands-a-z/show-volume-actionprogress.html"
+    - title: mostrar desempenho de volume
+      url: "/commands-a-z/show-volume-performancestats.html"
+    - title: mostrar reservas de volume
+      url: "/commands-a-z/show-volume-reservations.html"
+    - title: mostrar resumo do volume
+      url: "/commands-a-z/show-volume-summary.html"
+    - title: mostrar volume
+      url: "/commands-a-z/show-volume.html"
+    - title: mostrar targetcandidates de fonte volumecopy
+      url: "/commands-a-z/show-volumecopy-source-targetcandidates.html"
+    - title: mostrar sourcecandidates de volumecopy
+      url: "/commands-a-z/show-volumecopy-sourcecandidates.html"
+    - title: mostrar volumecopy
+      url: "/commands-a-z/show-volumecopy.html"
+    - title: mostrar exportdependências do volumegroup
+      url: "/commands-a-z/show-volumegroup-exportdependencies.html"
+    - title: mostrar importdependências do volumegroup
+      url: "/commands-a-z/show-volumegroup-importdependencies.html"
+    - title: mostrar volumegroup
+      url: "/commands-a-z/show-volumegroup.html"
+  - title: scli ...
+    entries:
+    - title: scli alerttest
+      url: "/commands-a-z/smcli-alerttest.html"
+    - title: smcli autosupportconfig show
+      url: "/commands-a-z/smcli-autosupportconfig-show.html"
+    - title: teste de autosupportconfig do smcli
+      url: "/commands-a-z/smcli-autosupportconfig-test.html"
+    - title: scli autosupportconfig
+      url: "/commands-a-z/smcli-autosupportconfig.html"
+    - title: scli autosupportlog
+      url: "/commands-a-z/smcli-autosupportlog.html"
+    - title: scli autosupportschedule reset
+      url: "/commands-a-z/smcli-autosupportschedule-reset.html"
+    - title: scli autosupportschedule show
+      url: "/commands-a-z/smcli-autosupportschedule-show.html"
+    - title: smcli ative o autosupportfeature
+      url: "/commands-a-z/smcli-enable-autosupportfeature.html"
+    - title: scli enable disable autossupportondemand
+      url: "/commands-a-z/smcli-enable-disable-autosupportondemand.html"
+    - title: scli enable disable autosupportremotediag
+      url: "/commands-a-z/smcli-enable-disable-autosupportremotediag.html"
+    - title: programação do pacote de suporte do smcli
+      url: "/commands-a-z/smcli-supportbundle-schedule.html"
+  - title: iniciar ...
+    entries:
+    - title: inicie a sincronização asyncmirrorgroup
+      url: "/commands-a-z/start-asyncmirrorgroup-synchronize.html"
+    - title: inicie o cgsnapimage rollback
+      url: "/commands-a-z/start-cgsnapimage-rollback.html"
+    - title: iniciar trabalho de paridade de volume de verificação
+      url: "/commands-a-z/start-check-vol-parity-job.html"
+    - title: inicie o controlador iscsihostport dhcprfresh
+      url: "/commands-a-z/start-controller-iscsihostport-dhcprefresh.html"
+    - title: inicie o controlador
+      url: "/commands-a-z/start-controller.html"
+    - title: inicie o diskpool fullprovisioning
+      url: "/commands-a-z/start-diskpool-fullprovisioning.html"
+    - title: inicie o diskpool locate
+      url: "/commands-a-z/start-diskpool-locate.html"
+    - title: inicie o diskpool resourceprovisioning
+      url: "/commands-a-z/start-diskpool-resourceprovisioning.html"
+    - title: inicie a eliminação da unidade
+      url: "/commands-a-z/start-drive-erase.html"
+    - title: iniciar a inicialização da unidade
+      url: "/commands-a-z/start-drive-initialize.html"
+    - title: inicie a localização da unidade
+      url: "/commands-a-z/start-drive-locate.html"
+    - title: iniciar reconstrução da unidade
+      url: "/commands-a-z/start-drive-reconstruct.html"
+    - title: inicie o diagnóstico de falhas do sistema de transmissão
+      url: "/commands-a-z/start-drivechannel-faultdiagnostics.html"
+    - title: inicie a localização do sistema de transmissão
+      url: "/commands-a-z/start-drivechannel-locate.html"
+    - title: inicie o teste emailalert
+      url: "/commands-a-z/start-emailalert-test.html"
+    - title: inicie o volume increasevolumecapacity
+      url: "/commands-a-z/start-increasevolumecapacity-volume.html"
+    - title: inicie o ioclog
+      url: "/commands-a-z/start-ioclog.html"
+    - title: inicie a unidade de limpeza de segurança
+      url: "/commands-a-z/start-secureerase-drive.html"
+    - title: inicie a reversão do snapimage
+      url: "/commands-a-z/start-snapimage-rollback.html"
+    - title: inicie o snmptrapdestination
+      url: "/commands-a-z/start-snmptrapdestination.html"
+    - title: inicie o ssdcache locate
+      url: "/commands-a-z/start-ssdcache-locate.html"
+    - title: inicie ssdcache performancemeling
+      url: "/commands-a-z/start-ssdcache-performancemodeling.html"
+    - title: inicie storagearray AutoSupport deliverytest
+      url: "/commands-a-z/start-storagearray-autosupport-deliverytest.html"
+    - title: inicie o storagearray AutoSupport manualmente dispatch
+      url: "/commands-a-z/start-storagearray-autosupport-manualdispatch.html"
+    - title: inicie storagearray configdbdiagnostic
+      url: "/commands-a-z/start-storagearray-configdbdiagnostic.html"
+    - title: inicie o controlador storagearray controllerhealthimage
+      url: "/commands-a-z/start-storagearray-controllerhealthimage-controller.html"
+    - title: inicie o teste de diretoryservices de storagearray
+      url: "/commands-a-z/start-storagearray-directoryservices-test.html"
+    - title: inicie o teste de gerenciamento externo de storagearray
+      url: "/commands-a-z/start-storagearray-externalkeymanagement-test.html"
+    - title: inicie storagearray isnsserverrefresh
+      url: "/commands-a-z/start-storagearray-isnsserverrefresh.html"
+    - title: inicie a localização do storagearray
+      url: "/commands-a-z/start-storagearray-locate.html"
+    - title: inicie o teste de ocspresponderurl storagearray
+      url: "/commands-a-z/start-storagearray-ocspresponderurl-test.html"
+    - title: inicie o teste syslog storagearray
+      url: "/commands-a-z/start-storagearray-syslog-test.html"
+    - title: inicie a sincronização primária do SyncMirror
+      url: "/commands-a-z/start-syncmirror-primary-synchronize.html"
+    - title: inicie o teste syslog
+      url: "/commands-a-z/start-syslog-test.html"
+    - title: localize a bandeja inicial
+      url: "/commands-a-z/start-tray-locate.html"
+    - title: iniciar a inicialização do volume
+      url: "/commands-a-z/start-volume-initialization.html"
+    - title: iniciar a inicialização do volume
+      url: "/commands-a-z/start-volume-initialize.html"
+    - title: inicie a desfragmentação do volumegroup
+      url: "/commands-a-z/start-volumegroup-defragment.html"
+    - title: inicie a exportação do volumegroup
+      url: "/commands-a-z/start-volumegroup-export.html"
+    - title: inicie o volumegroup fullprovisioning
+      url: "/commands-a-z/start-volumegroup-fullprovisioning.html"
+    - title: inicie a importação do volumegroup
+      url: "/commands-a-z/start-volumegroup-import.html"
+    - title: inicie a localização do grupo de volume
+      url: "/commands-a-z/start-volumegroup-locate.html"
+    - title: inicie o provisionamento de recursos do volumegroup
+      url: "/commands-a-z/start-volumegroup-resourceprovisioning.html"
+  - title: parar ...
+    entries:
+    - title: pare a rotação asyncmirrorgroup
+      url: "/commands-a-z/stop-asyncmirrorgroup-rolechange.html"
+    - title: parar a reversão do cgsnapimage
+      url: "/commands-a-z/stop-cgsnapimage-rollback.html"
+    - title: parar cgsnapvolume
+      url: "/commands-a-z/stop-cgsnapvolume.html"
+    - title: parar trabalho de paridade de volume de verificação
+      url: "/commands-a-z/stop-check-vol-parity-job.html"
+    - title: pare consistencygroup pendingsnapimagecreation
+      url: "/commands-a-z/stop-consistencygroup-pendingsnapimagecreation.html"
+    - title: pare o diskpool locate
+      url: "/commands-a-z/stop-diskpool-locate.html"
+    - title: parar a localização da condução
+      url: "/commands-a-z/stop-drive-locate.html"
+    - title: parar a transmissão substituir
+      url: "/commands-a-z/stop-drive-replace.html"
+    - title: pare o diagnóstico de falhas do sistema de transmissão
+      url: "/commands-a-z/stop-drivechannel-faultdiagnostics.html"
+    - title: pare o drivechannel locate
+      url: "/commands-a-z/stop-drivechannel-locate.html"
+    - title: pare a pendingsnapimagecreation
+      url: "/commands-a-z/stop-pendingsnapimagecreation.html"
+    - title: parar a reversão da imagem parada
+      url: "/commands-a-z/stop-snapimage-rollback.html"
+    - title: parar o volume de ajuste
+      url: "/commands-a-z/stop-snapvolume.html"
+    - title: parar ssdcache localizar
+      url: "/commands-a-z/stop-ssdcache-locate.html"
+    - title: pare a modelagem de desempenho do ssdcache
+      url: "/commands-a-z/stop-ssdcache-performancemodeling.html"
+    - title: pare storagearray configdbdiagnostic
+      url: "/commands-a-z/stop-storagearray-configdbdiagnostic.html"
+    - title: pare storagearray drivefirmwaredownload
+      url: "/commands-a-z/stop-storagearray-drivefirmwaredownload.html"
+    - title: pare a iscissission do storagearray
+      url: "/commands-a-z/stop-storagearray-iscsisession.html"
+    - title: pare a localização do storagearray
+      url: "/commands-a-z/stop-storagearray-locate.html"
+    - title: parar bandeja localizar
+      url: "/commands-a-z/stop-tray-locate.html"
+    - title: parar a fonte alvo do volumecopy
+      url: "/commands-a-z/stop-volumecopy-target-source.html"
+    - title: parar a localização do grupo de volume
+      url: "/commands-a-z/stop-volumegroup-locate.html"
+  - title: suspender ...
+    entries:
+    - title: suspender asyncmirrorgroup
+      url: "/commands-a-z/suspend-asyncmirrorgroup.html"
+    - title: suspenda o ssdcache
+      url: "/commands-a-z/suspend-ssdcache.html"
+    - title: suspender primárias SyncMirror
+      url: "/commands-a-z/suspend-syncmirror-primaries.html"
+- title: V
+  entries:
+  - title: valide a chave de segurança storagearray
+    url: "/commands-a-z/validate-storagearray-securitykey.html"

@@ -1,0 +1,79 @@
+---
+permalink: commands-a-z/delete-diskpool.html 
+sidebar: sidebar 
+keywords: delete, disk pool 
+summary: O comando delete diskPool exclui um pool de discos. 
+---
+= Excluir pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `delete diskPool`O comando exclui um pool de discos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+*Possível dano à configuração do storage de armazenamento* -- todos os dados no pool de discos são perdidos assim que você executar este comando.
+
+====
+Dependendo da versão do software de gerenciamento de armazenamento, esse comando também exclui todos os volumes no pool de discos. Se a sua versão do software de gerenciamento de armazenamento não suportar a exclusão automática dos volumes, você pode forçar a exclusão do pool de discos e volumes.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete diskPool pass:quotes[[_diskPoolName_]]
+[force=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPoolName`
+ a| 
+O nome do pool de discos que você deseja excluir. Inclua o nome do pool de discos entre colchetes ([ ]). Se o nome do conjunto de discos contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`force`
+ a| 
+Esse parâmetro força a exclusão de volumes se o software de gerenciamento de storage não oferecer suporte à exclusão automática dos volumes no pool de discos. Para forçar a exclusão de um pool de discos e dos volumes que ele contém, defina este parâmetro como `TRUE`. A predefinição é `FALSE`.
+
+|===
+
+
+== Notas
+
+Cada nome do pool de discos deve ser exclusivo. Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen(-) e libra ( no) para o rótulo do usuário. As etiquetas de utilizador podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

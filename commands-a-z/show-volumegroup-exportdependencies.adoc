@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/show-volumegroup-exportdependencies.html 
+sidebar: sidebar 
+keywords: show, volume, group, export, dependencies 
+summary: O comando show volumeGroup exportDependencies mostra uma lista de dependências para as unidades em um grupo de volumes que você deseja mover de um storage array para um segundo storage array. 
+---
+= Mostrar dependências de exportação do grupo de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show volumeGroup exportDependencies` comando mostra uma lista de dependências para as unidades em um grupo de volumes que você deseja mover de um storage array para um segundo storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[show volumeGroup [_volumeGroupName_]] exportDependencies
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes para o qual você deseja exibir dependências de exportação. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Este comando gira as unidades em um grupo de volumes, lê o DACstore e mostra uma lista de dependências de importação para o grupo de volumes. O grupo de volume deve estar em um estado exportado ou em um estado forçado.
+
+
+
+== Nível mínimo de firmware
+
+7,10

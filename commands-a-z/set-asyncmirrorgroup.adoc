@@ -1,0 +1,154 @@
+---
+permalink: commands-a-z/set-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: set, asynchronous, mirror, group 
+summary: O comando Set asyncMirrorGroup altera as configurações de sincronização e os limites de aviso que o proprietário do controlador do lado primário do grupo de espelhos assíncronos usa quando executa uma sincronização inicial ou ressincronização. 
+---
+= Defina o grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set asyncMirrorGroup` comando altera as configurações de sincronização e os limites de aviso que o proprietário do controlador do lado primário do grupo de espelhos assíncronos usa quando executa uma sincronização inicial ou ressincronização.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Alterar as configurações de sincronização afeta as operações de sincronização de todos os pares espelhados dentro do grupo de espelhos assíncronos.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set asyncMirrorGroup pass:quotes[[_asyncMirrorGroupName_]]
+[volume="repos_xxxx" increaseRepositoryCapacity (repositoryVolume=("repos_xxxx")]
+[syncInterval=pass:quotes[_integer_] (minutes | hours | days)]
+[warningSyncThreshold=pass:quotes[_integer_] (minutes | hours | days)]
+[warningRecoveryThreshold=integer (minutes | hours | days)]
+[userLabel=pass:quotes["_New_asyncMirrorGroupName_"]]
+[warningThresholdPercent=pass:quotes[_percentValue_]]
+[role=(primary | secondary)]
+[autoResync=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos que você deseja modificar. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos tiver carateres ou números especiais, você deve incluir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume de repositório de grupo de espelhos assíncrono para o qual você deseja aumentar a capacidade.
+
+O nome de um volume de repositório é composto por duas partes:
+
+* O termo "repos"
+* Um identificador numérico de quatro dígitos que o software de gerenciamento de armazenamento atribui ao nome do volume do repositório
+
+
+Inclua o nome do volume do repositório entre aspas duplas (" ").
+
+
+
+ a| 
+`syncInterval`
+ a| 
+Especifique o período de tempo entre o envio automático de atualizações de dados modificados da matriz de armazenamento local para a matriz de armazenamento remoto. Você pode especificar o tempo em minutos, horas ou dias.
+
+
+
+ a| 
+`warningSyncThreshold`
+ a| 
+Especifique o período de tempo a aguardar até que um aviso seja acionado para os casos em que a sincronização de todos os volumes dentro do grupo de espelhos assíncronos demora mais do que o tempo definido. Você pode especificar o tempo em minutos, horas ou dias.
+
+
+
+ a| 
+`warningRecoveryThreshold`
+ a| 
+Especifique o período de tempo a aguardar até que um aviso seja acionado quando a atualização automática de dados para a imagem pontual na matriz de armazenamento remoto for anterior ao tempo definido. Defina o limite a partir do final da atualização anterior. Você pode especificar o tempo em minutos, horas ou dias.
+
+[NOTE]
+====
+Você deve definir o limite do ponto de recuperação para ser duas vezes maior que o limite do intervalo de sincronização.
+
+====
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome que você deseja dar ao grupo de espelhos assíncronos. Use este parâmetro quando quiser renomear o grupo de espelhos assíncronos. Inclua o novo nome do grupo de espelhos assíncronos em aspas duplas (" ").
+
+
+
+ a| 
+`warningThresholdPercent`
+ a| 
+Especifique o valor percentual que determina quando um aviso é acionado quando a capacidade de um volume de repositório espelhado atinge a porcentagem definida. Defina o limite por porcentagem (%) da capacidade restante.
+
+
+
+ a| 
+`role`
+ a| 
+Use este parâmetro para promover o grupo de espelhos assíncronos para uma função primária ou rebaixar o grupo de espelhos assíncronos para uma função secundária. Para definir o grupo de espelhos assíncronos como a função principal, defina este parâmetro como `primary`. Para definir o grupo de espelhos assíncronos como função secundária, defina este parâmetro como `secondary`.
+
+
+
+ a| 
+`autoResync`
+ a| 
+As configurações de ressincronização automática entre os volumes primários e os volumes secundários de um par espelhado assíncrono dentro de um grupo de espelhos assíncronos. Este parâmetro tem estes valores:
+
+* `enabled` -- a ressincronização automática está ativada. Não é necessário fazer mais nada para ressincronizar o volume primário e o volume secundário.
+* `disabled` -- a ressincronização automática está desligada. Para ressincronizar o volume primário e o volume secundário, você deve executar o `start asyncMirrorGroup` comando.
+
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros. No entanto, você não precisa usar todos os parâmetros.
+
+Um volume de repositório de grupo de espelhos assíncrono é um volume expansível estruturado como uma coleção concatenada de até 16 entidades de volume padrão. Inicialmente, um volume de repositório expansível tem apenas um único volume. A capacidade do volume do repositório expansível é exatamente a do volume único. Você pode aumentar a capacidade de um volume de repositório expansível anexando volumes de repositório não utilizados adicionais a ele. A capacidade de volume do repositório expansível composto torna-se então a soma das capacidades de todos os volumes padrão concatenados.
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

@@ -1,0 +1,118 @@
+---
+permalink: commands-a-z/show-cgsnapimage.html 
+sidebar: sidebar 
+keywords: show, consistency, group, snapshot, image 
+summary: O comando show CGSnapImage mostra uma imagem instantânea ou várias imagens instantâneas que estão em um ou mais grupos de consistência de instantâneos. 
+---
+= Mostrar imagem instantânea do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show CGSnapImage` comando mostra uma imagem instantânea ou várias imagens instantâneas que estão em um ou mais grupos de consistência de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show ((CGSnapImage pass:quotes[[(_CGSnapImageName_ | _CGSnapImageSequenceNumber_)]]) |
+(CGSnapImages pass:quotes[[(_CGSnapImageNumber1_ ... _CGSnapImageNumbern_ |
+_CGSnapImageSequenceNumber1_ ... _CGSnapImageSequenceNumbern_)]]) |
+allCGSnapImages
+[summary]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`CGSnapImage` ou `CGSnapImages`
+ a| 
+O nome da imagem instantânea num grupo de consistência. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo consistência
+* Um identificador para a imagem instantânea no grupo consistência.
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo de consistência.
+* `NEWEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais recente criada no grupo consistência.
+* `OLDEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo consistência.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+Pode introduzir mais do que um nome de imagem instantânea ou um número de sequência. Inclua todos os nomes de imagens instantâneas em um conjunto de aspas duplas (" ") dentro de colchetes ([ ]). Separe cada nome de imagem instantânea com um espaço.
+
+
+
+ a| 
+`allCGSnapImages`
+ a| 
+A configuração para retornar todas as imagens instantâneas dos grupos de consistência.
+
+
+
+ a| 
+`summary`
+ a| 
+A configuração para retornar uma lista concisa de informações sobre todas as imagens instantâneas na matriz de armazenamento.
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de consistência de instantâneos
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser mostrar a imagem de snapshot 12345 em um grupo de consistência de snapshot que tem o nome snapCGroup1, você usaria este comando:
+
+[listing]
+----
+show CGsnapImage ["snapCGroup1:12345"];
+----
+Para mostrar a imagem de snapshot mais recente em um grupo de consistência de snapshot que tem o nome snapCGroup1, você usaria este comando:
+
+[listing]
+----
+show CGsnapImage ["snapCGroup1:newest"];
+----
+Para mostrar as imagens instantâneas em vários grupos de consistência de instantâneos que têm os nomes snapCGroup1, snapCGroup2 e snapCGroup3, você usaria este comando:
+
+[listing]
+----
+show CGsnapImages ["snapCGroup1:12345 snapCGroup2:newest snapCGroup3:oldest"];
+----
+Note que nestes exemplos o nome do grupo de consistência de instantâneos é separado do identificador de imagem instantânea por dois pontos (:).
+
+
+
+== Nível mínimo de firmware
+
+7,83

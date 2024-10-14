@@ -1,0 +1,35 @@
+---
+permalink: get-started/formatting-cli-commands-in-windows-powershell.html 
+sidebar: sidebar 
+keywords: format, rules, cli, commands, windows, powershell 
+summary: O Windows PowerShell é um shell interativo e de script que fornece acesso a ferramentas de linha de comando. 
+---
+= Formate regras para comandos CLI no Windows PowerShell
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+O Windows PowerShell é um shell interativo e de script que fornece acesso a ferramentas de linha de comando. O Windows PowerShell melhora no prompt de comando do Windows com um conjunto mais robusto de comandos e capacidade de script. Você pode executar todos os comandos CLI e script no Windows PowerShell; no entanto, o Windows PowerShell tem alguns requisitos de formatação exclusivos. Os requisitos são os seguintes:
+
+* Inicie todos os comandos SMcli com um ponto e uma barra (./)
+* O wrapper smcli deve ser identificado como um comando executável com a extensão .exe (SMcli.exe)
+* Inclua o comando script entre aspas simples (' ')
+* Aspas duplas que fazem parte de um nome, caminho de arquivo ou valor devem ter uma barra invertida antes de cada caractere de aspas duplas (")
+
+
+A seguir está um exemplo de um comando CLI para criar um nome de storage array no Windows PowerShell. Observe o uso das aspas simples como delimitadores para o comando script e as aspas duplas da barra invertida ao redor do nome da matriz de armazenamento, identificadas como `userLabel` na sintaxe do comando.
+
+[listing]
+----
+PS C:\...\StorageManager\client> ./SMcli.exe 123.45.67.88 123.45.67.89
+-c ’set storageArray userLabel=\"Engineering\";’
+----
+A seguir está um exemplo de um comando CLI para habilitar um recurso premium no Windows PowerShell. Observe o uso das aspas duplas da barra invertida antes do caminho do arquivo para a chave de recurso premium.
+
+[listing]
+----
+PS C:\...\StorageManager\client> ./SMcli.exe 123.45.67.88 123.45.67.89
+-c ’enable storageArray feature file=\"C:\licenseKey.bin\";’
+----
+Nos exemplos anteriores, são utilizadas letras maiúsculas e minúsculas. Este uso é para ajudar a deixar claro como os comandos são formatados. No entanto, o Windows PowerShell não diferencia maiúsculas de minúsculas e não requer casos específicos de uso.

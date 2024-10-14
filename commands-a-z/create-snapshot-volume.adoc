@@ -1,0 +1,149 @@
+---
+permalink: commands-a-z/create-snapshot-volume.html 
+sidebar: sidebar 
+keywords: create, snapshot, volume 
+summary: O comando Create snapvolume cria um volume instantâneo com recursos de leitura e gravação para imagens instantâneas de um volume base. 
+---
+= Criar volume instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create snapVolume` comando cria um volume instantâneo com capacidades de leitura e gravação para imagens instantâneas de um volume base.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+É possível mapear o volume do snapshot para um host e todas as gravações do host residem no volume do repositório associado ao volume do snapshot. Você pode atribuir o novo volume de snapshot a um volume de repositório existente ou criar um novo volume de repositório em um grupo de volumes ou pool de discos.
+
+[NOTE]
+====
+Você não pode usar este comando para uma imagem instantânea que é usada na cópia de volume on-line.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create snapVolume userLabel=pass:quotes[_"snapVolumeName_" snapImageID="_snapCGID:imageID_"]
+[(repositoryVolume="repos_xxxx"]
+[repositoryVolume=pass:quotes[_(volumeGroupName_]pass:quotes[[capacity=_capacityValue_]]]
+[repositoryVolume=pass:quotes[(_diskPoolName_]pass:quotes[[capacity=_capacityValue_])]]
+[repositoryFullLimit=pass:quotes[_percentValue_]]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar a um volume instantâneo. Coloque o nome do volume instantâneo entre aspas duplas (" ").
+
+
+
+ a| 
+`snapImageID`
+ a| 
+O identificador alfanumérico de uma imagem instantânea que pretende adicionar ao novo volume instantâneo. O identificador de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` - Use esta opção quando você quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ").
+
+
+
+ a| 
+`repositoryVolume`
+ a| 
+O nome do volume do repositório que contém dados alterados da imagem instantânea.
+
+Você tem duas opções para definir o nome de um volume de repositório:
+
+* Use um nome de volume de repositório existente
+* Crie um novo volume de repositório quando executar este comando
+
+
+O nome de um volume de repositório existente é composto por duas partes:
+
+* O termo "repos"
+* Um identificador numérico de quatro dígitos que o software de gerenciamento de armazenamento atribui ao nome do volume do repositório
+
+
+Inclua o nome do volume do repositório existente entre aspas duplas (" ").
+
+Se você quiser criar um novo volume de repositório ao executar este comando, você deve digitar o nome de um grupo de volumes ou de um pool de discos no qual deseja o volume do repositório. Opcionalmente, você também pode definir a capacidade do volume do repositório. Se você quiser definir a capacidade, você pode usar estes valores:
+
+* Um valor inteiro que representa uma porcentagem da capacidade do volume base
+* Um valor de fração decimal que representa uma porcentagem da capacidade de volume base
+* Um tamanho específico para o volume do repositório. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou .
+
+
+Se você não usar a opção capacidade, o software de gerenciamento de storage define a capacidade para 20% da capacidade de volume base.
+
+Quando você executa esse comando, o software de gerenciamento de storage cria o volume do repositório para o volume do snapshot.
+
+
+
+ a| 
+`repositoryFullLimit`
+ a| 
+A porcentagem da capacidade do repositório na qual você recebe um aviso de que o volume do repositório instantâneo está quase cheio. Use valores inteiros. Por exemplo, um valor de 70 significa 70%. O valor padrão é 75.
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O identificador de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O nome do grupo instantâneo
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser criar um volume instantâneo chamado snapData1 usando a imagem de snapshot mais recente em um grupo de snapshot que tem o nome snapGroup1 com um limite máximo de preenchimento de 80% para o volume do repositório, você usaria este comando:
+
+[listing]
+----
+create snapVolume userLabel="snapData1" snapImageID="snapGroup1:newest"
+repositoryVolume="repos_1234" repositoryFullLimit=80;
+----
+O identificador de volume do repositório é criado automaticamente pelo software de gerenciamento de storage e pelo firmware quando você cria um novo grupo de snapshot. Não é possível renomear o volume do repositório porque renomear o volume do repositório quebra a ligação com as imagens instantâneas.
+
+
+
+== Nível mínimo de firmware
+
+7,83

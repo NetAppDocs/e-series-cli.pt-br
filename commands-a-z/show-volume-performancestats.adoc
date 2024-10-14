@@ -1,0 +1,132 @@
+---
+permalink: commands-a-z/show-volume-performancestats.html 
+sidebar: sidebar 
+keywords: show, volume, performance, statistics 
+summary: O comando show volume performanceStats retorna informações sobre o desempenho do volume. 
+---
+= Mostrar estatísticas de desempenho de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show volume performanceStats` comando retorna informações sobre o desempenho do volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Para cada volume na matriz de armazenamento, este comando retorna as seguintes informações:
+
+* Storage arrays
+* Total de iOS/s
+* Leitura %
+* Cache de leitura primária atingiu %
+* % De acerto da Cache de gravação primária
+* % De acerto do cache SSD
+* MBs/s atuais
+* Máximo de MBs/s.
+* IOS/s atuais
+* Máximo de iOS/s
+* Mínimo iOS/s
+* IOS/s médios
+* MBs/s mínimos
+* MBs/s médios
+* Latência de e/S atual
+* Latência máxima de e/S
+* Latência mínima de e/S
+* Latência média de e/S
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show (allVolumes | volume pass:quotes[["_volumeName_"]]
+volumes pass:quotes[["_volumeName1_" ... "_volumeNameN_"]]) performanceStats
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+O parâmetro para retornar estatísticas de desempenho sobre todos os volumes no storage array.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome de um volume para o qual você deseja recuperar informações. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes para os quais você deseja recuperar informações. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+|===
+
+
+== Notas
+
+Antes de executar o `show volume performanceStat` comando, execute o `set session performanceMonitorInterval` comando e o `set session performanceMonitorIterations` comando para definir com que frequência você coleta as estatísticas.
+
+O `show volume performanceStat` comando retorna estatísticas de desempenho de volume como mostrado neste exemplo:
+
+[listing]
+----
+Performance Monitor Statistics for Storage Array: Tyler -
+Date/Time: 11/6/12 10:00: 34 AM - Polling interval in seconds: 5
+
+
+"Storage Arrays","Total IOs","Read %","Primary Read Cache Hit %",
+"Primary Write Cache Hit %","SSD Read Cache Hit %","Current MBs/sec",
+"Maximum MBs/sec","Current IOs/sec","Maximum IOs/sec","Minimum IOs/sec",
+"Average IOs/sec","Minimum MBs/sec","Average MBs/sec","Current IO Latency",
+"Maximum IO Latency","Minimum IO Latency","Average IO Latency"
+
+"Capture Iteration: 1","","","","","","","","","","","","","","","","",""
+"Date/Time: 11/6/12 10:00:34 AM","","","","","","","","","","","","","","",
+   "","","""Volume Unnamed","0.0","","0.0","0.0","0.0","0.0","0.0","0.0","0.0","0.0",
+   "0.0","0.0","0.0","0.0","0.0","0.0","0.0"
+----
+
+
+== Nível mínimo de firmware
+
+6,10

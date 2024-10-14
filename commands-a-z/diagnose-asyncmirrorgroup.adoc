@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/diagnose-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: diagnose, command, tests, possible, communication, problems, local, storage, array, remote, asynchronous, mirror, group 
+summary: O comando diagnostique asyncMirrorGroup testa possíveis problemas de comunicação entre o storage array local e o storage array de armazenamento remoto associado a um grupo de espelhos assíncrono. 
+---
+= Teste a conetividade assíncrona do grupo de espelhos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `diagnose asyncMirrorGroup` comando testa possíveis problemas de comunicação entre a matriz de armazenamento local e a matriz de armazenamento remoto associada a um grupo de espelhos assíncrono.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[diagnose asyncMirrorGroup [_asyncMirrorGroupName_]]
+testID=(all | connectivity | latency | bandwidth | portConnections)
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome de um grupo de espelhos assíncrono existente que você deseja testar. Inclua o nome do grupo de espelhos assíncronos entre colchetes ([ ]). Se o nome do grupo de espelhos assíncronos tiver carateres ou números especiais, você deve incluir o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`testID`
+ a| 
+O identificador para o teste de diagnóstico que pretende executar. O identificador e os testes correspondentes são os seguintes:
+
+* *All* -- executa todos os testes associados a este comando.
+* *Conetividade* -- verifica se os dois controladores têm um caminho de comunicação. O teste de conetividade envia uma mensagem entre os storages de armazenamento e, em seguida, valida que o grupo de espelhos assíncronos correspondente no storage de armazenamento remoto existe. Ele também valida que os membros do volume do grupo de espelhos assíncronos no sistema remoto correspondem aos membros do volume do grupo de espelhos assíncronos no sistema local.
+* *Latência* -- envia um comando SCSI test unit para cada volume no storage de armazenamento remoto associado ao grupo de espelhos assíncronos para testar a latência mínima, média e máxima.
+* *Bandwidth* -- envia duas mensagens entre controladores para a matriz de armazenamento remoto para testar a largura de banda mínima, média e máxima, bem como a velocidade de link negociada da porta no controlador que executa o teste.
+* *Port Connections* -- mostra a porta que está sendo usada para espelhamento no storage de armazenamento local e a porta que está recebendo os dados espelhados no storage de armazenamento remoto.
+
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

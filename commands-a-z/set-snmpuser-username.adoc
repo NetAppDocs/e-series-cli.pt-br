@@ -1,0 +1,121 @@
+---
+permalink: commands-a-z/set-snmpuser-username.html 
+sidebar: sidebar 
+keywords: update, snmpv3, usm, user 
+summary: 'O comando set snmpUser username atualiza um usuário USM (Simple Network Management Protocol) existente. O utilizador USM a alterar é identificado utilizando o nome de utilizador se existir apenas um utilizador com o nome de utilizador. O utilizador é identificado utilizando o nome de utilizador e a ID do motor se existir mais de um utilizador com o mesmo nome de utilizador e ID do motor diferente.' 
+---
+= Atualize o utilizador da SNMPv3 USM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snmpUser userName` comando atualiza um utilizador USM do Simple Network Management Protocol (SNMP) existente. O utilizador USM a alterar é identificado utilizando o nome de utilizador se existir apenas um utilizador com o nome de utilizador. O utilizador é identificado utilizando o nome de utilizador e a ID do motor se existir mais de um utilizador com o mesmo nome de utilizador e ID do motor diferente.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set snmpUser userName="snmpUserName" [engineId=(local | engineId)]
+[newUserName="newSnmpUserName"] [newEngineId=(local | engineId)]
+[authProtocol=(none | sha | sha256 | sha512) authPassword="authPassword"]
+[privProtocol=(none | aes128) privPassword="privPassword"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userName`
+ a| 
+O nome do utilizador SNMP USM que pretende atualizar. Inclua o nome de utilizador SNMP USM em aspas duplas (" ")
+
+
+
+ a| 
+`engineId`
+ a| 
+A ID do motor do utilizador SNMP USM que pretende atualizar. A ID do motor é necessária se existir mais do que um utilizador USM com o mesmo nome de utilizador. O valor pode ser `local` especificar que o agente SNMP local é o agente autorizado ou uma cadeia de carateres de dígitos hexidecimais para especificar um ID de mecanismo de agente SNMP remoto.
+
+
+
+ a| 
+`newSnmpUserName`
+ a| 
+O novo nome que você deseja dar ao usuário SNMP. Coloque o nome de utilizador SNMP entre aspas duplas (" "). O valor padrão é o nome de usuário definido anteriormente para o usuário.
+
+
+
+ a| 
+`newEngineId`
+ a| 
+O novo engineID a ser usado como o identificador do ID de mecanismo SNMP autorizado para o usuário. O valor pode ser "[.code]local" para especificar o agente SNMP local para ser o agente autorizado ou uma string de dígitos hexadecimais para especificar um ID de mecanismo de agente SNMP remoto. O valor predefinido é a ID do motor previamente definida para o utilizador.
+
+
+
+ a| 
+`authProtocol`
+ a| 
+O protocolo de autenticação (HMAC) a ser utilizado para o utilizador. O valor pode ser um dos seguintes:
+
+* `none` - Sem autenticação de mensagens SNMP (padrão)
+* `sha` - Autenticação SHA-1
+* `sha256` - Autenticação SHA-256
+* `sha512` - Autenticação SHA-512
+
+
+O valor predefinido é o protocolo de autenticação previamente definido para o utilizador.
+
+
+
+ a| 
+`authPassword`
+ a| 
+A senha a ser usada para autenticação para o usuário. Deve ser especificado se o protocolo de autenticação for `sha`, `sha256` ou `sha512`
+
+
+
+ a| 
+`privProtocol`
+ a| 
+O protocolo de privacidade (encriptação) a ser utilizado para o utilizador. O valor pode ser um dos seguintes:
+
+* `none` - Sem criptografia de mensagens SNMP (padrão)
+* `aes128` - Criptografia AES-18
+
+
+O valor predefinido é o protocolo de privacidade previamente definido para o utilizador.
+
+
+
+ a| 
+`privPassword`
+ a| 
+A senha a ser usada para privacidade/criptografia para o usuário. Deve ser especificado se o protocolo de privacidade for "[.code]"AES128".
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,72

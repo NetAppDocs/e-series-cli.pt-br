@@ -1,0 +1,88 @@
+---
+permalink: commands-a-z/save-storage-array-diagnostic-data.html 
+sidebar: sidebar 
+keywords: save, storage, array, diagnostic, data 
+summary: 'O comando SAVE storageArray diagnosticData salva os dados de diagnóstico do storage array dos controladores ou dos módulos de serviços ambientais (ESMs) em um arquivo.' 
+---
+= Salve os dados de diagnóstico do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `save storageArray diagnosticData` comando salva os dados de diagnóstico da matriz de armazenamento dos controladores ou dos módulos de serviços ambientais (ESMs) em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você pode revisar o conteúdo do arquivo posteriormente. Você também pode enviar o arquivo para o suporte técnico para revisão adicional.
+
+Depois de guardar os dados de diagnóstico, pode repor os registos NVSRAM que contêm os dados de diagnóstico para que os dados antigos possam ser substituídos. Utilize o `reset storageArray diagnosticData` comando para repor os registos de dados de diagnóstico.
+
+[NOTE]
+====
+Executar este comando apenas com a assistência do suporte técnico.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray diagnosticData [(controller | tray)]
+file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diagnosticData`
+ a| 
+Este parâmetro permite-lhe transferir os dados de diagnóstico dos controladores ou dos ESMs.
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os dados de diagnóstico do storage array. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\logs\sadiag.zip"`
+
+Este comando salva automaticamente os dados em um arquivo compactado; no entanto, esse comando não adiciona automaticamente uma extensão de arquivo ao arquivo salvo. Você deve especificar a `.zip` extensão ao inserir o nome do arquivo.
+
+|===
+
+
+== Notas
+
+Em versões deste comando antes de 7,77, a opção do usuário era `esm` em vez `tray` de . A partir de 7,77, `tray` substitui `esm`. O uso do `esm` ainda é suportado, mas para melhor compatibilidade com versões futuras, substitua `esm` por `tray`.
+
+
+
+== Nível mínimo de firmware
+
+6,16
+
+7,77 `tray` substitui `esm`.

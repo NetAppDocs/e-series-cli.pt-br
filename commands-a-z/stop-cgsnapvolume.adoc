@@ -1,0 +1,66 @@
+---
+permalink: commands-a-z/stop-cgsnapvolume.html 
+sidebar: sidebar 
+keywords: stop, consistency, group, snapshot, volume 
+summary: O comando stop cgSnapvolume pára a operação copy-on-write para criar um volume instantâneo de grupo de consistência. 
+---
+= Parar o volume instantâneo do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop cgSnapVolume` comando interrompe a operação copy-on-write para criar um volume instantâneo de grupo de consistência.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Para reiniciar a operação copy-on-write, use o `resume cgSnapVolume` comando.
+
+[NOTE]
+====
+Este comando não exclui um volume instantâneo de grupo de consistência. Para excluir um volume instantâneo de um grupo de consistência, use o `delete cgSnapVolume` comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[stop cgSnapVolume [_snapVolumeName_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`cgSnapVolume`
+ a| 
+O nome do volume instantâneo do grupo de consistência que você deseja parar de criar. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome entre aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

@@ -1,0 +1,91 @@
+---
+permalink: commands-a-z/resume-cgsnapvolume.html 
+sidebar: sidebar 
+keywords: resume, consistency, group, snapshot, volume 
+summary: O comando resume cgSnapvolume reinicia uma operação copy-on-write para criar um volume instantâneo do grupo de consistência que você parou usando o comando stop cgSnapvolume. 
+---
+= Retomar o volume instantâneo do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `resume cgSnapVolume` comando reinicia uma operação copy-on-write para criar um volume instantâneo do grupo de consistência que você parou de usar o `stop cgSnapVolume` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+resume cgSnapVolume pass:quotes[[_"snapVolumeName"_]]
+cgSnapImage=pass:quotes[_"snapImageName"_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`cgSnapVolume`
+ a| 
+O nome do volume instantâneo do grupo de consistência que pretende retomar. Inclua o nome do volume instantâneo do grupo de consistência entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`cgSnapImage`
+ a| 
+O nome da imagem instantânea em um grupo de consistência que você está reiniciando. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo consistência
+* Um identificador para a imagem instantânea no grupo consistência
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo de consistência.
+* `NEWEST` - Use esta opção quando quiser mostrar a imagem instantânea mais recente criada no grupo consistência.
+* `OLDEST` - Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo consistência.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ").
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de consistência
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser reiniciar uma operação copy-on-write para a imagem de snapshot 12345, que está no grupo de consistência de snapshot snapgroup1 em um volume de instantâneo de grupo de consistência que tem o nome snapVol1, você usaria este comando:
+
+[listing]
+----
+resume cgSnapVolume ["snapVol1"] cgSnapImage=["snapgroup1:12345"]
+----
+
+
+== Nível mínimo de firmware
+
+7,83

@@ -1,0 +1,107 @@
+---
+permalink: commands-a-z/export-storagearray-securitykey.html 
+sidebar: sidebar 
+keywords: export, storage, array, security, key, command, save, drive, securitykey, file, context, role 
+summary: O comando Export storageArray securityKey salva uma chave de segurança de unidade em um arquivo. 
+---
+= Exportar chave de segurança do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `export storageArray securityKey` comando salva uma chave de segurança da unidade em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Quando o arquivo de chave é exportado de um storage array, essa chave pode ser importada para outro storage array. Isso permite que você mova unidades com capacidade de segurança entre storages.
+
+[NOTE]
+====
+Este comando aplica-se ao gerenciamento de chaves internas e externas.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+export storageArray securityKey
+pass:quotes[passPhrase="_passPhraseString_"]
+pass:quotes[file="_fileName_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`passPhrase`
+ a| 
+Uma cadeia de carateres que criptografa a chave de segurança para que você possa armazenar a chave de segurança em um arquivo externo. Inclua a frase-passe em aspas duplas (" ").
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar a chave de segurança. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[NOTE]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk`.
+
+====
+|===
+
+
+== Notas
+
+A matriz de armazenamento para a qual você estará movendo unidades deve ter unidades com uma capacidade igual ou superior às unidades que você está importando.
+
+O firmware da controladora cria um bloqueio que restringe o acesso às unidades de criptografia de disco completa (FDE). As unidades FDE têm um estado chamado Security Capable. Quando você cria uma chave de segurança, o estado é definido como Segurança ativada, o que restringe o acesso a todas as unidades FDE existentes no storage de armazenamento.
+
+Sua frase-passe deve atender a estes critérios:
+
+* Deve ter entre oito e 32 carateres.
+* Não deve conter espaço em branco.
+* Deve conter pelo menos uma letra maiúscula.
+* Deve conter pelo menos uma letra minúscula.
+* Deve conter pelo menos um número.
+* Tem de conter pelo menos um caráter não alfanumérico, por exemplo, a.
+
+
+[NOTE]
+====
+Se sua frase-passe não atender a esses critérios, você receberá uma mensagem de erro e será solicitado a repetir o comando.
+
+====
+
+
+== Nível mínimo de firmware
+
+7,40

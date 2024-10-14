@@ -1,0 +1,121 @@
+---
+permalink: commands-a-z/show-allsnmpcommunities.html 
+sidebar: sidebar 
+keywords: show, snmp, communities 
+summary: 'O comando show allSnmpCommunities retorna informações sobre as comunidades SNMP (Simple Network Management Protocol) definidas para o storage array. As comunidades SNMP são coleções de dispositivos, como roteadores, switches, impressoras, dispositivos de armazenamento, agrupados para gerenciar e monitorar os dispositivos.' 
+---
+= Mostrar comunidades SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show allSnmpCommunities` comando retorna informações sobre as comunidades SNMP (Simple Network Management Protocol) definidas para o storage array. As comunidades SNMP são coleções de dispositivos, como roteadores, switches, impressoras, dispositivos de armazenamento, agrupados para gerenciar e monitorar os dispositivos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.
+
+
+
+== Contexto
+
+As informações devolvidas incluem o seguinte:
+
+* O número total de comunidades
+* O número total de destinos de armadilha
+* Os nomes das comunidades SNMP
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show pass:quotes[(allSnmpCommunities |
+snmpCommunity communityName="_snmpCommunityName_"] |
+snmpCommunities pass:quotes[[_snmpCommunityName1_ ... _snmpCommunityNameN_]])
+[summary]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allSnmpCommunities`
+ a| 
+Este parâmetro retorna informações sobre todas as comunidades SNMP na matriz de armazenamento.
+
+
+
+ a| 
+`communityName`
+ a| 
+O nome da comunidade SNMP para a qual você deseja recuperar informações. Inclua o nome da comunidade SNMP entre aspas duplas (" ").
+
+
+
+ a| 
+`snmpCommunities`
+ a| 
+Os nomes de várias comunidades SNMP para as quais você deseja recuperar informações. Introduza os nomes das comunidades SNMP utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`summary`
+ a| 
+Este parâmetro retorna uma lista do número total de comunidades SNMP e o número total de destinos de intercetação SNMP. Quando você usa esse parâmetro, todas as informações detalhadas são omitidas.
+
+|===
+
+
+== Notas
+
+O SNMP suporta uma ou mais _comunidades_ às quais os gerentes e dispositivos gerenciados pertencem. As solicitações SNMP contêm uma string _Community_ nos pacotes de dados passados pela rede que atua como uma senha bruta. Os agentes SNMP podem rejeitar SOLICITAÇÕES GET ou SET com uma cadeia de carateres de comunidade não reconhecida. Uma cadeia de carateres da comunidade também é incluída nas notificações DE ARMADILHA enviadas de agente para gerente também.
+
+O agente SNMP incorporado suporta IPv4 e IPv6.
+
+Este comando retorna informações da comunidade SNMP semelhantes a este exemplo.
+
+[listing]
+----
+SNMP COMMUNITIES------------------------------
+SUMMARY
+   Total SNMP Communities: 2
+   Total SNMP Trap Destinations: 1
+DETAILS
+   SNMP Community: TestComm1
+   SNMP Permission: Read Only
+      Associated Trap Destination:
+      Trap Receiver IP Address: 10.113.173.133
+      Send Authentication Failure Traps: true
+   SNMP Community: Test2
+   SNMP Permission: Read Only
+      Associated Trap Destination:
+----
+
+
+== Nível mínimo de firmware
+
+8,30

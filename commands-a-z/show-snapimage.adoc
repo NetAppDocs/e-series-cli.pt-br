@@ -1,0 +1,124 @@
+---
+permalink: commands-a-z/show-snapimage.html 
+sidebar: sidebar 
+keywords: show, snapshot, image 
+summary: O comando show snapImage retorna informações sobre as imagens instantâneas que um usuário criou anteriormente. 
+---
+= Mostrar imagem instantânea
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show snapImage` comando retorna informações sobre as imagens instantâneas que um usuário criou anteriormente.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe para mostrar uma imagem instantânea específica
+
+[listing, subs="+macros"]
+----
+show (allSnapImages | snapImage pass:quotes[["_snapImageName_"]] |
+snapImages pass:quotes[["_snapImageName1_" ... "_snapImageNamen_"]])
+[summary]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allSnapImages`
+ a| 
+O parâmetro para retornar informações sobre todas as imagens instantâneas na matriz de armazenamento.
+
+
+
+ a| 
+`snapImage`
+ a| 
+O nome de uma imagem instantânea para a qual você deseja recuperar informações. O nome de uma imagem instantânea é composto por duas partes:
+
+* O nome do grupo instantâneo
+* Um identificador para a imagem instantânea no grupo de instantâneos
+
+
+O identificador da imagem instantânea pode ser um destes:
+
+* Um valor inteiro que é o número de sequência do instantâneo no grupo instantâneo.
+* `NEWEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais recente criada no grupo de instantâneos.
+* `OLDEST` -- Use esta opção quando quiser mostrar a imagem instantânea mais antiga criada no grupo de instantâneos.
+
+
+Coloque o nome da imagem instantânea entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`snapImages`
+ a| 
+Os nomes de várias imagens instantâneas para as quais pretende obter informações. Introduza os nomes das imagens instantâneas utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`summary`
+ a| 
+Este parâmetro retorna uma lista concisa de informações sobre as imagens instantâneas.
+
+|===
+
+
+== Notas
+
+O nome de uma imagem instantânea tem duas partes separadas por dois pontos (:):
+
+* O identificador do grupo de instantâneos
+* O identificador da imagem instantânea
+
+
+Por exemplo, se você quiser mostrar a imagem de snapshot 12345 em um grupo de snapshot que tem o nome snapGroup1, você usaria este comando:
+
+[listing]
+----
+show snapImage ["snapGroup1:12345"];
+----
+Para mostrar a imagem de instantâneo mais recente em um grupo de instantâneos com o nome snapGroup1, você usaria este comando:
+
+[listing]
+----
+show snapImage ["snapGroup1:newest"];
+----
+Para mostrar as imagens instantâneas em vários grupos de consistência de instantâneos que têm os nomes snapGroup1, snapGroup2 e snapGroup3, você usaria este comando:
+
+[listing]
+----
+show snapImages ["snapGroup1:12345 snapGroup2:newest snapGroup3:oldest"];
+----
+
+
+== Nível mínimo de firmware
+
+7,83

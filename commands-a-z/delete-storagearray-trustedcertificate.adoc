@@ -1,0 +1,78 @@
+---
+permalink: commands-a-z/delete-storagearray-trustedcertificate.html 
+sidebar: sidebar 
+keywords: delete, storage, array, trusted, certificate, command, remove, specified, installed, web, servers 
+summary: O comando delete storageArray truckCertificate remove os certificados de CA instalados pelo usuário especificado dos servidores da Web da matriz. 
+---
+= Remover certificados de CA confiáveis instalados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete storageArray trustedCertificate` comando remove os certificados de CA instalados pelo usuário especificado dos servidores da Web da matriz.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[delete storageArray trustedCertificate [(allUserInstalled |
+aliases=("_alias1_" ... "_aliasN_]"))]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allUserInstalled`
+ a| 
+Permite especificar a remoção de todos os certificados instalados pelo utilizador.
+
+
+
+ a| 
+`aliases`
+ a| 
+Permite especificar um ou mais certificados de CA a serem excluídos usando os nomes de alias ou especificar todos. Os aliases podem ser de qualquer controlador. Inclua todos os aliases entre parênteses. Se você inserir mais de um alias, separe-os com um espaço.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "delete storageArray trustedCertificate allUserInstalled;"
+
+SMcli -n Array1 -c "delete storageArray trustedCertificate
+   aliases=("19527b38-8d26-44e5-8c7f-5bf2ca9db7cf" "04bf744c-413a-49f1-9666-88d74189591d");"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

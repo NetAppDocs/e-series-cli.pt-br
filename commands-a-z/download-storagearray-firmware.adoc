@@ -1,0 +1,143 @@
+---
+permalink: commands-a-z/download-storagearray-firmware.html 
+sidebar: sidebar 
+keywords: download, storage, array, firmware, command, downloads, optionally, values, controllers, role, context, parameter 
+summary: O comando download storageArray firmware faz download de firmware e, opcionalmente, valores NVSRAM para o controlador de storage array. 
+---
+= Transfira o firmware da matriz de armazenamento/NVSRAM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `download storageArray firmware` comando baixa os valores de firmware e, opcionalmente, NVSRAM para o controlador de storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Se você quiser baixar apenas valores NVSRAM, use o `downLoad storageArray NVSRAM` comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+download storageArray firmware [, NVSRAM ]
+pass:quotes[file="_filename_" [, "_NVSRAM-filename_"]]
+[downgrade=(TRUE | FALSE)
+activateNow=(TRUE | FALSE)
+healthCheckMelOverride=(TRUE | FALSE)
+healthCheckNeedsAttnOverride=(TRUE | FALSE)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`NVSRAM`
+ a| 
+Este parâmetro faz o download de um arquivo com valores NVSRAM quando você faz o download de um arquivo de firmware. Não inclua colchetes com este parâmetro. Inclua uma vírgula após o `firmware` parâmetro.
+
+
+
+ a| 
+`file`
+ a| 
+Este parâmetro especifica o caminho do arquivo e o nome do arquivo que contém o firmware. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\dnld\safrm.dlp"`
+
+Nomes de arquivo válidos têm `.dlp` uma extensão.
+
+
+
+ a| 
+`NVSRAM-filename`
+ a| 
+Este parâmetro especifica o caminho do arquivo e o nome do arquivo que contém os valores NVSRAM. Inclua o nome do arquivo NVSRAM em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\dnld\safrm.dlp"` Nomes de arquivo válidos têm `.dlp` uma extensão.
+
+Inclua uma vírgula antes do nome do arquivo quando você baixar o firmware e a NVSRAM.
+
+
+
+ a| 
+`downgrade`
+ a| 
+[CAUTION]
+====
+*Possíveis danos à configuração da matriz de armazenamento* -- o download incorreto de uma versão anterior do firmware da controladora ou NVSRAM pode resultar em danos aos controladores ou perda de acesso aos dados. Contacte o suporte técnico antes de utilizar este parâmetro.
+
+====
+Esta definição permite carregar uma versão anterior do firmware. O valor padrão é `FALSE`. Defina o `downgrade` parâmetro para `TRUE` se pretender transferir uma versão anterior do firmware.
+
+[NOTE]
+====
+Este parâmetro não é válido quando você está baixando somente NVSRAM.
+
+====
+
+
+ a| 
+`activateNow`
+ a| 
+Esta definição ativa a imagem de firmware e a imagem NVSRAM. O valor padrão é `TRUE`. Se você definir o `activateNow` parâmetro como `FALSE`, deverá executar o `activate storageArray firmware` comando para ativar o firmware e a NVSRAM posteriormente.
+
+[NOTE]
+====
+Este parâmetro não é válido quando você só é baixado NVSRAM.
+
+====
+
+
+ a| 
+`healthCheckMelOverride`
+ a| 
+Esta definição substitui os resultados da verificação de integridade do registo de eventos principais (mel). A validação DO MEL ainda ocorre; não é ignorada. Se a verificação mel falhar, você pode ignorar a falha usando este parâmetro ao executar o comando.
+
+Antes de qualquer download, o controlador verifica o log de eventos para determinar se ocorreu um evento que pode impedir que o novo firmware do controlador faça o download com êxito. Se tal evento tiver ocorrido, o controlador normalmente não irá transferir o novo firmware.
+
+Este parâmetro força o controlador a baixar novo firmware. O valor padrão é `FALSE`. Defina este valor para `TRUE` se pretender forçar o controlador a transferir o novo firmware do controlador.
+
+
+
+ a| 
+`healthCheckNeedsAttnOverride`
+ a| 
+Esta definição substitui os resultados da verificação de integridade de um conjunto específico de condições de atenção das necessidades. Precisa de validação de atenção para um conjunto específico de condições ainda ocorre; ele não é ignorado. Se a verificação precisa de atenção falhar, você pode ignorar a falha usando este parâmetro ao executar o comando.
+
+Antes de qualquer download, o controlador verifica um conjunto específico de condições de atenção necessárias para determinar se ocorreu uma falha que pode impedir que o novo firmware do controlador faça o download com êxito. Se tal evento tiver ocorrido, o controlador normalmente não irá transferir o novo firmware.
+
+Este parâmetro força o controlador a baixar novo firmware. O valor padrão é `FALSE`. Defina este valor para `TRUE` se pretender forçar o controlador a transferir o novo firmware do controlador.
+
+|===
+
+
+== Nível mínimo de firmware
+
+5,00
+
+8,10 adiciona o `*healthCheckMelOverride*` parâmetro.
+
+8,70 adiciona `*healthCheckNeedsAttnOverride*` parâmetro.

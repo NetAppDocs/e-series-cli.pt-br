@@ -1,0 +1,87 @@
+---
+permalink: commands-a-z/save-storagearray-ibstats.html 
+sidebar: sidebar 
+keywords: save, storage, array, infiniband, statistics 
+summary: O comando save storageArray ibStats salva as estatísticas de desempenho InfiniBand do storage array em um arquivo. 
+---
+= Salvar estatísticas de storage array InfiniBand
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+ `save storageArray ibStats`O comando salva as estatísticas de desempenho InfiniBand do storage array em um arquivo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+[NOTE]
+====
+Este comando está obsoleto e é substituído pelo xref:save-storagearray-hostportstatistics.adoc[Salvar estatísticas da porta do host do storage array]comando.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+save storageArray ibStats [raw | baseline]
+file=pass:quotes["_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`raw`
+ a| 
+As estatísticas que são coletadas são todas estatísticas do início do dia do controlador. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`baseline`
+ a| 
+As estatísticas que são coletadas são todas estatísticas a partir do momento em que os controladores foram redefinidos para zero usando o `reset storageArray ibStatsBaseline` comando. Inclua o parâmetro entre colchetes ([ ]).
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as estatísticas de desempenho. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\sup\ibstat.csv"`
+
+O nome padrão do arquivo que contém as estatísticas de desempenho InfiniBand é `ib-statistics.csv`. Você pode usar qualquer nome de arquivo, mas você deve usar a `.csv` extensão.
+
+|===
+
+
+== Notas
+
+Se você não redefinir as estatísticas de linha de base InfiniBand desde o início do dia do controlador, a hora no início do dia é a hora de linha de base padrão.
+
+
+
+== Nível mínimo de firmware
+
+7,32
+
+8,41 este comando está obsoleto.

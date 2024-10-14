@@ -1,0 +1,150 @@
+---
+permalink: commands-a-z/set-tray-serviceallowedindicator.html 
+sidebar: sidebar 
+keywords: set, tray, service, action, allowed, indicator 
+summary: 'O comando Set tray serviceAllowedIndicator liga ou desliga a luz indicadora de Ação de Serviço permitida em um recipiente do ventilador de energia, um recipiente da bateria de interconexão ou um recipiente do módulo de serviços ambientais (ESM).' 
+---
+= Indicador de ação de serviço de bandeja definida permitida
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set tray serviceAllowedIndicator` comando liga ou desliga a luz indicadora da Ação de Serviço permitida num recipiente da ventoinha de alimentação, um recipiente da bateria de interligação ou um recipiente do módulo de serviços ambientais (ESM).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Se a matriz de armazenamento não suportar a funcionalidade de luz indicadora de Ação de Serviço permitida, este comando devolve um erro. Se a matriz de armazenamento suportar o comando, mas não conseguir ligar ou desligar a luz indicadora, este comando retorna um erro.
+
+Para ligar ou desligar a luz indicadora de Ação de Serviço permitida no recipiente do controlador, use o `set controller serviceAllowedIndicator` comando.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set tray pass:quotes[[_trayID_]]
+(powerFan [(left | right | top | bottom)] |
+interconnect |
+esm [(left | right | top | bottom)]) |
+battery [(left | right)] |
+fanCanister [(left | right)]  |
+powerCanister [(top | bottom)] |
+serviceAllowedIndicator=(on | off)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`tray`
+ a| 
+O tabuleiro onde reside o recipiente da ventoinha de alimentação, o recipiente de interligação, o recipiente ESM ou o recipiente da bateria. Os valores de ID da bandeja são `0` para `99`. Coloque o valor de ID da bandeja entre colchetes ([ ]). Se você não inserir um valor de ID de bandeja, o ID da bandeja da bandeja do controlador será o valor padrão.
+
+
+
+ a| 
+`powerFan`
+ a| 
+A luz indicadora Ação de Serviço permitida no depósito da ventoinha de alimentação que pretende ligar ou desligar. Os identificadores válidos do recipiente do ventilador elétrico são `left`, `right`, `top`, `bottom` ou . Coloque o identificador do recipiente do ventilador de energia entre colchetes ([ ]).
+
+
+
+ a| 
+`interconnect`
+ a| 
+A luz indicadora da Ação de Serviço permitida para o depósito da bateria de interligação.
+
+
+
+ a| 
+`esm`
+ a| 
+A luz indicadora de ação de serviço permitida para um recipiente ESM. Os identificadores válidos do recipiente ESM são `left`, `right`, `top`, `bottom` ou .
+
+
+
+ a| 
+`battery`
+ a| 
+A luz indicadora da Ação de Serviço permitida para uma bateria. Os identificadores válidos da bateria são `left` ou `right`.
+
+
+
+ a| 
+`fanCanister`
+ a| 
+A luz indicadora de ação de serviço permitida para um recipiente da ventoinha. Os identificadores válidos do recipiente do ventilador são `left` ou `right`.
+
+
+
+ a| 
+`powerCanister`
+ a| 
+A luz indicadora da ação de serviço permitida para um depósito de alimentação. Os identificadores válidos do recipiente de alimentação são `top` ou `bottom`.
+
+
+
+ a| 
+`serviceAllowedIndicator`
+ a| 
+A definição para ligar ou desligar a luz indicadora de Ação de Serviço permitida. Para ligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `on`. Para desligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `off`.
+
+|===
+
+
+== Notas
+
+Este comando foi originalmente definido para uso com a bandeja do controlador CE6998 Este comando não é suportado pelas bandejas do controlador que foram enviadas antes da introdução da bandeja do controlador CE6998
+
+
+
+== Exemplo
+
+Este comando acende a luz indicadora Ação de Serviço permitida para o ESM esquerdo na bandeja 5 com o endereço IP 155.155.155.155.
+
+[listing]
+----
+SMcli 123.145.167.214 123.145.167.215 -c "set tray [5]
+ESM [left] serviceAllowedIndicator=on;"
+----
+
+
+== Nível mínimo de firmware
+
+6,14 adiciona estes parâmetros:
+
+* `powerFan`
+* `interconnect`
+
+
+6,16 adiciona estes parâmetros:
+
+* `tray`
+* `esm`
+
+
+7,60 adiciona os identificadores `top` e `bottom`.
+
+7,60 adiciona os `powerCanister` parâmetros e `fanCanister`.

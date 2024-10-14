@@ -1,0 +1,103 @@
+---
+permalink: commands-a-z/set-snapgroup.html 
+sidebar: sidebar 
+keywords: set, snapshot, group, attributes 
+summary: O comando Set snapGroup define as propriedades de um grupo de instantâneos. 
+---
+= Definir atributos do grupo de instantâneos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set snapGroup` comando define as propriedades de um grupo de instantâneos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set snapGroup pass:quotes[["_snapGroupName_"]]
+[userLabel=pass:quotes["_snapGroupName_"]] |
+[repositoryFullPolicy=(failBaseWrites | purgeSnapImages) |
+[repositoryFullLimit=pass:quotes[_percentValue_] |
+[autoDeleteLimit=pass:quotes[_numberOfSnapImages_]] |
+[rollbackPriority=(lowest | low | medium | high | highest)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapGroup`
+ a| 
+O nome do grupo de instantâneos para o qual você está definindo propriedades. Coloque o nome do grupo instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome que você deseja dar ao grupo instantâneo. Utilize este parâmetro quando pretender mudar o nome do grupo de instantâneos. Inclua o nome do novo grupo instantâneo entre aspas duplas (" ").
+
+
+
+ a| 
+`repositoryFullPolicy`
+ a| 
+Como você deseja que o processamento de imagem instantânea continue se os volumes do repositório para o grupo de imagens instantâneas estiverem cheios. Pode optar por falhar gravações no volume (`failBaseWrites`base ) ou eliminar (limpar) as imagens instantâneas  `purgeSnapImages`). A ação padrão é `purgeSnapImages`.
+
+
+
+ a| 
+`repositoryFullLimit`
+ a| 
+A porcentagem da capacidade do volume do repositório na qual você recebe um aviso de que o volume do repositório de imagens instantâneas está quase cheio. Use valores inteiros. Por exemplo, um valor de 70 significa 70%. O valor padrão é 75.
+
+
+
+ a| 
+`autoDeleteLimit`
+ a| 
+O número máximo de imagens instantâneas que pretende eliminar automaticamente se tiver selecionado para eliminar as imagens instantâneas para uma política completa de repositório. Use valores inteiros. O valor padrão é 32.
+
+
+
+ a| 
+`rollBackPriority`
+ a| 
+Use este parâmetro para determinar se os recursos do sistema devem ser alocados à operação de reversão à custa do desempenho do sistema. Os valores válidos são `highest` `high` , , `medium`, `low` `lowest` Ou Um valor de `high` indica que a operação de reversão é priorizada sobre todas as outras e/S do host Um valor de `lowest` indica que a operação de reversão deve ser executada com impactos mínimo na e/S do host
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros. No entanto, você não precisa usar todos os parâmetros.
+
+
+
+== Nível mínimo de firmware
+
+7,83

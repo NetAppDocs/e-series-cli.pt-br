@@ -1,0 +1,85 @@
+---
+permalink: commands-a-z/show-ssd-cache.html 
+sidebar: sidebar 
+keywords: show, ssd, cache 
+summary: O comando show ssdCache exibe informações sobre o cache SSD. 
+---
+= Mostrar cache SSD
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show ssdCache` comando exibe informações sobre o cache SSD.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show ssdCache pass:quotes[[_ssdCacheName_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`ssdCache`
+ a| 
+O nome do cache SSD para o qual você deseja recuperar informações. Inclua o nome do cache SSD entre colchetes ([ ]). Se o nome do cache SSD tiver carateres ou números especiais, você deve incluir o nome do cache SSD em aspas duplas (" ") dentro de colchetes.
+
+|===
+
+
+== Notas
+
+Este comando retorna as informações de cache SSD semelhantes a este exemplo.
+
+[listing]
+----
+SSD Cache name: my_cache
+
+Status:                              Optimal
+Type:                                Read Only
+I/O characteristic type:             File System
+Maximum capacity allowed:            1,862.645 GB
+Current capacity:                    557.792 GB
+Additional capacity allowed          1,304.852 GB
+Drive capacities:                    All 278.896 GB
+Quality of Service (QoS) Attributes
+   Security capable:                 No
+   Secure:                           No
+   Data Assurance (DA) capable:      No
+Associated drives:
+
+Tray     Slot
+0        4
+0        11
+Volumes using SSD cache:             volume_test
+----
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

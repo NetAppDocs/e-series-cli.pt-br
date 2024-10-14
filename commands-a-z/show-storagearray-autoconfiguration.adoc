@@ -1,0 +1,383 @@
+---
+permalink: commands-a-z/show-storagearray-autoconfiguration.html 
+sidebar: sidebar 
+keywords: show, storage, array, auto, configuration 
+summary: O comando show storageArray AutoConfiguration mostra a configuração automática padrão que o storage array cria se você executar o comando autoconfigure storageArray. 
+---
+= Mostrar configuração automática da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray autoConfiguration` comando mostra a configuração automática padrão que o storage array cria se você executar o `autoConfigure storageArray` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Se você quiser determinar se a matriz de armazenamento pode suportar propriedades específicas, insira o parâmetro para as propriedades quando executar este comando. Você não precisa inserir nenhum parâmetro para este comando retornar informações de configuração.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show storageArray autoConfiguration
+[driveType=(SAS | NVMe4K)
+driveMediaType=(HDD | SSD | unknown | allMedia)
+raidLevel=(0 | 1 | 3 | 5 | 6)
+pass:quotes[volumeGroupWidth=_numberOfDrives_]
+pass:quotes[volumeGroupCount=_numberOfVolumeGroups_]
+pass:quotes[volumesPerGroupCount=_numberOfVolumesPerGroup_]
+pass:quotes[hotSpareCount=_numberOfHotspares_]
+pass:quotes[segmentSize=_segmentSizeValue_]
+cacheReadPrefetch=(TRUE | FALSE)
+securityType=(none | capable | enabled)
+secureDrives=(fips | fde)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`driveType`
+ a| 
+O tipo de unidades que você deseja usar para a matriz de armazenamento.
+
+O `driveType` parâmetro não é necessário se apenas um tipo de unidade estiver no storage de armazenamento. Você deve usar esse parâmetro quando tiver mais de um tipo de unidade em seu storage array.
+
+Os tipos de unidade válidos são:
+
+* `SAS`
+* `NVMe4K`
+
+
+
+
+ a| 
+`driveMediaType`
+ a| 
+O tipo de Mídia de unidade que você deseja usar para o grupo de volume do repositório espelhado. Os suportes de dados válidos da unidade são os seguintes:
+
+* `HDD` -- Use esta opção quando tiver discos rígidos na bandeja de unidades
+* `SSD` -- Use esta opção quando tiver unidades de estado sólido na bandeja de unidades
+* `unknown` -- Use se você não tiver certeza de quais tipos de Mídia de unidade estão na bandeja de unidades
+* `allMedia` -- Use esta opção quando quiser usar todos os tipos de Mídia de unidade que estão na bandeja de unidades
+
+
+Utilize este parâmetro quando utilizar o `repositoryDriveCount` parâmetro.
+
+Você deve usar esse parâmetro quando tiver mais de um tipo de Mídia de unidade em seu storage de armazenamento.
+
+
+
+ a| 
+`raidLevel`
+ a| 
+O nível RAID do grupo de volumes que contém as unidades na matriz de armazenamento. Os níveis RAID válidos são `0`, `1`, `3`, `5` `6` ou .
+
+
+
+ a| 
+`volumeGroupWidth`
+ a| 
+O número de unidades em um grupo de volumes no storage de armazenamento, que depende da capacidade das unidades. Use valores inteiros.
+
+
+
+ a| 
+`volumeGroupCount`
+ a| 
+O número de grupos de volumes no storage array. Use valores inteiros.
+
+
+
+ a| 
+`volumesPerGroupCount`
+ a| 
+O número de volumes de capacidade igual por grupo de volumes. Use valores inteiros.
+
+
+
+ a| 
+`hotSpareCount`
+ a| 
+O número de hot spares que você deseja no storage array. Use valores inteiros.
+
+
+
+ a| 
+`segmentSize`
+ a| 
+A quantidade de dados (em KB) que o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Os valores válidos são `8` `16` , `32`, `64`, , , `128`, `256`, ou `512`.
+
+
+
+ a| 
+`cacheReadPrefetch`
+ a| 
+A configuração para ativar ou desativar o cache ler pré-busca. Para desativar a pré-busca de leitura de cache, defina este parâmetro como `FALSE`. Para ativar a pré-busca de leitura de cache, defina este parâmetro como `TRUE`.
+
+
+
+ a| 
+`securityType`
+ a| 
+A configuração para especificar o nível de segurança ao criar os grupos de volumes e todos os volumes associados. Estas definições são válidas:
+
+* `none` -- o grupo de volumes e os volumes não são seguros.
+* `capable` -- o grupo de volumes e os volumes são capazes de ter a segurança definida, mas a segurança não foi ativada.
+* `enabled` -- o grupo de volumes e os volumes têm a segurança ativada.
+
+
+
+
+ a| 
+`secureDrives`
+ a| 
+O tipo de unidades seguras para usar no grupo de volumes. Estas definições são válidas:
+
+* `fips` -- para usar somente unidades compatíveis com FIPS.
+* `fde` -- para usar unidades compatíveis com FDE.
+
+
+[NOTE]
+====
+Use este parâmetro junto com o `securityType` parâmetro. Se você especificar `none` para o `securityType` parâmetro, o valor do `secureDrives` parâmetro será ignorado, porque os grupos de volume não seguros não precisam ter tipos de unidade segura especificados.
+
+====
+|===
+
+
+== Notas
+
+Se você não especificar nenhuma propriedade, este comando retornará os candidatos RAID nível 5 para cada tipo de unidade. Se os candidatos RAID nível 5 não estiverem disponíveis, este comando retornará candidatos para RAID nível 6, RAID nível 3, RAID nível 1 ou RAID nível 0. Quando você especifica as propriedades de configuração automática, os controladores validam que o firmware pode suportar as propriedades.
+
+
+
+== Unidades e grupos de volumes
+
+Um grupo de volumes é um conjunto de unidades que são logicamente agrupadas pelos controladores no storage array. O número de unidades em um grupo de volumes é uma limitação do nível RAID e do firmware da controladora. Ao criar um grupo de volumes, siga estas diretrizes:
+
+* A partir da versão de firmware 7,10, você pode criar um grupo de volume vazio para que você possa reservar a capacidade para uso posterior.
+* Não é possível misturar tipos de unidade, como SAS e Fibre Channel, em um único grupo de volume.
+* O número máximo de unidades em um grupo de volumes depende dessas condições:
++
+** O tipo de controlador
+** O nível RAID
+
+
+* Os níveis de RAID incluem: 0, 1, 10, 3, 5 e 6 .
++
+** Em uma matriz de armazenamento CDE3992 ou CDE3994, um grupo de volumes com RAID nível 0 e um grupo de volumes com RAID nível 10 podem ter um máximo de 112 unidades.
+** Em uma matriz de armazenamento CE6998, um grupo de volumes com RAID nível 0 e um grupo de volumes com RAID nível 10 podem ter um máximo de 224 unidades.
+** Um grupo de volumes com RAID nível 3, RAID nível 5 ou RAID nível 6 não pode ter mais de 30 unidades.
+** Um grupo de volumes com RAID nível 6 deve ter, no mínimo, cinco unidades.
+** Se um grupo de volumes com RAID nível 1 tiver quatro ou mais unidades, o software de gerenciamento de armazenamento converte automaticamente o grupo de volumes para RAID nível 10, que é RAID nível 1 e RAID nível 0.
+
+
+* Se um grupo de volumes contiver unidades com capacidades diferentes, a capacidade geral do grupo de volumes será baseada na unidade de menor capacidade.
+* Para ativar a proteção contra perda de bandeja/gaveta, consulte as tabelas a seguir para obter critérios adicionais:
+
+
+[cols="3*"]
+|===
+| Nível | Critérios para proteção contra perda de bandejas | Número mínimo de bandejas necessário 
+
+
+ a| 
+`Disk Pool`
+ a| 
+O pool de discos não contém mais de duas unidades em uma única bandeja
+ a| 
+6
+
+
+
+ a| 
+`RAID 6`
+ a| 
+O grupo de volumes não contém mais do que duas unidades em uma única bandeja
+ a| 
+3
+
+
+
+ a| 
+`RAID 3` ou `RAID 5`
+ a| 
+Cada unidade do grupo de volume está localizada em uma bandeja separada
+ a| 
+3
+
+
+
+ a| 
+`RAID 1`
+ a| 
+Cada unidade em um par RAID 1 deve estar localizada em uma bandeja separada
+ a| 
+2
+
+
+
+ a| 
+`RAID 0`
+ a| 
+Não é possível obter a proteção contra perda do tabuleiro.
+ a| 
+Não aplicável
+
+|===
+[cols="3*"]
+|===
+| Nível | Critérios para proteção contra perda de gaveta | Número mínimo de gavetas necessário 
+
+
+ a| 
+`Disk Pool`
+ a| 
+O pool inclui unidades de todas as cinco gavetas e há um número igual de unidades em cada gaveta. Uma bandeja de 60 unidades pode obter proteção contra perda de gaveta quando o pool de discos contém 15, 20, 25, 30, 35, 40, 45, 50, 55 ou 60 unidades.
+ a| 
+5
+
+
+
+ a| 
+`RAID 6`
+ a| 
+O grupo de volumes não contém mais do que duas unidades em uma única gaveta.
+ a| 
+3
+
+
+
+ a| 
+`RAID 3` ou `RAID 5`
+ a| 
+Cada unidade do grupo de volume está localizada em uma gaveta separada.
+ a| 
+3
+
+
+
+ a| 
+`RAID 1`
+ a| 
+Cada unidade em um par espelhado deve estar localizada em uma gaveta separada.
+ a| 
+2
+
+
+
+ a| 
+`RAID 0`
+ a| 
+Não é possível obter proteção contra perda de gaveta.
+ a| 
+Não aplicável
+
+|===
+
+
+== Peças sobressalentes quentes
+
+Com grupos de volumes, uma estratégia valiosa para proteger os dados é atribuir unidades disponíveis no storage como unidades hot spare. Um hot spare é uma unidade, que não contém dados, que atua como standby na matriz de armazenamento no caso de uma unidade falhar em um grupo de volumes RAID 1, RAID 3, RAID 5 ou RAID 6. O hot spare adiciona outro nível de redundância ao storage array.
+
+Geralmente, as unidades hot spare devem ter capacidades iguais ou superiores à capacidade usada nas unidades que estão protegendo. As unidades hot spare devem ser do mesmo tipo de Mídia, do mesmo tipo de interface e da mesma capacidade que as unidades que estão protegendo.
+
+Se uma unidade falhar no storage de armazenamento, o hot spare normalmente será substituído automaticamente pela unidade com falha sem a necessidade de sua intervenção. Se um hot spare estiver disponível quando uma unidade falhar, o controlador usará paridade de dados de redundância para reconstruir os dados no hot spare. O suporte de evacuação de dados também permite que os dados sejam copiados para um hot spare antes que o software marque a unidade "com falha".
+
+Depois que a unidade com falha for fisicamente substituída, você pode usar uma das seguintes opções para restaurar os dados:
+
+Depois de substituir a unidade com falha, os dados do hot spare são copiados de volta para a unidade de substituição. Esta ação é chamada copyback.
+
+Se você designar a unidade hot spare como um membro permanente de um grupo de volume, a operação de cópia não será necessária.
+
+A disponibilidade de proteção contra perda de bandeja e proteção contra perda de gaveta para um grupo de volumes depende da localização das unidades que compõem o grupo de volumes. A proteção contra perda de bandeja e a proteção contra perda de gaveta podem ser perdidas devido a uma unidade com falha e à localização da unidade hot spare. Para garantir que a proteção contra perda de bandeja e a proteção contra perda de gaveta não sejam afetadas, você deve substituir uma unidade com falha para iniciar o processo de cópia de segurança.
+
+O storage de armazenamento seleciona automaticamente unidades compatíveis com Data Assurance (DA) para cobertura hot spare de volumes habilitados PARA DA.
+
+Certifique-se de ter unidades compatíveis com DA no storage para cobertura hot spare de volumes habilitados PARA DA. Para obter mais informações sobre unidades compatíveis com DA, consulte o recurso Data Assurance.
+
+As unidades com capacidade segura (FIPS e FDE) podem ser usadas como hot spare para unidades com capacidade segura e sem capacidade de segurança. As unidades com capacidade para não proteger podem fornecer cobertura para outras unidades com capacidade para não proteger e para unidades com capacidade segura se o grupo de volumes não tiver a segurança ativada. Um grupo de volumes FIPS só pode usar uma unidade FIPS como hot spare. No entanto, você pode usar um hot spare FIPS para grupos de volumes habilitados para segurança, com capacidade segura e não protegida.
+
+Se você não tiver um hot spare, ainda poderá substituir uma unidade com falha enquanto o storage de armazenamento estiver operando. Se a unidade fizer parte de um grupo de volumes RAID 1, RAID 3, RAID 5 ou RAID 6, a controladora usará paridade de dados de redundância para reconstruir automaticamente os dados na unidade de substituição. Esta ação chama-se reconstrução.
+
+
+
+== Tamanho do segmento
+
+O tamanho de um segmento determina quantos blocos de dados o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Cada bloco de dados armazena 512 bytes de dados. Um bloco de dados é a menor unidade de armazenamento. O tamanho de um segmento determina quantos blocos de dados contém. Por exemplo, um segmento de 8 KB contém 16 blocos de dados. Um segmento de 64 KB contém 128 blocos de dados.
+
+Quando você insere um valor para o tamanho do segmento, o valor é verificado em relação aos valores suportados fornecidos pelo controlador no tempo de execução. Se o valor inserido não for válido, o controlador retornará uma lista de valores válidos. O uso de uma única unidade para uma única solicitação deixa outras unidades disponíveis para atender simultaneamente a outras solicitações. Se o volume estiver em um ambiente onde um único usuário está transferindo grandes unidades de dados (como Multimídia), o desempenho é maximizado quando uma única solicitação de transferência de dados é atendida com uma única faixa de dados. (Uma faixa de dados é o tamanho do segmento que é multiplicado pelo número de unidades no grupo de volumes que são usadas para transferências de dados.) Neste caso, várias unidades são usadas para a mesma solicitação, mas cada unidade é acessada apenas uma vez.
+
+Para obter o desempenho ideal em um ambiente de armazenamento de sistemas de arquivos ou banco de dados multiusuário, defina o tamanho do segmento para minimizar o número de unidades necessárias para atender a uma solicitação de transferência de dados.
+
+
+
+== Cache lê pré-busca
+
+A pré-busca de leitura de cache permite que o controlador copie blocos de dados adicionais no cache enquanto o controlador lê e copia blocos de dados solicitados pelo host da unidade para o cache. Essa ação aumenta a chance de que uma futura solicitação de dados possa ser atendida a partir do cache. A pré-busca de leitura de cache é importante para aplicativos Multimídia que usam transferências de dados sequenciais. Os valores válidos para o `cacheReadPrefetch` parâmetro são `TRUE` ou `FALSE`. A predefinição é `TRUE`.
+
+
+
+== Tipo de segurança
+
+Use o `securityType` parâmetro para especificar as configurações de segurança do storage array.
+
+Antes de definir o `securityType` parâmetro como `enabled`, você deve criar uma chave de segurança do storage array. Use o `create storageArray securityKey` comando para criar uma chave de segurança de storage array. Estes comandos estão relacionados com a chave de segurança:
+
+* `create storageArray securityKey`
+* `export storageArray securityKey`
+* `import storageArray securityKey`
+* `set storageArray securityKey`
+* `enable volumeGroup [volumeGroupName] security`
+* `enable diskPool [diskPoolName] security`
+
+
+
+
+== Unidades seguras
+
+As unidades com capacidade segura podem ser unidades com criptografia total de disco (FDE) ou unidades FIPS (Federal Information Processing Standard). Use o `secureDrives` parâmetro para especificar o tipo de unidades seguras a serem usadas. Os valores que você pode usar são `fips` e `fde`.
+
+
+
+== Exemplo de comando
+
+[listing]
+----
+show storageArray autoConfiguration securityType=capable secureDrives=fips;
+----
+
+
+== Nível mínimo de firmware
+
+O 7,10 adiciona capacidade RAID nível 6 e remove limites hot spare.
+
+7,50 adiciona o `securityType` parâmetro.
+
+7,75 adiciona o `dataAssurance` parâmetro.
+
+8,25 adiciona o `secureDrives` parâmetro.

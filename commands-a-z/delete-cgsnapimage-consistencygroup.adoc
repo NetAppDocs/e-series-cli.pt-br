@@ -1,0 +1,90 @@
+---
+permalink: commands-a-z/delete-cgsnapimage-consistencygroup.html 
+sidebar: sidebar 
+keywords: delete, consistency, group, snapshot, image 
+summary: O comando delete cgSnapImage consistentcyGroup exclui as imagens de snapshot em um grupo de consistência. 
+---
+= Eliminar imagem instantânea do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete cgSnapImage consistencyGroup` comando elimina as imagens instantâneas num grupo de consistência.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+delete cgSnapImage consistencyGroup=pass:quotes[_"consistencyGroupName"_]
+pass:quotes[[deleteCount=_numberOfSnapImages_]
+[retainCount=pass:quotes[_numberOfSnapImages_]
+[ignoreSnapVolume=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`consistencyGroup`
+ a| 
+O nome do grupo de consistência a partir do qual pretende eliminar as imagens de instantâneos. Inclua o nome do grupo de consistência entre aspas duplas (" ").
+
+
+
+ a| 
+`deleteCount`
+ a| 
+O número de imagens instantâneas que pretende eliminar do grupo de consistência. Use valores inteiros.
+
+Este parâmetro elimina primeiro a imagem instantânea mais antiga e continua a eliminar as imagens instantâneas mais antigas até atingir o número introduzido.
+
+
+
+ a| 
+`retainCount`
+ a| 
+O número de imagens instantâneas que pretende manter no grupo de consistência. Use valores inteiros.
+
+Este parâmetro mantém as imagens instantâneas mais recentes no grupo de consistência.
+
+
+
+ a| 
+`ignoreSnapVolume`
+ a| 
+Determina se o volume instantâneo do grupo de consistência associado é mantido ou excluído. Este parâmetro só se aplica se a imagem instantânea do grupo de consistência estiver associada a um volume instantâneo do grupo de consistência. Para manter o volume instantâneo, defina este parâmetro como `TRUE`. Para eliminar o volume instantâneo, defina este parâmetro como `FALSE`. O valor padrão é `FALSE`.
+
+|===
+
+
+== Notas
+
+Se as imagens instantâneas não puderem ser eliminadas para todos os volumes de membros relevantes do grupo de consistência, a operação falhará e nenhuma das imagens instantâneas será eliminada.
+
+Quando você exclui uma imagem instantânea do grupo de consistência associada a um volume instantâneo do grupo de consistência, o membro do volume instantâneo correspondente no volume instantâneo do grupo de consistência é transferido para o estado parado. Um membro do volume instantâneo no estado parado já não tem uma relação com o grupo instantâneo da imagem instantânea eliminada. No entanto, um membro do volume instantâneo no estado parado mantém sua relação com o volume instantâneo do grupo de consistência.
+
+
+
+== Nível mínimo de firmware
+
+7,83

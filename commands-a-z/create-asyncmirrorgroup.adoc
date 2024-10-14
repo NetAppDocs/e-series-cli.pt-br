@@ -1,0 +1,191 @@
+---
+permalink: commands-a-z/create-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: create, asynchronous, mirror, group 
+summary: O comando Create asyncMirrorGroup cria um novo grupo de espelhos assíncronos vazio tanto no storage array local quanto no storage array remoto. 
+---
+= Crie um grupo de espelhos assíncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create asyncMirrorGroup` comando cria um novo grupo de espelhos assíncronos vazio tanto na matriz de armazenamento local quanto na matriz de armazenamento remoto.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Um grupo de espelhos assíncrono é um contentor que pode abrigar vários pares espelhados para que eles possam ser gerenciados como uma entidade. Você cria um grupo de espelhos assíncronos para definir as configurações de sincronização para todos os pares espelhados dentro do grupo. Cada par espelhado em um grupo de espelhos assíncrono compartilha as mesmas configurações de sincronização, função primária e secundária e modo de gravação.
+
+O grupo de espelhos assíncronos está associado ao storage array local e ao storage array remoto usados para espelhamento. O storage array local é o lado principal do grupo de espelhos assíncronos, enquanto o storage array remoto é o lado secundário do grupo de espelhos assíncronos. Todos os volumes adicionados ao grupo de espelhos assíncronos na matriz de armazenamento local têm a função principal na relação de espelhamento. Posteriormente, todos os volumes adicionados ao grupo de espelhos assíncronos na matriz de armazenamento remoto detêm a função secundária na relação de espelhamento.
+
+Certifique-se de executar o `Create Asynchronous Mirror Group` comando na matriz de armazenamento local. A criação assíncrona do grupo de espelhos é iniciada a partir do storage array que contém os volumes que detêm a função principal na relação de espelhamento. Você usa o `Create Asynchronous Mirror Group` comando para especificar a identidade do array de armazenamento remoto que contém os volumes que detêm a função secundária na relação de espelhamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create asyncMirrorGroup userLabel=pass:quotes[_"asyncMirrorGroupName"_]
+(remoteStorageArrayName=pass:quotes[_"storageArrayName"_] | remoteStorageArrayWWN=pass:quotes[_"wwID"_])
+[remotePassword=pass:quotes[_"password"_]
+interfaceType=(FC | iSCSI)
+[syncInterval=pass:quotes[_integer_](minutes | hours | days)]
+[warningSyncThreshold=pass:quotes[_integer_](minutes | hours | days)]
+[warningRecoveryThreshold=pass:quotes[_integer_](minutes | hours | days)]
+[warningThresholdPercent=pass:quotes[_percentValue_]]
+[autoResync=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`userLabel`
+ a| 
+O nome do novo grupo de espelhos assíncronos que você deseja criar. Inclua o novo nome do grupo de espelhos assíncronos em aspas duplas (" ").
+
+O nome deve ser exclusivo nos storages locais e remotos.
+
+
+
+ a| 
+`remoteStorageArrayName`
+ a| 
+O nome do storage array remoto no qual você está espelhando o grupo de espelhos assíncronos. Coloque o nome da matriz de armazenamento entre aspas duplas (" ").
+
+A matriz de armazenamento remoto deve ter o mesmo tipo de conexão que a matriz de armazenamento local.
+
+
+
+ a| 
+`remoteStorageArrayWWN`
+ a| 
+O World Wide Identifier (WWID) do storage array remoto no qual você está espelhando o grupo de espelhos assíncronos. Você pode usar o WWID em vez do nome do storage array para identificar o storage array. Coloque o WWID entre parênteses angulares (>).
+
+A matriz de armazenamento remoto deve ter o mesmo tipo de conexão que a matriz de armazenamento local.
+
+
+
+ a| 
+`remotePassword`
+ a| 
+A senha para o storage de armazenamento remoto. Use este parâmetro quando a matriz de armazenamento remoto estiver protegida por senha. Insira a senha entre aspas duplas (" ").
+
+
+
+ a| 
+`interfaceType`
+ a| 
+Especifique qual tipo de conexão usar: Malha Fibre Channel ou interface iSCSI. (O padrão é Fibre Channel.) O storage array local e o storage array remoto devem ser conectados por meio de uma malha Fibre Channel ou de uma interface iSCSI adequada.
+
+
+
+ a| 
+`syncInterval`
+ a| 
+Especifique o período de tempo entre o envio automático de atualizações de dados modificados da matriz de armazenamento local para a matriz de armazenamento remoto. Você pode especificar o tempo em minutos, horas ou dias.
+
+[NOTE]
+====
+Não adicione um espaço entre o número inteiro e o período de tempo.
+
+====
+Exemplo: `10minutes`
+
+
+
+ a| 
+`warningSyncThreshold`
+ a| 
+Especifique o período de tempo a aguardar até que um aviso seja acionado para os casos em que a sincronização de todos os volumes dentro do grupo de espelhos assíncronos demora mais do que o tempo definido. Você pode especificar o tempo em minutos, horas ou dias.
+
+[NOTE]
+====
+Não adicione um espaço entre o número inteiro e o período de tempo.
+
+====
+Exemplo: `30minutes`
+
+
+
+ a| 
+`warningRecoveryThreshold`
+ a| 
+Especifique o período de tempo a aguardar até que um aviso seja acionado quando a atualização automática de dados para a imagem pontual na matriz de armazenamento remoto for anterior ao tempo definido. Defina o limite a partir do final da atualização anterior. Você pode especificar o tempo em minutos, horas ou dias.
+
+[NOTE]
+====
+Você deve definir o limite do ponto de recuperação para ser duas vezes maior que o limite do intervalo de sincronização.
+
+====
+[NOTE]
+====
+Não adicione um espaço entre o número inteiro e o período de tempo.
+
+====
+Exemplo: `60minutes`
+
+
+
+ a| 
+`warningThresholdPercent`
+ a| 
+Especifique o período de tempo para esperar até que um aviso seja acionado quando a capacidade de um volume de repositório espelhado atingir a porcentagem definida. Defina o limite por porcentagem (%) da capacidade restante.
+
+
+
+ a| 
+`autoResync`
+ a| 
+As configurações de ressincronização automática entre os volumes primários e os volumes secundários de um par espelhado assíncrono dentro de um grupo de espelhos assíncronos. Este parâmetro tem estes valores:
+
+* `enabled` -- a ressincronização automática está ativada. Não é necessário fazer mais nada para ressincronizar o volume primário e o volume secundário.
+* `disabled` -- a ressincronização automática está desligada. Para ressincronizar o volume primário e o volume secundário, você deve executar o `resume asyncMirrorGroup` comando.
+
+
+|===
+
+
+== Notas
+
+* O recurso de espelhamento assíncrono deve ser ativado e ativado nos storages de armazenamento local e remoto que serão usados para atividades de espelhamento.
+* Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes. Os nomes podem ter um máximo de 30 carateres.
+* Os storage arrays locais e remotos devem ser conectados por meio de uma malha Fibre Channel ou de uma interface iSCSI.
+* As senhas são armazenadas em cada matriz de armazenamento em um domínio de gerenciamento. Se uma senha não tiver sido definida anteriormente, você não precisará de uma senha. A palavra-passe pode ser qualquer combinação de carateres alfanuméricos com um máximo de 30 carateres. (Você pode definir uma senha de storage array usando o `set storageArray` comando.)
+* Dependendo da configuração, há um número máximo de grupos de espelhos assíncronos que você pode criar em um storage array.
+* Grupos de espelhos assíncronos são criados vazios e pares espelhados são adicionados a eles mais tarde. Somente pares espelhados podem ser adicionados a um grupo de espelhos assíncrono. Cada par espelhado está associado a exatamente um grupo de espelhos assíncrono.
+* O processo de espelhamento assíncrono é iniciado em um intervalo de sincronização definido. As imagens pontuais periódicas são replicadas porque apenas os dados alterados são copiados e não o volume inteiro.
+
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

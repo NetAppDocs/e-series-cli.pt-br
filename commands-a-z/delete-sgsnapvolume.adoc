@@ -1,0 +1,63 @@
+---
+permalink: commands-a-z/delete-sgsnapvolume.html 
+sidebar: sidebar 
+keywords: delte, snapvolume, command, snapshot, consistency, group, optionally, repository, members 
+summary: O comando delete sgSnapvolume exclui o volume instantâneo de um grupo de consistência. Opcionalmente, você também pode excluir os membros do repositório. 
+---
+= Eliminar o volume instantâneo do grupo de consistência
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete sgSnapVolume` comando exclui o volume instantâneo de um grupo de consistência. Opcionalmente, você também pode excluir os membros do repositório.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete cgSnapVolume ["_snapVolumeName_"]]
+[deleteRepositoryMembers=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`cgSnapVolume`
+ a| 
+O nome do volume instantâneo do grupo de consistência que você deseja excluir. Inclua o nome do volume instantâneo do grupo de consistência entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`deleteRepositoryMembers`
+ a| 
+O parâmetro para salvar ou excluir os volumes dos membros. Para salvar os volumes de membros, defina este parâmetro como `TRUE`. Para excluir os volumes de membros, defina este parâmetro como `FALSE`. O valor padrão é `TRUE`.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

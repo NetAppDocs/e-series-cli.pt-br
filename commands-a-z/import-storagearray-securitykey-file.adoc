@@ -1,0 +1,115 @@
+---
+permalink: commands-a-z/import-storagearray-securitykey-file.html 
+sidebar: sidebar 
+keywords: import, storage, array, security, file, command, unlock, disk, encryption, context, syntax, firmware level, role, context 
+summary: 'O comando Import storageArray securityKey file desbloqueia uma ou mais unidades de criptografia completa de disco (FDE) que você moveu de uma matriz de armazenamento para outra matriz de armazenamento.' 
+---
+= Importar chave de segurança do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `import storageArray securityKey file` comando desbloqueia uma ou mais unidades de criptografia completa de disco (FDE) que você moveu de uma matriz de armazenamento para outra matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 ou EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+Apenas as unidades com a chave de segurança correspondente são desbloqueadas. Depois de desbloqueados, a chave de segurança para o novo storage array é aplicada.
+
+[NOTE]
+====
+Este comando aplica-se ao gerenciamento de chaves internas e externas.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+import storageArray securityKey file="fileName"
+passPhrase="passPhraseString"
+[forceOverwrite=(TRUE|FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo que tem a chave de segurança original das unidades FDE importadas. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[NOTE]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk`.
+
+====
+
+
+ a| 
+`passPhrase`
+ a| 
+A cadeia de carateres que fornece autenticação para a chave de segurança.
+
+
+
+ a| 
+`forceOverwrite`
+ a| 
+Se este parâmetro estiver definido como `TRUE`, a importação forçará a substituição da chave FDE quando a importação normalmente não for permitida, como quando um controlador estiver ausente ou com falha. Por padrão, o parâmetro force overwrite é definido como FALSE.
+
+|===
+
+
+== Notas
+
+O firmware da controladora cria um bloqueio que restringe o acesso às unidades FDE. As unidades FDE têm um estado chamado Security Capable. Quando você cria uma chave de segurança, o estado é definido como Segurança ativada, o que restringe o acesso a todas as unidades FDE existentes no storage de armazenamento.
+
+Sua frase-passe deve atender a estes critérios:
+
+* Deve ter entre oito e 32 carateres.
+* Deve conter pelo menos uma letra maiúscula.
+* Deve conter pelo menos uma letra minúscula.
+* Deve conter pelo menos um número.
+* Deve conter pelo menos um caractere não alfanumérico, por exemplo.
+
+
+[NOTE]
+====
+Se sua frase-passe não atender a esses critérios, você receberá uma mensagem de erro e será solicitado a repetir o comando.
+
+====
+
+
+== Nível mínimo de firmware
+
+7,40
+
+8,40 adicionou a capacidade de importar uma chave de segurança de storage array externo
+
+11.70.1 adicionou o `forceOverwrite` parâmetro.

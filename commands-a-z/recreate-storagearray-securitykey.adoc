@@ -1,0 +1,109 @@
+---
+permalink: commands-a-z/recreate-storagearray-securitykey.html 
+sidebar: sidebar 
+keywords: recreate, external, security key 
+summary: O comando recrie storageArray securityKey regenera uma chave de segurança de storage array para uso com o recurso de gerenciamento de chaves de segurança externas. 
+---
+= Recriar a chave de segurança externa
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `recreate storageArray securityKey` comando regenera uma chave de segurança de storage array para uso com o recurso de gerenciamento de chaves de segurança externas.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando aplica-se apenas ao gerenciamento de chaves externas.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+recreate storageArray securityKey
+passPhrase=pass:quotes[_"passPhraseString"_
+file="_fileName"_]
+[deleteOldKey=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`passPhrase`
+ a| 
+Uma cadeia de carateres que criptografa a chave de segurança para que você possa armazenar a chave de segurança em um arquivo externo. Inclua a frase-passe em aspas duplas (" ").
+
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo que tem a chave de segurança. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[NOTE]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk`.
+
+====
+
+
+ a| 
+`deleteOldKey`
+ a| 
+Defina este parâmetro como `TRUE` para excluir a chave de segurança antiga do servidor de gerenciamento de chaves externo após a criação da nova chave de segurança. A predefinição é `FALSE`.
+
+|===
+
+
+== Notas
+
+Sua frase-passe deve atender a estes critérios:
+
+* A frase-passe deve ter entre oito e 32 carateres.
+* A frase-passe deve conter pelo menos uma letra maiúscula.
+* A frase-passe deve conter pelo menos uma letra minúscula.
+* A frase-passe deve conter pelo menos um número.
+* A frase-passe deve conter pelo menos um caractere não alfanumérico, por exemplo, a.
+
+
+[NOTE]
+====
+Se sua frase-passe não atender a esses critérios, você receberá uma mensagem de erro.
+
+====
+
+
+== Nível mínimo de firmware
+
+7,70
+
+11,73 adiciona o `deleteOldKey` parâmetro.

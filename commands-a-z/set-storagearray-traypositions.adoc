@@ -1,0 +1,73 @@
+---
+permalink: commands-a-z/set-storagearray-traypositions.html 
+sidebar: sidebar 
+keywords: set, storage, array, tray, positions 
+summary: O comando Set storageArray trayPosititions define a posição das bandejas em um storage array. Você deve incluir todas as bandejas no storage array quando inserir esse comando. 
+---
+= Defina as posições da bandeja da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray trayPositions` comando define a posição das bandejas em um storage array. Você deve incluir todas as bandejas no storage array quando inserir esse comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set storageArray trayPositions=pass:quotes[(controller | _trayID_ ... _trayIDn_)]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`trayPositions`
+ a| 
+Uma lista de todas as IDs da bandeja. A sequência das IDs da bandeja na lista define as posições da bandeja da controladora e das bandejas de unidades em um storage de armazenamento. Os valores válidos são `0` para `99`. Insira os valores de ID da bandeja separados por um espaço. Inclua a lista de valores de ID da bandeja entre parênteses. Para matrizes de armazenamento em que a bandeja do controlador tem um identificador predefinido que não está no intervalo de valores válidos de posição da bandeja, use o `controller` valor.
+
+|===
+
+
+== Notas
+
+Este comando define a posição de uma bandeja em uma matriz de armazenamento pela posição da ID da bandeja na `trayPositions` lista. Por exemplo, se você tiver uma bandeja de controladora com um ID definido como 84 e bandejas de unidades com IDs definidas como 1, 12 e 50, a `trayPositions` sequência (`84 1 12 50`) coloca a bandeja do controlador na primeira posição, a bandeja de unidades 1 na segunda posição, a bandeja de unidades 12 na terceira posição e a bandeja de unidades 50 na quarta posição. A `trayPositions` sequência (`1 84 50 12`) coloca a bandeja do controlador na segunda posição, a bandeja de unidades 1 na primeira posição, a bandeja de unidades 50 na terceira posição e a bandeja de unidades 12 na quarta posição.
+
+[NOTE]
+====
+É necessário incluir todas as bandejas no storage array na lista definida pelo `trayPositions` parâmetro. Se o número de bandejas na lista não corresponder ao número total de bandejas na matriz de armazenamento, será exibida uma mensagem de erro.
+
+====
+[NOTE]
+====
+O software de gestão mostra visualmente a primeira posição na parte superior e as outras posições na ordem relativa abaixo com a última posição na parte inferior.
+
+====
+
+
+== Nível mínimo de firmware
+
+6,10
+
+Para 6,14 e 6,16, `controller` não é um valor válido.

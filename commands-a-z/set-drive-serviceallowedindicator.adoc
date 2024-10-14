@@ -1,0 +1,81 @@
+---
+permalink: commands-a-z/set-drive-serviceallowedindicator.html 
+sidebar: sidebar 
+keywords: set, drive, service, action, allowed, indicator 
+summary: O comando Set drive serviceAllowedIndicator liga ou desliga a luz indicadora Ação de Serviço permitida em uma unidade ou unidades em bandejas de unidades que suportam o recurso de luz indicadora Ação de Serviço permitida. 
+---
+= Definir o indicador de ação de serviço da unidade permitida
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set drive serviceAllowedIndicator` comando liga ou desliga a luz indicadora Ação de Serviço permitida em uma unidade ou unidades em bandejas de unidades que suportam o recurso de luz indicadora Ação de Serviço permitida.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Se a matriz de armazenamento não suportar a funcionalidade de luz indicadora de Ação de Serviço permitida, este comando devolve um erro. Se a matriz de armazenamento suportar o comando, mas não conseguir ligar ou desligar a luz indicadora, este comando retorna um erro.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set (drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drivespass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]])
+serviceAllowedIndicator=(on | off)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drive` ou `drives`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`serviceAllowedIndicator`
+ a| 
+A definição para ligar ou desligar a luz indicadora de Ação de Serviço permitida. Para ligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `on`. Para desligar a luz indicadora Ação de Serviço permitida, defina este parâmetro para `off`.
+
+|===
+
+
+== Notas
+
+ `drive`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+
+
+== Nível mínimo de firmware
+
+6,16
+
+7,60 adiciona a `drawerID` entrada do usuário.

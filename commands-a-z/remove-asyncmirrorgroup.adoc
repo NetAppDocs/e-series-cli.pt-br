@@ -1,0 +1,74 @@
+---
+permalink: commands-a-z/remove-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: remove, incomplete, asynchronous, mirror, pair, group 
+summary: O comando remove asyncMirrorGroup remove um volume de par espelhado órfão no storage array. 
+---
+= Remova o par espelhado assíncrono incompleto do grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `remove asyncMirrorGroup` comando remove um volume de par espelhado órfão no storage array.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Existe um volume de par espelhado órfão quando um volume de membro em um grupo de espelhos assíncronos foi removido de um lado do grupo de espelhos assíncronos (do lado primário ou secundário), mas não do outro lado.
+
+Os volumes de pares espelhados órfãos são detetados quando a comunicação entre controladores é restaurada e os dois lados da configuração do espelho reconciliam os parâmetros do espelho.
+
+Use este comando quando a relação de espelhamento for removida com sucesso na matriz de armazenamento local ou remota, mas não puder ser removida na matriz de armazenamento correspondente devido a um problema de comunicação.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+remove asyncMirrorGroup pass:quotes[[_"asyncMirrorGroupName"_]]
+incompleteMirror volume=pass:quotes[_"volumeName"_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos que contém o volume órfão que você deseja remover. Inclua o nome do grupo de espelhos assíncronos entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume órfão que você deseja remover do grupo de espelhos assíncronos. Coloque o nome do volume entre aspas duplas (" ").
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

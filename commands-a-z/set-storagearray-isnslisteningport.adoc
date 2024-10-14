@@ -1,0 +1,75 @@
+---
+permalink: commands-a-z/set-storagearray-isnslisteningport.html 
+sidebar: sidebar 
+keywords: set, storage, array, isns, server, listen, port 
+summary: O comando Set storageArray isnsListeningPort define a porta de escuta do servidor iSNS. 
+---
+= Defina a porta de escuta do servidor iSNS do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray isnsListeningPort` comando define a porta de escuta do servidor iSNS.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set storageArray isnsListeningPort=pass:quotes[_listeningPortIPAddress_]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`isnsListeningPort`
+ a| 
+O endereço IP que você deseja usar para a porta de escuta do servidor iSNS. O intervalo de valores para a porta de escuta é `49152` para `65535`. O valor padrão é `53205`.
+
+A porta de escuta reside no servidor e executa estas atividades:
+
+* Monitora solicitações de conexão de cliente recebidas
+* Gerencia o tráfego para o servidor
+
+
+Quando um cliente solicita uma sessão de rede com um servidor, o ouvinte recebe a solicitação real. Se as informações do cliente corresponderem às informações do ouvinte, o ouvinte concederá uma conexão ao servidor do banco de dados.
+
+|===
+
+
+== Notas
+
+Uma porta de escuta reside no servidor do banco de dados e é responsável por estas atividades:
+
+* Escuta (monitoramento) para solicitações de conexão de clientes recebidos
+* Gerir o tráfego para o servidor
+
+
+Quando um cliente solicita uma sessão de rede com um servidor, um ouvinte recebe a solicitação real. Se as informações do cliente corresponderem às informações do ouvinte, o ouvinte concederá uma conexão ao servidor do banco de dados.
+
+
+
+== Nível mínimo de firmware
+
+7,10

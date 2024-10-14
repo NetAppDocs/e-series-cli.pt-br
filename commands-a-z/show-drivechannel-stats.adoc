@@ -1,0 +1,89 @@
+---
+permalink: commands-a-z/show-drivechannel-stats.html 
+sidebar: sidebar 
+keywords: show, drive channel, statistics 
+summary: O comando show driveChannel stats mostra a transferência de dados cumulativos para o canal da unidade e informações de erro. 
+---
+= Mostrar estatísticas do canal de transmissão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show driveChannel stats` comando mostra a transferência de dados cumulativos para o canal da unidade e informações de erro.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Se o controlador degradou automaticamente um canal de unidade, este comando também mostra estatísticas de intervalo. Quando você usa este comando, você pode mostrar informações sobre um canal de unidade específico, vários canais de unidade ou todos os canais de unidade.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show (driveChannel [(1 | 2 | 3 | 4 | 5 | 6 | 7 | 8)] |
+   driveChannels [1 2 3 4 5 6 7 8] |
+   allDriveChannels) stats
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`driveChannel`
+ a| 
+O número do identificador do canal da unidade para o qual você deseja exibir informações. Os valores válidos do canal da unidade são `1`, `2` `3` , `4`, `5`, , , `6`, `7`, `8` ou . Coloque o canal da unidade entre colchetes ([ ]).
+
+Use este parâmetro quando quiser mostrar as estatísticas para apenas um canal de unidade.
+
+
+
+ a| 
+`driveChannels`
+ a| 
+Os números de identificação de vários canais de unidade para os quais você deseja exibir informações. Os valores válidos do canal da unidade são `1`, `2` `3` , `4`, `5`, , , `6`, `7`, `8` ou . Coloque os canais da unidade entre colchetes ([ ]) com o valor do canal da unidade separado por um espaço.
+
+Use este parâmetro quando quiser mostrar as estatísticas de mais de um canal de unidade.
+
+
+
+ a| 
+`allDriveChannels`
+ a| 
+O identificador que seleciona todos os canais da unidade.
+
+|===
+
+
+== Notas
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10
+
+7,15 adiciona uma atualização ao identificador do canal da unidade.

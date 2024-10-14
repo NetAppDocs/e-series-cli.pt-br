@@ -1,0 +1,110 @@
+---
+permalink: commands-a-z/enable-storagearray-externalkeymanagement-file.html 
+sidebar: sidebar 
+keywords: enable, storage, array, external, key, management, file, command, security, disk, encryption, initial, roles, context, support 
+summary: O comando enable storageArray externalKeyManagement file permite o gerenciamento de chaves de segurança externas para um storage array que tenha unidades Full Disk Encryption e cria a chave de segurança inicial da unidade. 
+---
+= Ativar o gerenciamento de chaves de segurança externas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `enable storageArray externalKeyManagement file` comando permite o gerenciamento de chaves de segurança externas para uma matriz de armazenamento com unidades de criptografia de disco total e cria a chave de segurança inicial da unidade.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Este comando aplica-se apenas ao gerenciamento de chaves externas.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+enable storageArray externalKeyManagement
+pass:quotes[file="_fileName_"]
+pass:quotes[passPhrase="_passPhraseString_"]
+pass:quotes[saveFile=_(TRUE | FALSE)_]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo onde a nova chave de segurança será armazenada. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\drivesecurity.slk"
+----
+[NOTE]
+====
+O nome do ficheiro tem de ter uma extensão de `.slk`.
+
+====
+
+
+ a| 
+`passPhrase`
+ a| 
+Uma cadeia de carateres que criptografa a chave de segurança para que você possa armazenar a chave de segurança em um arquivo externo. Inclua a cadeia de carateres da frase-passe em aspas duplas (" ").
+
+
+
+ a| 
+`saveFile`
+ a| 
+Verifica e salva a chave de segurança em um arquivo. Defina como `FALSE` para não salvar e verifique a chave de segurança em um arquivo. O valor padrão é `TRUE`.
+
+|===
+
+
+== Notas
+
+Sua frase-passe deve atender a estes critérios:
+
+* Deve ter entre oito e 32 carateres.
+* Deve conter pelo menos uma letra maiúscula.
+* Deve conter pelo menos uma letra minúscula.
+* Deve conter pelo menos um número.
+* Tem de conter pelo menos um caráter não alfanumérico, por exemplo, a.
+
+
+[NOTE]
+====
+Se sua frase-passe não atender a esses critérios, você receberá uma mensagem de erro.
+
+====
+
+
+== Nível mínimo de firmware
+
+8,40
+
+8,70 adiciona o `_saveFile_` parâmetro.

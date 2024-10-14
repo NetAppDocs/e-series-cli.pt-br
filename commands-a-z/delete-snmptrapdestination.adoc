@@ -1,0 +1,55 @@
+---
+permalink: commands-a-z/delete-snmptrapdestination.html 
+sidebar: sidebar 
+keywords: delete, command, snmptrapdestination, existing, simple, network, management, protocol, trap, destination, previous, create, registered 
+summary: 'O comando delete snmpTrapDestination exclui um destino de armadilha SNMP (Simple Network Management Protocol) existente que você criou e registrou anteriormente usando o comando Create snmpTrapDestination.' 
+---
+= Anular o registo do destino de trap SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete snmpTrapDestination` comando exclui um destino de armadilha SNMP (Simple Network Management Protocol) existente que você criou e registrou anteriormente usando o `create snmpTrapDestination` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[delete snmpTrapDestination trapReceiverIP=_ipAddress_]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`trapReceiverIP`
+ a| 
+O endereço IP do gerenciador SNMP do qual você deseja parar de enviar mensagens de intercetação.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,30

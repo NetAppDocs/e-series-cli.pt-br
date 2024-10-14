@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/stop-snapvolume.html 
+sidebar: sidebar 
+keywords: stop, snapshot, volume 
+summary: O comando stop snapvolume pára uma operação de volume instantâneo. 
+---
+= Parar o volume instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop snapVolume` comando pára uma operação de volume instantâneo.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[stop snapVolume ["_snapVolumeName_"]]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`snapVolume`
+ a| 
+O nome do volume instantâneo que pretende parar. Coloque o nome do volume instantâneo entre aspas duplas (" ") dentro de colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+
+
+== Nível mínimo de firmware
+
+7,83

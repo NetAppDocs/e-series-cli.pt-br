@@ -1,0 +1,121 @@
+---
+permalink: commands-a-z/set-controller-ntpservers.html 
+sidebar: sidebar 
+keywords: set, controller, ntp 
+summary: 'O comando Set Controller NTPServers define as configurações NTP para o controlador para que o controlador possa sincronizar automaticamente os relógios com um host externo usando SNTP (Simple Network Time Protocol).' 
+---
+= Defina as definições NTP do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set controller NTPServers` comando define as configurações NTP para o controlador para que o controlador possa sincronizar automaticamente os relógios com um host externo usando SNTP (Simple Network Time Protocol).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+Quando esta funcionalidade está ativada, o controlador consulta periodicamente o servidor NTP configurado e, em seguida, utiliza os resultados para atualizar o relógio interno da hora do dia. Se apenas um controlador tiver o NTP ativado, o controlador alternativo sincroniza periodicamente o relógio com o controlador que tem o NTP ativado. Se nenhum dos controladores tiver o NTP ativado, os controladores sincronizam periodicamente os seus relógios uns com os outros.
+
+[NOTE]
+====
+Este comando é específico do controlador. Não é necessário configurar o NTP em ambos os controladores; no entanto, isso melhora a capacidade do array de permanecer sincronizado durante falhas de hardware ou comunicação.
+
+====
+[NOTE]
+====
+Se você configurar o NTP usando um nome de domínio totalmente qualificado, você também deve configurar o DNS nesses controladores para que a operação seja bem-sucedida.consulte  para obter mais informações.xref:set-controller-dnsservers.adoc[Defina as definições DNS do controlador]
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+
+set controller(a|b) NTPServers=(disabled|auto|(Address1 [Address2]))
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador para o qual você deseja alterar as configurações NTP. Os identificadores válidos do controlador são a ou b.
+
+
+
+ a| 
+`NTPServers`
+ a| 
+Este parâmetro configura os servidores NTP para o controlador.
+
+*  `disabled`Especifique para desativar o suporte NTP.
+*  `auto`Especifique para usar os endereços de servidor NTP fornecidos por um servidor DHCP.
++
+[NOTE]
+====
+Esta opção só deve ser utilizada se pelo menos uma porta de gestão no controlador estiver definida para obter parâmetros de interface via DHCP e pelo menos um servidor NTP estiver configurado no servidor DHCP.
+
+====
+* Caso contrário, especifique uma lista separada por espaço em branco de um ou dois servidores NTP. Os endereços podem ser um nome de domínio, endereço IPv4 ou endereço IPv6. Se especificar mais de um endereço, os tipos de endereço não precisam corresponder. Se mais de um endereço for especificado, eles serão usados na ordem em que forem especificados (primeiro é primário, segundo é backup).
+
+
+[NOTE]
+====
+Cerque o nome do servidor NTP com aspas, como mostrado na seção exemplos.
+
+====
+
+
+ a| 
+`Address`
+ a| 
+"Domainname"|IPv4Address|IPv6Address
+
+[NOTE]
+====
+Se um nome de domínio for especificado, um servidor DNS também deve ser configurado para permitir que o controlador resolva o endereço IP do servidor.
+
+====
+|===
+
+
+== Exemplos
+
+[listing]
+----
+set controller[a] NTPServers=disabled;
+set controller[a] NTPServers=auto;
+set controller[a] NTPServers=("0.pool.ntp.org" "1.us.pool.ntp.org");
+set controller[b] NTPServers=(192.168.1.105 "1.us.pool.ntp.org");
+set controller[b] NTPServers=(2001:0db8:85a3:0000:0000:8a2e:0370:7334);
+----
+
+
+== Nível mínimo de firmware
+
+8,25
+
+8,42 adiciona os parâmetros chave de credencial para autenticação NTP.

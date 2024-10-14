@@ -1,0 +1,77 @@
+---
+permalink: commands-a-z/start-diskpool-fullprovisioning.html 
+sidebar: sidebar 
+keywords: start, disk pool, full, provision 
+summary: O comando start diskPool fullProvisioning inicia uma operação de provisionamento completo em todos os volumes no pool de discos e, opcionalmente, desativa o provisionamento de recursos no pool de discos. 
+---
+= Inicie o provisionamento completo do pool de discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start diskPool fullProvisioning` comando inicia uma operação de provisionamento completo em todos os volumes no pool de discos e, opcionalmente, desativa o provisionamento de recursos no pool de discos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays EF600 e EF300; desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array EF600 e EF300, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+O recurso provisionamento de recursos melhora a vida útil do SSD e aumenta o desempenho de gravação deixando uma parte maior dos blocos de unidade em um estado não alocado do que um volume padrão. Um volume provisionado por recursos é um volume espesso em um grupo ou pool de volumes SSD, em que a capacidade da unidade é alocada (atribuída ao volume), mas os blocos de unidades são deslocalizados (não mapeados) durante a criação do volume. Os blocos de unidade são alocados conforme necessário para concluir o iOS de gravação do host. As operações de desinstalação do host podem retornar blocos de unidade ao estado não alocado . O provisionamento de recursos também elimina a inicialização em segundo plano com tempo, permitindo que grandes volumes sejam inicializados rapidamente.
+
+Os volumes provisionados de recursos são suportados apenas em grupos de volumes e pools de SSD, em que todas as unidades do grupo ou pool são compatíveis com a funcionalidade de recuperação de erro DULBE (Logical Block Error Enable) desalocada ou não escrita do NVMe. A melhoria de desempenho varia de acordo com cada modelo de unidade e capacidade.
+
+O formato de provisionamento completo garante que todos os blocos necessários para os volumes no pool de armazenamento sejam totalmente mapeados nas unidades. Esse comando só é aplicável a pools de storage provisionados por recursos. Se a opção para `disableResourceProvisioning` não estiver definida como `FALSE`, os volumes ainda serão provisionados por recursos e novos volumes criados no pool de armazenamento serão provisionados por recursos. Se a opção para desativar o provisionamento de recursos estiver definida como `TRUE`, os volumes não serão mais provisionados por recursos e novos volumes criados no pool de armazenamento não serão provisionados por recursos.
+
+
+
+== Sintaxe
+
+[listing]
+----
+start diskPool[diskPoolName] fullProvisioning [disableResourceProvisioning=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPool`
+ a| 
+O pool de discos que você deseja iniciar a operação de provisionamento completo. Inclua o nome do pool de discos entre colchetes ([ ])
+
+
+
+ a| 
+`disableResourceProvisioning`
+ a| 
+A configuração para especificar se o provisionamento de recursos deve ser desativado após a conclusão da operação de provisionamento completo. Para ignorar a desativação do provisionamento de recursos, defina-o como `FALSE`. O valor padrão é `TRUE`.
+
+[NOTE]
+====
+Para reativar o provisionamento de recursos em um pool de armazenamento e todos os volumes associados, use o `Start Disk Pool Resource Provisioning` comando.
+
+====
+|===
+
+
+== Nível mínimo de firmware
+
+11,72

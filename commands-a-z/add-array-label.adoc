@@ -1,0 +1,66 @@
+---
+permalink: commands-a-z/add-array-label.html 
+sidebar: sidebar 
+keywords: add array label, supported, syntax, parameters, minimum firmware level 
+summary: O comando Add array label permite adicionar uma matriz de armazenamento à configuração com um rótulo definido pelo usuário. Isso permite que comandos posteriores endereçam a matriz de armazenamento pelo rótulo definido pelo usuário em vez de pelo endereço IP ou nome do host. 
+---
+= Adicionar rótulo de matriz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `Add array label` comando permite adicionar uma matriz de armazenamento à configuração com um rótulo definido pelo usuário. Isso permite que comandos posteriores endereçam a matriz de armazenamento pelo rótulo definido pelo usuário em vez de pelo endereço IP ou nome do host.
+
+
+
+== Arrays compatíveis
+
+[NOTE]
+====
+O rótulo definido pelo usuário fornecido não precisa corresponder ao nome da matriz de armazenamento como exibido no System Manager. Este é um rótulo local que só é usado para referenciar o storage array da CLI.
+
+====
+Este comando se aplica aos storages EF600 e EF300.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+
+pass:quotes[ _Address1 Address2_ add storageArrayLabel label _userDefinedString_]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`Address`
+ a| 
+Permite especificar o endereço IP (IPv4 ou IPv6) ou o nome de host totalmente qualificado para a matriz de armazenamento.
+
+[NOTE]
+====
+O `Address2` valor é opcional.
+
+====
+
+
+ a| 
+`userDefinedString`
+ a| 
+Permite especificar um rótulo para a matriz de armazenamento.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,60

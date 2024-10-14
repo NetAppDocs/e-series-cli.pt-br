@@ -1,0 +1,74 @@
+---
+permalink: commands-a-z/reset-controller.html 
+sidebar: sidebar 
+keywords: reset, controller 
+summary: O comando RESET controller redefine um controlador e causa interrupções nas operações de e/S. 
+---
+= Reponha o controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset controller` comando redefine um controlador e causa interrupções nas operações de e/S.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Quando você redefine um controlador, o controlador é removido do caminho de dados e não está disponível para operações de e/S até que a operação de redefinição esteja concluída. Se um host estiver usando volumes que são de propriedade do controlador que está sendo redefinido, a e/S direcionada para o controlador é rejeitada. Antes de redefinir o controlador, certifique-se de que os volumes que são propriedade do controlador não estão em uso ou certifique-se de que um driver de vários caminhos esteja instalado em todos os hosts que usam esses volumes.
+
+====
+[CAUTION]
+====
+Se você usar o gerenciamento na banda, não poderá controlar para qual controlador qualquer comando é enviado, e esse comando pode ter resultados inesperados.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+reset controller [(a|b)]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador que pretende repor. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o software de gerenciamento de armazenamento retornará um erro de sintaxe.
+
+|===
+
+
+== Notas
+
+O controlador que recebe o comando RESET controller repõe o controlador especificado. Por exemplo, se o comando RESET controller for enviado ao controlador A para solicitar uma reposição do controlador A, então o controlador A reinicializa-se fazendo uma reinicialização a quente. Se o comando RESET controller for enviado para o controlador A para solicitar uma reposição do controlador B, o controlador A mantém o controlador B em RESET e, em seguida, libera o controlador B da reinicialização, que é uma reinicialização forçada. Uma reinicialização suave em alguns produtos só redefine o chip IOC. Uma reinicialização total redefine tanto o COI quanto os chips expansores no controlador.
+
+
+
+== Nível mínimo de firmware
+
+5,20

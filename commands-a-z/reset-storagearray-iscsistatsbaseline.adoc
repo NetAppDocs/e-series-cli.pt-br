@@ -1,0 +1,59 @@
+---
+permalink: commands-a-z/reset-storagearray-iscsistatsbaseline.html 
+sidebar: sidebar 
+keywords: reset, storage array, iscsi, baseline 
+summary: O comando RESET storageArray iscsiStatsBaseline redefine a linha de base iSCSI para 0 para a matriz de armazenamento. 
+---
+= Repor linha de base iSCSI da matriz de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `reset storageArray iscsiStatsBaseline` comando repõe a linha de base iSCSI para 0 para a matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, ou E5700, você deve ter a função Storage Admin.
+
+[NOTE]
+====
+Este comando está obsoleto e é substituído pelo xref:reset-storagearray-hostportstatisticsbaseline.adoc[Redefinir linha de base de estatísticas da porta do host do storage]comando.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+reset storageArray iscsiStatsBaseline
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Esse comando redefine a linha de base para 0 para ambos os controladores no storage array. O objetivo de redefinir ambas as linhas de base do controlador é ajudar a garantir que as contagens do controlador sejam sincronizadas entre os controladores. Se um controlador for reiniciado, mas o segundo controlador não for reiniciado, o host será informado de que os controladores estão fora de sincronização. O anfitrião é informado pelos carimbos de hora que são reportados com as estatísticas.
+
+
+
+== Nível mínimo de firmware
+
+7,10
+
+8,41 este comando está obsoleto.

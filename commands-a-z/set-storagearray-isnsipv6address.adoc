@@ -1,0 +1,61 @@
+---
+permalink: commands-a-z/set-storagearray-isnsipv6address.html 
+sidebar: sidebar 
+keywords: set, storage, array, isns, server, ipv6, address 
+summary: O comando Set storageArray isnsIPv6Address define o endereço IPv6 para o servidor iSNS. 
+---
+= Defina o endereço do servidor iSNS do storage array IPv6
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set storageArray isnsIPv6Address` comando define o endereço IPv6 para o servidor iSNS.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set storageArray isnsIPv6Address=pass:quotes[_ipAddress_]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetros | Descrição 
+
+
+ a| 
+`isnsIPv6Address`
+ a| 
+O endereço IPv6 que você deseja usar para o servidor iSNS.
+
+|===
+
+
+== Notas
+
+O protocolo iSNS facilita a descoberta, o gerenciamento e a configuração automatizada de dispositivos iSCSI e de Fibre Channel em uma rede TCP/IP. O iSNS fornece serviços de descoberta e gerenciamento de armazenamento inteligentes comparáveis aos encontrados em redes Fibre Channel, o que permite que uma rede IP comum funcione em uma capacidade semelhante à de uma rede de área de armazenamento.
+
+
+
+== Nível mínimo de firmware
+
+7,10

@@ -1,0 +1,148 @@
+---
+permalink: commands-a-z/start-controller.html 
+sidebar: sidebar 
+keywords: start, controller, trace 
+summary: O comando start controller inicia uma operação que salva informações de rastreamento de depuração em um arquivo compactado. 
+---
+= Inicie o rastreio do controlador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start controller` comando inicia uma operação que salva informações de rastreamento de depuração em um arquivo compactado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+As informações de rastreamento de depuração podem ser usadas pelo suporte técnico para ajudar a analisar o quão bem um storage array está sendo executado.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+start controller [(a
+ | b
+ | both)] trace
+dataType=(current | flushed | currentFlushed | all)
+forceFlush=(TRUE | FALSE)
+pass:quotes[file="_fileName_]"
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+O controlador para o qual você deseja coletar as informações de depuração de rastreamento. Identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A e `b` é o controlador no slot B. você também pode coletar simultaneamente depuração para ambos os controladores inserindo `both` . Inclua o identificador do controlador entre colchetes ([ ]). Se você não especificar um controlador, o software de gerenciamento de armazenamento retornará um erro de sintaxe.
+
+
+
+ a| 
+`dataType`
+ a| 
+O tipo de dados que você deseja coletar:
+
+* `current` -- recupera os traços DQ atuais
+* `flushed` -- recupera todos os traços de DQ lavados
+* `currentFlushed` -- recupera o traço DQ atual e o traço DQ lavado
+* `all` -- recupera o traçado DQ atual, traçado DQ lavado e todos os traçados DQ da plataforma
+
+
+[NOTE]
+====
+Se `dataType=flushed` e `forceFlush=True`, uma mensagem de erro é retornada indicando que somente os rastreamentos ativos podem ser lavados para o buffer na recuperação.
+
+====
+
+
+ a| 
+`*forceFlush*`
+ a| 
+A definição para mover as informações do DQ no buffer atual para o buffer lavado quando as informações de rastreamento do DQ definidas pelo `dataType` parâmetro são recuperadas. Para ativar o flush forçado, defina este parâmetro como `TRUE`. Para desativar o flush de força, defina este parâmetro como `FALSE`.
+
+[NOTE]
+====
+Se `dataType=flushed` e `forceFlush=True`, uma mensagem de erro é retornada indicando que somente os rastreamentos ativos podem ser lavados para o buffer na recuperação.
+
+====
+
+
+ a| 
+`file`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as informações de rastreamento DQ. Coloque o nome do ficheiro entre aspas duplas (" ").
+
+Consulte a seção Notas para obter informações sobre a nomeação dos arquivos.
+
+|===
+
+
+== Notas
+
+As informações de rastreamento do DQ são gravadas em um arquivo compactado com uma extensão .zip. O nome do arquivo é uma combinação de um nome de arquivo definido pelo usuário e o identificador de storage array (DITO). Uma constante de "dq" também é adicionada ao nome do arquivo. O nome completo do arquivo tem este formulário:
+
+[listing]
+----
+user_defined_file_name-SAID-dq.zip
+----
+O arquivo compactado contém as informações listadas nesta tabela.
+
+[cols="3*"]
+|===
+| Nome do ficheiro | Diretório | Comentários 
+
+
+ a| 
+`user_provided_file_name-SAID-A.dq`
+ a| 
+`SAID/timestamp/`
+ a| 
+Os dados de rastreamento DQ recuperados do controlador A..
+
+
+
+ a| 
+`user_provided_file_name-SAID-B.dq`
+ a| 
+`SAID/timestamp/`
+ a| 
+Os dados de rastreamento DQ recuperados do controlador B.
+
+
+
+ a| 
+`user_provided_file_name-SAID-trace_description.xm`
+ a| 
+`SAID/timestamp/`
+ a| 
+O arquivo de descrição em um formato xml que descreve os atributos de arquivo DQ para mineração de dados futura.
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,75

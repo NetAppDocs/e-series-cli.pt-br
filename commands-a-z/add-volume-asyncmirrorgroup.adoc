@@ -1,0 +1,126 @@
+---
+permalink: commands-a-z/add-volume-asyncmirrorgroup.html 
+sidebar: sidebar 
+keywords: add volume, asynchronous, mirror group, supported arrays, roles, context, syntax, parameter, minimum firmware level 
+summary: O comando add volume asyncMirrorGroup adiciona um volume primário a um grupo de espelhos assíncrono. 
+---
+= Adicionar volume ao grupo de espelhos assíncronos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `add volume asyncMirrorGroup` comando adiciona um volume primário a um grupo de espelhos assíncrono.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Este comando é válido apenas na matriz de armazenamento local que contém o grupo de espelhos assíncronos ao qual você deseja adicionar o volume primário. Um grupo de espelhos assíncrono tem um volume de repositório que é usado para salvar dados para todas as imagens pontuais que fazem parte do grupo de espelhos assíncronos. Cada volume primário no grupo de espelhos assíncronos tem um volume de espelho correspondente em um storage array remoto.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[add volume="_volumeName_" asyncMirrorGroup="_asyncMirrorGroupName_"
+remotePassword="_password_"
+(repositoryVolume="repos_xxxx" |
+repositoryVolume=(_volumeGroupName_ ]pass:quotes[[capacity=_capacityValue_])]
+repositoryVolume=pass:quotes[(_diskPoolName_] pass:quotes[[capacity=_capacityValue_]))
+----
+
+
+== Parâmetro
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume principal que você deseja adicionar ao grupo de espelhos assíncronos. Coloque o nome do volume entre aspas duplas (" ").
+
+
+
+ a| 
+`asyncMirrorGroup`
+ a| 
+O nome do grupo de espelhos assíncronos que conterá o volume primário que você deseja adicionar. Inclua o nome do grupo de espelhos assíncronos em aspas duplas (" ").
+
+
+
+ a| 
+`remotePassword`
+ a| 
+Este parâmetro é opcional. Use este parâmetro quando a matriz de armazenamento remoto estiver protegida por senha. Insira a senha entre aspas duplas (" ").
+
+
+
+ a| 
+`repositoryVolume`
+ a| 
+O nome do volume do repositório que conterá os dados alterados do volume primário.
+
+Você tem duas opções para definir o nome de um volume de repositório:
+
+* Use um volume de repositório existente: Nome.
+* Crie um novo volume de repositório quando executar este comando.
+
+
+O nome de um volume de repositório existente é composto por duas partes:
+
+* O termo repos.
+* Um identificador numérico de quatro dígitos que o software de gerenciamento de armazenamento atribui ao nome do volume do repositório.
+
+
+Inclua o nome do volume do repositório existente entre aspas duplas (" ").
+
+Se você quiser criar um novo volume de repositório ao executar este comando, você deve digitar o nome de um grupo de volumes ou de um pool de discos no qual deseja o volume do repositório. Opcionalmente, você também pode definir a capacidade do volume do repositório. Se você quiser definir a capacidade, você pode usar estes valores:
+
+* Um valor inteiro que representa uma porcentagem da capacidade do volume base.
+* Um valor de fração decimal que representa uma porcentagem da capacidade de volume base.
+* Um tamanho específico para o volume do repositório. O tamanho é definido em unidades de `bytes` `KB` , , `MB` , `GB` `TB` ou .
+
+
+Se você não definir a capacidade, o software de gerenciamento de storage definirá a capacidade para 20% da capacidade de volume primário.
+
+O software de gerenciamento de storage cria o volume do repositório e vincula o volume do repositório ao volume principal.
+
+|===
+
+
+== Notas
+
+* O recurso de espelhamento assíncrono deve estar ativado e ativado nos storage arrays locais e remotos que serão usados para atividades de espelhamento.
+* Os storage arrays locais e remotos devem ser conectados por meio de uma malha Fibre Channel ou de uma interface iSCSI adequada.
+* O storage array remoto deve ter um volume que tenha uma capacidade maior ou igual à capacidade do volume primário no storage array local. O volume na matriz de armazenamento remoto será usado como o volume do espelho.
+
+
+
+
+== Nível mínimo de firmware
+
+7,84
+
+O 11,80 adiciona suporte a array EF600 e EF300

@@ -1,0 +1,73 @@
+---
+permalink: commands-a-z/delete-controller-cacertificate.html 
+sidebar: sidebar 
+keywords: remove, install, root, intermediate, ca, certificates 
+summary: O comando DELETE controller caCertificate remove o certificado raiz ou CA intermediário instalado do controlador especificado. 
+---
+= Remova os certificados raiz/CA intermediários instalados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `delete controller caCertificate` comando remove o certificado raiz/CA intermediário instalado do controlador especificado.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+
+delete controller [(a|b)] caCertificate aliases=("alias1" ... "aliasN")
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`controller`
+ a| 
+Permite especificar o controlador do qual pretende eliminar o certificado assinado. Identificadores válidos do controlador são a ou b, onde a é o controlador no slot A, e b é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]).
+
+
+
+ a| 
+`aliases`
+ a| 
+Permite especificar um ou mais certificados de CA a serem excluídos usando os nomes de alias ou especificar todos. Os aliases devem ser do controlador para o qual o certificado está sendo excluído. Inclua todos os aliases entre parênteses. Se você inserir mais de um alias, separe-os com um espaço.
+
+|===
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "delete controller[a] caCertificate aliases=("myAlias" "anotherAlias");"
+
+SMcli completed successfully.
+----
+
+
+== Nível mínimo de firmware
+
+8,40

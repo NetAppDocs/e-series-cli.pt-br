@@ -1,0 +1,567 @@
+---
+permalink: commands-a-z/set-volume-group-attributes-for-volume-in-a-volume-group.html 
+sidebar: sidebar 
+keywords: set, volume, attributes, group 
+summary: 'O comando Set volume (Definir volume) define as propriedades dos volumes em um grupo de volumes.' 
+---
+= Definir atributos de volume para um volume em um grupo de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set volume` comando define as propriedades dos volumes em um grupo de volumes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você pode usar a maioria dos parâmetros para definir propriedades para um ou mais volumes. Você também pode usar alguns parâmetros para definir propriedades para apenas um volume. As definições de sintaxe são separadas para mostrar quais parâmetros se aplicam a vários volumes e que se aplicam a apenas um volume.
+
+[NOTE]
+====
+Em configurações em que grupos de volume consistem em mais de 32 volumes, a operação pode resultar em erros de e/S do host ou reinicializações internas do controlador devido à expiração do período de tempo limite antes da operação ser concluída. Se você detetar erros de e/S do host ou reinicializar o controlador interno, desligue a e/S do host e tente a operação novamente.
+
+====
+
+
+== Sintaxe aplicável a um ou mais volumes
+
+[listing, subs="+macros"]
+----
+set (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]] | volume <"wwID">)
+pass:quotes[cacheFlushModifier=_cacheFlushModifierValue_]
+cacheWithoutBatteryEnabled=(TRUE | FALSE)
+mediaScanEnabled=(TRUE | FALSE)
+mirrorCacheEnabled=(TRUE | FALSE)
+modificationPriority=(highest | high | medium | low | lowest)
+owner=(a|b)
+preReadRedundancyCheck=(TRUE | FALSE)
+readCacheEnabled=(TRUE | FALSE)
+writeCacheEnabled=(TRUE | FALSE)
+cacheReadPrefetch=(TRUE | FALSE)
+dataAssuranceDisabled=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]] | volume <"wwID">)
+pass:quotes[cacheFlushModifier=_cacheFlushModifierValue_]
+cacheWithoutBatteryEnabled=(TRUE | FALSE)
+mediaScanEnabled=(TRUE | FALSE)
+mirrorCacheEnabled=(TRUE | FALSE)
+modificationPriority=(highest | high | medium | low | lowest)
+owner=(a|b)
+preReadRedundancyCheck=(TRUE | FALSE)
+readCacheEnabled=(TRUE | FALSE)
+writeCacheEnabled=(TRUE | FALSE)
+cacheReadPrefetch=(TRUE | FALSE)
+dataAssuranceDisabled=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (allVolumes | volume pass:quotes[["_volumeName_"]] |
+volumes pass:quotes[["_volumeName1_" ... "_volumeNameN_"]] | volume <"wwID">)
+pass:quotes[cacheFlushModifier=_cacheFlushModifierValue_]
+cacheWithoutBatteryEnabled=(TRUE | FALSE)
+mediaScanEnabled=(TRUE | FALSE)
+mirrorCacheEnabled=(TRUE | FALSE)
+modificationPriority=(highest | high | medium | low | lowest)
+owner=(a|b)
+preReadRedundancyCheck=(TRUE | FALSE)
+readCacheEnabled=(TRUE | FALSE)
+writeCacheEnabled=(TRUE | FALSE)
+cacheReadPrefetch=(TRUE | FALSE)
+dataAssuranceDisabled=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]] | volume <"wwID">)
+pass:quotes[cacheFlushModifier=_cacheFlushModifierValue_]
+cacheWithoutBatteryEnabled=(TRUE | FALSE)
+mediaScanEnabled=(TRUE | FALSE)
+mirrorCacheEnabled=(TRUE | FALSE)
+modificationPriority=(highest | high | medium | low | lowest)
+owner=(a|b)
+readCacheEnabled=(TRUE | FALSE)
+writeCacheEnabled=(TRUE | FALSE)
+cacheReadPrefetch=(TRUE | FALSE)
+dataAssuranceDisabled=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (allVolumes | volume pass:quotes[["_volumeName_"]] |
+volumes pass:quotes[["_volumeName1_" ... "_volumeNameN_"]] | volume <"wwID">)
+pass:quotes[cacheFlushModifier=_cacheFlushModifierValue_]
+cacheWithoutBatteryEnabled=(TRUE | FALSE)
+mediaScanEnabled=(TRUE | FALSE)
+mirrorCacheEnabled=(TRUE | FALSE)
+modificationPriority=(highest | high | medium | low | lowest)
+owner=(a|b)
+readCacheEnabled=(TRUE | FALSE)
+writeCacheEnabled=(TRUE | FALSE)
+cacheReadPrefetch=(TRUE | FALSE)
+dataAssuranceDisabled=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (allVolumes | volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]] | volume <"wwID">)
+pass:quotes[cacheFlushModifier=_cacheFlushModifierValue_]
+cacheWithoutBatteryEnabled=(TRUE | FALSE)
+mediaScanEnabled=(TRUE | FALSE)
+mirrorCacheEnabled=(TRUE | FALSE)
+modificationPriority=(highest | high | medium | low | lowest)
+owner=(a|b)
+readCacheEnabled=(TRUE | FALSE)
+writeCacheEnabled=(TRUE | FALSE)
+cacheReadPrefetch=(TRUE | FALSE)
+reservedFutureOption1=(TRUE | FALSE)
+----
+
+
+== Sintaxe aplicável a apenas um volume
+
+[listing, subs="+macros"]
+----
+set (volume pass:quotes[[_volumeName_]] | volume <wwID>)
+pass:quotes[addCapacity=_volumeCapacity_]
+[addDrives=pass:quotes[(_trayID1_,_drawerID1_,_slotID1_ ... _trayIDn_,_drawerIDn_,_slotIDn_)]]
+redundancyCheckEnabled=(TRUE | FALSE)
+pass:quotes[segmentSize=_segmentSizeValue_]
+pass:quotes[userLabel=_volumeName_]
+preReadRedundancyCheck=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (volume pass:quotes[["_volumeName_"]] | volume <wwID>)
+pass:quotes[addCapacity=_volumeCapacity_]
+[addDrives=pass:quotes[(_trayID1_,_drawerID1_,_slotID1_
+... _trayIDn_,_drawerIDn_,_slotIDn_)]]
+redundancyCheckEnabled=(TRUE | FALSE)
+pass:quotes[segmentSize=_segmentSizeValue_]
+pass:quotes[userLabel=_volumeName_]
+preReadRedundancyCheck=(TRUE | FALSE)
+----
+[listing, subs="+macros"]
+----
+set (volume pass:quotes[[_volumeName_]] | volume <wwID>)
+pass:quotes[addCapacity=_volumeCapacity_]
+[addDrives=pass:quotes[(_trayID1_,_slotID1_ ... _trayIDn_,_slotIDn_)]]
+redundancyCheckEnabled=(TRUE | FALSE)
+pass:quotes[segmentSize=_segmentSizeValue_]
+pass:quotes[userLabel=_volumeName_]
+preReadRedundancyCheck=(TRUE | FALSE)
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allVolumes`
+ a| 
+Este parâmetro define as propriedades de todos os volumes no storage array.
+
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume para o qual você deseja definir propriedades. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volume`
+ a| 
+O World Wide Identifier (WWID) do volume para o qual você deseja definir propriedades. Coloque o WWID entre aspas duplas (" ") entre colchetes angulares ( ).
+
+[NOTE]
+====
+Ao executar este comando, não use separadores de dois pontos no WWID.
+
+====
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes para os quais você deseja definir propriedades. Todos os volumes terão as mesmas propriedades. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou números, insira os nomes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`cacheFlushModifier`
+ a| 
+A quantidade máxima de tempo que os dados para o volume permanecem no cache antes que os dados sejam escoados para o armazenamento físico. Valores válidos são listados na seção Notas.
+
+
+
+ a| 
+`cacheWithoutBatteryEnabled`
+ a| 
+A definição para ligar ou desligar o armazenamento em cache sem pilhas. Para ativar o armazenamento em cache sem pilhas, defina este parâmetro para `TRUE`. Para desativar o armazenamento em cache sem pilhas, defina este parâmetro para `FALSE`.
+
+
+
+ a| 
+`mediaScanEnabled`
+ a| 
+A definição para ligar ou desligar a digitalização de multimédia para o volume. Para ativar a digitalização de multimédia, defina este parâmetro para `TRUE`. Para desativar a digitalização de multimédia, defina este parâmetro para `FALSE`. (Se a digitalização de Mídia estiver desativada no nível da matriz de armazenamento, este parâmetro não terá efeito.)
+
+
+
+ a| 
+`mirrorCacheEnabled`
+ a| 
+A configuração para ativar ou desativar o cache espelhado. Para ativar o cache espelhado, defina este parâmetro como `TRUE`. Para desativar o cache espelhado, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`modificationPriority`
+ a| 
+A prioridade para modificações de volume enquanto o storage array estiver operacional. Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` ou .
+
+
+
+ a| 
+`owner`
+ a| 
+O controlador que possui o volume. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A, e `b` é o controlador no slot B. Use este parâmetro somente se você quiser alterar o proprietário do volume.
+
+
+
+ a| 
+`preReadRedundancyCheck`
+ a| 
+A configuração para ativar ou desativar a verificação de redundância de pré-leitura. Ativar a verificação de redundância pré-leitura verifica a consistência dos dados de redundância RAID para as faixas que contêm os dados lidos. A verificação de redundância de pré-leitura é realizada apenas em operações de leitura. Para ativar a verificação de redundância de pré-leitura, defina este parâmetro como `TRUE`. Para desativar a verificação de redundância de pré-leitura, defina este parâmetro como `FALSE`.
+
+[NOTE]
+====
+Não use este parâmetro em volumes não redundantes, como volumes RAID 0.
+
+====
+
+
+ a| 
+`readCacheEnabled`
+ a| 
+A configuração para ativar ou desativar o cache de leitura. Para ativar o cache de leitura, defina este parâmetro como `TRUE`. Para desativar o cache de leitura, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`writeCacheEnabled`
+ a| 
+A configuração para ativar ou desativar o cache de gravação. Para ativar o cache de gravação, defina este parâmetro como `TRUE`. Para desativar o cache de gravação, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`cacheReadPrefetch`
+ a| 
+A configuração para ativar ou desativar o cache ler pré-busca. Para desativar a pré-busca de leitura de cache, defina este parâmetro como `FALSE`. Para ativar a pré-busca de leitura de cache, defina este parâmetro como `TRUE`.
+
+
+
+ a| 
+`dataAssuranceDisabled`
+ a| 
+A configuração para desativar a garantia de dados para um volume específico.
+
+Para que esse parâmetro tenha significado, seu volume deve ser capaz de garantir dados. Este parâmetro altera um volume de um que suporta a garantia de dados para um volume que não pode suportar a garantia de dados.
+
+[NOTE]
+====
+Essa opção só é válida para habilitação se as unidades suportarem DA.
+
+====
+Para remover a garantia de dados de um volume que suporte a garantia de dados, defina este parâmetro como `TRUE`.
+
+[NOTE]
+====
+Se você remover a garantia de dados de um volume, não poderá redefinir a garantia de dados para esse volume.
+
+====
+Para redefinir a garantia de dados para os dados em um volume, do qual você removeu a garantia de dados, execute estas etapas:
+
+. Remova os dados do volume.
+. Eliminar o volume.
+. Recrie um novo volume com as propriedades do volume excluído.
+. Defina a garantia de dados para o novo volume.
+. Mova os dados para o novo volume.
+
+
+
+
+ a| 
+`addCapacity`
+ a| 
+A definição para aumentar o tamanho de armazenamento (capacidade) do volume para o qual está a definir propriedades. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou . O valor padrão é `bytes`.
+
+
+
+ a| 
+`addDrives`
+ a| 
+Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+Use este parâmetro com o `addCapacity` parâmetro se você precisar especificar unidades adicionais para acomodar o novo tamanho.
+
+
+
+ a| 
+`redundancyCheckEnabled`
+ a| 
+A definição para ligar ou desligar a verificação de redundância durante uma digitalização de material. Para ativar a verificação de redundância, defina este parâmetro como `TRUE`. Para desativar a verificação de redundância, defina este parâmetro como `FALSE`.
+
+
+
+ a| 
+`segmentSize`
+ a| 
+A quantidade de dados (em KB) que o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Os valores válidos são `8` `16` , `32`, `64`, , , `128`, `256`, ou `512`.
+
+
+
+ a| 
+`userLabel`
+ a| 
+O novo nome que você deseja dar a um volume existente. Coloque o novo nome do volume entre aspas duplas (" ").
+
+
+
+ a| 
+`preReadRedundancyCheck`
+ a| 
+A configuração para verificar a consistência dos dados de redundância RAID nas faixas durante as operações de leitura. Não utilize esta operação para volumes não redundantes, por exemplo, RAID nível 0. Para verificar a consistência da redundância, defina este parâmetro como `TRUE`. Para nenhuma verificação de faixa, defina este parâmetro como `FALSE`.
+
+|===
+
+
+== Notas
+
+Erros de e/S do host podem resultar em grupos de volume com mais de 32 volumes. Esta operação também pode resultar em reinicializações internas do controlador devido à expiração do período de tempo limite antes da operação ser concluída. Se você tiver esse problema, desligue e/S do host e tente a operação novamente.
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.
+
+Você pode aplicar esses parâmetros a apenas um volume de cada vez:
+
+* `addCapacity`
+* `segmentSize`
+* `userLabel`
+* `logicalUnitNumber`
+
+
+
+
+== Adicione capacidade, adicione unidades e tamanho do segmento
+
+Definir o `addCapacity` parâmetro, o `addDrives` parâmetro ou o `segmentSize` parâmetro inicia uma operação de longa duração que você não pode parar. Essas operações de longa duração são executadas em segundo plano e não o impedem de executar outros comandos. Para mostrar o progresso das operações de longa duração, use o `show volume actionProgress` comando.
+
+
+
+== Modificador de descarga de cache
+
+Valores válidos para o modificador de flush de cache são listados nesta tabela.
+
+[cols="2*"]
+|===
+| Valor | Descrição 
+
+
+ a| 
+`Immediate`
+ a| 
+Os dados são lavados assim que são colocados no cache.
+
+
+
+ a| 
+`.25`
+ a| 
+Os dados são lavados após 250 ms.
+
+
+
+ a| 
+`.5`
+ a| 
+Os dados são lavados após 500 ms.
+
+
+
+ a| 
+`.75`
+ a| 
+Os dados são lavados após 750 ms.
+
+
+
+ a| 
+`1`
+ a| 
+Os dados são lavados após 1 s..
+
+
+
+ a| 
+`1.5`
+ a| 
+Os dados são lavados após 1500 ms.
+
+
+
+ a| 
+`2`
+ a| 
+Os dados são lavados após 2 s..
+
+
+
+ a| 
+`5`
+ a| 
+Os dados são lavados após 5 s..
+
+
+
+ a| 
+`10`
+ a| 
+Os dados são lavados após 10 s..
+
+
+
+ a| 
+`20`
+ a| 
+Os dados são lavados após 20 s..
+
+
+
+ a| 
+`60`
+ a| 
+Os dados são lavados após 60 s (1 min.).
+
+
+
+ a| 
+`120`
+ a| 
+Os dados são lavados após 120 s (2 min.).
+
+
+
+ a| 
+`300`
+ a| 
+Os dados são lavados após 300 s (5 min.).
+
+
+
+ a| 
+`1200`
+ a| 
+Os dados são lavados após 1200 s (20 min.).
+
+
+
+ a| 
+`3600`
+ a| 
+Os dados são lavados após 3600 s (1 h).
+
+
+
+ a| 
+`Infinite`
+ a| 
+Os dados no cache não estão sujeitos a restrições de idade ou tempo. Os dados são limpos com base em outros critérios que são gerenciados pelo controlador.
+
+|===
+[NOTE]
+====
+Não defina o valor do `cacheFlushModifier` parâmetro acima de 10 segundos. Uma exceção é para fins de teste. Depois de executar quaisquer testes nos quais você tenha definido os valores do `cacheFlushModifier` parâmetro acima de 10 segundos, retorne o valor `cacheFlushModifier` do parâmetro para 10 ou menos segundos.
+
+====
+
+
+== Cache sem bateria ativada
+
+O armazenamento em cache sem baterias permite que o armazenamento em cache de gravação continue se as baterias do controlador estiverem completamente descarregadas, não totalmente carregadas ou não estiverem presentes. Se você definir este parâmetro como `TRUE` sem uma fonte de alimentação ininterrupta (UPS) ou outra fonte de alimentação de backup, você poderá perder dados se a energia para a matriz de armazenamento falhar. Este parâmetro não tem efeito se o cache de gravação estiver desativado.
+
+
+
+== Prioridade de modificação
+
+Prioridade de modificação define a quantidade de recursos do sistema que são usados ao modificar propriedades de volume. Se você selecionar o nível de prioridade mais alto, a modificação de volume usará a maioria dos recursos do sistema, o que diminui o desempenho para transferências de dados do host.
+
+
+
+== Cache lê pré-busca
+
+O `cacheReadPrefetch` parâmetro permite que o controlador copie blocos de dados adicionais no cache enquanto o controlador lê e copia blocos de dados solicitados pelo host da unidade para o cache. Essa ação aumenta a chance de que uma futura solicitação de dados possa ser atendida a partir do cache. A pré-busca de leitura de cache é importante para aplicativos Multimídia que usam transferências de dados sequenciais. As configurações do storage array que você usa determinam o número de blocos de dados adicionais lidos pelo controlador no cache. Os valores válidos para o `cacheReadPrefetch` parâmetro são `TRUE` ou `FALSE`.
+
+
+
+== Tamanho do segmento
+
+O tamanho de um segmento determina quantos blocos de dados o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Cada bloco de dados armazena 512 bytes de dados. Um bloco de dados é a menor unidade de armazenamento. O tamanho de um segmento determina quantos blocos de dados contém. Por exemplo, um segmento de 8 KB contém 16 blocos de dados. Um segmento de 64 KB contém 128 blocos de dados.
+
+Quando você insere um valor para o tamanho do segmento, o valor é verificado em relação aos valores suportados fornecidos pelo controlador no tempo de execução. Se o valor inserido não for válido, o controlador retornará uma lista de valores válidos. O uso de uma única unidade para uma única solicitação deixa outras unidades disponíveis para atender simultaneamente a outras solicitações.
+
+Se o volume estiver em um ambiente onde um único usuário está transferindo grandes unidades de dados (como Multimídia), o desempenho é maximizado quando uma única solicitação de transferência de dados é atendida com uma única faixa de dados. (Uma faixa de dados é o tamanho do segmento que é multiplicado pelo número de unidades no grupo de volumes que são usadas para transferências de dados.) Neste caso, várias unidades são usadas para a mesma solicitação, mas cada unidade é acessada apenas uma vez.
+
+Para obter o desempenho ideal em um ambiente de armazenamento de sistemas de arquivos ou banco de dados multiusuário, defina o tamanho do segmento para minimizar o número de unidades necessárias para atender a uma solicitação de transferência de dados.
+
+
+
+== Nível mínimo de firmware
+
+5,00 adiciona o `addCapacity` parâmetro.
+
+7,10 adiciona o `preReadRedundancyCheck` parâmetro.
+
+7,60 adiciona a `drawerID` entrada do usuário.
+
+7,75 adiciona o `dataAssuranceDisabled` parâmetro.
+
+8,10 corrige os valores para o `cacheFlushModifier` parâmetro na tabela cache flush.

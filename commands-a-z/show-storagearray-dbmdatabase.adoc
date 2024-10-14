@@ -1,0 +1,109 @@
+---
+permalink: commands-a-z/show-storagearray-dbmdatabase.html 
+sidebar: sidebar 
+keywords: show, storage, array, dbm, database 
+summary: O comando show storageArray dbmDatabase recupera e mostra metadados para os locais de backup integrados de um storage array. Quando há vários locais de backup, os metadados são exibidos para cada local. 
+---
+= Mostrar banco de dados DBM do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray dbmDatabase` comando recupera e mostra metadados para os locais de backup integrados de uma matriz de armazenamento. Quando há vários locais de backup, os metadados são exibidos para cada local.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Sintaxe
+
+[listing]
+----
+show storageArray dbmDatabase
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+Este comando retorna as informações do banco de dados de configuração em um formato semelhante a este exemplo.
+
+`Configuration Database MetadataLast Host Backup: <date stamp>`
+
+[cols="7*"]
+|===
+| CTL | LOCALIZAÇÃO | REVISÃO | ID | NÚMERO GEN | ESTADO | MODO DE ACESSO 
+
+
+ a| 
+A
+ a| 
+Cache
+ a| 
+X.Y
+ a| 
+999999
+ a| 
+999999
+ a| 
+R/W
+ a| 
+Ideal
+
+
+
+ a| 
+B
+ a| 
+Cache
+ a| 
+X.Y
+ a| 
+999999
+ a| 
+999999
+ a| 
+R/W
+ a| 
+Ideal
+
+
+
+ a| 
+N/A.
+ a| 
+Disco
+ a| 
+X.Y
+ a| 
+999999
+ a| 
+999999
+ a| 
+R/W
+ a| 
+Ideal
+
+|===
+
+
+== Nível mínimo de firmware
+
+7,83

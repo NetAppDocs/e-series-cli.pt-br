@@ -1,0 +1,388 @@
+---
+permalink: commands-a-z/smcli-supportbundle-schedule.html 
+sidebar: sidebar 
+keywords: schedule, automatic, support, bundle, collection, configuration 
+summary: O comando SMcli -supportBundle schedule cria ou remove uma agenda para salvar um pacote de suporte em um ou mais arrays de armazenamento. Você coleta informações de sistema e configuração em pacotes de suporte para transmitir as informações ao suporte técnico para análise e diagnóstico. 
+---
+= Agende a configuração automática da coleção de pacotes de suporte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `SMcli -supportBundle schedule` comando cria ou remove uma programação para salvar um pacote de suporte em um ou mais arrays de armazenamento. Você coleta informações de sistema e configuração em pacotes de suporte para transmitir as informações ao suporte técnico para análise e diagnóstico.
+
+[NOTE]
+====
+Este comando é um comando SMcli, não um comando script. Você deve executar este comando a partir de uma linha de comando. Não é possível executar este comando a partir do editor de scripts no software de gerenciamento de armazenamento.
+
+====
+Você pode criar dois tipos de horários:
+
+* Diário/semanal -- Use esse cronograma quando precisar coletar dados com frequência para monitorar novas configurações ou solucionar problemas de uma configuração existente.
+* Mensal/anual -- Use esse cronograma quando você estiver coletando dados para avaliar a operação a longo prazo de seu storage array.
+
+
+
+
+== Sintaxe para criar uma agenda diária/semanal
+
+[listing, subs="+macros"]
+----
+SMcli -supportBundle schedule enable
+pass:quotes[(all | _storageArrayName_)]
+pass:quotes[startTime=_HH:MM_]
+pass:quotes[startDate=_MM:DD:YYYY_]
+pass:quotes[endDate=_MM:DD:YYYY_]
+daysOfWeek=[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
+pass:quotes[data=_pathName_]
+----
+
+
+== Sintaxe para criar um cronograma mensal/anual
+
+[listing, subs="+macros"]
+----
+SMcli -supportBundle schedule enable
+pass:quotes[(all | _storageArrayName_)]
+pass:quotes[startTime=_HH:MM_]
+pass:quotes[startDate=_MM:DD:YYYY_]
+pass:quotes[endDate=_MM:DD:YYYY_]
+months=[January February March April May June July August September October
+November December]
+weekNumber=(First|Second|Third|Fourth|Last)
+dayOfWeek=(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)|
+onDays=[1-31] |
+pass:quotes[data=_pathName_]
+----
+
+
+== Sintaxe para remover uma programação
+
+[NOTE]
+====
+Este comando remove completamente a programação para o storage array. Para começar a salvar as informações do pacote de suporte novamente, você precisa criar uma nova programação.
+
+====
+[listing, subs="+macros"]
+----
+SMcli -supportBundle schedule disable
+pass:quotes[(all|_storageArrayName_)]
+----
+
+
+== Parâmetros
+
+A tabela a seguir lista os parâmetros para uma programação diária/semanal.
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`enable`
+ a| 
+Ative a coleta automática de pacotes de suporte quando um evento de mel crítico é detetado. Este parâmetro retoma a recolha de dados do pacote de suporte se tiver sido suspenso. Você deve usar o parâmetro sempre que criar uma nova programação ou modificar uma programação existente.
+
+
+
+ a| 
+`all`
+ a| 
+Use este parâmetro se quiser definir um cronograma de coleção para todos os storages de armazenamento detetados pelo host.
+
+
+
+ a| 
+`_storageArrayName_`
+ a| 
+O nome de uma matriz de armazenamento específica para a qual você deseja definir uma programação.
+
+
+
+ a| 
+`startTime`
+ a| 
+A hora do dia em que você deseja que a coleção de um pacote de suporte comece. O formato para introduzir a hora é HH:MM, onde HH é a hora e MM é o minuto após a hora. Use um relógio de 24 horas.
+
+A hora padrão é 00:00, meia-noite. Se você não inserir um horário para iniciar e tiver ativado a coleta de pacotes de suporte, a coleta dos dados ocorrerá automaticamente à meia-noite.
+
+
+
+ a| 
+`startDate`
+ a| 
+Uma data específica na qual você deseja começar a coletar dados do pacote de suporte. O formato para introduzir a data é MM:DD:YY.
+
+A data padrão é a data atual.
+
+
+
+ a| 
+`endDate`
+ a| 
+Uma data específica na qual você deseja parar de coletar dados do pacote de suporte. O formato para introduzir a data é MM:DD:YY.
+
+O padrão é nenhum.
+
+Se você usar esse parâmetro, ele deve ter pelo menos uma semana após a data de início e não pode ocorrer no passado.
+
+
+
+ a| 
+`daysOfWeek`
+ a| 
+Dia ou dias específicos da semana em que você deseja coletar dados do pacote de suporte. Use este parâmetro quando quiser coletar dados do pacote de suporte em um ou mais dias da semana. Por exemplo:
+
+[listing]
+----
+daysOfWeek=[Tuesday]
+----
+[listing]
+----
+daysOfWeek=[Monday Wednesday Friday]
+----
+Inclua os dias da semana entre colchetes ([ ]). Se você inserir mais de um dia, separe cada dia com um espaço.
+
+
+
+ a| 
+`data`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os dados do pacote de suporte. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\data.txt"
+----
+[NOTE]
+====
+Você pode usar qualquer extensão de arquivo.
+
+====
+Insira o caminho do arquivo e o nome em aspas duplas (" ").
+
+|===
+A tabela a seguir lista os parâmetros para um agendamento mensal/anual.
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`enable`
+ a| 
+Ative a coleta automática de pacotes de suporte quando um evento de mel crítico é detetado. Este parâmetro retoma a recolha de dados do pacote de suporte se tiver sido suspenso. Você deve usar o parâmetro sempre que criar uma nova programação ou modificar uma programação existente.
+
+
+
+ a| 
+`all`
+ a| 
+Use este parâmetro se quiser definir um cronograma de coleção para todos os storages de armazenamento detetados pelo host.
+
+
+
+ a| 
+`storageArrayName`
+ a| 
+O nome de uma matriz de armazenamento específica para a qual você deseja definir uma programação.
+
+
+
+ a| 
+`startTime`
+ a| 
+A hora de um dia em que você deseja que a coleção de um pacote de suporte comece. O formato para introduzir a hora é HH:MM, onde HH é a hora e MM é o minuto após a hora. Use um relógio de 24 horas.
+
+A hora padrão é 00:00, meia-noite. Se você não inserir um horário para iniciar e tiver ativado a coleta de pacotes de suporte, a coleta dos dados ocorrerá automaticamente à meia-noite.
+
+
+
+ a| 
+`startDate`
+ a| 
+Uma data específica na qual você deseja começar a coletar dados do pacote de suporte. O formato para introduzir a data é MM:DD:YY.
+
+A data padrão é a data atual.
+
+
+
+ a| 
+`endDate`
+ a| 
+Uma data específica na qual você deseja parar de coletar dados do pacote de suporte. O formato para introduzir a data é MM:DD:YY.
+
+O padrão é nenhum.
+
+
+
+ a| 
+`months`
+ a| 
+Mês ou meses específicos do ano em que você deseja coletar dados do pacote de suporte. Use este parâmetro quando quiser coletar dados do pacote de suporte em um ou mais meses de um ano. Por exemplo:
+
+[listing]
+----
+months=[June]
+----
+[listing]
+----
+months=[January April July October]
+----
+Inclua o mês entre colchetes ([ ]). Se você inserir mais de um mês, separe cada mês com um espaço.
+
+
+
+ a| 
+`weekNumber`
+ a| 
+Uma semana no mês em que você deseja coletar dados do pacote de suporte. Por exemplo:
+
+[listing]
+----
+weekNumber=first
+----
+
+
+ a| 
+`dayOfWeek`
+ a| 
+Um dia específico da semana em que você deseja coletar dados do pacote de suporte. Use este parâmetro quando quiser coletar dados do pacote de suporte em apenas um dia da semana. Por exemplo:
+
+[listing]
+----
+dayOfWeek=Wednesday
+----
+
+
+ a| 
+`onDays`
+ a| 
+Dia ou dias específicos em um mês no qual você deseja coletar dados do pacote de suporte. Por exemplo:
+
+[listing]
+----
+onDays=[15]
+----
+[listing]
+----
+onDays=[7 21]
+----
+Coloque o dia entre colchetes ([ ]). Se você inserir mais de um dia, separe cada dia com um espaço.
+
+[NOTE]
+====
+Não é possível usar o `*onDays*` parâmetro com o `*weekNumber*` parâmetro ou com o `*dayOfWeek*` parâmetro.
+
+====
+
+
+ a| 
+`data`
+ a| 
+O caminho do arquivo e o nome do arquivo para o qual você deseja salvar os dados do pacote de suporte. Por exemplo:
+
+[listing]
+----
+file="C:\Program Files\CLI\sup\data.txt"
+----
+[NOTE]
+====
+Você pode usar qualquer extensão de arquivo.
+
+====
+Insira o caminho do arquivo e o nome em aspas duplas (" ").
+
+|===
+A tabela a seguir lista os parâmetros para remover uma programação.
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`disable`
+ a| 
+Desativa a coleção automática de pacotes de suporte e exclui imediatamente quaisquer programações definidas anteriormente.
+
+[NOTE]
+====
+A desativação de um agendamento também exclui o agendamento.
+
+====
+
+
+ a| 
+`all`
+ a| 
+Use este parâmetro se quiser definir um cronograma de coleção para todos os storages de armazenamento detetados pelo host.
+
+
+
+ a| 
+`storageArrayName`
+ a| 
+O nome de uma matriz de armazenamento específica para a qual você deseja definir uma programação.
+
+|===
+
+
+== Notas
+
+Quando você usa o `all` parâmetro para definir uma programação comum para todos os storages de armazenamento, as programações para storages individuais são excluídas. Se um agendamento for definido para todos os storages de armazenamento, os storages recém-descobertos seguirão o mesmo agendamento. Se um agendamento for definido para todos os storages de armazenamento e, em seguida, um agendamento for definido para um único storage array, os storages recém-descobertos não terão um cronograma definido.
+
+A seguir estão exemplos do uso deste comando. O primeiro exemplo é de uma programação diária/semanal que atende a esses critérios para coletar dados do pacote de suporte:
+
+* O nome do storage array é DevKit4
+* A hora de início da coleção é 02:00 (2:00 da manhã)
+* A data de início é 05:01:2013 (1 de maio de 2013)
+* Os dados serão coletados na segunda e sexta-feira de cada semana
+* Esta programação não tem uma data de fim e pode ser interrompida apenas executando o `SMcli -supportBundle schedule disable` comando
+
+
+[listing]
+----
+SMcli -supportBundle schedule enable DevKit4 startTime=02:00
+startDate=05:01:2013 endDate=05:10:2014 daysOfWeek=[Monday Friday]
+----
+O segundo exemplo é de um cronograma mensal/anual que atende a esses critérios para coletar dados do pacote de suporte:
+
+* O nome do storage array é eng_stor1
+* A hora de início da coleção é 04:00 (4:00 da manhã)
+* A data de início é 05:01:2013 (1 de maio de 2013)
+* Os dados serão coletados em março, abril, maio, junho e agosto
+* Os dados serão coletados nos primeiros e vinte primeiros dias de cada mês
+* Esta programação não tem uma data de fim e pode ser interrompida apenas executando o `SMcli -supportBundle schedule disable` comando
+
+
+[listing]
+----
+SMcli -supportBundle schedule enable eng_stor1 startTime=04:00
+startDate=05:01:2013 months=[March April May June August] onDays=[1 21]
+----
+O terceiro exemplo é de um cronograma mensal/anual que atende a esses critérios para coletar dados do pacote de suporte:
+
+* O nome da matriz de armazenamento é firmware_2
+* A hora de início da coleção é 22:00 (10:00 à noite)
+* A data de início é 05:01:2013 (1 de maio de 2013)
+* Os dados serão coletados em março, abril, maio, junho e agosto
+* Os dados serão coletados na sexta-feira da primeira semana de cada mês
+* Este horário terminará às 05:10:2014 (10 de maio de 2014)
+
+
+[listing]
+----
+SMcli -supportBundle schedule enable firmware_2 startTime=22:00
+startDate=05:01:2013 endDate=05:10:2014 months=[March April May June August]
+weekNumber=First dayOfWeek=Friday
+----
+
+
+== Nível mínimo de firmware
+
+7,83

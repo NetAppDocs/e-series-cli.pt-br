@@ -1,0 +1,202 @@
+---
+permalink: commands-a-z/set-thin-volume-attributes.html 
+sidebar: sidebar 
+keywords: set, thin, volume, attributes 
+summary: 'O comando Set volume (Definir volume) define as propriedades de um volume fino.' 
+---
+= Defina atributos de volume fino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set volume` comando define as propriedades de um volume fino.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Você pode usar os parâmetros para definir propriedades para um ou mais volumes finos.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set (volume pass:quotes[[_volumeName_]] |
+volumes pass:quotes[[_volumeName1_ ... _volumeNameN_]] | volume <"wwID">)
+[newCapacity=pass:quotes[_capacityValue_]]
+[repositoryMaxCapacity=pass:quotes[_capacityValue_]]
+[repositoryExpansionPolicy=(automatic|manual)]
+[warningThresholdPercent=pass:quotes[_warningThresholdPercentValue_]]
+[addRepositoryCapacity=capacity-spec][hostReportingPolicy=(standard | thin)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volume`
+ a| 
+O nome do volume para o qual você deseja definir propriedades. Coloque o nome do volume entre colchetes ([ ]). Se o nome do volume tiver carateres especiais ou números, você deve incluir o nome do volume entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`volume`
+ a| 
+O World Wide Identifier (WWID) do volume para o qual você deseja definir propriedades. Coloque o WWID entre aspas duplas (" ") entre colchetes angulares ( ).
+
+
+
+ a| 
+`volumes`
+ a| 
+Os nomes de vários volumes para os quais você deseja definir propriedades. Todos os volumes terão as mesmas propriedades. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`newCapacity`
+ a| 
+Este parâmetro aumenta a capacidade virtual do volume fino. A capacidade virtual é o valor que o volume reportará a um host que é mapeado para o volume. Valores menores ou iguais à capacidade existente causarão um erro. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou .
+
+A capacidade virtual mínima é de 32 MB.
+
+A capacidade virtual máxima é de 256 TB.
+
+
+
+ a| 
+`repositoryMaxCapacity*`
+ a| 
+Este parâmetro define a capacidade máxima do volume do repositório. O valor não deve ser menor que a capacidade física do volume do repositório. Se o novo valor resultar numa redução da capacidade para um nível abaixo do limiar de aviso, o comando irá produzir um erro.
+
+[NOTE]
+====
+O comando `repositoryMaxCapacity` funciona com `repositoryExpansionPolicy=automatic`.
+
+====
+
+
+ a| 
+`repositoryExpansionPolic*`
+ a| 
+Esse parâmetro define a política de expansão para ou `manual`.quando você altera a política `automatic` de `automatic` para `manual`, o valor máximo de capacidade (cota) muda para a capacidade física do volume do repositório.
+
+
+
+ a| 
+`warningThresholdPercent`
+ a| 
+A percentagem de capacidade de volume fino na qual recebe um alerta de aviso de que o volume fino está quase cheio. Use valores inteiros. Por exemplo, um valor de 70 significa 70%.
+
+Os valores válidos são de 1 a 100.
+
+Definir este parâmetro como 100 desativa alertas de aviso.
+
+
+
+ a| 
+`addRepositoryCapacity`
+ a| 
+Este parâmetro aloca capacidade a partir da extensão livre do pool de discos. Se houver espaço insuficiente disponível, o comando falhará.
+
+[NOTE]
+====
+O comando `addRepositoryCapacity` funciona com `repositoryExpansionPolicy=manual`.
+
+====
+
+
+ a| 
+`*hostReportingPolicy*`
+ a| 
+Este parâmetro altera a forma como o volume fino é comunicado ao host. Os valores válidos são `standard` ou `thin`.
+
+|===
+
+
+== Notas
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.
+
+A tabela a seguir lista os limites de capacidade de um volume fino.
+
+[cols="2*"]
+|===
+| Tipo de capacidade | Tamanho 
+
+
+ a| 
+Capacidade virtual mínima
+ a| 
+32 MB
+
+
+
+ a| 
+Capacidade virtual máxima
+ a| 
+256 TB
+
+
+
+ a| 
+Capacidade física mínima
+ a| 
+4 GB
+
+
+
+ a| 
+Capacidade física máxima
+ a| 
+257 TB
+
+|===
+Os thin volumes dão suporte a todas as operações que os volumes padrão fazem com as seguintes exceções:
+
+* Não é possível alterar o tamanho do segmento de um volume fino.
+* Não é possível ativar a verificação de redundância de pré-leitura para um volume fino.
+* Você não pode usar um volume fino como o volume de destino em uma cópia de volume.
+* Não é possível usar um volume fino em uma operação de espelhamento síncrono.
+
+
+Se quiser alterar um volume fino para um volume padrão, use a operação de cópia de volume para criar uma cópia do volume fino. O destino de uma cópia de volume é sempre um volume padrão.
+
+
+
+== Nível mínimo de firmware
+
+7,83

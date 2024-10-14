@@ -1,0 +1,21 @@
+---
+permalink: get-started/overview-format-commands.html 
+sidebar: sidebar 
+keywords: overview, cli 
+summary: 'A interface de linha de comando (CLI) é um aplicativo de software que fornece uma maneira de configurar e monitorar matrizes de armazenamento.' 
+---
+= Visão geral da CLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+A interface de linha de comando (CLI) é um aplicativo de software que fornece uma maneira de configurar e monitorar matrizes de armazenamento. Usando a CLI, você pode executar comandos de um prompt do sistema operacional, como o prompt do dos `C:`, um caminho do sistema operacional Linux ou um caminho do sistema operacional Solaris.
+
+Com a CLI, você tem acesso direto a um mecanismo de script que é um utilitário do software de gerenciamento de storage. O mecanismo de script executa comandos que configuram e gerenciam os storages. O mecanismo de script lê os comandos, seja através de um arquivo de script ou diretamente da linha de comando, e executa as operações instruídas pelos comandos.
+
+Os comandos de script configuram e gerenciam um storage array. Os comandos de script são distintos dos comandos CLI. Você pode inserir comandos de script individuais ou executar um arquivo de comandos de script. Quando você insere um comando de script individual, você incorpora o comando script em um comando CLI. Quando você executa um arquivo de comandos de script, incorpore o nome do arquivo no comando CLI.
+
+Alguns recursos de software descritos neste documento podem não estar disponíveis para o sistema de storage e-Series. Para dúvidas sobre os recursos disponíveis, entre em Contato com o representante da sua conta.
+
+A CLI é um recurso do software SANtricity Storage Manager.

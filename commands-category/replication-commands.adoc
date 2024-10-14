@@ -1,0 +1,145 @@
+---
+permalink: commands-category/replication-commands.html 
+sidebar: sidebar 
+keywords: replication, commands, consistency group, command, repository volume, 
+summary: Comandos de replicação 
+---
+= Comandos de replicação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== Comandos do grupo de consistência
+
+link:../commands-a-z/set-consistencygroup-addcgmembervolume.html["Adicionar membro ao grupo de consistência"]
+
+link:../commands-a-z/create-consistencygroup.html["Crie um grupo de consistência"]
+
+link:../commands-a-z/create-cgsnapimage-consistencygroup.html["Criar imagem instantânea do grupo de consistência"]
+
+link:../commands-a-z/create-cgsnapvolume.html["Criar volume instantâneo do grupo de consistência"]
+
+link:../commands-a-z/create-mapping-cgsnapvolume.html["Criar mapeamento de volume de snapshot do grupo de consistência"]
+
+link:../commands-a-z/delete-consistencygroup.html["Eliminar grupo de consistência"]
+
+link:../commands-a-z/delete-cgsnapimage-consistencygroup.html["Eliminar imagem instantânea do grupo de consistência"]
+
+link:../commands-a-z/delete-sgsnapvolume.html["Eliminar o volume instantâneo do grupo de consistência"]
+
+link:../commands-a-z/remove-member-volume-from-consistency-group.html["Remova o volume do membro do grupo de consistência"]
+
+link:../commands-a-z/resume-cgsnapvolume.html["Retomar o volume instantâneo do grupo de consistência"]
+
+link:../commands-a-z/set-consistency-group-attributes.html["Definir atributos de grupo de consistência"]
+
+link:../commands-a-z/set-cgsnapvolume.html["Definir o volume instantâneo do grupo de consistência"]
+
+link:../commands-a-z/show-consistencygroup.html["Mostrar grupo de consistência"]
+
+link:../commands-a-z/show-cgsnapimage.html["Mostrar imagem instantânea do grupo de consistência"]
+
+link:../commands-a-z/start-cgsnapimage-rollback.html["Iniciar reversão de snapshot do grupo de consistência"]
+
+link:../commands-a-z/stop-cgsnapimage-rollback.html["Parar a reversão de snapshot do grupo de consistência"]
+
+link:../commands-a-z/stop-cgsnapvolume.html["Parar o volume instantâneo do grupo de consistência"]
+
+link:../commands-a-z/stop-consistencygroup-pendingsnapimagecreation.html["Parar imagens instantâneas pendentes no grupo de consistência"]
+
+
+
+== Comandos de análise de volume do repositório
+
+link:../commands-a-z/check-repositoryconsistency.html["Verifique a consistência do repositório"]
+
+
+
+== Comandos do grupo Snapshot
+
+link:../commands-a-z/create-snapgroup.html["Criar grupo instantâneo"]
+
+link:../commands-a-z/delete-snapvolume.html["Eliminar volume instantâneo"]
+
+link:../commands-a-z/revive-snapgroup.html["Reavive o grupo instantâneo"]
+
+link:../commands-a-z/set-snapgroup.html["Definir atributos do grupo de instantâneos"]
+
+link:../commands-a-z/set-snapgroup-mediascanenabled.html["Definir a digitalização do material do grupo instantâneo"]
+
+link:../commands-a-z/set-snapgroup-increase-decreaserepositorycapacity.html["Definir a capacidade do volume do repositório do grupo de snapshot"]
+
+link:../commands-a-z/set-snapgroup-enableschedule.html["Definir agendamento do grupo de instantâneos"]
+
+link:../commands-a-z/set-volume-ssdcacheenabled.html["Definir cache SSD para um volume"]
+
+link:../commands-a-z/show-snapgroup.html["Mostrar grupo instantâneo"]
+
+link:../commands-a-z/stop-pendingsnapimagecreation.html["Parar o grupo instantâneo com imagens instantâneas pendentes"]
+
+
+
+== Comandos de imagem instantânea
+
+link:../commands-a-z/create-snapimage.html["Criar imagem instantânea"]
+
+link:../commands-a-z/delete-snapimage.html["Eliminar imagem instantânea"]
+
+link:../commands-a-z/resume-snapimage-rollback.html["Retomar a reversão da imagem instantânea"]
+
+link:../commands-a-z/show-snapimage.html["Mostrar imagem instantânea"]
+
+link:../commands-a-z/start-snapimage-rollback.html["Iniciar reversão de imagem instantânea"]
+
+link:../commands-a-z/stop-snapimage-rollback.html["Parar a reversão da imagem instantânea"]
+
+
+
+== Comandos de volume do Snapshot
+
+link:../commands-a-z/create-read-only-snapshot-volume.html["Criar volume instantâneo somente leitura"]
+
+link:../commands-a-z/create-snapshot-volume.html["Criar volume instantâneo"]
+
+link:../commands-a-z/delete-snapgroup.html["Eliminar grupo instantâneo"]
+
+link:../commands-a-z/set-snapvolume.html["Mudar o nome do volume instantâneo"]
+
+link:../commands-a-z/resume-snapvolume.html["Retomar o volume do instantâneo"]
+
+link:../commands-a-z/revive-snapvolume.html["Reavive o volume instantâneo"]
+
+link:../commands-a-z/set-snapvolume-converttoreadwrite.html["Defina o volume instantâneo somente leitura para o volume de leitura/gravação"]
+
+link:../commands-a-z/set-snapvolume-mediascanenabled.html["Definir a digitalização do suporte de volume instantâneo"]
+
+link:../commands-a-z/set-snapvolume-increase-decreaserepositorycapacity.html["Definir a capacidade do volume do repositório do volume do Snapshot"]
+
+link:../commands-a-z/set-volume-ssdcacheenabled.html["Definir cache SSD para um volume"]
+
+link:../commands-a-z/show-snapvolume.html["Mostrar volumes de instantâneos"]
+
+link:../commands-a-z/stop-snapvolume.html["Parar o volume instantâneo"]
+
+
+
+== Comandos de cópia de volume
+
+link:../commands-a-z/create-volumecopy.html["Criar cópia de volume"]
+
+link:../commands-a-z/recopy-volumecopy-target.html["Cópia de volume recópia"]
+
+link:../commands-a-z/remove-volumecopy-target.html["Remover cópia de volume"]
+
+link:../commands-a-z/set-volumecopy-target.html["Definir cópia de volume"]
+
+link:../commands-a-z/show-volumecopy.html["Mostrar cópia de volume"]
+
+link:../commands-a-z/show-volumecopy-sourcecandidates.html["Mostrar candidatos de origem de cópia de volume"]
+
+link:../commands-a-z/show-volumecopy-source-targetcandidates.html["Mostrar candidatos alvo de cópia de volume"]
+
+link:../commands-a-z/stop-volumecopy-target-source.html["Parar a cópia do volume"]

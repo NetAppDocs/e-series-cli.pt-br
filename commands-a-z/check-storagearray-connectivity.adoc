@@ -1,0 +1,89 @@
+---
+permalink: commands-a-z/check-storagearray-connectivity.html 
+sidebar: sidebar 
+keywords: check, storage array, connectivity 
+summary: O comando check storageArray connectivity verifica se o storage array local e o storage array remoto têm um caminho de comunicação e exibe os detalhes de conexão entre o storage array local e remoto. 
+---
+= Verifique a conetividade do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `check storageArray connectivity` comando verifica se a matriz de armazenamento local e a matriz de armazenamento remoto têm um caminho de comunicação e exibe os detalhes da conexão entre a matriz de armazenamento local e remota.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.
+
+[NOTE]
+====
+Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+
+====
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+Antes de criar um grupo de espelhos assíncrono, você deve verificar se o storage de armazenamento local e o storage de armazenamento remoto podem se comunicar entre si. Quando você executa esse comando, o sistema consulta o storage array remoto em todas as portas de host qualificadas para determinar quais portas estão conetadas ao storage array remoto. O resultado do teste é uma lista de todas as portas no storage de armazenamento local, juntamente com uma lista dos endereços de porta do storage de armazenamento remoto acessíveis através dessa porta.
+
+[NOTE]
+====
+A conetividade é testada usando todos os canais possíveis e, se for uma configuração de controlador duplo, a conetividade é verificada a partir de cada controlador. Pode levar até 20 minutos para verificar a conectividade entre dois storage arrays.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+check storageArray connectivity
+(remoteStorageArrayName=pass:quotes[_"storageArrayName"_]|
+remoteStorageArrayWwid=<pass:quotes[_wwID_]>)
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`remoteStorageArrayName`
+ a| 
+O nome da matriz de armazenamento remoto para a qual você está verificando a conetividade. Coloque o nome da matriz de armazenamento entre aspas duplas (" ").
+
+
+
+ a| 
+`remoteStorageArrayWwid`
+ a| 
+O World Wide Identifier (WWID) da matriz de armazenamento para a qual você está verificando a conetividade. Você pode usar o WWID em vez do nome do storage array para identificar o storage array. Coloque o WWID entre parênteses angulares (>).
+
+|===
+
+
+== Notas
+
+Antes que um espelho possa ser estabelecido entre dois storages de armazenamento, eles devem ser conetados através de uma conexão Fibre Channel ou de uma conexão iSCSI.
+
+O espelhamento assíncrono Fibre Channel deve ser ativado em ambos os storage arrays antes que eles possam se comunicar entre si para espelhamento ou verificação de conectividade.
+
+Se a matriz de armazenamento local suportar iSCSI, a conetividade através de iSCSI é verificada. Se o storage array local for compatível com Fibre Channel e o espelhamento por Fibre Channel for ativado, a conectividade por Fibre Channel será verificada. Se a matriz de armazenamento local não suportar iSCSI ou Fibre Channel, é apresentada uma mensagem de erro e a operação foi cancelada.
+
+
+
+== Nível mínimo de firmware
+
+7,84

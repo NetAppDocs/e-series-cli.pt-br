@@ -1,0 +1,58 @@
+---
+permalink: commands-a-z/stop-storagearray-configdbdiagnostic.html 
+sidebar: sidebar 
+keywords: stop, storage, array, configuration, database, diagnostic 
+summary: O comando stop storageArray configDbDiagnostic interrompe o teste de diagnóstico para validar o banco de dados de configuração no firmware do controlador iniciado pelo comando start storageArray configDbDiagnostic. 
+---
+= Interromper o diagnóstico do banco de dados de configuração do storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop storageArray configDbDiagnostic` comando interrompe o teste de diagnóstico para validar o banco de dados de configuração no firmware do controlador que foi iniciado pelo `start storageArray configDbDiagnostic` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+stop storageArray configDbDiagnostic
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Notas
+
+O firmware do controlador retorna uma confirmação de que o teste de diagnóstico foi cancelado.
+
+Além disso, você pode iniciar o teste de diagnóstico de configuração do banco de dados por meio da GUI do software de gerenciamento de storage. No entanto, não é possível interromper o teste de diagnóstico de configuração do banco de dados por meio da GUI do software de gerenciamento de storage. Se pretender parar um teste de diagnóstico em execução, tem de utilizar o `stop storageArray configDbDiagnostic` comando.
+
+Se você tentar usar o `stop storageArray configDbDiagnostic` comando após a validação da configuração do storage array ter terminado, não receberá nenhuma mensagem informando que a validação foi concluída. Este comportamento é esperado.
+
+
+
+== Nível mínimo de firmware
+
+7,75
+
+7,77 refina o uso.

@@ -1,0 +1,421 @@
+---
+permalink: commands-a-z/create-raid-volume-manual-drive-select.html 
+sidebar: sidebar 
+keywords: create, raid, volume, manual, drive, select 
+summary: O comando criar volume cria um novo grupo de volumes e volume e permite especificar as unidades para o volume. 
+---
+= Criar volume RAID (seleção manual da unidade)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `create volume` comando cria um novo grupo de volumes e volume e permite especificar as unidades para o volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+create volume drives=pass:quotes[(_trayID1_],pass:quotes[[_drawerID1,_]]pass:quotes[_slotID1 ... trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_)]
+[volumeGroupUserLabel=pass:quotes[_"volumeGroupName"_]]
+raidLevel=(0 | 1 | 3 | 5 | 6)
+userLabel=pass:quotes[_"volumeName"_]
+[capacity=pass:quotes[_volumeCapacity_]]
+[owner=(a|b)]
+[mapping=(none | default)]
+[cacheReadPrefetch=(TRUE | FALSE)]
+[segmentSize=pass:quotes[_segmentSizeValue_]]
+[usageHint=(fileSystem | dataBase | multiMedia)]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[dssPreAllocate=(TRUE | FALSE)]
+[securityType=(none | capable | enabled )]
+[dataAssurance=(none | enabled)]
+[resourceProvisioningCapable=(TRUE | FALSE)]
+[blockSize=blockSizeValue]
+
+----
+[listing, subs="+macros"]
+----
+create volume drives=pass:quotes[_(trayID1,_]pass:quotes[[_drawerID1,_]pass:quotes[_slotID1 ... trayIDn_],pass:quotes[[_drawerIDn,_]]pass:quotes[_slotIDn_)]
+[volumeGroupUserLabel=pass:quotes[_"volumeGroupName"_]]
+raidLevel=(0 | 1 | 5 | 6)
+userLabel=pass:quotes[_"volumeName"_]
+[capacity=pass:quotes[_volumeCapacity_]]
+[owner=(a|b)]
+[mapping=(none | default)]
+[cacheReadPrefetch=(TRUE | FALSE)]
+[segmentSize=pass:quotes[_segmentSizeValue_]]
+[usageHint=(fileSystem | dataBase | multiMedia)]
+[trayLossProtect=(TRUE | FALSE)]
+[drawerLossProtect=(TRUE | FALSE)]
+[dssPreAllocate=(TRUE | FALSE)]
+[securityType=(none | capable | enabled )]
+[dataAssurance=(none | enabled)]
+[resourceProvisioningCapable=(TRUE | FALSE)]
+[blockSize=blockSizeValue]
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`drives`
+ a| 
+As unidades que você deseja atribuir ao volume que deseja criar. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot para a unidade. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot para a unidade. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`.
+
+Todos os máximos de ID de slot são 24. Os valores de ID do slot começam em 0 ou 1, dependendo do modelo da bandeja. As bandejas de unidades compatíveis com os controladores E2800 e E5700 têm números de ID de slot a partir de 0. As bandejas de unidades compatíveis com os controladores E2700 e E5600 têm números de ID de slot a partir de 1.
+
+Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+
+
+ a| 
+`volumeGroupUserLabel`
+ a| 
+O nome que você deseja dar ao novo grupo de volumes. Coloque o nome do grupo de volume entre aspas duplas (" ").
+
+[NOTE]
+====
+Se você não especificar uma etiqueta de usuário para o grupo de volume, o firmware do controlador atribuirá um número.
+
+====
+
+
+ a| 
+`raidLevel`
+ a| 
+O nível RAID do grupo de volumes que contém o volume. Os valores válidos são `0`, `1`, `3`, `5` `6` ou .
+
+
+
+ a| 
+`userLabel`
+ a| 
+O nome que você deseja dar ao novo volume. Coloque o novo nome do volume entre aspas duplas (" ").
+
+[NOTE]
+====
+Este parâmetro é obrigatório.
+
+====
+
+
+ a| 
+`capacity`
+ a| 
+O tamanho do volume que você está adicionando ao storage array. O tamanho é definido em unidades de `bytes` `KB` , , `MB`, `GB` `TB` ou .
+
+
+
+ a| 
+`owner`
+ a| 
+O controlador que possui o volume. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A e `b` é o controlador no slot B. se você não especificar um proprietário, o firmware do controlador determina o proprietário.
+
+
+
+ a| 
+`cacheReadPrefetch`
+ a| 
+A configuração para ativar ou desativar o cache ler pré-busca. Para desativar a pré-busca de leitura de cache, defina este parâmetro como `FALSE`. Para ativar a pré-busca de leitura de cache, defina este parâmetro como `TRUE`.
+
+
+
+ a| 
+`segmentSize`
+ a| 
+A quantidade de dados (em KB) que o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Os valores válidos são``4 (SSD only)``/, `16` `32` , `64`, , , , `128`, `256`, ou `512`.
+
+
+
+ a| 
+`usageHint`
+ a| 
+As configurações para o `cacheReadPrefetch` parâmetro e o `segmentSize` parâmetro são valores padrão. Os valores padrão são baseados no padrão de uso de e/S típico da aplicação que está usando o volume. Os valores válidos são `fileSystem`, `dataBase`, `multiMedia` ou .
+
+
+
+ a| 
+`trayLossProtect`
+ a| 
+A configuração para aplicar proteção contra perda de bandeja quando você cria o repositório. Para aplicar a proteção contra perda de bandeja, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+
+
+ a| 
+`drawerLossProtect`
+ a| 
+A configuração para aplicar proteção contra perda de gaveta quando você cria o volume do repositório espelhado. Para aplicar a proteção contra perda de gaveta, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+
+
+ a| 
+`dssPreAllocate`
+ a| 
+A configuração para garantir que a capacidade de reserva seja alocada para o tamanho futuro do segmento aumenta. Este valor padrão é `TRUE`.
+
+
+
+ a| 
+`securityType`
+ a| 
+A configuração para especificar o nível de segurança ao criar os grupos de volumes e todos os volumes associados. Estas definições são válidas:
+
+* `none` -- o grupo de volumes e os volumes não são seguros.
+* `capable` -- o grupo de volumes e os volumes são capazes de ter a segurança definida, mas a segurança não foi ativada.
+* `enabled` -- o grupo de volumes e os volumes têm a segurança ativada.
+
+
+
+
+ a| 
+`resourceProvisioningCapable`
+ a| 
+A configuração para especificar se os recursos de provisionamento de recursos estão ativados. Para desativar o provisionamento de recursos, defina este parâmetro como `FALSE`. O valor padrão é `TRUE`.
+
+
+
+ a| 
+`mapping`
+ a| 
+Este parâmetro permite mapear o volume para um host. Se pretender mapear mais tarde, defina este parâmetro como `none`. Se pretender mapear agora, defina este parâmetro como `default`. O volume é mapeado para todos os hosts que têm acesso ao pool de armazenamento. O valor padrão é `none`.
+
+
+
+ a| 
+`blockSize`
+ a| 
+Este parâmetro define o tamanho do bloco do volume que está sendo criado. Um valor de 0 ou o parâmetro não definido usa o tamanho padrão do bloco.
+
+|===
+
+
+== Notas
+
+ `drives`O parâmetro dá suporte a bandejas de unidades de alta capacidade e bandejas de unidades de baixa capacidade. Uma bandeja de unidades de alta capacidade tem gavetas que prendem as unidades. As gavetas deslizam para fora da bandeja de unidades para fornecer acesso às unidades. Uma bandeja de unidades de baixa capacidade não tem gavetas. Para uma bandeja de unidades de alta capacidade, você deve especificar o identificador (ID) da bandeja de unidades, o ID da gaveta e o ID do slot no qual uma unidade reside. Para uma bandeja de unidades de baixa capacidade, você precisa especificar apenas o ID da bandeja de unidades e o ID do slot em que uma unidade reside. Para uma bandeja de unidades de baixa capacidade, um método alternativo para identificar um local para uma unidade é especificar a ID da bandeja de unidades, definir a ID da gaveta como `0` e especificar a ID do slot no qual uma unidade reside.
+
+Se você definir `raidLevel` o parâmetro para RAID nível 1:
+
+* Há um número par de unidades no grupo, por definição RAID 1
+* A primeira metade do grupo, na ordem listada (e na ordem de distribuição), são unidades primárias
+* A segunda metade do grupo, na ordem listada (e na ordem de distribuição), são as unidades espelhadas correspondentes
+
+
+Você pode usar qualquer combinação de carateres alfanuméricos, sublinhado (_), hífen (-) e libra ( no) para os nomes. Os nomes podem ter um máximo de 30 carateres.
+
+O `owner` parâmetro define qual controlador possui o volume. A propriedade preferida do controlador de um volume é o controlador que atualmente possui o grupo de volumes.
+
+Se você não especificar uma capacidade usando o `capacity` parâmetro, toda a capacidade da unidade disponível no grupo de volumes será usada. Se você não especificar unidades de capacidade, `bytes` será usado como o valor padrão.
+
+
+
+== Proteção contra perda de bandeja e proteção contra perda de gaveta
+
+Para que a proteção contra perda de bandeja funcione, sua configuração deve seguir as seguintes diretrizes:
+
+|===
+| Nível | Critérios para proteção contra perda de bandejas | Número mínimo de bandejas necessário 
+
+
+ a| 
+`Disk Pool`
+ a| 
+O pool de discos não contém mais de duas unidades em uma única bandeja
+ a| 
+6
+
+
+
+ a| 
+`RAID 6`
+ a| 
+O grupo de volumes não contém mais do que duas unidades em uma única bandeja
+ a| 
+3
+
+
+
+ a| 
+`RAID 3` ou `RAID 5`
+ a| 
+Cada unidade do grupo de volume está localizada em uma bandeja separada
+ a| 
+3
+
+
+
+ a| 
+`RAID 1`
+ a| 
+Cada unidade em um par RAID 1 deve estar localizada em uma bandeja separada
+ a| 
+2
+
+
+
+ a| 
+`RAID 0`
+ a| 
+Não é possível obter a proteção contra perda do tabuleiro.
+ a| 
+Não aplicável
+
+|===
+Para que a proteção contra perda de gaveta funcione (em ambientes de gabinete de alta densidade), sua configuração deve seguir as seguintes diretrizes:
+
+|===
+| Nível | Critérios para proteção contra perda de gaveta | Número mínimo de gavetas necessário 
+
+
+ a| 
+`Disk Pool`
+ a| 
+O pool inclui unidades de todas as cinco gavetas e há um número igual de unidades em cada gaveta. Uma bandeja de 60 unidades pode obter proteção contra perda de gaveta quando o pool de discos contém 15, 20, 25, 30, 35, 40, 45, 50, 55 ou 60 unidades.
+ a| 
+5
+
+
+
+ a| 
+`RAID 6`
+ a| 
+O grupo de volumes não contém mais do que duas unidades em uma única gaveta.
+ a| 
+3
+
+
+
+ a| 
+`RAID 3` ou `RAID 5`
+ a| 
+Cada unidade do grupo de volume está localizada em uma gaveta separada.
+ a| 
+3
+
+
+
+ a| 
+`RAID 1`
+ a| 
+Cada unidade em um par espelhado deve estar localizada em uma gaveta separada.
+ a| 
+2
+
+
+
+ a| 
+`RAID 0`
+ a| 
+Não é possível obter proteção contra perda de gaveta.
+ a| 
+Não aplicável
+
+|===
+
+
+== Tamanho do segmento
+
+O tamanho de um segmento determina quantos blocos de dados o controlador grava em uma única unidade em um volume antes de gravar dados na próxima unidade. Cada bloco de dados armazena 512 bytes de dados. Um bloco de dados é a menor unidade de armazenamento. O tamanho de um segmento determina quantos blocos de dados contém. Por exemplo, um segmento de 8 KB contém 16 blocos de dados. Um segmento de 64 KB contém 128 blocos de dados.
+
+Quando você insere um valor para o tamanho do segmento, o valor é verificado em relação aos valores suportados fornecidos pelo controlador no tempo de execução. Se o valor inserido não for válido, o controlador retornará uma lista de valores válidos. O uso de uma única unidade para uma única solicitação deixa outras unidades disponíveis para atender simultaneamente a outras solicitações. Se o volume estiver em um ambiente onde um único usuário está transferindo grandes unidades de dados (como Multimídia), o desempenho é maximizado quando uma única solicitação de transferência de dados é atendida com uma única faixa de dados. (Uma faixa de dados é o tamanho do segmento que é multiplicado pelo número de unidades no grupo de volumes que são usadas para transferências de dados.) Neste caso, várias unidades são usadas para a mesma solicitação, mas cada unidade é acessada apenas uma vez.
+
+Para obter o desempenho ideal em um ambiente de armazenamento de sistemas de arquivos ou banco de dados multiusuário, defina o tamanho do segmento para minimizar o número de unidades necessárias para atender a uma solicitação de transferência de dados.
+
+
+
+== Dica de utilização
+
+[NOTE]
+====
+Não é necessário introduzir um valor para o `cacheReadPrefetch` parâmetro ou para o `segmentSize` parâmetro. Se não introduzir um valor, o firmware do controlador utiliza o `usageHint` parâmetro com `fileSystem` como valor predefinido. Introduzir um valor para o `usageHint` parâmetro e um valor para o `cacheReadPrefetch` parâmetro ou um valor para o `segmentSize` parâmetro não causa um erro. O valor inserido para o parâmetro ou para `cacheReadPrefetch` o `segmentSize` parâmetro tem prioridade sobre o valor do `usageHint` parâmetro. O tamanho do segmento e as configurações de pré-busca de leitura de cache para várias dicas de uso são mostrados na tabela a seguir:
+
+====
+|===
+| Dica de uso | Definição do tamanho do segmento | Configuração de pré-busca de leitura de cache dinâmico 
+
+
+ a| 
+Sistema de arquivos
+ a| 
+128 KB
+ a| 
+Ativado
+
+
+
+ a| 
+Banco de dados
+ a| 
+128 KB
+ a| 
+Ativado
+
+
+
+ a| 
+Multimédia
+ a| 
+256 KB
+ a| 
+Ativado
+
+|===
+
+
+== Cache lê pré-busca
+
+A pré-busca de leitura de cache permite que o controlador copie blocos de dados adicionais no cache enquanto o controlador lê e copia blocos de dados solicitados pelo host da unidade para o cache. Essa ação aumenta a chance de que uma futura solicitação de dados possa ser atendida a partir do cache. A pré-busca de leitura de cache é importante para aplicativos Multimídia que usam transferências de dados sequenciais. Os valores válidos para o `cacheReadPrefetch` parâmetro são `TRUE` ou `FALSE`. A predefinição é `TRUE`.
+
+Não é necessário introduzir um valor para o `cacheReadPrefetch` parâmetro ou para o `segmentSize` parâmetro. Se não introduzir um valor, o firmware do controlador utiliza o `usageHint` parâmetro com `fileSystem` como valor predefinido. Introduzir um valor para o `usageHint` parâmetro e um valor para o `cacheReadPrefetch` parâmetro ou um valor para o `segmentSize` parâmetro não causa um erro. O valor inserido para o parâmetro ou para `cacheReadPrefetch` o `segmentSize` parâmetro tem prioridade sobre o valor do `usageHint` parâmetro.
+
+
+
+== Tipo de segurança
+
+Use o `securityType` parâmetro para especificar as configurações de segurança do storage array.
+
+Antes de definir o `securityType` parâmetro como `enabled`, você deve criar uma chave de segurança do storage array. Use o `create storageArray securityKey` comando para criar uma chave de segurança de storage array. Estes comandos estão relacionados com a chave de segurança:
+
+* `create storageArray securityKey`
+* `export storageArray securityKey`
+* `import storageArray securityKey`
+* `set storageArray securityKey`
+* `enable volumeGroup [volumeGroupName] security`
+* `enable diskPool [diskPoolName] security`
+
+
+
+
+== Nível mínimo de firmware
+
+7,10 adiciona capacidade RAID nível 6 e o `dssPreAllocate` parâmetro.
+
+7,50 adiciona o `securityType` parâmetro.
+
+7,60 adiciona a entrada de usuário _drawerID_ e o `drawerLossProtect` parâmetro.
+
+7,75 adiciona o `dataAssurance` parâmetro.
+
+8,63 adiciona o `resourceProvisioningCapable` parâmetro.
+
+11,70 adiciona o `blockSize` parâmetro.

@@ -1,0 +1,100 @@
+---
+permalink: commands-a-z/set-disk-pool-modify-disk-pool.html 
+sidebar: sidebar 
+keywords: set, disk pool, modify 
+summary: 'O comando Set diskPool adiciona capacidade a um pool de discos (Dynamic Capacity Expansion ou DCE) ou altera a propriedade do controlador para todo o pool de discos.' 
+---
+= Definir pool de discos (modificar pool de discos)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set diskPool` comando adiciona capacidade a um pool de discos (Dynamic Capacity Expansion ou DCE) ou altera a propriedade do controlador para todo o pool de discos.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Estas duas operações são mutuamente exclusivas.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set diskPool pass:quotes[[_diskPoolName_]]
+(addDrives=pass:quotes[[_trayID1_,_drawerID1_,_slotID1_ ... _trayIDn_,_drawerIDn_,_slotIDn_]] |
+addCapacity=pass:quotes[(_diskPoolCapacity_))]
+[owner=(a| b)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`diskPool`
+ a| 
+O nome do pool de discos que você deseja modificar. Inclua o nome do pool de discos entre colchetes ([ ]). Se o nome do conjunto de discos tiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`addDrives`
+ a| 
+As unidades que você deseja adicionar ao pool de discos. Para bandejas de unidades de alta capacidade, especifique o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot da unidade que você deseja adicionar. Para bandejas de unidades de baixa capacidade, especifique o valor de ID da bandeja e o valor de ID do slot da unidade que você deseja adicionar. Os valores de ID da bandeja são `0` para `99`. Os valores de ID da gaveta são `1` para `5`. Os valores de ID do slot são `1` para `24`. Inclua o valor de ID da bandeja, o valor de ID da gaveta e o valor de ID do slot entre colchetes ([ ]).
+
+[NOTE]
+====
+Este recurso tem um limite de 12 unidades.
+
+====
+
+
+ a| 
+`addCapacity`
+ a| 
+A quantidade de capacidade de armazenamento adicional que você deseja adicionar ao pool de discos. Este parâmetro seleciona automaticamente as unidades para atender à capacidade que você deseja adicionar. A capacidade é definida em unidades de `bytes` `KB` , , `MB`, `GB` ou `TB`.
+
+
+
+ a| 
+`owner`
+ a| 
+A controladora que possui o pool de discos. Os identificadores válidos do controlador são `a` ou `b`, onde `a` está o controlador no slot A e `b` é o controlador no slot B. se você não especificar um proprietário, o firmware do controlador determina o proprietário.
+
+|===
+
+
+== Notas
+
+Os volumes que já estão no pool de discos permanecem on-line e disponíveis para operações de e/S enquanto você adiciona novas unidades. O pool de discos deve estar no estado completo antes de adicionar capacidade. Se o pool de discos não estiver no estado completo, execute o `set diskPool complete` comando antes de adicionar novas unidades.
+
+Para adicionar capacidade, especifique unidades individuais com o `addDrives` parâmetro ou uma quantidade de capacidade de unidade com o `addCapacity` parâmetro. Se você usar `addDrives`o , o host deve validar o conjunto de unidades antes de permitir que a operação seja executada. Se você usar o `addCapacity` parâmetro, a capacidade especificada será tomada como a capacidade mínima a ser adicionada. O candidato conduz com a melhor correspondência para a qualidade do serviço e uma capacidade maior ou igual ao que você especificou são usados. Se nenhum candidato estiver disponível com uma correspondência mínima, ou a lista de unidades especificada não estiver disponível ou se forem detetadas incompatibilidades de atributos, a operação falhará.
+
+Você também pode usar esse comando para alterar a propriedade de um pool de discos de um controlador no storage array para o outro. Usar este comando para alterar a propriedade é mutuamente exclusivo com o uso do comando para adicionar unidades ou adicionar capacidade.
+
+
+
+== Nível mínimo de firmware
+
+7,83

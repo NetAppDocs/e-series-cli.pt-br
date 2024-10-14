@@ -1,0 +1,43 @@
+---
+permalink: commands-a-z/getting-started-with-external-key-management.html 
+sidebar: sidebar 
+keywords: security, key, string, characters, shared, secure, drives, controllers, storage, array, external, management, maintain, server 
+summary: Uma chave de segurança é uma cadeia de carateres, que é compartilhada entre as unidades e controladores habilitados para segurança em um storage array. Ao usar o gerenciamento de chaves externas, você cria e mantém chaves de segurança em um servidor de gerenciamento de chaves 
+---
+= Introdução ao gerenciamento de chaves externas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Uma chave de segurança é uma cadeia de carateres, que é compartilhada entre as unidades e controladores habilitados para segurança em um storage array. Ao usar o gerenciamento de chaves externas, você cria e mantém chaves de segurança em um servidor de gerenciamento de chaves
+
+Consulte a ajuda on-line do Gerenciador de sistemas do SANtricity para obter informações conceituais sobre o uso de servidores de gerenciamento de chaves externas e chaves de segurança.
+
+O seguinte é o fluxo de trabalho básico para a implementação de chaves de segurança externas:
+
+. *Gerar uma solicitação de assinatura de certificado*
+. *Obtenha certificados de cliente e servidor a partir do servidor KMIP*
+. *Instale o certificado do cliente*
+. *Defina o endereço IP e o número da porta do servidor KMIP*
+. *Teste a comunicação com o servidor KMIP*
+. * Criar uma chave de segurança de storage array*
+. *Validar a chave de segurança*
+
+
+
+
+== Etapas do fluxo de trabalho
+
+Tanto o gerenciamento de certificados quanto o gerenciamento de chaves externas são novos recursos de segurança com a versão SANtricity11,40. Para começar, use as seguintes etapas básicas:
+
+. Gerar uma solicitação de assinatura de certificado usando o `save storageArray keyManagementClientCSR` comando. xref:save-storagearray-keymanagementclientcsr.adoc[Gerar solicitação de assinatura de certificado de Gerenciamento de chaves]Consulte .
+. A partir do servidor KMIP, solicite um cliente e um certificado de servidor.
+. Instale o certificado do cliente usando o `download storageArray keyManagementCertificate` comando com o `certificateType` parâmetro definido como `client`. xref:download-storagearray-keymanagementcertificate.adoc[Instale o certificado de gerenciamento de chaves externas do storage array]Consulte .
+. Instale o certificado do servidor usando o `download storageArray keyManagementCertificate` comando com o `certificateType` parâmetro definido como `server`. xref:download-storagearray-keymanagementcertificate.adoc[Instale o certificado de gerenciamento de chaves externas do storage array]Consulte .
+. Defina o endereço IP e o número da porta do servidor de gerenciamento de chaves usando o `set storageArray externalKeyManagement` comando. xref:set-storagearray-externalkeymanagement.adoc[Defina as configurações de gerenciamento de chaves externas]Consulte .
+. Teste a comunicação com o servidor de gerenciamento de chaves externo usando o `start storageArray externalKeyManagement test` comando. xref:start-storagearray-externalkeymanagement-test.adoc[Testar a comunicação de gerenciamento de chaves externas]Consulte .
+. Crie uma chave de segurança usando o `create storageArray securityKey` comando. xref:create-storagearray-securitykey.adoc[Criar chave de segurança]Consulte .
+. Valide a chave de segurança usando o `validate storageArray securityKey` comando. xref:validate-storagearray-securitykey.adoc[Valide a chave de segurança interna ou externa]Consulte .
+

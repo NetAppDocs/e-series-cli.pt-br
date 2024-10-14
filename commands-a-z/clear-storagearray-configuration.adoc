@@ -1,0 +1,143 @@
+---
+permalink: commands-a-z/clear-storagearray-configuration.html 
+sidebar: sidebar 
+keywords: clear, storage array, configuration 
+summary: O comando Clear storageArray Configuration limpa toda uma configuração de storage array ou parte de uma configuração de storage array, ou limpa apenas o grupo de volume e a configuração de volume. 
+---
+= Limpar a configuração do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `clear storageArray configuration` comando limpa toda uma configuração de storage array ou parte de uma configuração de storage array, ou limpa apenas o grupo de volume e a configuração de volume.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Use este comando para executar uma destas operações:
+
+* Limpe toda a configuração do storage array e retorne-a ao estado de instalação inicial.
+* Limpe a configuração, exceto para informações de segurança e informações de identificação.
+* Limpar apenas informações de configuração do grupo de volumes e informações de configuração de volume.
+
+
+[NOTE]
+====
+*Possível dano à configuração da matriz de armazenamento* -- assim que você executar este comando, a configuração da matriz de armazenamento existente é excluída.
+
+====
+
+
+== Sintaxe
+
+[listing]
+----
+clear storageArray configuration (all | volumeGroups)
+----
+[listing]
+----
+clear storageArray configuration factoryReset
+----
+
+
+== Parâmetros
+
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+*Nenhuma*
+ a| 
+Se você não inserir um parâmetro, esse comando removerá todas as informações de configuração do storage array, exceto as informações relacionadas à segurança e identificação.
+
+
+
+ a| 
+`all`
+ a| 
+A configuração para remover toda a configuração da matriz de armazenamento, incluindo informações de segurança e informações de identificação. Remover todas as informações de configuração retorna o storage array ao seu estado inicial.
+
+
+
+ a| 
+`volumeGroups`
+ a| 
+A definição para remover a configuração do volume e a configuração do grupo de volumes. O resto da configuração permanece intacto.
+
+
+
+ a| 
+`factoryReset`
+ a| 
+Essa configuração remove toda a configuração do storage array (a mesma função que o `all` parâmetro), mas também redefine a configuração da rede e qualquer informação de senha armazenada no controlador.
+
+
+
+ a| 
+`supportReset`
+ a| 
+[NOTE]
+====
+Este comando destina-se apenas a utilização de suporte técnico.
+
+====
+Essa configuração se comporta como o `factoryReset` parâmetro, mas também limpa todas as chaves de pacote.
+
+|===
+
+
+== Notas
+
+Com este comando, você pode limpar a configuração do storage array de várias maneiras diferentes. Quando você limpa a matriz de armazenamento para grupos de volume, o modo de recuperação é iniciado automaticamente. No modo de recuperação, backups integrados (cache) (se existirem na plataforma) são retidos. Quando o storage array está no modo de recuperação, você pode, opcionalmente, restaurar a configuração do storage array a partir de um arquivo de backup baseado em host ou de um dos backups integrados (cache).
+
+Esse comando também redefine o identificador do storage array. Todos os recursos premium habilitados com um arquivo de chave são invalidados, e novas chaves de recurso premium devem ser criadas e aplicadas. Entre em Contato com o suporte técnico.
+
+Quando você executa esse comando, o storage array fica sem resposta e todo o processamento de script é cancelado. Você deve remover e adicionar novamente o storage array para retomar a comunicação com o host. Para remover uma matriz de armazenamento não responsiva, use este comando SMcli wrapper:
+
+[listing, subs="+macros"]
+----
+SMcli -X -n pass:quotes[_storageArrayName_]
+----
+O `X` é um terminal único SMcli e deve ser maiúscula.
+
+Para adicionar novamente a matriz de armazenamento, use este comando SMcli wrapper:
+
+[listing, subs="+macros"]
+----
+SMcli -A -n pass:quotes[_storageArrayName_]
+----
+O `A` é um terminal único SMcli e deve ser maiúscula.
+
+
+
+== Nível mínimo de firmware
+
+7,10 adiciona estes parâmetros:
+
+* `all`
+* `volumeGroups`
+
+
+7,83 adiciona a capacidade do modo de recuperação.
+
+11,41 adiciona estes parâmetros:
+
+* `factoryReset`
+* `supportReset`
+

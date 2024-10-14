@@ -1,0 +1,150 @@
+---
+permalink: commands-a-z/set-syncmirror.html 
+sidebar: sidebar 
+keywords: set, synchronous, mirror 
+summary: O comando Set SyncMirror define as propriedades de um par espelhado remoto. 
+---
+= Definir o espelhamento síncrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set syncMirror` comando define as propriedades de um par espelhado remoto.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+
+
+
+== Contexto
+
+[NOTE]
+====
+Em versões anteriores deste comando, o identificador de funcionalidade era `remoteMirror`. Esse identificador de recurso não é mais válido e é substituído por `syncMirror`.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+set syncMirror (localVolume pass:quotes[[_volumeName_]] |
+localVolumes pass:quotes[[_volumeName1 ... volumeNameN_]])
+[role=(primary | secondary)]
+[syncPriority=(highest | high | medium | low | lowest)]
+[autoResync=(enabled | disabled)]
+[writeOrder=(preserved | notPreserved)]
+[writeMode=(synchronous | asynchronous)]
+[force=(TRUE | FALSE)]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`localVolume`
+ a| 
+O nome do volume local para o qual você deseja definir propriedades. Coloque o nome do volume primário entre colchetes ([ ]). Se o nome do volume principal tiver carateres ou números especiais, você deve incluir o nome do volume principal entre aspas duplas (" ") dentro de colchetes.
+
+
+
+ a| 
+`localVolumes`
+ a| 
+Os nomes de vários volumes locais para os quais você deseja definir propriedades. Insira os nomes dos volumes usando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Separe cada um dos nomes com um espaço.
+
+
+Se os nomes dos volumes tiverem carateres especiais ou consistirem apenas em números, introduza os nomes utilizando estas regras:
+
+* Inclua todos os nomes entre colchetes ([ ]).
+* Coloque cada um dos nomes em aspas duplas (" ").
+* Separe cada um dos nomes com um espaço.
+
+
+
+
+ a| 
+`role`
+ a| 
+A definição para o volume local funcionar como o volume primário ou o volume secundário. Para definir o volume como volume principal, defina este parâmetro como `primary`. Para definir o volume como volume secundário, defina este parâmetro como `secondary`. Este parâmetro aplica-se apenas quando o volume faz parte de uma relação de espelho.
+
+
+
+ a| 
+`syncPriority`
+ a| 
+A prioridade que a sincronização completa tem em relação à atividade de e/S do host. Os valores válidos são `highest`, `high`, `medium`, `low` `lowest` ou .
+
+
+
+ a| 
+`autoResync`
+ a| 
+As configurações de ressincronização automática entre os volumes primários e os volumes secundários de um par espelhado remoto. Este parâmetro tem estes valores:
+
+* `enabled` -- a ressincronização automática está ativada. Não é necessário fazer mais nada para ressincronizar o volume primário e o volume secundário.
+* `disabled` -- a ressincronização automática está desligada. Para ressincronizar os volumes primários e o volume secundário, é necessário executar o `resume syncMirror` comando.
+
+
+
+
+ a| 
+`writeOrder`
+ a| 
+Este parâmetro define a ordem de gravação para transmissão de dados entre o volume primário e o volume secundário. Os valores válidos são `preserved` ou `notPreserved`.
+
+
+
+ a| 
+`writeMode`
+ a| 
+Este parâmetro define como o volume primário grava no volume secundário. Os valores válidos são `synchronous` ou `asynchronous`.
+
+
+
+ a| 
+`force`
+ a| 
+A reversão de função é forçada se o vínculo de comunicação entre os storages estiver inativo e a promoção ou rebaixamento no lado local resultar em uma condição dual-primária ou uma condição dupla-secundária. Para forçar uma reversão de função, defina este parâmetro como `TRUE`. O valor padrão é `FALSE`.
+
+[NOTE]
+====
+Utilize o `force` parâmetro apenas quando utilizar o `role` parâmetro.
+
+====
+|===
+
+
+== Notas
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.
+
+Prioridade de sincronização define a quantidade de recursos do sistema que são usados para sincronizar os dados entre os volumes primários e os volumes secundários de uma relação de espelhamento. Se você selecionar o nível de prioridade mais alto, a sincronização de dados usará a maioria dos recursos do sistema para executar a sincronização completa, o que diminui o desempenho das transferências de dados do host.
+
+O `writeOrder` parâmetro aplica-se apenas aos modos de escrita assíncronos e faz com que eles se tornem parte de um grupo de consistência. A configuração `writeOrder` do parâmetro `preserved` faz com que o par espelhado remoto transmita dados do volume primário para o volume secundário na mesma ordem em que o host grava no volume primário. No caso de uma falha de link de transmissão, os dados são armazenados em buffer até que uma sincronização completa possa ocorrer. Essa ação pode exigir sobrecarga adicional do sistema para manter os dados armazenados em buffer, o que retarda as operações. Definir `writeOrder` o parâmetro para `notPreserved` liberar o sistema de ter que manter os dados em um buffer, mas requer forçar uma sincronização completa para garantir que o volume secundário tenha os mesmos dados que o volume primário.
+
+
+
+== Nível mínimo de firmware
+
+6,10

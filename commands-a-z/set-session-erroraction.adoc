@@ -1,0 +1,120 @@
+---
+permalink: commands-a-z/set-session-erroraction.html 
+sidebar: sidebar 
+keywords: set, session 
+summary: O comando Set session errorAction define como você deseja que a sessão atual do mecanismo de script seja executada. 
+---
+= Definir sessão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `set session errorAction` comando define como você deseja que a sessão atual do mecanismo de script seja executada.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento, Administrador de suporte, Administrador de segurança ou Monitor de armazenamento.
+
+
+
+== Contexto
+
+Para efeitos deste comando, uma sessão é a duração da execução dos comandos. Este comando não define permanentemente os parâmetros para a matriz de armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+set session errorAction=(stop | continue)
+password="storageArrayPassword"
+performanceMonitorInterval=intervalValue
+performanceMonitorIterations=iterationValue
+----
+[listing]
+----
+set session errorAction=(stop | continue)
+password="storageArrayPassword"
+userRole=(admin | monitor)
+performanceMonitorInterval=intervalValue
+performanceMonitorIterations=iterationValue
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`errorAction`
+ a| 
+Como a sessão responde se for encontrado um erro durante o processamento. Você pode optar por parar a sessão se um erro for encontrado ou continuar a sessão depois de encontrar um erro. O valor padrão é `stop`. (Este parâmetro define a ação para erros de execução, não erros de sintaxe. Algumas condições de erro podem substituir o `continue` valor.)
+
+
+
+ a| 
+`password`
+ a| 
+A senha para a matriz de armazenamento. Insira a senha entre aspas duplas (" ").
+
+[NOTE]
+====
+Quando o tipo de cliente está definido como `https`, este parâmetro está obsoleto. A senha deve ser especificada antes da execução do script de comando CLI e não pode ser alterada no meio de um script.
+
+====
+
+
+ a| 
+`performanceMonitorInterval`
+ a| 
+A frequência de coleta de dados de desempenho. Insira um valor inteiro para o intervalo de polling, em segundos, para o qual você deseja capturar dados. O intervalo de valores é `3` de `3600` segundos. O valor padrão é `5` segundos.
+
+[NOTE]
+====
+Quando o tipo de cliente está definido como `https`, este parâmetro está obsoleto. Em vez disso, para alterar o valor do intervalo padrão, use este parâmetro com os comandos afetados individuais. Os comandos são `save storageArray performanceStats` e `show drive performanceStats`.
+
+====
+
+
+ a| 
+`performanceMonitorIterations`
+ a| 
+O número de amostras a capturar. Introduza um valor inteiro. O intervalo de valores para amostras capturadas é `1` de `3600`. O valor padrão é `5`.
+
+[NOTE]
+====
+Quando o tipo de cliente está definido como `https`, este parâmetro está obsoleto. Em vez disso, para alterar o valor de iteração padrão, use esse parâmetro com os comandos impactados individuais. Os comandos são `save storageArray performanceStats` e `show drive performanceStats`.
+
+====
+|===
+
+
+== Notas
+
+Quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.
+
+As senhas são armazenadas em cada matriz de armazenamento em um domínio de gerenciamento. Se uma senha não tiver sido definida anteriormente, você não precisará de uma senha. A senha pode ser qualquer combinação de carateres alfanuméricos com um máximo de 30 carateres. (Você pode definir uma senha de storage array usando o `set storageArray` comando.)
+
+O intervalo de polling e o número de iterações que você especificar permanecem em vigor até que você termine a sessão. Depois de terminar a sessão, o intervalo de polling e o número de iterações retornam aos valores padrão.
+
+
+
+== Nível mínimo de firmware
+
+5,20
+
+8,40 - quando o tipo de cliente está definido como `https`, obsoleto os `password` parâmetros , `userRole`, , `performanceMonitorInterval` e `performanceMonitorIterations` .

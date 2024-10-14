@@ -1,0 +1,118 @@
+---
+permalink: commands-a-z/show-volumegroup.html 
+sidebar: sidebar 
+keywords: show, volume, group 
+summary: O comando show volumeGroup retorna informações sobre um grupo de volumes. 
+---
+= Mostrar grupo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show volumeGroup` comando retorna informações sobre um grupo de volumes.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+
+
+
+== Contexto
+
+Este comando retorna essas informações sobre um grupo de volumes:
+
+* O estado (tal como ideal, degradado, falhou, ausente)
+* A capacidade
+* O proprietário atual (o controlador no slot A ou o controlador no slot B )
+* O nível RAID
+* O tipo de suporte de unidade (HDD ou SSD)
+* O tipo de interface da unidade (Fibre Channel, iSCSI, InfiniBand, SAS)
+* Proteção contra perda de tabuleiro (sim ou não)
+* Capacidade segura - indica se o grupo de volume é composto por todas as unidades com capacidade de segurança. As unidades com capacidade segura podem ser unidades FDE ou FIPS.
+* Seguro - indica se o grupo de volume tem a segurança da unidade ativada (isso é chamado de seguro ativado).
+* Os volumes associados e a capacidade livre
+* As unidades associadas
+* Recursos de garantia de dados e presença de volumes habilitados para o Data Assurance
+* Recursos de provisionamento de recursos
+
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+pass:quotes[show volumeGroup [_volumeGroupName_]]
+----
+
+
+== Parâmetro
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`volumeGroup`
+ a| 
+O nome do grupo de volumes para o qual você deseja exibir informações. Inclua o nome do grupo de volume entre colchetes ([ ]).
+
+|===
+
+
+== Notas
+
+Este comando retorna informações do grupo de volume como mostrado neste exemplo:
+
+[listing]
+----
+Name:              SecureGroup
+
+      Status:         Optimal
+      Capacity:       120.000 GB
+      Current owner: Controller in slot A
+
+      Quality of Service (QoS) Attributes
+
+         RAID level:                  5
+         Drive media type:            Hard Disk Drive
+         Drive interface type:        SAS
+         Shelf loss protection:       No
+         Secure Capable:              Yes
+         Secure:                      No
+         Data Assurance (DA) capable: Yes
+         DA enabled volume present:   No
+         Resource-provisioned:           Yes
+
+
+      Total Volumes:          1
+         Standard volumes:    1
+         Repository volumes:  0
+         Free Capacity:       110.000 GB
+
+      Associated drives - present (in piece order)
+      Total drives present: 5
+
+         Tray     Slot
+         99       1
+         99       2
+         99       3
+         99       4
+         99       5
+----
+
+
+== Nível mínimo de firmware
+
+6,10

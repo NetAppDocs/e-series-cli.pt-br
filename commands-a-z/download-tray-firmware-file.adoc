@@ -1,0 +1,94 @@
+---
+permalink: commands-a-z/download-tray-firmware-file.html 
+sidebar: sidebar 
+keywords: download, tray, firmware, file, command, environmental, service, module, array, role, context 
+summary: 'O comando do ficheiro de firmware da bandeja de transferência transfere o firmware do módulo de serviços ambientais (ESM).' 
+---
+= Transfira o firmware da placa ambiental
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `download tray firmware file` comando faz download do firmware do módulo de serviços ambientais (ESM).
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Contexto
+
+[IMPORTANT]
+====
+Em sistemas duplex gerenciados pelo Gerenciador de sistema (por exemplo, E2800), há um Serviço de sincronização automática IOM executado nos controladores que sincronizará automaticamente o firmware IOM com a versão contida no pacote SANtricity os que é carregado nos controladores. Se você não quiser que o firmware IOM seja revertido para corresponder à versão carregada nos controladores, você precisará desativar este serviço. O Serviço de sincronização automática IOM pode ser suspenso usando o System Manager ou a API REST. Ao suspender este serviço, esteja ciente de que deixar a sincronização automática ativada garante que o firmware IOM está atualizado.
+
+====
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+download (allTrays | tray [trayID])
+pass:quotes[firmware file="_filename_"]
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`allTrays`
+ a| 
+Este parâmetro transfere um novo firmware para todas as bandejas compatíveis na matriz de armazenamento. O pacote de firmware selecionado determina quais bandejas são compatíveis. As bandejas incompatíveis são ignoradas. Nenhuma mensagem de erro é exibida sobre bandejas incompatíveis.
+
+
+
+ a| 
+`tray`
+ a| 
+A bandeja de unidades que contém a placa ESM para a qual você deseja carregar um novo firmware. Os valores de ID da bandeja são `0` para `99`. Coloque o valor de ID da bandeja entre colchetes ([ ]).
+
+[NOTE]
+====
+Não pode haver nenhum zero na ID da bandeja. Por exemplo, se a ID da bandeja exibida for "02", esse comando exige que ela seja especificada como [2], não [02].
+
+====
+
+
+ a| 
+`file`
+ a| 
+O caminho do ficheiro e o nome do ficheiro que contém a imagem de firmware. Insira o caminho do arquivo e o nome do arquivo da imagem de firmware em aspas duplas (" "). Por exemplo:
+
+`file="C:\Program Files\CLI\dnld\esmfrm.esm"`
+
+Nomes de arquivo válidos têm `.esm` uma extensão.
+
+|===
+
+
+== Notas
+
+O `tray` parâmetro faz o download do novo firmware para uma bandeja de unidades específica Se for necessário fazer o download do novo firmware para mais de uma bandeja de unidades, mas não para todas as bandejas de unidades, insira este comando para cada bandeja de unidades
+
+
+
+== Nível mínimo de firmware
+
+5,20

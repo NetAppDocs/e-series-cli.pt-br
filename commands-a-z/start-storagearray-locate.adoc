@@ -1,0 +1,52 @@
+---
+permalink: commands-a-z/start-storagearray-locate.html 
+sidebar: sidebar 
+keywords: start, storage, array, locate 
+summary: O comando start storageArray Locate localiza uma matriz de armazenamento ligando as luzes indicadoras para a matriz de armazenamento. 
+---
+= Inicie o storage array Locate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `start storageArray locate` comando localiza uma matriz de armazenamento ligando as luzes indicadoras para a matriz de armazenamento.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Contexto
+
+Use o `stop storageArray locate` comando para desligar as luzes indicadoras da matriz de armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+start storageArray locate
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10

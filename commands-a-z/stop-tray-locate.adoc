@@ -1,0 +1,46 @@
+---
+permalink: commands-a-z/stop-tray-locate.html 
+sidebar: sidebar 
+keywords: stop, tray, locate 
+summary: 'O comando STOP Tray Locate desliga a luz indicadora na bandeja que foi ligada pelo comando start tray Locate (Iniciar localização da bandeja).' 
+---
+= Parar bandeja localizar
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `stop tray locate` comando desliga a luz indicadora na bandeja que foi ligada pelo `start tray locate` comando.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing]
+----
+stop tray locate
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Nível mínimo de firmware
+
+6,10

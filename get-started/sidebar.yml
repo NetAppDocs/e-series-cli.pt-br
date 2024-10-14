@@ -1,0 +1,52 @@
+---
+section: get-started
+title: Comece agora
+entries:
+- title: Formatação do comando
+  entries:
+  - title: Visão geral
+    url: "/get-started/overview-format-commands.html"
+  - title: Estrutura CLI
+    entries:
+    - title: Estrutura dos comandos CLI
+      url: "/get-started/structure-of-a-cli-command.html"
+    - title: Modo interativo
+      url: "/get-started/interactive-mode.html"
+    - title: Sintaxe do wrapper CLI
+      url: "/get-started/cli-command-wrapper-syntax.html"
+    - title: Downloadble SMcli parâmetros
+      url: "/get-started/downloadable-smcli-parameters.html"
+    - title: Parâmetros CLI legados
+      url: "/get-started/command-line-parameters.html"
+  - title: Estrutura de comando de script
+    entries:
+    - title: Estrutura de um comando de script
+      url: "/get-started/structure-of-a-script-command.html"
+    - title: Sinopse dos comandos de script
+      url: "/get-started/synopsis-of-the-script-commands.html"
+    - title: Elementos de sintaxe recorrentes
+      url: "/get-started/recurring-syntax-elements.html"
+  - title: Convenções de nomenclatura
+    url: "/get-started/naming-conventions.html"
+  - title: Formatar regras
+    entries:
+    - title: Comandos CLI
+      url: "/get-started/formatting-cli-commands.html"
+    - title: Comandos de script
+      url: "/get-started/formatting-rules-for-script-commands.html"
+    - title: Windows PowerShell
+      url: "/get-started/formatting-cli-commands-in-windows-powershell.html"
+  - title: Relatórios de erros detalhados
+    url: "/get-started/detailed-error-reporting.html"
+  - title: Sair do estado
+    url: "/get-started/exit-status.html"
+  - title: Adicione comentários a um arquivo de script
+    url: "/get-started/adding-comments-to-a-script-file.html"
+  - title: Guidelines do comando de script
+    url: "/get-started/usage-guidelines.html"
+  - title: Níveis de compatibilidade de firmware
+    url: "/get-started/firmware-compatibility-levels.html"
+- title: Modo https smcli
+  url: "/get-started/new-https-mode.html"
+- title: Migração de grupo de volumes
+  url: "/get-started/learn-about-volume-group-migration.html"

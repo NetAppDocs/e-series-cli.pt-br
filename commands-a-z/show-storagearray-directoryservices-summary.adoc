@@ -1,0 +1,86 @@
+---
+permalink: commands-a-z/show-storagearray-directoryservices-summary.html 
+sidebar: sidebar 
+keywords: show, storage, array, directory, services, summary 
+summary: O comando show storageArray directoryServices summary exibe o resumo de configuração dos serviços de diretório. 
+---
+= Mostrar resumo dos serviços de diretório do storage array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show storageArray directoryServices summary` comando exibe o resumo de configuração dos serviços de diretório.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+
+
+
+== Sintaxe
+
+[listing]
+----
+
+show storageArray directoryServices summary
+----
+
+
+== Parâmetros
+
+Nenhum.
+
+
+
+== Exemplos
+
+[listing]
+----
+
+SMcli -n Array1 -c "show storageArray directoryServices summary;"
+
+Directory Servers:
+  DomainId1
+    Domain name(s): company.com, name2, name3
+    Server URL: ldaps://hqldap.test.eng.company.com:636
+    Bind account: CN=prnldap,OU=securedsvcaccounts,OU=systemaccounts,DC=hq,DC=company,DC=com
+    Bind password: ******
+    Login base: %s@company.com
+    Search base DN: OU=_Users,DC=hq,DC=company,DC=com
+    Username attribute: sAMAccountName
+    Group attribute(s): memberOf, attributeX
+    Default role: Monitor
+    Roles Mapping
+      Group DN
+      CN=ng-hsg-bc-madridsecurity,OU=Managed,OU=CompanyGroups,DC=hq,DC=company,DC=com
+        Roles
+        storage.monitor, security.admin, storage.admin
+      Group DN
+      OU=Managed,OU=CompanyGroups,DC=hq,DC=company,DC=com
+        Roles
+        storage.monitor
+  DomainId2
+    Domain name(s): aj.MadridSecurity
+    Server URL: ldap://10.113.90.166:389
+    Search base DN: CN=Users,DC=aj,DC=madridsecurity
+    Username attribute: sAMAccountName
+    Group attribute(s): memberOf
+    Default role: None
+    Roles Mapping
+      Group DN
+      CN=Administrators,CN=Builtin,DC=aj,DC=MadridSecurity
+        Roles
+        storage.monitor, storage.admin
+
+SMcli completed successfully.
+----

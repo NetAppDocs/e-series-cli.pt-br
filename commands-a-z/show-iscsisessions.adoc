@@ -1,0 +1,117 @@
+---
+permalink: commands-a-z/show-iscsisessions.html 
+sidebar: sidebar 
+keywords: show, current, iscsi, sessions 
+summary: O comando show iscsiSessions retorna informações sobre uma sessão iSCSI para um iniciador iSCSI ou um destino iSCSI. 
+---
+= Mostrar sessões iSCSI atuais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+O `show iscsiSessions` comando retorna informações sobre uma sessão iSCSI para um iniciador iSCSI ou um destino iSCSI.
+
+
+
+== Arrays compatíveis
+
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+
+
+
+== Sintaxe
+
+[listing, subs="+macros"]
+----
+show iscsiInitiator pass:quotes[["_initiatorName_"] | <"iqn">] iscsiSessions
+----
+[listing, subs="+macros"]
+----
+show iscsiTarget pass:quotes[["_targetName_"] | <"iqn">] iscsiSessions
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`iscsiInitiator`
+ a| 
+O nome do iniciador iSCSI para o qual você deseja obter informações de sessão.
+
+Se o iniciador iSCSI usar um rótulo ou um alias, inclua o rótulo ou alias do iniciador iSCSI em aspas duplas (" ") dentro de colchetes ([ ]).
+
+Se o iniciador iSCSI usar um nome qualificado iSCSI (IQN), coloque o IQN entre aspas duplas (" ") dentro de colchetes ( ).
+
+
+
+ a| 
+`iscsiTarget`
+ a| 
+O nome do destino iSCSI para o qual você deseja obter informações de sessão.
+
+Se o destino iSCSI usar um rótulo ou um alias, inclua o rótulo de destino iSCSI ou alias em aspas duplas (" ") dentro de colchetes ([ ]).
+
+Se o destino iSCSI usar um nome qualificado iSCSI (IQN), inclua o IQN entre aspas duplas (" ") dentro de colchetes ( ).
+
+|===
+
+
+== Exemplo
+
+[listing]
+----
+Retrieve initiator:
+
+SMcli -n Array1 -u admin@local -p adminPassword -k -c "show iscsiSessions;"
+
+Initiator information:
+    Host user label:               bbb000b00b0
+    Host port user label:          bbb000b00b0b0
+    Name:                          iqn.0b0b-0b.com:b0b0b0b0b0b0
+    Alias:                         None
+
+Host port user label:
+
+SMcli -n Array1 -u admin@local -p adminPassword -k -c "show iscsiInitiator [\"bbb000b00b0b0\"] iscsiSessions;"
+
+
+IQN:
+
+SMcli -n Array1 -u admin@local -p adminPassword -k -c "show iscsiInitiator <\"iqn.0b0b-0b.com:b0b0b0b0b0b0\"> iscsiSessions;"
+----
+
+
+== Notas
+
+Se você inserir esse comando sem definir argumentos, esse comando retornará informações sobre todas as sessões iSCSI que estão sendo executadas no momento. O comando a seguir retorna informações sobre todas as sessões iSCSI atuais:
+
+[listing]
+----
+show iscsiSessions
+----
+Para limitar as informações retornadas, insira um iniciador iSCSI específico ou um destino iSCSI específico. Em seguida, este comando retorna informações sobre a sessão apenas para o iniciador iSCSI ou o destino iSCSI que você nomeou.
+
+Um nome de iniciador pode ser qualquer combinação de carateres alfanuméricos ou numéricos de 1 a 30 carateres de comprimento. Um IQN pode ter até 255 carateres de comprimento e tem este formato:
+
+[listing]
+----
+iqn.yyyy-mm.naming-authority:unique name
+----
+
+
+== Nível mínimo de firmware
+
+7,10
