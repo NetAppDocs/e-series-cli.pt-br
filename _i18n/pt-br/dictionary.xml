@@ -7018,8 +7018,6 @@
   <block id="55033cfb7ed4c9dca9e9af2a0b7f034d" category="sidebar">Estrutura de comando CLI</block>
   <block id="421eeeca306bdf1873654f04f6d8e61e" category="sidebar">Documentos do e-Series</block>
   <block id="b00771a05354ff5b2df1b388cfb6c874" category="sidebar">Documentos dos sistemas e-Series</block>
-  <block id="050910c569f1cb9044086ceee795e2f8" category="sidebar">Gerenciador de sistemas SANtricity 11,8</block>
-  <block id="1cf9153cf0b1bfe4b703e41b4509763e" category="sidebar">SANtricity Unified Manager 6</block>
   <block id="974ad78dc53c253ebfe5b2b8b376f353" category="sidebar">Suporte de ferramentas</block>
   <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="sidebar">Matriz de interoperabilidade do NetApp</block>
   <block id="668e2078ef1b1722c77cdb5c523a4463" category="sidebar">Base de dados de Conhecimento da NetApp</block>
@@ -7616,4 +7614,6 @@
   <block id="5d41ad4f145ade32f5e478932b6efea5" category="sidebar">defina o limite de tamanho de despacho do AutoSupport</block>
   <block id="d941967741f1767955be20b5fca52617" category="sidebar">defina o método de entrega AutoSupport https</block>
   <block id="d8e44ec6283b9e1b03ebe13f2b9bf377" category="sidebar">definir o método de entrega smtp de e-mail</block>
+  <block id="27ed3c2f0cc271f3ffd55cef1621928d" category="sidebar">Gerenciador de sistemas SANtricity 11,9</block>
+  <block id="ece14770330886bc2d41238acbfe48aa" category="sidebar">SANtricity Unified Manager 7</block>
 </blocks>
