@@ -7,7 +7,7 @@ summary: O comando show storageArray AutoSupport exibe as configurações de col
 = Mostrar configuração do AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `show storageArray autoSupport` comando exibe as configurações de coleção 
 
 == Arrays compatíveis
 
-Esse comando está operacional para os storages E2800, E5700, EF600 e EF300.
+Esse comando está operacional para os storages E4000, E2800, E5700, EF600 e EF300.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.
 
 
 
@@ -52,7 +52,7 @@ O comando output deste comando mostra as seguintes informações de configuraç�
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 show storageArray autoSupport
 ----
@@ -69,30 +69,41 @@ Nenhum.
 [listing]
 ----
 
-   SMcli -n Array1 -c "show storageArray autoSupport;"
+  SMcli -n Array1 -c "show storageArray autoSupport;"
 
    The AutoSupport feature is enabled on this storage array.
    The AutoSupport OnDemand feature is enabled on this storage array.
    The AutoSupport Remote Diagnostics feature is enabled on this storage array.
 
-   Delivery Method: Email (SMTP)
-     Destination email address: http://support.mycompany.com/put/AsupPut/
-     Mail relay server: ra.eng.netapp.com
-     Sender email address: user@netapp.com
-   -or-
-   Delivery Method: HTTP
-     Destination IP address: http://support.mycompany.com/put/AsupPut/
-     Connection: Direct
-         -or-
-     Connection: Proxy server
-      Host Address: 10.227.76.178
-       Port number: 8080
-       Authentication required: Yes
-        User name: admin
-        Password: ********
-         -or-
-     Connection: Automatic proxy configuration script (PAC)
-      Script location: http://esgweb.eng.mycompany.com/proxy.pac
+  Delivery Method: Email (SMTP)
+    Destination email address: autosupport@netapp.com
+    Mail relay server: mail.example.com
+    Sender email address: sender@example.com
+    Server encryption type: None
+    Server port: 25
+    Server username:
+    Server password: ***
+    Dispatch size limit: 5242880
+
+  Delivery Method: Email (SMTP)
+    Destination email address: destination1@example.com, destination2@example.com
+    Mail relay server: mail.example.com
+    Sender email address: sender@example.com
+    Server encryption type: None
+    Server port: 25
+    Server username:
+    Server password: ***
+    Dispatch size limit: 5242880
+
+  Delivery Method: HTTPS
+    Destination IP address: https://support.netapp.com/put/AsupPut/
+    Connection: Direct
+    Dispatch size limit: 52428800
+
+  Delivery Method: HTTPS
+    Destination IP address: https://support.netapp.com/put/AsupPut/
+    Connection: Direct
+    Dispatch size limit: Unlimited
 
    The AutoSupport daily schedule preferred time range is from 12:00 AM to 01:00 AM.
    The AutoSupport weekly schedule preferred time range is from 10:00 PM to 11:00 PM on Thursday, Saturday.

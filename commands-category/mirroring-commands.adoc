@@ -7,8 +7,11 @@ summary: Comandos de espelhamento
 = Comandos de espelhamento
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+A lista a seguir de comandos de espelhamento está disponível para seu sistema de storage e-Series.
 
 
 

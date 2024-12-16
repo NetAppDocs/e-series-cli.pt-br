@@ -7,7 +7,7 @@ summary: O comando Create volumeCopy cria uma cópia de volume e inicia a opera�
 = Criar cópia de volume
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `create volumeCopy` comando cria uma cópia de volume e inicia a operação de
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -53,7 +53,7 @@ Você pode ter um máximo de oito cópias de volume em andamento ao mesmo tempo.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 create volumeCopy source=pass:quotes[_"sourceName"_
 target="_targetName_"]

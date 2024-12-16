@@ -7,7 +7,7 @@ summary: O comando download storageArray keyManagementCertificate instala os cer
 = Instale o certificado de gerenciamento de chaves externas do storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `download storageArray keyManagementCertificate` comando instala os certificad
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -38,10 +38,9 @@ Este comando aplica-se apenas ao gerenciamento de chaves externas.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
-
-pass:quotes[download storageArray keyManagementClientCertificate certificateType=(client|server) file="_filename_"]
+pass:quotes[download storageArray keyManagementClientCertificate certificateType=(client|server) file="_filename_" [privateKeyFile = "keyFileName"]]
 ----
 
 
@@ -63,6 +62,13 @@ Permite especificar o tipo de ficheiro de certificado. As opções válidas são
 `file`
  a| 
 Permite especificar o certificado assinado pelo cliente ou o certificado CA raiz/intermediário do servidor. O ficheiro tem de estar no formato PEM/DER.
+
+
+
+ a| 
+`privateKeyFile`
+ a| 
+Permite-lhe transferir uma chave privada juntamente com um certificado assinado. O `privateKeyFile` parâmetro deve ser utilizado com `certificateType=client` valor.
 
 |===
 

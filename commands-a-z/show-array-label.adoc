@@ -7,7 +7,7 @@ summary: O comando Show array label retorna informações sobre se um rótulo de
 = Mostrar etiqueta da matriz
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `Show array label` comando retorna informações sobre se um rótulo de storag
 
 == Arrays compatíveis
 
-Este comando se aplica aos storages EF600.
+Este comando se aplica aos storages EF600 e EF300.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 pass:quotes[show storageArrayLabel label _userDefinedString_]
 show storageArrayLabel all

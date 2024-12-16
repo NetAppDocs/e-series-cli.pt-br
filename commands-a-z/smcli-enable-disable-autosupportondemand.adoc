@@ -7,7 +7,7 @@ summary: O comando SMcli enable|Disable AutoSupportOnDemand ativa ou desativa o 
 = Ativar ou desativar o recurso AutoSupport OnDemand no nível do domínio de gerenciamento EMW (somente SMcli)
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `SMcli enable|disable autoSupportOnDemand` comando liga ou desliga o recurso A
 
 == Arrays compatíveis
 
-Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.
 
 
 
@@ -34,7 +34,7 @@ Antes de ativar esta funcionalidade, tem de ativar primeiro a funcionalidade Aut
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 SMcli enable|disable autoSupportOnDemand
 ----

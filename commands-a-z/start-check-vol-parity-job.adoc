@@ -7,7 +7,7 @@ summary: O comando start check volume parity job inicia uma nova operação de v
 = Iniciar trabalho de paridade de volume de verificação
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -29,7 +29,7 @@ Para executar esse comando em um storage array EF600 e EF300, você deve ter a f
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 start check volume[<volume_label>] parity job
 (startingLba=<start_lba> endingLba=<end_lba> scanPriority=<scan_priority> repairParityErrors=<true | false>

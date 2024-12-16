@@ -7,7 +7,7 @@ summary: O comando start diskPool resourceProvisioning habilita o provisionament
 = Inicie o provisionamento de recursos do pool de disco
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -35,7 +35,7 @@ Para desativar o provisionamento de recursos em um pool de discos, use o comando
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 start diskPoolpass:quotes[[_diskPoolName_]] resourceProvisioning
 ----

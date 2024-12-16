@@ -7,7 +7,7 @@ summary: O comando Create snapImage cria uma nova imagem instantânea em um ou m
 = Criar imagem instantânea
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `create snapImage` comando cria uma nova imagem instantânea em um ou mais gru
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -35,7 +35,7 @@ Antes de poder criar uma imagem instantânea, primeiro tem de ter pelo menos um 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 create snapImage (snapGroup=pass:quotes[_"snapGroupName" |
 snapGroups=("_snapGroupName1"... "snapGroupNamen_"))]

@@ -2,13 +2,16 @@
 permalink: get-started/usage-guidelines.html 
 sidebar: sidebar 
 keywords: script command, guidelines 
-summary: Esta lista fornece diretrizes para escrever comandos de script na linha de comando. 
+summary: Siga as seguintes diretrizes ao escrever comandos de script. 
 ---
 = Guidelines do comando de script
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+Siga as seguintes diretrizes ao escrever comandos de script.
 
 Esta lista fornece diretrizes para escrever comandos de script na linha de comando:
 

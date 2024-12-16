@@ -7,7 +7,7 @@ summary: O comando Set storageArray AutoSupport schedule define os horários e d
 = Definir o agendamento de coleta de mensagens do AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `set storageArray autoSupport schedule` comando define os horários e dias di�
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
 
 
 
@@ -38,7 +38,7 @@ Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, voc
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set storageArray autoSupport schedule dailyTime=pass:quotes[_startTime-endTime_]
  [dayOfWeek=(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)]

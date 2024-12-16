@@ -7,7 +7,7 @@ summary: 'O comando save controller arrayManagementCSR gera uma solicitação de
 = Gerar solicitação de assinatura de certificado (CSR) do servidor Web
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `save controller arrayManagementCSR` comando gera uma solicitação de assinat
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -35,7 +35,7 @@ O CSR deve ser assinado por uma Autoridade de Certificação (CA). O certificado
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 
 save controller [(a|b)] arrayManagementCSR
@@ -47,6 +47,7 @@ save controller [(a|b)] arrayManagementCSR
      locality=pass:quotes["_cityOrLocality_"]
      [stateProvince=pass:quotes["_stateOrRegion_"]]
      country=pass:quotes["_string_"]
+     keySize=["2048 | 3072 | 4096 "]
      file=pass:quotes["_filename_"]
 ----
 
@@ -118,6 +119,13 @@ Permite especificar o estado ou a região em que o storage array está localizad
 `country`
  a| 
 Permite especificar o código ISO (International Organization for Standardization) de dois dígitos do seu país, como EUA.
+
+
+
+ a| 
+`keySize`
+ a| 
+Permite especificar um valor de `2048`, `3072` ou `4096` para o tamanho da chave do servidor. O tamanho padrão da chave é 3072 se nenhum tamanho de chave estiver selecionado.
 
 
 

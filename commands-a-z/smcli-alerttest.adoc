@@ -7,7 +7,7 @@ summary: O comando SMcli alertTest envia um alerta de teste ao log de eventos do
 = Alertas de teste
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -32,7 +32,7 @@ Este comando é um comando SMcli, não um comando script. Você deve executar es
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 SMcli -alertTest
 ----

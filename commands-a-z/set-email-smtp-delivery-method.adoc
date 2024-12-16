@@ -1,5 +1,5 @@
 ---
-permalink: commands-a-z/set-email-smtp-delivery-method-e2800-e5700.html 
+permalink: commands-a-z/set-email-smtp-delivery-method.html 
 sidebar: sidebar 
 keywords: specify, email, smtp, delivery method, individual, E2800, E5700, arrays 
 summary: 'O comando Set storageArray AutoSupport deliveryMethod configura o método de entrega para enviar mensagens AutoSupport para e-mail (SMTP).' 
@@ -7,7 +7,7 @@ summary: 'O comando Set storageArray AutoSupport deliveryMethod configura o mét
 = Especifique o método de entrega de e-mail (SMTP)
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,22 +17,22 @@ O `set storageArray autoSupport deliveryMethod` comando configura o método de e
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set storageArray autoSupport deliveryMethod=email
-mailRelayServer=pass:quotes["_serverAddress_" senderEmail="_emailAddress_"]
+mailRelayServer=pass:quotes["_serverAddress_" senderEmail="_emailAddress_"] destinationAddress="destination1@example.com" destinationAddress="destination2@example.com";
 ----
 
 
@@ -49,7 +49,6 @@ mailRelayServer=pass:quotes["_serverAddress_" senderEmail="_emailAddress_"]
 Permite ao utilizador especificar o método de entrega para a coleção AutoSupport. As opções válidas são:
 
 * e-mail
-* HTTP
 * HTTPS
 
 
@@ -71,6 +70,13 @@ Permite que o usuário especifique o servidor de reencaminhamento de e-mail para
 `senderEmail`
  a| 
 Permite que o usuário especifique o endereço de e-mail de envio para a coleção AutoSupport.
+
+
+
+ a| 
+`destinationAddress`
+ a| 
+Endereço de e-mail para onde os envios da AutoSupport serão enviados. Este parâmetro pode ser fornecido várias vezes para permitir que os envios sejam enviados para vários endereços.
 
 |===
 

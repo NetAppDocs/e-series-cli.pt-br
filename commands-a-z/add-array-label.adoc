@@ -7,7 +7,7 @@ summary: O comando Add array label permite adicionar uma matriz de armazenamento
 = Adicionar rótulo de matriz
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -28,7 +28,7 @@ Este comando se aplica aos storages EF600 e EF300.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 
 pass:quotes[ _Address1 Address2_ add storageArrayLabel label _userDefinedString_]

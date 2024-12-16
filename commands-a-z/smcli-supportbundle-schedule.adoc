@@ -7,7 +7,7 @@ summary: O comando SMcli -supportBundle schedule cria ou remove uma agenda para 
 = Agende a configuração automática da coleção de pacotes de suporte
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -28,7 +28,7 @@ Você pode criar dois tipos de horários:
 
 == Sintaxe para criar uma agenda diária/semanal
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 SMcli -supportBundle schedule enable
 pass:quotes[(all | _storageArrayName_)]
@@ -42,7 +42,7 @@ pass:quotes[data=_pathName_]
 
 == Sintaxe para criar um cronograma mensal/anual
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 SMcli -supportBundle schedule enable
 pass:quotes[(all | _storageArrayName_)]
@@ -65,7 +65,7 @@ pass:quotes[data=_pathName_]
 Este comando remove completamente a programação para o storage array. Para começar a salvar as informações do pacote de suporte novamente, você precisa criar uma nova programação.
 
 ====
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 SMcli -supportBundle schedule disable
 pass:quotes[(all|_storageArrayName_)]

@@ -2,15 +2,18 @@
 permalink: get-started/interactive-mode.html 
 sidebar: sidebar 
 keywords: interactive mode 
-summary: 'Se você inserir `SMcli` e um nome de storage array, mas não especificar parâmetros CLI, comandos de script ou um arquivo de script, a interface de linha de comando será executada no modo interativo.' 
+summary: 'O modo interativo permite executar comandos individuais sem prefixar os comandos com `SMcli`o .' 
 ---
 = Modo interativo
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-Se você inserir `SMcli` e um nome de storage array, mas não especificar parâmetros CLI, comandos de script ou um arquivo de script, a interface de linha de comando será executada no modo interativo. O modo interativo permite executar comandos individuais sem prefixar os comandos com `SMcli`o .
+[role="lead"]
+O modo interativo permite executar comandos individuais sem prefixar os comandos com `SMcli`o .
+
+Se você inserir `SMcli` e um nome de storage array, mas não especificar parâmetros CLI, comandos de script ou um arquivo de script, a interface de linha de comando será executada no modo interativo.
 
 No modo interativo, você pode inserir um único comando, exibir os resultados e digitar o próximo comando sem digitar a cadeia de carateres completa `SMcli`. O modo interativo é útil para determinar erros de configuração e testar rapidamente alterações de configuração.
 

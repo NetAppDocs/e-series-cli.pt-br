@@ -7,9 +7,10 @@ summary: Sintaxe exclusiva para um comando de script específico é explicada na
 = Formate regras para comandos de script
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 Sintaxe exclusiva para um comando de script específico é explicada na seção Notas no final de cada descrição de comando de script.
 
 *Sensibilidade do caso* -- os comandos de script não são sensíveis a maiúsculas e minúsculas. Você pode digitar os comandos de script em minúsculas, maiúsculas ou minúsculas. (Nas descrições de comandos a seguir, o caso misto é usado como um auxílio para ler os nomes dos comandos e entender a finalidade do comando.)

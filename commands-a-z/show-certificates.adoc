@@ -7,7 +7,7 @@ summary: O comando Mostrar certificados permite exibir os certificados instalado
 = Mostrar certificados
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `Show certificates` comando permite visualizar os certificados instalados no a
 
 == Arrays compatíveis
 
-Este comando se aplica aos storages EF600.
+Este comando se aplica aos storages EF600 e EF300.
 
 
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 show localCertificate all | alias alias
 ----

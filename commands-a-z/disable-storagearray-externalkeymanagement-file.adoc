@@ -7,7 +7,7 @@ summary: O comando Disable storageArray externalKeyManagement file desativa o ge
 = Desativar o gerenciamento de chaves de segurança externas
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,19 +17,19 @@ O `disable storageArray externalKeyManagement file` comando desativa o gerenciam
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 disable storageArray externalKeyManagement
 pass:quotes[file="_fileName_"]

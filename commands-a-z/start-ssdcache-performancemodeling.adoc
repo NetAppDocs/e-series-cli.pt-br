@@ -7,7 +7,7 @@ summary: O comando start ssdCache performanceModeling inicia a modelagem de dese
 = Inicie a modelagem de desempenho de cache SSD
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `start ssdCache performanceModeling` comando inicia a modelagem de desempenho 
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Admin de suporte.
 
 
 
@@ -35,7 +35,7 @@ A modelagem de desempenho monitora e mede a atividade de e/S por um período de 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 start ssdCache pass:quotes[[_ssdCacheName_]] performanceModeling
 ----

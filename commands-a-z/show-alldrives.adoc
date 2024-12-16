@@ -7,7 +7,7 @@ summary: O comando show allDrives retorna informações sobre as unidades na mat
 = Mostrar unidade
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `show allDrives` comando retorna informações sobre as unidades na matriz de 
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -43,7 +43,7 @@ Para cada unidade na matriz de armazenamento, este comando retorna as seguintes 
 ** O nível de firmware
 
 
-* Informações sobre a vida útil das unidades SSD (essas informações são válidas apenas para o E2800 e E5700/EF570 e não são exibidas se o array não contiver unidades SSD):
+* Informações sobre a vida útil das unidades SSD (essas informações não são mostradas se o array não contiver unidades SSD):
 +
 ** A contagem média de apagamento.
 ** Os blocos sobresselentes restantes.
@@ -71,7 +71,7 @@ As informações de data de fabricação não estão disponíveis para unidades 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show ((allDrives
 [driveMediaType=(HDD | SSD | unknown | allMedia)] |

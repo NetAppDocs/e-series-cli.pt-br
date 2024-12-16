@@ -7,7 +7,7 @@ summary: O comando show storageArray unconfiguredInitiators retorna uma lista de
 = Mostrar iniciadores não configurados
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `show storageArray unconfiguredInitiators` comando retorna uma lista de inicia
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
 
 Este comando substitui o link:show-storagearray-unconfigurediscsiinitiators.html["Mostrar storageArray unconfiguredIscsiInitiators"] comando.
 
@@ -31,7 +31,7 @@ Este comando substitui o link:show-storagearray-unconfigurediscsiinitiators.html
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 show storageArray unconfiguredInitiators
 ----

@@ -7,10 +7,15 @@ summary: O mecanismo de script procura certos carateres ou um comando para mostr
 = Adicione comentários a um arquivo de script
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-O mecanismo de script procura certos carateres ou um comando para mostrar comentários. Você pode adicionar comentários a um arquivo de script de três maneiras:
+[role="lead"]
+O mecanismo de script procura certos carateres ou um comando para mostrar comentários. Você pode adicionar comentários a um arquivo de script de três maneiras.
+
+
+
+== Métodos para adicionar comentários a um arquivo de script
 
 * Adicionar texto após duas barras de avanço (`//`) como um comentário até que um caractere de fim de linha seja alcançado. Se o mecanismo de script não encontrar um caractere de fim de linha no script após o processamento de um comentário, uma mensagem de erro será exibida e a operação do script será encerrada. Esse erro geralmente ocorre quando um comentário é colocado no final de um script e você Esqueceu de pressionar a tecla *Enter*.
 +

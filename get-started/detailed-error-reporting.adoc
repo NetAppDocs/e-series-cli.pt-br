@@ -7,10 +7,13 @@ summary: Os dados coletados de um erro encontrado pela CLI são gravados em um a
 = Relatórios de erros detalhados
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-Os dados coletados de um erro encontrado pela CLI são gravados em um arquivo. O relatório detalhado de erros sob a CLI funciona da seguinte forma:
+[role="lead"]
+Os dados coletados de um erro encontrado pela CLI são gravados em um arquivo.
+
+O relatório detalhado de erros sob a CLI funciona da seguinte forma:
 
 * Se a CLI tiver de terminar de forma anormal os comandos CLI e os comandos de script, os dados de erro são coletados e salvos antes que a CLI termine.
 * A CLI salva os dados de erro gravando os dados em um nome de arquivo padrão.

@@ -7,7 +7,7 @@ summary: O comando Ativar recurso storageArray ativa o recurso Espelhamento sín
 = Ativar o espelhamento síncrono
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `activate storageArray feature` comando ativa o recurso Espelhamento síncrono
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+Para executar esse comando em um storage array E4000, E2800 ou E5700, você deve ter a função Storage Admin.
 
 
 
@@ -47,7 +47,7 @@ Em versões anteriores deste comando, o identificador de recurso era `remoteMirr
 
 == Sintaxe (unidades definidas pelo usuário)
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 activate storageArray feature=syncMirror
 repositoryRAIDLevel=(0 |1 | 3 | 5 | 6)
@@ -59,7 +59,7 @@ repositoryDrives=pass:quotes[(_trayID1_],pass:quotes[[_drawerID1,_]pass:quotes[_
 [drawerLossProtect=(TRUE | FALSE)]
 [dataAssurance=(none | enabled)]
 ----
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 activate storageArray feature=syncMirror
 repositoryRAIDLevel=(0 |1 | 5 | 6)
@@ -73,7 +73,7 @@ repositoryDrives=pass:quotes[_(trayID1,_]pass:quotes[[_drawerID1_,]]pass:quotes[
 
 == Sintaxe (grupo de volume definido pelo usuário)
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 activate storageArray feature=syncMirror
 repositoryVolumeGroup=pass:quotes[_volumeGroupName_]
@@ -83,7 +83,7 @@ repositoryVolumeGroup=pass:quotes[_volumeGroupName_]
 
 == Sintaxe (número definido pelo usuário de unidades)
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 activate storageArray feature=syncMirror
 repositoryRAIDLevel=(1 | 3 | 5 | 6)
@@ -93,7 +93,7 @@ repositoryDriveCount=pass:quotes[_numberOfDrives_]
 [drawerLossProtect=(TRUE | FALSE)]
 [dataAssurance=(none | enabled)]
 ----
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 activate storageArray feature=syncMirror
 repositoryRAIDLevel=(1 | 5 | 6)

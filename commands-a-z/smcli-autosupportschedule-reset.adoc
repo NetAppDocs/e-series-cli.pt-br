@@ -7,7 +7,7 @@ summary: O comando SMcli autoSupportSchedule reset redefine os horários e dias 
 = Redefinir o agendamento de coleta de mensagens do AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `SMcli autoSupportSchedule reset` comando redefine os horários e dias diário
 
 == Arrays compatíveis
 
-Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.
 
 
 
@@ -38,7 +38,7 @@ Este comando é um comando SMcli, não um comando script. Você deve executar es
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 SMcli -autoSupportSchedule reset | (dailyTime=<startTime>-<endTime>
    dayOfWeek=[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]

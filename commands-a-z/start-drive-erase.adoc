@@ -7,7 +7,7 @@ summary: O comando start drive erase apaga todos os dados de uma ou mais unidade
 = Inicie a eliminação da unidade
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `start drive erase` comando apaga todos os dados de uma ou mais unidades.
 
 == Arrays compatíveis
 
-Este comando se aplica a um array individual E2800, E5700, EF600 ou EF300. Ele não opera em storages E2700 e E5600.
+Este comando aplica-se a um array individual E4000, E2800, E5700, EF600 ou EF300. Ele não opera em storages E2700 e E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -40,7 +40,7 @@ A operação de eliminação não pode ser desfeita. Certifique-se de que seleci
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 start drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drivespass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]] erase
 ----

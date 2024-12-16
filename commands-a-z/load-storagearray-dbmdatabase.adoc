@@ -7,7 +7,7 @@ summary: 'O comando load storageArray dbmDatabase restaura uma imagem de banco d
 = Carregar banco de dados DBM do array de armazenamento
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `load storageArray dbmDatabase` comando restaura uma imagem de banco de dados 
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -37,7 +37,7 @@ Antes de usar este comando com a `file` opção, você deve primeiro obter uma s
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 load storageArray dbmDatabase
 pass:quotes[((file="_filename_" validator="_validatorValue_") | sourceLocation=onboard)]

@@ -7,7 +7,7 @@ summary: O comando Adicionar certificado do arquivo permite que você pegue um c
 = Adicionar certificado do ficheiro
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -23,7 +23,7 @@ Este comando se aplica aos storages EF600 e EF300.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 pass:quotes[trust localCertificate file _filename_ alias user _specified alias_]
 ----

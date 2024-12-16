@@ -7,7 +7,7 @@ summary: O novo SMcli pode operar em um modo https que oferece recursos de segur
 = Modo https smcli
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

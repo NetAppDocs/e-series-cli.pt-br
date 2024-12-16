@@ -7,7 +7,7 @@ summary: O comando Excluir certificados permite excluir um certificado do armaze
 = Eliminar certificados
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -23,7 +23,7 @@ Este comando se aplica aos storages EF600 e EF300.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 delete localCertificate all | alias pass:quotes[_alias_]
 ----

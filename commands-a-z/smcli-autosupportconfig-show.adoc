@@ -7,7 +7,7 @@ summary: O comando SMcli -AutoSupportConfig show exibe as configurações de col
 = Apresentar definições de coleção de pacotes AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -52,14 +52,14 @@ Este comando é um comando SMcli, não um comando script. Você deve executar es
 ====
 [NOTE]
 ====
-Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.
 
 ====
 
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 SMcli -autoSupportConfig show
 ----

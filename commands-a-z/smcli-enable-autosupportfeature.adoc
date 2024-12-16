@@ -7,7 +7,7 @@ summary: 'O comando SMcli enable AutoSupportFeature ativa o recurso AutoSupport 
 = Ativar ou desativar o AutoSupport no nível de domínio de gestão EMW (apenas SMcli)
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `SMcli enable autoSupportFeature` comando ativa o recurso AutoSupport (ASUP) p
 
 == Arrays compatíveis
 
-Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.
 
 
 
@@ -53,7 +53,7 @@ Você deve habilitar os três recursos na seguinte ordem:
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 SMcli enable|disable autoSupportFeature
 ----

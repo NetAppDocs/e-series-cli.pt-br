@@ -7,7 +7,7 @@ summary: O comando check asyncMirrorGroup repositoryConsistency produz um relat�
 = Verifique a consistência do grupo de espelhos assíncronos
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,19 +17,19 @@ O `check asyncMirrorGroup repositoryConsistency` comando produz um relatório ba
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 check asyncMirrorGrouppass:quotes[[_asyncMirrorGroupName_]]
 repositoryConsistency localVolume=pass:quotes[[_localVolumeName"_]]

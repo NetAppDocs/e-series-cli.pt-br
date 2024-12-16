@@ -7,7 +7,7 @@ summary: O comando Remove array label permite remover um rótulo definido pelo u
 = Remova a etiqueta da matriz
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -23,7 +23,7 @@ Este comando se aplica aos storages EF600 e EF300.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 delete storageArrayLabel label pass:quotes[_userDefinedString_]
 delete storageArrayLabel all

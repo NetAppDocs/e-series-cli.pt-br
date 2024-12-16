@@ -7,7 +7,7 @@ summary: O comando Recover Disabled drivePorts recupera portas de unidade desati
 = Recuperar portas de unidade desativadas
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `recover disabled drivePorts` comando recupera portas de unidade desativadas.
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
@@ -29,7 +29,7 @@ Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, voc
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 recover disabled drivePorts;
 ----

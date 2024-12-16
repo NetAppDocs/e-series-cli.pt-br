@@ -7,7 +7,7 @@ summary: 'O comando start storageArray ocspResponderUrl test verifica se há uma
 = Inicie o teste de URL do servidor OCSP
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `start storageArray ocspResponderUrl test` comando verifica se há uma conexã
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -49,7 +49,7 @@ Se você não especificar um URL, o comando usará o URL do respondedor OCSP enc
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 start storageArray ocspResponderUrl test (url=stringLiteral)
 ----

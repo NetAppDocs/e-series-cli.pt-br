@@ -7,7 +7,7 @@ summary: O comando show iscsiSessions retorna informações sobre uma sessão iS
 = Mostrar sessões iSCSI atuais
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,23 +17,23 @@ O `show iscsiSessions` comando retorna informações sobre uma sessão iSCSI par
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show iscsiInitiator pass:quotes[["_initiatorName_"] | <"iqn">] iscsiSessions
 ----
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show iscsiTarget pass:quotes[["_targetName_"] | <"iqn">] iscsiSessions
 ----

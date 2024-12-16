@@ -4,10 +4,10 @@ sidebar: sidebar
 keywords: enable, disable, autosupport, maintenance, window, individual, E2800, E5700, arrays 
 summary: O comando Set storageArray autoSupportMaintenanceWindow liga ou desliga o recurso janela de manutenção do AutoSupport. 
 ---
-= Ativar ou desativar a janela de manutenção do AutoSupport (para matrizes E2800 ou E5700 individuais)
+= Ative ou desative a janela de manutenção do AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -19,19 +19,19 @@ Use uma janela de manutenção para suprimir a criação automática de ticket e
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
 
 
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 set storageArray autoSupportMaintenanceWindow (enable | disable)
     emailAddresses=("emailAddress1" "emailAddress2" ...)

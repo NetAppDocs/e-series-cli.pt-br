@@ -4,7 +4,6 @@
   <block id="9b5092ed8555b0c781d9270b0e5e9d75" category="doc">Ativar o espelhamento assíncrono</block>
   <block id="17645f173d2fc7006ecc546b55947376" category="paragraph">O<block ref="319120d9d94880e46e1e490f04cb879c" prefix=" " category="inline-code"></block> comando ativa o recurso de espelhamento assíncrono.</block>
   <block id="6a21deb5d5cefe85b0876b69bb5e25f7" category="section-title">Arrays compatíveis</block>
-  <block id="962d9ad1b8030cfc38372c70a910a150" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="2bc4f5f65d530be66960542e14f46660" category="paragraph">Este comando só é aplicável ao espelhamento assíncrono por Fibre Channel.</block>
   <block id="a5cd3ed116608dac017f14c046ea56bf" category="section-title">Funções</block>
   <block id="0ac29acf0d9d736c28e41361a4dd4086" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.</block>
@@ -30,7 +29,6 @@
   <block id="3c8b0d000575012dc0b42fe4bc040c87" category="summary">O comando Ativar recurso storageArray ativa o recurso Espelhamento síncrono e cria o volume do repositório espelhado.</block>
   <block id="58df588da257807d5f7cbd9390db8785" category="doc">Ativar o espelhamento síncrono</block>
   <block id="00f21dddcf4870954618af36b0082c51" category="paragraph">O<block ref="319120d9d94880e46e1e490f04cb879c" prefix=" " category="inline-code"></block> comando ativa o recurso Espelhamento síncrono e cria o volume do repositório espelhado.</block>
-  <block id="c967c152924962a32a94352f0b12487e" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="23b9c3a34e5076326273d8f14df384a5" category="paragraph">Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.</block>
   <block id="360ad695094ac04e7e7779afc1761bb2" category="paragraph">Quando você usa esse comando, você pode definir o volume do repositório espelhado de uma de três maneiras:</block>
   <block id="1800f011e99619a77de8509ef8720e4b" category="list-text">Unidades definidas pelo usuário</block>
@@ -111,7 +109,6 @@
   <block id="fed4b3f821c0b10a34420d0f2ef8913d" category="summary">O comando Set ssdCache aumenta a capacidade de um cache SSD existente adicionando mais discos de estado sólido (SSDs).</block>
   <block id="84a9c9c9b55738f64d19a586be95f021" category="doc">Adicione unidades ao cache SSD</block>
   <block id="c5b6e37c3c2b8b750938d2708957bc5f" category="paragraph">O<block ref="a97a8598326ef5d721657b0936bf82b3" prefix=" " category="inline-code"></block> comando aumenta a capacidade de um cache SSD existente adicionando mais discos de estado sólido (SSDs).</block>
-  <block id="620a3709ded9e8d65119f943b821804a" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.</block>
   <block id="3f76922f2ad18d49eadc4d1e94db0e04" category="paragraph"><block ref="4893b2a87797ae99cffec900a8cac354" prefix="" category="inline-code"></block></block>
   <block id="f3a0cc0361d33224e98db4891981241a" category="paragraph">O nome do cache SSD ao qual você deseja adicionar SSDs. Coloque o nome entre colchetes ([ ]). Se o nome do cache SSD contiver carateres especiais ou consistir apenas em números, você deve inserir o nome entre aspas duplas (" ") dentro de colchetes.</block>
   <block id="b11b62603bf378f01f0ddc2f37618567" category="paragraph"><block ref="c1c083088968ca9ddd2f863b5a36f34a" prefix="" category="inline-code"></block></block>
@@ -121,7 +118,6 @@
   <block id="c613521c3a587cd48801d1f16f638978" category="doc">Adicionar volume ao grupo de espelhos assíncronos</block>
   <block id="35b27e4408487e2326dc9c4d59896a4a" category="paragraph">O<block ref="9e02ebe390c454388bcefed37fb2b4d2" prefix=" " category="inline-code"></block> comando adiciona um volume primário a um grupo de espelhos assíncrono.</block>
   <block id="7ea865a72caf912f877a2443ec100fcf" category="paragraph">Este comando se aplica a qualquer storage array individual, com algumas restrições. Se você estiver executando o comando no array E2700 ou E5600, não há restrições.</block>
-  <block id="d67b41e45a16f6e51b2d5c893efb6386" category="paragraph">Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.</block>
   <block id="0c1a44a55023cc3e9641d3d9ef919d87" category="paragraph">Este comando é válido apenas na matriz de armazenamento local que contém o grupo de espelhos assíncronos ao qual você deseja adicionar o volume primário. Um grupo de espelhos assíncrono tem um volume de repositório que é usado para salvar dados para todas as imagens pontuais que fazem parte do grupo de espelhos assíncronos. Cada volume primário no grupo de espelhos assíncronos tem um volume de espelho correspondente em um storage array remoto.</block>
   <block id="eb41fbac062036c53ee29d94ecb09e5a" category="paragraph"><block ref="210ab9e731c9c36c2c38db15c28a8d1c" prefix="" category="inline-code"></block></block>
   <block id="11659e7aea0a7dea103d2a88be41b074" category="paragraph">O nome do volume principal que você deseja adicionar ao grupo de espelhos assíncronos. Coloque o nome do volume entre aspas duplas (" ").</block>
@@ -345,7 +341,6 @@
   <block id="b29a09cdf795d17a46756dcfe2429518" category="summary">O comando Clear allDriveChannels stats redefine as estatísticas de todos os canais da unidade.</block>
   <block id="d0ac76979e2f34fe1c396c2f9891eae4" category="doc">Limpar estatísticas do canal de transmissão</block>
   <block id="0c89bb4a65a2f172be05a31cc84b3f36" category="paragraph">O<block ref="ec61523fe252c88d620c1bfe4efd4214" prefix=" " category="inline-code"></block> comando redefine as estatísticas de todos os canais de unidade.</block>
-  <block id="53c3be6b58503440f9123aa4fc5ea614" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.</block>
   <block id="fffd69d2853f1f107b133558c768aaf0" category="summary">O comando clear asyncMirrorFault limpa uma falha de espelhamento assíncrono de um ou mais grupos de espelhos assíncronos e de um ou mais volumes de membros do grupo de espelhos assíncronos.</block>
   <block id="4e6da33ae880f7e07fcfd4639f861180" category="doc">Apagar falha de espelhamento assíncrono</block>
   <block id="ad4a20ee721e029ee751bbb42cf04b43" category="paragraph">O<block ref="85719908b5e57bd615768ecab7dd82b4" prefix=" " category="inline-code"></block> comando limpa uma falha "pegajosa" de espelhamento assíncrono de um ou mais grupos de espelhos assíncronos e de um ou mais volumes de membros do grupo de espelhos assíncronos.</block>
@@ -365,7 +360,6 @@
   <block id="742d3dfd3941f2ec68cdc5eac73ec1c9" category="summary">O comando Limpar configuração emailAlert limpa a configuração do alerta de e-mail para valores padrão.</block>
   <block id="37a8d2c83c369a53e5cf93db4da0b8eb" category="doc">Limpar a configuração do alerta de e-mail</block>
   <block id="feb8b3cbdc19b96fd56c0b97741c2613" category="paragraph">O<block ref="81fbd1d01f2a7708a39fa4dcc0bef379" prefix=" " category="inline-code"></block> comando limpa a configuração do alerta de e-mail para valores padrão.</block>
-  <block id="66942dd539d913f5aa0651dbb640b206" category="paragraph">Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.</block>
   <block id="ff7c0fcd6a31e735a61c001f75426961" category="section-title">Exemplos</block>
   <block id="1a2e5a82588de3119624b0d7cbca73cc" category="paragraph">8,40</block>
   <block id="c85aa5cb978b743d135e7442529a1f6b" category="summary">O comando Clear storageArray Configuration limpa toda uma configuração de storage array ou parte de uma configuração de storage array, ou limpa apenas o grupo de volume e a configuração de volume.</block>
@@ -1101,7 +1095,6 @@
   <block id="79257ad6d3498ffc8947a0c42e0e60dd" category="summary">O comando Create storageArray directoryServer permite adicionar um novo servidor de diretório a ser usado para autenticar e autorizar usuários.</block>
   <block id="c36318312294db68a22986e839d794ce" category="doc">Criar servidor de diretório de storage array</block>
   <block id="f7ab4db903c8ddcdd845581134a14b98" category="paragraph">O<block ref="1d19ea2634f6b98ba7840b17f3074a56" prefix=" " category="inline-code"></block> comando permite adicionar um novo servidor de diretório a ser usado para autenticar e autorizar usuários.</block>
-  <block id="25fa160cee7d75f60d44ec70c633094c" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.</block>
   <block id="9f03cc91009d25d82f204c1ef7bf3cfc" category="paragraph"><block ref="72ee76c5c29383b7c9f9225c1fa4d10b" prefix="" category="inline-code"></block></block>
   <block id="0c5c82b06936c297e83a63339ccfb8ea" category="paragraph">Permite especificar uma ID exclusiva para este domínio. Se não for especificado, será gerado um GUID exclusivo.</block>
   <block id="f345ed2c5afee70e8fdb4ed024a0e826" category="paragraph"><block ref="9190e0220e2f6aedd93ae416ce61f4f1" prefix="" category="inline-code"></block></block>
@@ -1125,7 +1118,6 @@
   <block id="c33f4dd7cba462d4973823e2b1a0f1d1" category="summary">O comando Create storageArray securityKey cria ou altera uma nova chave de segurança para um storage array que tem unidades de criptografia total de disco (FDE).</block>
   <block id="589358dbff1a589613308187d87d0307" category="doc">Crie a chave de segurança do storage array</block>
   <block id="16b8756bee5437e27cf5846c5cfd3750" category="paragraph">O<block ref="36ef9cc664c3c8b1ff2bbe46b6e0eefa" prefix=" " category="inline-code"></block> comando cria ou altera uma nova chave de segurança para uma matriz de armazenamento com unidades de encriptação total de disco (FDE).</block>
-  <block id="9a72b7800754129aaac262fd17574f77" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="a3e6ee2823bad8a4c789d06eea837cd4" category="paragraph">Para o gerenciamento de chaves internas, esse comando habilita o recurso Gerenciamento de chaves internas e cria a chave de segurança. Depois de criar a chave, use o<block ref="a0e1a4f515a18371dc3ea9acd6cc22ce" prefix=" " category="inline-code"></block> comando para colocar a chave em uso. Este comando também pode ser usado para alterar a chave de segurança.</block>
   <block id="ac377e9234144193984246221664a133" category="paragraph">Para gerenciamento de chaves externas, esse comando cria uma chave diferente para substituir a chave criada inicialmente quando você ativou o recurso. Use o<block ref="3221054cef7a197c61bee691d6eace0a" prefix=" " category="inline-code"></block> comando para ativar o recurso Gerenciamento de chaves externas e criar a chave de segurança inicial. Este comando também pode ser usado para alterar a chave de segurança.</block>
   <block id="4026ec9a53cfa291ca88fe7ecf92271f" category="paragraph"><block ref="9f0dd5628b477ca3a412bd884083c065" prefix="" category="inline-code"></block> - aplicável apenas para a gestão de chaves internas</block>
@@ -1175,7 +1167,6 @@
   <block id="1a2705cf89cd2220c74c548d31d8637f" category="summary">O comando Create SyncMirror cria o volume primário e o volume secundário para um par espelhado remoto síncrono. Esse comando também define o modo de gravação (modo de gravação síncrona ou modo de gravação assíncrona) e a prioridade de sincronização.</block>
   <block id="72816bb9383ae0ee07aa13ba46996d7e" category="doc">Criar espelhamento síncrono</block>
   <block id="52a24030d55704eb53281edf7f86ae57" category="paragraph">O<block ref="8f5bef3862e87a60f6a148d1fb09dc2c" prefix=" " category="inline-code"></block> comando cria o volume primário e o volume secundário para um par espelhado remoto síncrono. Esse comando também define o modo de gravação (modo de gravação síncrona ou modo de gravação assíncrona) e a prioridade de sincronização.</block>
-  <block id="03ddafa678ecdce3682b4cec2e1901c1" category="paragraph">Para executar esse comando em um array E2800 ou E5700storage, você deve ter a função Administrador de armazenamento.</block>
   <block id="e3010c3ef75eed34b83a18a1af7eecd6" category="paragraph"><block ref="386bba5a5dc4fac215c9cf0b9a29b352" prefix="" category="inline-code"></block></block>
   <block id="4e6f20d94d9e42e80e6300e61c9556e3" category="paragraph">O nome de um volume existente na matriz de armazenamento local que você deseja usar para o volume principal. Coloque o nome do volume primário entre aspas duplas (" ").</block>
   <block id="329ee9c730f0db06dc70767f13c32063" category="paragraph"><block ref="1f7ba58706f9d405023da32864d059c8" prefix="" category="inline-code"></block></block>
@@ -1286,7 +1277,6 @@
   <block id="9f9a1edac53b581ee5c9edb892cc7e62" category="summary">O comando Deactivate storageArray Feature desativa o recurso de espelhamento síncrono, desmonta o volume do repositório espelhado e libera o proprietário do controlador do volume secundário.</block>
   <block id="959b6f8aa08631615c9cc167221f7e2f" category="doc">Desativar o espelhamento síncrono</block>
   <block id="46a1b67e09d65ac1d5bcf3abddc7a5e5" category="paragraph">O<block ref="3d89dc828415af8c3cd97d24e3a31e63" prefix=" " category="inline-code"></block> comando desativa o recurso de espelhamento síncrono, desmonta o volume do repositório espelhado e libera o proprietário do controlador do volume secundário.</block>
-  <block id="e68c89351e1337529a69bcee3f8df562" category="paragraph">Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Administrador de armazenamento ou Administrador de suporte.</block>
   <block id="9996acbeada45bb8fe20486b86cab914" category="paragraph">A porta de host do controlador dedicada ao volume secundário está disponível para transferências de dados do host.</block>
   <block id="1978df364c9a880f85e2a40ad54db64e" category="summary">O recurso Desativar storageArray desativa o recurso de espelhamento assíncrono.</block>
   <block id="65c90a169ddaeb6811b328b7407a851f" category="doc">Desativar o espelhamento assíncrono</block>
@@ -1800,7 +1790,6 @@
   <block id="18d25ac4e1abbe5bc0643c27231178cf" category="summary">O comando Export storageArray securityKey salva uma chave de segurança de unidade em um arquivo.</block>
   <block id="95fc98a15ab6c4bb300a1a053dffedac" category="doc">Exportar chave de segurança do storage array</block>
   <block id="118d5bbc4ed27615895f09f58be206b9" category="paragraph">O<block ref="2ccd87610f73906ee34956b568a9cf6a" prefix=" " category="inline-code"></block> comando salva uma chave de segurança da unidade em um arquivo.</block>
-  <block id="6ebc391412b3ac382d9abb2aaa4fb8a8" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="59abeb230f23914068920f58b01cf787" category="paragraph">Quando o arquivo de chave é exportado de um storage array, essa chave pode ser importada para outro storage array. Isso permite que você mova unidades com capacidade de segurança entre storages.</block>
   <block id="e0d2814cb7c67330fdfb68cd711796c2" category="paragraph">Este comando aplica-se ao gerenciamento de chaves internas e externas.</block>
   <block id="a82e11127b63137237fad7907ca2a439" category="paragraph">A matriz de armazenamento para a qual você estará movendo unidades deve ter unidades com uma capacidade igual ou superior às unidades que você está importando.</block>
@@ -1856,7 +1845,6 @@
   <block id="d7a3a52083e5c68118974beeeec2de99" category="summary">O comando Import storageArray securityKey file desbloqueia uma ou mais unidades de criptografia completa de disco (FDE) que você moveu de uma matriz de armazenamento para outra matriz de armazenamento.</block>
   <block id="11b1a1e2c28e878f48cf799cce8aa812" category="doc">Importar chave de segurança do storage array</block>
   <block id="065910adcc06b080e3793d7744d86d88" category="paragraph">O<block ref="a6f8118712fc2bcbe8cc4a0df3d41e92" prefix=" " category="inline-code"></block> comando desbloqueia uma ou mais unidades de criptografia completa de disco (FDE) que você moveu de uma matriz de armazenamento para outra matriz de armazenamento.</block>
-  <block id="0f5e1305e8b34920cb18e64db1ad1240" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 ou EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="2c6e388c7397d396aa8a67e31de9f708" category="paragraph">Apenas as unidades com a chave de segurança correspondente são desbloqueadas. Depois de desbloqueados, a chave de segurança para o novo storage array é aplicada.</block>
   <block id="fc0d1749f2422b74bdb55bf17391f0b1" category="paragraph">O caminho do arquivo e o nome do arquivo que tem a chave de segurança original das unidades FDE importadas. Por exemplo:</block>
   <block id="f8341fc661bfb8ca199262da01e8dc70" category="paragraph">A cadeia de carateres que fornece autenticação para a chave de segurança.</block>
@@ -2173,7 +2161,6 @@
   <block id="a9d6651d1ab47a1b36451d1d60b1be4e" category="list-text">Utilização do repositório (%)</block>
   <block id="2bfa0cbd8e82042c4238fddc5e87651f" category="list-text">Idade do ponto de recuperação</block>
   <block id="a19424436ff5a8c20a18ffbd066deca7" category="summary">O comando RESET storageArray AutoSupport schedule redefine os horários e dias diários e semanais da semana em que as mensagens AutoSupport são enviadas de volta para os valores aleatórios gerados pelo software de gerenciamento.</block>
-  <block id="3d13704ad1c7a981cf21e6f8d0778a04" category="doc">Redefinir o agendamento de coleta de mensagens do AutoSupport (para storages individuais E2800 ou E5700)</block>
   <block id="42bb67454d2d38ca36a82f5b6b0559c9" category="paragraph">O<block ref="7dcbc315e8df32823077e3db191759ad" prefix=" " category="inline-code"></block> comando redefine os horários e dias diários e semanais da semana em que as mensagens AutoSupport são enviadas de volta para os valores aleatórios gerados pelo software de gerenciamento.</block>
   <block id="b349684735406339111877f12c790cea" category="list-text">O software de gerenciamento seleciona aleatoriamente uma hora do dia para mensagens diárias e semanais e um dia da semana para mensagens semanais.</block>
   <block id="eca6d01389ba3951d9e44a4d6a67d9eb" category="list-text">O software de gerenciamento faz todas as tentativas para garantir que nenhum dos dois storages de armazenamento dentro de um domínio de gerenciamento envie mensagens AutoSupport agendadas ao mesmo tempo.</block>
@@ -2187,7 +2174,6 @@
   <block id="85e7782db5466f40c05b3be32ea0ef0b" category="summary">O comando reset storageArray hostPortStatisticsBaseline redefine a linha de base de estatísticas da porta do host do storage.</block>
   <block id="9998c84ac6caade1ad4c4e5ac82282bf" category="doc">Redefinir linha de base de estatísticas da porta do host do storage</block>
   <block id="101aea9192366a116dcdcfa5924beb0e" category="paragraph">O<block ref="eeb5e9314c204d51efbd300206618c72" prefix=" " category="inline-code"></block> comando redefine a linha de base de estatísticas da porta do host do storage array.</block>
-  <block id="54e516e39febe2ebcc5f3bffd2df256f" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.</block>
   <block id="e4985d2cf76567d77b23632c36c40be8" category="inline-xref-macro">Redefinir linha de base de estatísticas InfiniBand do storage array</block>
   <block id="f35a5be1733fa419c53db1734d1c1677" category="inline-xref-macro">Repor linha de base iSCSI da matriz de armazenamento</block>
   <block id="7c4e811eda812cbcfa0928f4903c2de5" category="inline-xref-macro">Redefinir a linha de base iSER do storage array</block>
@@ -2196,7 +2182,6 @@
   <block id="f85f65456d47e78c16df33f49f65d9c6" category="paragraph">Permite indicar qual tipo de estatísticas a recolher. As opções válidas são:<block ref="425dc40b20b5ebc257186fa48a868906" prefix=" " category="inline-code"></block>,<block ref="87eb587d557540e98d60acb58eefa56c" prefix=" " category="inline-code"></block>,<block ref="fdd51ddf7583a729a503d339b1e05364" prefix=" " category="inline-code"></block>,<block ref="243290eb2357bc21e57cef201016528d" prefix=" " category="inline-code"></block> E .</block>
   <block id="9e3b68d037d0edd334a1cf17bdccf0e8" category="summary">O comando reset storageArray ibStatsBaseline redefine a linha de base de estatísticas InfiniBand para 0 para o storage array.</block>
   <block id="a311578163f7bc994f8b0fcc73d78664" category="paragraph">O<block ref="add90e19fb2b3404819090b35b7df29e" prefix=" " category="inline-code"></block> comando redefine a linha de base de estatísticas InfiniBand para 0 no storage array.</block>
-  <block id="273a21cd07c16b799cb77535e713e261" category="paragraph">Para executar esse comando em um storage array E2800, ou E5700, você deve ter a função Storage Admin.</block>
   <block id="2f26c8583d350771962b95babaa285ae" category="paragraph">Este comando está obsoleto e é substituído pelo <block ref="fea32d7d32837f58caf1422010242705" category="inline-xref-macro-rx"></block>comando.</block>
   <block id="2042653060057154e4a699f8ffd4e34a" category="paragraph">Esse comando não redefine as contagens em bruto mantidas no hardware e no firmware. Em vez disso, o firmware cria um instantâneo dos valores atuais do contador e usa esses valores para relatar diferenças nas contagens quando as estatísticas são recuperadas. O novo tempo de linha de base é aplicado a ambos os controladores para que as contagens do controlador sejam sincronizadas entre si. Se um controlador for reiniciado sem que o outro controlador seja reiniciado, os contadores não serão mais sincronizados. O cliente fica ciente de que os controladores não são sincronizados porque os dados de carimbo de data/hora relatados juntamente com as estatísticas não são os mesmos para ambos os controladores.</block>
   <block id="ca084d9517ddd67f3d9f4f6b6a26784c" category="summary">O comando RESET storageArray iscsiStatsBaseline redefine a linha de base iSCSI para 0 para a matriz de armazenamento.</block>
@@ -2204,7 +2189,6 @@
   <block id="8b8ea5eaa06da9cc5294caec069dcdf9" category="paragraph">Esse comando redefine a linha de base para 0 para ambos os controladores no storage array. O objetivo de redefinir ambas as linhas de base do controlador é ajudar a garantir que as contagens do controlador sejam sincronizadas entre os controladores. Se um controlador for reiniciado, mas o segundo controlador não for reiniciado, o host será informado de que os controladores estão fora de sincronização. O anfitrião é informado pelos carimbos de hora que são reportados com as estatísticas.</block>
   <block id="ff5885e71dace62d588bad77aea93830" category="summary">O comando reset storageArray iserStatsBaseline redefine a linha de base iSER para 0 para o storage array.</block>
   <block id="1848890ead65ea5acda8fff79a63d9f5" category="paragraph"><block ref="bfb88b65aca9c17ca74aae50dad72ddf" prefix=" " category="inline-code"></block>O comando redefine a linha de base iSER para 0 para o storage array.</block>
-  <block id="0206e2ff1e70dfcbdbfefb1d515301c8" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="ad7f2b132a88e6ddf059d269897b9f7a" category="summary">O comando reset storageArray RLSBaseline redefine a linha de base de status de link de leitura (RLS) para todos os dispositivos, definindo todas as contagens RLS para 0.</block>
   <block id="15de7c826924b8e353c35af3cc957d9d" category="doc">Redefina a linha de base RLS da matriz de armazenamento</block>
   <block id="4659813bbaeb1a0e12dd1ba0b38ebbe5" category="paragraph">O<block ref="3d25b8a7089d44a5daae6f6555bcfb8f" prefix=" " category="inline-code"></block> comando redefine a linha de base de status do link de leitura (RLS) para todos os dispositivos, definindo todas as contagens do RLS para 0.</block>
@@ -2352,9 +2336,7 @@
   <block id="07058f5a958104f35886ae8128a4f907" category="paragraph"><block ref="e909c2d7067ea37437cf97fe11d91bd0" prefix="" category="inline-code"></block></block>
   <block id="ce0b19572c3e8160269353a2a29ee19f" category="paragraph">Permite especificar o código ISO (International Organization for Standardization) de dois dígitos do seu país, como EUA.</block>
   <block id="ca6922af934cbc602563b4efc1f5dc70" category="paragraph">Permite especificar o ficheiro para o qual pretende guardar o ficheiro CSR do controlador.</block>
-  <block id="54f8d92440fdb8680638422c5aeb5222" category="summary">O comando save controller arrayManagementSignedCertificate recupera o certificado do servidor instalado para o controlador para que você possa exibir os detalhes do certificado.</block>
   <block id="6350cf44b8bafeee9673a59ff31baec3" category="doc">Recuperar certificado do servidor instalado</block>
-  <block id="2c236ba971a663a09a2b6391a3ad104d" category="paragraph">O<block ref="1d32d13d0ffc4f7dd507a994f59ac9b9" prefix=" " category="inline-code"></block> comando recupera o certificado do servidor instalado para o controlador para que você possa exibir os detalhes do certificado.</block>
   <block id="ca16722c9a4e4f39f5a7cff99cf1e3a9" category="paragraph">Permite especificar o controlador do qual pretende transferir o certificado assinado. Identificadores válidos do controlador são a ou b, onde a é o controlador no slot A, e b é o controlador no slot B. feche o identificador do controlador entre colchetes ([ ]).</block>
   <block id="bb89b1a0dde078e7c8f13c62720f07c3" category="paragraph">Permite especificar o ficheiro para o qual pretende guardar o ficheiro de certificado assinado do controlador.</block>
   <block id="de1cdf86ab37f4c4a611ce0f90c1eb5f" category="summary">O comando save controller caCertificate recupera os certificados de CA instalados do controlador especificado. Incluídos nos certificados recuperados estão todos os certificados de CA solicitados do servidor da Web do controlador.</block>
@@ -2454,7 +2436,6 @@
   <block id="c150cf10f9c24b3ae1712d9b340f9b68" category="summary">O comando save storageArray Configuration cria um arquivo de script que você pode usar para recriar a configuração atual de volume de storage array.</block>
   <block id="22bc35cee3b727163050cc44b096050c" category="doc">Salve a configuração do storage array</block>
   <block id="b76ed73bf33bc149b56bfcb72828ed9e" category="paragraph">O<block ref="4304ad007245da9bddf3e18b75adaec6" prefix=" " category="inline-code"></block> comando cria um arquivo de script que você pode usar para recriar a configuração atual de volume de storage array.</block>
-  <block id="58e6d6373e7b375f5f4cda1a6d3d57ec" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento. No entanto, o uso deste comando com o parâmetro LDAP é restrito àqueles com a função Security Admin.</block>
   <block id="c1c3a56e1ceca488340db853c4392d01" category="paragraph">Esse comando não salva os dados de configuração de espelhamento remoto ou cópia de volume no storage array atual em um arquivo.</block>
   <block id="76f07b9b7c624b078c63894fcbc57b79" category="paragraph">O caminho do arquivo e o nome do arquivo para o qual você deseja salvar as configurações. Coloque o nome do ficheiro entre aspas duplas (" "). Por exemplo:</block>
   <block id="cba05d40aab0daa948254107ad8de574" category="paragraph"><block ref="4552d122824e8cd1b9ce696c1b49db5c" prefix="" category="inline-code"></block></block>
@@ -2517,7 +2498,6 @@
   <block id="f2400c6d98c11df02cbcad1bce2de5be" category="summary">O comando save storageArray hostPortStatistics salva as estatísticas da porta do host do storage array.</block>
   <block id="6576767c1b6931e9bd69c7594dcf1e4c" category="doc">Salvar estatísticas da porta do host do storage array</block>
   <block id="b728b39dd8719e0aa99ad692fd41d7fe" category="paragraph">O<block ref="6d95ef3e4ab00dafd6f345801ee009a2" prefix=" " category="inline-code"></block> comando salva as estatísticas da porta do host do storage array.</block>
-  <block id="23f2b3d774e4f254918d4c8fdee41588" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de Segurança.</block>
   <block id="36eb75b5172fc10f30e25c5e87cd0771" category="inline-xref-macro">Guardar estatísticas iSCSI da matriz de armazenamento</block>
   <block id="e0e8086a2ef3e28d73e5e3938ba9effc" category="inline-xref-macro">Salvar estatísticas de iSER de storage array</block>
   <block id="76d618c43ac28fdbd8710f8f6bcbdc0e" category="inline-xref-macro">Salvar estatísticas de storage array InfiniBand</block>
@@ -2820,12 +2800,10 @@
   <block id="b7ff8f411b5c8d2b9963dea1ee5e7788" category="paragraph">Permite que o usuário especifique o número máximo de Registros a serem armazenados onde<block ref="7b8b965ad4bca0e41ab51de7b31363a1" prefix=" " category="inline-code"></block> é um número inteiro começando em 30000 e terminando em 50000.</block>
   <block id="8df805109dc564ccda99a3ae68356ac1" category="paragraph">Permite especificar a porcentagem em que um alerta de aviso será enviado para indicar que o log de auditoria está quase cheio quando a política completa estiver definida como<block ref="39d4bba9fc1d42bbf0941bff25a4eecc" prefix=" " category="inline-code"></block>. Use valores inteiros entre 0 e 100. Definir este parâmetro para 0 (zero) desativa os alertas de aviso.</block>
   <block id="0418acfe7f172be60f641a4dee74583b" category="summary">O comando Set storageArray AutoSupport deliveryMethod configura o método de entrega para enviar mensagens AutoSupport para HTTP(S).</block>
-  <block id="b63d4a8fce6b86dfe0bd873d51df2e44" category="doc">Especificar o método de entrega HTTP(S) do AutoSupport (para matrizes E2800 ou E5700 individuais)</block>
   <block id="b5f0f32e672745bd998c7baae84009c2" category="paragraph">O<block ref="d3d44814636a9d9a5c8eec24b7edfda8" prefix=" " category="inline-code"></block> comando configura o método de entrega para enviar mensagens AutoSupport para HTTP(S).</block>
   <block id="470b59d3367ed05a01d0c74b04a67967" category="paragraph"><block ref="404137a0c627526e033c93c46af10d7a" prefix="" category="inline-code"></block></block>
   <block id="33f9ca954ea5513b2c784e2fcab0a1bc" category="paragraph">Permite ao utilizador especificar o método de entrega para a coleção AutoSupport. As opções válidas são:</block>
   <block id="0c83f57c786a0b4a39efab23731c7ebc" category="list-text">e-mail</block>
-  <block id="293c9ea246ff9985dc6f62a650f78986" category="list-text">HTTP</block>
   <block id="0e8433f9a404f1f3ba601c14b026d321" category="list-text">HTTPS</block>
   <block id="8a46dd7e06af963d90ed64259683cef0" category="paragraph">Se o método de e-mail estiver configurado, o OnDemand do AutoSupport e o Diagnóstico remoto serão desativados.</block>
   <block id="f572828018f66707de2037171dd8e4a4" category="paragraph"><block ref="7caa701b2bd5a182b80c72b9bdf88e2d" prefix="" category="inline-code"></block></block>
@@ -3188,7 +3166,6 @@
   <block id="b6d01d3fed2ae70f1ab68fa1c953ca86" category="summary">O comando Set emailAlert configura o e-mail para enviar um e-mail para um suporte técnico ou organização especificado. O alerta por e-mail contém um resumo do evento, informações detalhadas sobre o armazenamento afetado e informações de Contato do cliente.</block>
   <block id="1b15771136d070897a4786d21a91bfca" category="doc">Configure as definições de alerta por e-mail</block>
   <block id="77e64cab1c5aeff0d6ff879bc39b2a78" category="paragraph">O<block ref="695e9c8c76fa05d4ab710f736a32d368" prefix=" " category="inline-code"></block> comando configura o e-mail para enviar um e-mail para uma organização ou suporte técnico especificado. O alerta por e-mail contém um resumo do evento, informações detalhadas sobre o armazenamento afetado e informações de Contato do cliente.</block>
-  <block id="5e2276c06dc9839b2244a1615f313cee" category="paragraph">Esse comando se aplica aos storages E2800, E5700, EF600 e EF300. No entanto, você pode usar o comando como um comando SMcli, não um comando script, para arrays E2700 ou E5600. Nesse caso, o comando se aplica a todos os arrays no domínio de gerenciamento.</block>
   <block id="37dadb3bd1509e2e5c8dc4210b5f4175" category="paragraph">Permite definir o endereço do servidor de e-mail. O endereço do servidor de e-mail pode ser um nome de domínio totalmente qualificado, endereço IPv4 ou endereço IPv6.</block>
   <block id="26f7eecdf5941d85272c9177d1862ce6" category="paragraph"><block ref="bb2f8b4558d45fa3d02059f4d9f42d5f" prefix="" category="inline-code"></block></block>
   <block id="28d9c2bb47c0e47c85d8126cc9e27639" category="paragraph">A criptografia a ser usada para se comunicar com o servidor. O valor pode ser um dos seguintes:</block>
@@ -3400,7 +3377,6 @@
   <block id="ecaf030c24638713fe94abe0ca535a48" category="summary">O comando Set session errorAction define como você deseja que a sessão atual do mecanismo de script seja executada.</block>
   <block id="3b0dc5fce18b99ece74fdfb5a5a313f6" category="doc">Definir sessão</block>
   <block id="1723c0a7383bfc685e3779b3853765ec" category="paragraph">O<block ref="dbbf4d88ff28454203ef538c02d8d997" prefix=" " category="inline-code"></block> comando define como você deseja que a sessão atual do mecanismo de script seja executada.</block>
-  <block id="456383683c5088f07d792544fc457ea8" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento, Administrador de suporte, Administrador de segurança ou Monitor de armazenamento.</block>
   <block id="0e1fdce28381353c30c42bbb5dd6b1ab" category="paragraph">Para efeitos deste comando, uma sessão é a duração da execução dos comandos. Este comando não define permanentemente os parâmetros para a matriz de armazenamento.</block>
   <block id="7ad0e6dd25358f967fc7ce521669868a" category="paragraph"><block ref="3340c352e08df8503fd682cff544be4b" prefix="" category="inline-code"></block></block>
   <block id="5b8b77d01a8aba074b63718bc49e6ac2" category="paragraph">Como a sessão responde se for encontrado um erro durante o processamento. Você pode optar por parar a sessão se um erro for encontrado ou continuar a sessão depois de encontrar um erro. O valor padrão é<block ref="ef399b2d446bb37b7c32ad2cc1b6045b" prefix=" " category="inline-code"></block>. (Este parâmetro define a ação para erros de execução, não erros de sintaxe. Algumas condições de erro podem substituir o<block ref="7aa28ed115707345d0274032757e8991" prefix=" " category="inline-code"></block> valor.)</block>
@@ -3552,7 +3528,6 @@
   <block id="b0957cbc9be0958b3ed48c8b925bb3ec" category="paragraph"><block ref="7cf7742720b9271bc90a72fad24f76f1" prefix="" category="inline-code"></block></block>
   <block id="00269537a626685f49a281fd68f46713" category="paragraph"><block ref="5b2a579f62087d17d79ce59f3de5f6d1" prefix="" category="inline-code"></block><block ref="c5b5790b8b74a68d0cde09c8f1080fc5" prefix="" category="inline-code"></block> - Especifica a hora do dia que você deseja iniciar e terminar a coleta dos dados de coleta de pacotes AutoSupport para cada dia da semana que você selecionou. O<block ref="5b2a579f62087d17d79ce59f3de5f6d1" prefix=" " category="inline-code"></block> e<block ref="c5b5790b8b74a68d0cde09c8f1080fc5" prefix=" " category="inline-code"></block> deve estar na forma de HH:MM[am|pm].</block>
   <block id="8b46193971f20ebdc16ce2d4064d1dae" category="summary">O comando Set storageArray autoSupportMaintenanceWindow liga ou desliga o recurso janela de manutenção do AutoSupport.</block>
-  <block id="acd961e5451a3ccd475d54650c2ae25b" category="doc">Ativar ou desativar a janela de manutenção do AutoSupport (para matrizes E2800 ou E5700 individuais)</block>
   <block id="a0a0faefb77fa57036e29458886ee6a6" category="paragraph">O<block ref="9dc06017b84cef89af1f10e55a1ecbc2" prefix=" " category="inline-code"></block> comando liga ou desliga o recurso da janela de manutenção do AutoSupport.</block>
   <block id="24b8427b4e70b8b26378cbd782dfe262" category="paragraph">Use uma janela de manutenção para suprimir a criação automática de ticket em eventos de erro. No modo de operação normal, a matriz de armazenamento usará o AutoSupport para abrir um caso com suporte técnico se houver um problema. Quando o AutoSupport é colocado numa janela de manutenção, esta funcionalidade é suprimida.</block>
   <block id="c7ae4920d8fe2ccd0f8d3c390a30c3df" category="paragraph"><block ref="cbaa81c3c2d6e041216b42e31cfd9207" prefix="" category="inline-code"></block></block>
@@ -3578,7 +3553,6 @@
   <block id="0a971bdaf647eec5727bb73b4fdaf62a" category="summary">O comando Set storageArray cacheMirrorDataAssuranceCheckEnable permite ativar ou desativar a verificação de garantia de dados do espelho de cache.</block>
   <block id="4f856a887e5732ed9116694218089f06" category="doc">Defina a matriz de armazenamento para ativar ou desativar a verificação de garantia de dados do espelho de cache</block>
   <block id="a2f3cff920191a1785038eb770af11ac" category="paragraph">O<block ref="4e9e70c51aa47d98d09a798ae70b33ce" prefix=" " category="inline-code"></block> comando permite ativar ou desativar a verificação de garantia de dados do espelho de cache.</block>
-  <block id="0bdfae42fe218bd7d08ff2660ab19323" category="paragraph">Esse comando se aplica a um storage array individual E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.</block>
   <block id="ecd8f68d5c8a073ab5f744175bcfc48d" category="paragraph">8,41 novo parâmetro de comando.</block>
   <block id="a6f07c7eb8cb7a96d6a0aec31f5c8a06" category="summary">O comando Set storageArray controllerHealthImageAllowOverWrite define um sinalizador em um controlador para permitir que uma nova imagem de integridade do controlador substitua uma imagem de integridade do controlador existente em matrizes de armazenamento que suportam o recurso de imagem de integridade do controlador.</block>
   <block id="9e710da914d1637167e32b398bbc6392" category="doc">Definir a imagem de integridade do controlador da matriz de armazenamento permitir substituição</block>
@@ -3880,7 +3854,6 @@
   <block id="ee262571ba548fbe81c1aa97ef4f2f86" category="paragraph"><block ref="57e1def4c218b844432e77bf1f3a6348" prefix="" category="inline-code"></block></block>
   <block id="ac8f3839a5773a065b3414ce6bebb08d" category="paragraph">Altera a interface de gerenciamento do controlador. Altere o tipo de interface de gerenciamento para garantir a confidencialidade entre o storage array e seu software de gerenciamento ou para acessar ferramentas externas.</block>
   <block id="e357d892ac66c8d6d5e523ad580e9e81" category="paragraph"><block ref="bc1f099d5bab0b91f6b2f590331b51b1" prefix="" category="inline-code"></block></block>
-  <block id="50162660a4c7641854ffdc02f97a5c51" category="paragraph">O número de dias durante os quais a digitalização de material é executada. Os valores válidos são<block ref="075ae3d2fc31640504f814f60e5ef713" prefix=" " category="inline-code"></block> , que desliga a digitalização de material ou<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block> dia a<block ref="34173cb38f07f89ddbebc2ac9128303f" prefix=" " category="inline-code"></block> dia, em que<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block> o dia é a taxa de digitalização mais rápida e<block ref="34173cb38f07f89ddbebc2ac9128303f" prefix=" " category="inline-code"></block> os dias são a taxa de digitalização mais lenta. Um valor diferente<block ref="075ae3d2fc31640504f814f60e5ef713" prefix=" " category="inline-code"></block> de ou<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block> para<block ref="34173cb38f07f89ddbebc2ac9128303f" prefix=" " category="inline-code"></block> não permite que a digitalização de material funcione.</block>
   <block id="befcb849719f94c30e38a64c21226d79" category="paragraph">Ativa ou desativa a transferência de dados descarregados (ODX) para uma matriz de armazenamento.</block>
   <block id="eabf26cd0c33eca2b95cab5d030534b4" category="paragraph">Com a versão 8,40, este parâmetro está obsoleto. Em vez disso, utilize os<block ref="97c96ba288c4ff448d1cb8d82a1b1016" prefix=" " category="inline-code"></block> parâmetros ou,<block ref="97bff26855a8bfa63e05d5477e794b24" prefix=" " category="inline-code"></block> juntamente com os<block ref="5f4dcc3b5aa765d61d8327deb882cf99" prefix=" " category="inline-code"></block> parâmetros ou<block ref="33d87fd364516f6604124fcc76fdd279" prefix=" " category="inline-code"></block>.</block>
   <block id="cbf799f0b53038441a1f204fc296e913" category="paragraph"><block ref="d28d4d8f33766a644452e2279fbef399" prefix="" category="inline-code"></block></block>
@@ -4290,7 +4263,6 @@
   <block id="74739b819e7e946ab0e4d50e101a32d6" category="list-text">A taxa de transferência de dados</block>
   <block id="d7c99baf3ce58576f893506269740bd0" category="list-text">A ID do produto</block>
   <block id="2b744d319838b4a36538148e1431f379" category="list-text">O nível de firmware</block>
-  <block id="16e69abc3aaf761d2ea7bc0f880ca35b" category="list-text">Informações sobre a vida útil das unidades SSD (essas informações são válidas apenas para o E2800 e E5700/EF570 e não são exibidas se o array não contiver unidades SSD):</block>
   <block id="66b8d84c12d6e8ce50edb846cfee502c" category="list-text">A contagem média de apagamento.</block>
   <block id="45a0f5d5d07e686083afb281fe1f91ee" category="list-text">Os blocos sobresselentes restantes.</block>
   <block id="89b430980ba2de7fe91a9ea8f7bf879a" category="list-text">O percentual de resistência usado (novo na versão 11,41). A percentagem de resistência utilizada é a quantidade de dados gravados nas unidades SSD até à data dividida pelo limite teórico total de escrita para as unidades.</block>
@@ -4318,7 +4290,6 @@
   <block id="1e3183fa9c4768ba6ea8c56138b2b0d7" category="summary">O comando show allSnmpCommunities retorna informações sobre as comunidades SNMP (Simple Network Management Protocol) definidas para o storage array. As comunidades SNMP são coleções de dispositivos, como roteadores, switches, impressoras, dispositivos de armazenamento, agrupados para gerenciar e monitorar os dispositivos.</block>
   <block id="0975f98624d38f4913a00dc3f8ddf5ec" category="doc">Mostrar comunidades SNMP</block>
   <block id="0f685797b01aaf0dfa71b1350a8336ef" category="paragraph">O<block ref="1f04831fa6e90f0ea74b85717913b33e" prefix=" " category="inline-code"></block> comando retorna informações sobre as comunidades SNMP (Simple Network Management Protocol) definidas para o storage array. As comunidades SNMP são coleções de dispositivos, como roteadores, switches, impressoras, dispositivos de armazenamento, agrupados para gerenciar e monitorar os dispositivos.</block>
-  <block id="a39c61ebdd787f81d2ef2651ba656be6" category="paragraph">Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.</block>
   <block id="e5dc820cd982e6a7faeea301825ed9dc" category="paragraph">As informações devolvidas incluem o seguinte:</block>
   <block id="23f36d51bf3aedc99882833b5dc5bdd0" category="list-text">O número total de comunidades</block>
   <block id="f8786e8fa8475e7edd68eca42e9f1a36" category="list-text">O número total de destinos de armadilha</block>
@@ -4345,7 +4316,6 @@
   <block id="940a00dba56ee7c0469928efe9ed7c4c" category="summary">O comando Show array label retorna informações sobre se um rótulo de storage array foi definido ou todos os rótulos de storage existentes.</block>
   <block id="a8dddcb0378a5adc0ec4222faa73aebe" category="doc">Mostrar etiqueta da matriz</block>
   <block id="059d97f968e0842d6638fa44fa5c7280" category="paragraph">O<block ref="a8dddcb0378a5adc0ec4222faa73aebe" prefix=" " category="inline-code"></block> comando retorna informações sobre se um rótulo de storage array foi definido ou todos os rótulos de storage array existentes.</block>
-  <block id="8a42f0c79144717ab490ae2d4198bc3a" category="paragraph">Este comando se aplica aos storages EF600.</block>
   <block id="389b26d65d344d22020e09ccbab7e770" category="summary">O comando show asyncMirrorGroup summary exibe informações de configuração para um ou mais grupos de espelhos assíncronos.</block>
   <block id="1f86bd9a5ab9f5e0cd2214507b173045" category="doc">Mostrar grupos de espelhos assíncronos</block>
   <block id="dbc257c972a5b97d17bff63a99db552a" category="paragraph">O<block ref="84029f8f260ad29ed8631eac7d6496cb" prefix=" " category="inline-code"></block> comando exibe informações de configuração para um ou mais grupos de espelhos assíncronos.</block>
@@ -4631,7 +4601,6 @@
   <block id="3a67810abc8da793d40e0d9c714d2958" category="summary">O comando show storageArray AutoSupport exibe as configurações de coleção de pacotes AutoSupport para o storage array.</block>
   <block id="b9a29215603a15544fa6c897c678da0a" category="doc">Mostrar configuração do AutoSupport</block>
   <block id="019fa4ba5e1d588b0e5c8dd094fde7d5" category="paragraph">O<block ref="71eae19fa70d29030673e081786d825b" prefix=" " category="inline-code"></block> comando exibe as configurações de coleção de pacotes AutoSupport para a matriz de armazenamento.</block>
-  <block id="7aa6059582dab6043ba0684c6b46d222" category="paragraph">Esse comando está operacional para os storages E2800, E5700, EF600 e EF300.</block>
   <block id="99babd6129eb1b1ade94cda55336f9dc" category="paragraph">O comando output deste comando mostra as seguintes informações de configuração:</block>
   <block id="d65c4e7ab7aaaeb613a3eec55d8575be" category="list-text">O status de ativação para esse domínio de gerenciamento do recurso AutoSupport, do recurso AutoSupport OnDemand e do recurso Diagnóstico remoto do AutoSupport</block>
   <block id="82f056e16ccfbbf704e9987e69a89e56" category="list-text">Parâmetros de entrega que dependem do método de entrega configurado:</block>
@@ -4829,7 +4798,6 @@
   <block id="5097bc8fbff28c2f4afa7476a604bdc3" category="summary">O comando show SyncMirror candidates retorna informações sobre os volumes candidatos em um storage array remoto que você pode usar como volumes secundários em uma configuração de espelhamento síncrono.</block>
   <block id="a8e17accd53dd340f01e40847de30d62" category="doc">Mostrar candidatos a volume de espelhamento síncrono</block>
   <block id="930e04129225117b7c5a0eb5ad942c41" category="paragraph">O<block ref="af7dfc70695aa4060e73ff059455cca1" prefix=" " category="inline-code"></block> comando retorna informações sobre os volumes candidatos em um storage array remoto que você pode usar como volumes secundários em uma configuração de espelhamento síncrono.</block>
-  <block id="6b2f4787f46eed5521ed0bacaae0e49a" category="paragraph">Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin ou Storage Monitor.</block>
   <block id="48ab786b5b5040ccb0e2c0cd87a481bf" category="paragraph">O nome do volume local desejado para o volume principal no par espelhado remoto. Coloque o nome do volume primário entre aspas duplas (" ").</block>
   <block id="fc706cee637f27d302720d92793d7179" category="paragraph">O storage array remoto que contém volumes possíveis para um volume secundário. Se o nome da matriz de armazenamento remoto tiver carateres especiais, você também deve incluir o nome da matriz de armazenamento remoto em aspas duplas (" ").</block>
   <block id="00de6d84ba71be2ac8c594cd266b0248" category="summary">O comando show SyncMirror SynchronizationProgress retorna o progresso da sincronização de dados entre o volume primário e o volume secundário em uma configuração de espelhamento síncrono.</block>
@@ -5243,7 +5211,6 @@
   <block id="3b129c5535bfd1b293ee522199b2647b" category="summary">O comando start drive erase apaga todos os dados de uma ou mais unidades.</block>
   <block id="5e1960d53d0e67e3cd307a126a8f75ac" category="doc">Inicie a eliminação da unidade</block>
   <block id="5c7cd3a54ac60bada240ddcb36cb2b2f" category="paragraph">O<block ref="45dd4109bf3a4de86fc0afeae5748816" prefix=" " category="inline-code"></block> comando apaga todos os dados de uma ou mais unidades.</block>
-  <block id="f31b4701e236492b39f4226355cb1d49" category="paragraph">Este comando se aplica a um array individual E2800, E5700, EF600 ou EF300. Ele não opera em storages E2700 e E5600.</block>
   <block id="a40cdbeba07769d11e789eb761201ae7" category="paragraph">Execute este comando somente se você quiser remover permanentemente todos os dados em uma unidade. Se a unidade estiver ativada para segurança, a<block ref="45dd4109bf3a4de86fc0afeae5748816" prefix=" " category="inline-code"></block> opção de comando executa uma eliminação criptográfica e repõe os atributos de segurança da unidade de volta para segura.</block>
   <block id="2531efef7e4f6d3357daf24da936c35a" category="paragraph">A operação de eliminação não pode ser desfeita. Certifique-se de que seleciona a unidade correta ao utilizar este comando.</block>
   <block id="6ae797a72c66de004194304b30f25119" category="paragraph">A lista de unidades não pode conter todas as unidades na matriz de armazenamento, ou o comando será rejeitado.</block>
@@ -5628,7 +5595,6 @@
   <block id="288c747beb9ea02441918c10be0f0835" category="summary">O comando Validar storageArray securityKey valida a chave de segurança para um storage array que tenha unidades com capacidade de segurança para garantir que o arquivo de chave de segurança de backup não esteja corrompido.</block>
   <block id="0997de78a2c4c3c3fb8d0bbf36292876" category="doc">Valide a chave de segurança do storage array</block>
   <block id="040f96a185fb9e278945b3035413ef98" category="paragraph">O<block ref="062754b2a40ad367c343f5c1052bc453" prefix=" " category="inline-code"></block> comando valida a chave de segurança para uma matriz de armazenamento com unidades compatíveis com segurança para garantir que o ficheiro de chave de segurança de cópia de segurança não está corrompido.</block>
-  <block id="8375b2e9dc5948fae1425a8f80381409" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800 e E5700. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="a60102cf893cafd152ff949443e539aa" category="paragraph">A validação da chave de segurança usa a frase-passe usada para gerar o arquivo para descriptografar a chave e combiná-la com o valor mantido na memória do controlador (para chaves internas) ou no servidor externo (para chaves externas).</block>
   <block id="be77a29583b243db0d24b4ccb834859e" category="paragraph">O caminho do arquivo e o nome do arquivo que tem a chave de segurança. Insira o caminho do arquivo e o nome do arquivo em aspas duplas (" "). Por exemplo:</block>
   <block id="a1740854cce8851ca60522ad7aad0f3f" category="summary">Comandos de administradores de armazenamento, Segurança e suporte</block>
@@ -5725,15 +5691,10 @@
   <block id="40b5e794e0c5d66ba76dbffd4936cdf2" category="inline-link-macro">Ativar ou desativar AutoSupport no nível de domínio de gestão EMW...</block>
   <block id="d1d7e051cbfd58b90c0b20e58bd50caf" category="paragraph"><block ref="d1d7e051cbfd58b90c0b20e58bd50caf" category="inline-link-macro-rx"></block></block>
   <block id="526ea19b5b10d32080045d2bf02a001f" category="paragraph"><block ref="526ea19b5b10d32080045d2bf02a001f" category="inline-link-macro-rx"></block></block>
-  <block id="0d27d2d91cb54a5542603e0ac7441bf2" category="paragraph"><block ref="0d27d2d91cb54a5542603e0ac7441bf2" category="inline-link-macro-rx"></block></block>
   <block id="9193a3a6d6eae0966fd3e95f00327e58" category="inline-link-macro">Ativar ou desativar o recurso AutoSupport OnDemand...</block>
   <block id="5a4b5b6c09b76fd9a6e234cc5c8f02a1" category="paragraph"><block ref="5a4b5b6c09b76fd9a6e234cc5c8f02a1" category="inline-link-macro-rx"></block></block>
-  <block id="8b34f939922724f8ca1a0c2fce89bd2e" category="inline-link-macro">Ativar ou desativar o recurso AutoSupport OnDemand (para storages E2800 ou E5700 individuais)</block>
-  <block id="eceb9e9ae30bee53654d1037dcbc3a5c" category="paragraph"><block ref="eceb9e9ae30bee53654d1037dcbc3a5c" category="inline-link-macro-rx"></block></block>
   <block id="e5799e751ba6a43582452605535ec6d9" category="inline-link-macro">Ative ou desative o recurso de Diagnóstico remoto do AutoSupport OnDemand em...</block>
   <block id="7f64e02de9bac52f6624004ce966c7bf" category="paragraph"><block ref="7f64e02de9bac52f6624004ce966c7bf" category="inline-link-macro-rx"></block></block>
-  <block id="19b9c937ff30bddaf295e386473f62d1" category="inline-link-macro">Ativar ou desativar o recurso de Diagnóstico remoto do AutoSupport (para storages E2800 ou E5700 individuais)</block>
-  <block id="bd5a4e5c160e7e2886150485e8b7ce59" category="paragraph"><block ref="bd5a4e5c160e7e2886150485e8b7ce59" category="inline-link-macro-rx"></block></block>
   <block id="28acfac866a292ab1f1f2e9ff56a5f37" category="paragraph"><block ref="28acfac866a292ab1f1f2e9ff56a5f37" category="inline-link-macro-rx"></block></block>
   <block id="027f6fa25e8c6cb1dd4a84d3a6b4d3a2" category="paragraph"><block ref="027f6fa25e8c6cb1dd4a84d3a6b4d3a2" category="inline-link-macro-rx"></block></block>
   <block id="7ea19a28141d90151f591add5d5f4c23" category="paragraph"><block ref="7ea19a28141d90151f591add5d5f4c23" category="inline-link-macro-rx"></block></block>
@@ -5763,7 +5724,6 @@
   <block id="1c3cbf4675cd02c340c87cbf971b2757" category="paragraph"><block ref="1c3cbf4675cd02c340c87cbf971b2757" category="inline-link-macro-rx"></block></block>
   <block id="188959659c3c9598d3d7f3bbb214d9b9" category="paragraph"><block ref="188959659c3c9598d3d7f3bbb214d9b9" category="inline-link-macro-rx"></block></block>
   <block id="6821c52aa4b7edbcd583dfe534852fc5" category="paragraph"><block ref="6821c52aa4b7edbcd583dfe534852fc5" category="inline-link-macro-rx"></block></block>
-  <block id="1031ed2106e047126b3e17b6a0feb0b3" category="paragraph"><block ref="1031ed2106e047126b3e17b6a0feb0b3" category="inline-link-macro-rx"></block></block>
   <block id="8a487f9c730e86bf79dc7bff0f2a85b9" category="paragraph"><block ref="8a487f9c730e86bf79dc7bff0f2a85b9" category="inline-link-macro-rx"></block></block>
   <block id="9fcb1c693c81e749004e0d42c529a734" category="paragraph"><block ref="9fcb1c693c81e749004e0d42c529a734" category="inline-link-macro-rx"></block></block>
   <block id="1769aadd34f2f6f9ed574d90a140aa4f" category="paragraph"><block ref="1769aadd34f2f6f9ed574d90a140aa4f" category="inline-link-macro-rx"></block></block>
@@ -5782,8 +5742,6 @@
   <block id="a5597aaf9e765269137e95d6e2faed3f" category="paragraph"><block ref="a5597aaf9e765269137e95d6e2faed3f" category="inline-link-macro-rx"></block></block>
   <block id="72cbaa931863e75532e0237a06ea9846" category="paragraph"><block ref="72cbaa931863e75532e0237a06ea9846" category="inline-link-macro-rx"></block></block>
   <block id="f4d1acccaa71a7d3dc823feed3999987" category="paragraph"><block ref="f4d1acccaa71a7d3dc823feed3999987" category="inline-link-macro-rx"></block></block>
-  <block id="fc8179a226cf4b490f680b11e570fda9" category="inline-link-macro">Recuperar um log do AutoSupport (para arrays E2800 ou E5700 individuais)</block>
-  <block id="ab6622d0616a5f2108306aa06557813b" category="paragraph"><block ref="ab6622d0616a5f2108306aa06557813b" category="inline-link-macro-rx"></block></block>
   <block id="79f2c7a0ede8616b37a166a1639d4ee4" category="paragraph"><block ref="79f2c7a0ede8616b37a166a1639d4ee4" category="inline-link-macro-rx"></block></block>
   <block id="1948692d283c9fab92783bd65e556ef4" category="paragraph"><block ref="1948692d283c9fab92783bd65e556ef4" category="inline-link-macro-rx"></block></block>
   <block id="8888bc21be5b887914b50d3aebe4988c" category="paragraph"><block ref="8888bc21be5b887914b50d3aebe4988c" category="inline-link-macro-rx"></block></block>
@@ -5813,8 +5771,6 @@
   <block id="0c935e2d113d8e05616fd2b407fdb909" category="paragraph"><block ref="0c935e2d113d8e05616fd2b407fdb909" category="inline-link-macro-rx"></block></block>
   <block id="2d7d86d8aea74f95da1eed2c998c4938" category="paragraph"><block ref="2d7d86d8aea74f95da1eed2c998c4938" category="inline-link-macro-rx"></block></block>
   <block id="c67fcc2f0be461ed1869274c654a9f53" category="paragraph"><block ref="c67fcc2f0be461ed1869274c654a9f53" category="inline-link-macro-rx"></block></block>
-  <block id="b8b2944d59a8e32a06d69a1329c85d45" category="inline-link-macro">Definir o agendamento de coleta de mensagens do AutoSupport (para storages individuais E2800 ou E5700)</block>
-  <block id="9224081ddb2ebba35e092b9609ce41fa" category="paragraph"><block ref="9224081ddb2ebba35e092b9609ce41fa" category="inline-link-macro-rx"></block></block>
   <block id="d4f3e4f054f57657aacd266c88cf5a81" category="paragraph"><block ref="d4f3e4f054f57657aacd266c88cf5a81" category="inline-link-macro-rx"></block></block>
   <block id="87bcb060142c34bae4a50640104b7a81" category="paragraph"><block ref="87bcb060142c34bae4a50640104b7a81" category="inline-link-macro-rx"></block></block>
   <block id="528c3c2827be0bef4de87283f38c0796" category="paragraph"><block ref="528c3c2827be0bef4de87283f38c0796" category="inline-link-macro-rx"></block></block>
@@ -5938,9 +5894,6 @@
   <block id="2a3c57f176b1e95d00fa20d3975a32f5" category="paragraph"><block ref="2a3c57f176b1e95d00fa20d3975a32f5" category="inline-link-macro-rx"></block></block>
   <block id="dedaab469c9719a939b1dd88ac01e25b" category="paragraph"><block ref="dedaab469c9719a939b1dd88ac01e25b" category="inline-link-macro-rx"></block></block>
   <block id="24464dadd1eefb1caa57d072993683ba" category="paragraph"><block ref="24464dadd1eefb1caa57d072993683ba" category="inline-link-macro-rx"></block></block>
-  <block id="d6d27704e9eefa567371004ccc2c9d4a" category="inline-link-macro">Especifique o método de entrega de e-mail (SMTP) (para matrizes E2800 ou E5700 individuais)</block>
-  <block id="5f8aa3aa9bd012520927b5a1357f8ff1" category="paragraph"><block ref="5f8aa3aa9bd012520927b5a1357f8ff1" category="inline-link-macro-rx"></block></block>
-  <block id="fcbe986fac160291e6d85c180a85317a" category="paragraph"><block ref="fcbe986fac160291e6d85c180a85317a" category="inline-link-macro-rx"></block></block>
   <block id="5abda05a4e4fb9a02a5e16fab5dbe3f6" category="paragraph"><block ref="5abda05a4e4fb9a02a5e16fab5dbe3f6" category="inline-link-macro-rx"></block></block>
   <block id="0e9e5b87fd61749a7ef177c2c3d95f8c" category="paragraph"><block ref="0e9e5b87fd61749a7ef177c2c3d95f8c" category="inline-link-macro-rx"></block></block>
   <block id="3bfc29f6b162af2a029f397e8f62dc8a" category="paragraph"><block ref="3bfc29f6b162af2a029f397e8f62dc8a" category="inline-link-macro-rx"></block></block>
@@ -5992,8 +5945,6 @@
   <block id="edbea3131a774ced865d5b090b23c6f5" category="paragraph"><block ref="edbea3131a774ced865d5b090b23c6f5" category="inline-link-macro-rx"></block></block>
   <block id="d265072c730a2db4ebb7ae032b3dd8b6" category="paragraph"><block ref="d265072c730a2db4ebb7ae032b3dd8b6" category="inline-link-macro-rx"></block></block>
   <block id="a625acccfc6204769d17344dfb91d470" category="paragraph"><block ref="a625acccfc6204769d17344dfb91d470" category="inline-link-macro-rx"></block></block>
-  <block id="ed8ff3e3e935d1f01db69b1edb27583f" category="inline-link-macro">Testar as configurações de entrega do AutoSupport (para storages individuais E2800 ou E5700)</block>
-  <block id="25e35f8e194692fa821197447d509a7a" category="paragraph"><block ref="25e35f8e194692fa821197447d509a7a" category="inline-link-macro-rx"></block></block>
   <block id="3e9df718ef4cb4579cbb566abb3797ba" category="paragraph"><block ref="3e9df718ef4cb4579cbb566abb3797ba" category="inline-link-macro-rx"></block></block>
   <block id="a67128b93abe8a7db88a9450c83f8b6c" category="paragraph"><block ref="a67128b93abe8a7db88a9450c83f8b6c" category="inline-link-macro-rx"></block></block>
   <block id="a5947c580baf2e7426e6ef149e5753b7" category="paragraph"><block ref="a5947c580baf2e7426e6ef149e5753b7" category="inline-link-macro-rx"></block></block>
@@ -6111,14 +6062,11 @@
   <block id="15c050a6a9859238d1500e30a3507f10" category="section-title">Comandos AutoSupport para todos os storage arrays</block>
   <block id="e4b1a19d81413c02cbff8dc83cf04445" category="inline-link-macro">Ativar ou desativar AutoSupport (arrays individuais, apenas para storages E2800, E5700)</block>
   <block id="f08f0edf758a95b8fc4b6cbefc244dd6" category="paragraph"><block ref="f08f0edf758a95b8fc4b6cbefc244dd6" category="inline-link-macro-rx"></block></block>
-  <block id="1424867a14c9a2cc6892547d4dbda4df" category="section-title">Comandos AutoSupport para o E2800, E5700</block>
   <block id="15348903b7895ac9051ae19404be0b5d" category="summary">Comandos CLI (Lista alfabética)</block>
   <block id="397fc97bb6efdad0616e29cbdbfd76e1" category="paragraph"><block ref="397fc97bb6efdad0616e29cbdbfd76e1" category="inline-link-macro-rx"></block></block>
   <block id="0681cb3434a7a62189a7cf669cd930e3" category="paragraph"><block ref="0681cb3434a7a62189a7cf669cd930e3" category="inline-link-macro-rx"></block></block>
   <block id="c05cdc42cdcdcde830f457d1d718f3c9" category="paragraph"><block ref="c05cdc42cdcdcde830f457d1d718f3c9" category="inline-link-macro-rx"></block></block>
   <block id="8d08681a9f663e7fb564445219d5b37a" category="paragraph"><block ref="8d08681a9f663e7fb564445219d5b37a" category="inline-link-macro-rx"></block></block>
-  <block id="de042c6e9339ad5e11dbef3eba62d68f" category="inline-link-macro">Ativar ou desativar o recurso de diagnóstico remoto do AutoSupport (para storages E2800 ou E5700 individuais)</block>
-  <block id="89b91b07adb5a3dcfb3ec3c5ceeb9d68" category="paragraph"><block ref="89b91b07adb5a3dcfb3ec3c5ceeb9d68" category="inline-link-macro-rx"></block></block>
   <block id="6c4ef8878e6680708a40660463ee0e04" category="paragraph"><block ref="6c4ef8878e6680708a40660463ee0e04" category="inline-link-macro-rx"></block></block>
   <block id="23fd09a111109703b188ad72ac198b40" category="paragraph"><block ref="23fd09a111109703b188ad72ac198b40" category="inline-link-macro-rx"></block></block>
   <block id="4591c32e678bc31f823e5fb526568477" category="inline-link-macro">Recuperar a solicitação CSR de gerenciamento de chave instalada</block>
@@ -6131,7 +6079,6 @@
   <block id="06b1f30ec301048e37eefe3067919a56" category="paragraph"><block ref="06b1f30ec301048e37eefe3067919a56" category="inline-link-macro-rx"></block></block>
   <block id="851ecb9bcd9eaea85cb9cc7b83e26224" category="paragraph"><block ref="851ecb9bcd9eaea85cb9cc7b83e26224" category="inline-link-macro-rx"></block></block>
   <block id="75d0cfb68b71d4c1551f137d574c98e2" category="summary">Comandos E2700 e E5600</block>
-  <block id="fb832e8292b69e05ca19a3ac025cb97b" category="summary">Comandos E2800, E5700, EF600 e EF300</block>
   <block id="974c39615a30eb12263edf94ca8b50a1" category="inline-link-macro">Guardar erros de paridade do trabalho de verificação de volume</block>
   <block id="133fba1f812cada0c7b9feb43526fffc" category="paragraph"><block ref="133fba1f812cada0c7b9feb43526fffc" category="inline-link-macro-rx"></block></block>
   <block id="6752d22f8e0c2b7fadbf03092d48e8dc" category="paragraph"><block ref="6752d22f8e0c2b7fadbf03092d48e8dc" category="inline-link-macro-rx"></block></block>
@@ -6187,7 +6134,6 @@
   <block id="9effc9edc3686486aaacfb6caa40aee6" category="paragraph"><block ref="9effc9edc3686486aaacfb6caa40aee6" category="inline-link-macro-rx"></block></block>
   <block id="d8095207a4a2e2a642c0fec2e59ed6d8" category="summary">O mecanismo de script procura certos carateres ou um comando para mostrar comentários. Você pode adicionar comentários a um arquivo de script de três maneiras.</block>
   <block id="9c7ddf7ade8d60b11271928432e9ddc8" category="doc">Adicione comentários a um arquivo de script</block>
-  <block id="6e9f19fc4668940ba8f4d08fa9d8693a" category="paragraph">O mecanismo de script procura certos carateres ou um comando para mostrar comentários. Você pode adicionar comentários a um arquivo de script de três maneiras:</block>
   <block id="545944d3ed6b702648d0cff3bdddb3a9" category="list-text">Adicionar texto após duas barras de avanço <block ref="7bc0ee636b3b83484fc3b9348863bd22" prefix="(" category="inline-code"></block>) como um comentário até que um caractere de fim de linha seja alcançado. Se o mecanismo de script não encontrar um caractere de fim de linha no script após o processamento de um comentário, uma mensagem de erro será exibida e a operação do script será encerrada. Esse erro geralmente ocorre quando um comentário é colocado no final de um script e você Esqueceu de pressionar a tecla *Enter*.</block>
   <block id="60b3f8c24959c89262e2b343157442cb" category="list-text">Adicione texto entre<block ref="523048e7f5ca9550505f2d8ea6d587e7" prefix=" " category="inline-code"></block> e<block ref="c4c9bdd47ee05028cb84873da0ebf2b5" prefix=" " category="inline-code"></block> como um comentário. Se o mecanismo de script não encontrar uma notação de comentário inicial e uma notação de comentário final, uma mensagem de erro será exibida e a operação de script será encerrada.</block>
   <block id="e782805f580a9e1271f7ace0eef0b6d1" category="list-text">Use a<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> instrução para incorporar comentários em um arquivo de script que você deseja exibir enquanto o arquivo de script está sendo executado. Inclua o texto que você deseja que apareça usando aspas duplas (" """).</block>
@@ -6221,7 +6167,6 @@
   <block id="6e560cf6c527d4c279a89d40d90f0f5f" category="summary">A versão do SANtricity os 11,40 introduziu, para os controladores E2800 e E5700 com serviços da Web incorporados, a capacidade de interagir na linha de comando usando um protocolo HTTPS seguro. Esses controladores podem, opcionalmente, usar o protocolo de símbolo para interações de linha de comando.</block>
   <block id="c3369045597873cd151e0a9b94edab23" category="doc">Parâmetros da linha de comando legada</block>
   <block id="fcd00ec6de7f196ccf5dd2134ec8c2eb" category="section-title">11,53 e parâmetros de linha de comando mais antigos</block>
-  <block id="7f350558fa31543d0376cb3d9a59b5a6" category="paragraph">A versão do SANtricity os 11,40 introduziu, para os controladores E2800 e E5700 com serviços da Web incorporados, a capacidade de interagir na linha de comando usando um protocolo HTTPS seguro. Esses controladores podem, opcionalmente, usar o protocolo de símbolo para interações de linha de comando. O protocolo Symbol é o único protocolo suportado para os controladores E2700 e E5600. Para preservar scripts existentes e minimizar o tempo de transição, as opções e gramática da CLI são preservadas o máximo possível. No entanto, existem algumas diferenças nas capacidades dos controladores E2800 e E5700 em relação à segurança, autenticação, AutoSupport e mensagens de alerta que tornam obsoleta parte da gramática CLI para esses controladores. No entanto, em alguns casos, a gramática só é obsoleta no E2800 ou E5700 quando o novo protocolo https é usado.</block>
   <block id="aaedb78025d5d9a4e8dc9d4da12dd28e" category="paragraph">Para os novos parâmetros que se aplicam somente ao<block ref="de6b0dcfbccd619d18dc01c80f872c93" prefix=" " category="inline-code"></block> tipo de cliente, segue-se que eles também se aplicam somente aos controladores E2800 ou E5700.</block>
   <block id="38aac19b2b6105f1a08c485a55cf9377" category="paragraph"><block ref="ac90df31215c6ece0c9727cdec55ee84" prefix="" category="inline-code"></block></block>
   <block id="52d5da3c756e3bfbb6a6fd0bbd7f7568" category="paragraph">Este argumento força a criação de um mecanismo de script apropriado. Utilize este parâmetro opcional com um dos seguintes valores:</block>
@@ -6336,7 +6281,6 @@
   <block id="f7b4ebdf47caf37f65695390e300edf8" category="paragraph">Mostra informações de uso sobre os comandos CLI.</block>
   <block id="39ac26f7b921944e6ea0de06a02c4ad4" category="summary">Os dados coletados de um erro encontrado pela CLI são gravados em um arquivo.</block>
   <block id="074df3c52a910f3969fbc1f14e1fbefc" category="doc">Relatórios de erros detalhados</block>
-  <block id="167a6c4027f992573b4d775e28eafdfd" category="paragraph">Os dados coletados de um erro encontrado pela CLI são gravados em um arquivo. O relatório detalhado de erros sob a CLI funciona da seguinte forma:</block>
   <block id="2c50e0694d15c2512d9a42a2536a4fff" category="list-text">Se a CLI tiver de terminar de forma anormal os comandos CLI e os comandos de script, os dados de erro são coletados e salvos antes que a CLI termine.</block>
   <block id="958fbecc69c740fa980b7085a41a2cce" category="list-text">A CLI salva os dados de erro gravando os dados em um nome de arquivo padrão.</block>
   <block id="5ef3285bd89f678aed3cc79938cf8247" category="list-text">A CLI salva automaticamente os dados em um arquivo. As opções especiais da linha de comando não são necessárias para salvar os dados de erro.</block>
@@ -6348,10 +6292,8 @@
   <block id="b7cdd34e0764c77268f1dabd94633e4c" category="paragraph">Quando a CLI encontra qualquer tipo de erro, a CLI grava informações que descrevem o erro diretamente na linha de comando e define um código de retorno. Dependendo do código de retorno, a CLI também pode escrever informações adicionais sobre qual terminal causou o erro. A CLI também escreve informações sobre o que estava esperando na sintaxe de comando para ajudá-lo a identificar quaisquer erros de sintaxe que você possa ter inserido.</block>
   <block id="e7e70f1a42f0385a3b7f20bcca7c725d" category="paragraph">Quando uma exceção ocorre enquanto um comando está em execução, a CLI captura o erro. No final do processamento do comando (após o comando processar informações ter sido gravado na linha de comando), a CLI salva automaticamente as informações de erro em um arquivo.</block>
   <block id="958918e69b48e0d9846a5f4e4fc3e64c" category="paragraph">O nome do arquivo para o qual as informações de erro são salvas é<block ref="24e197f441d6f5f661ab16f29b4e8b89" prefix=" " category="inline-code"></block>. A CLI tenta colocar o<block ref="24e197f441d6f5f661ab16f29b4e8b89" prefix=" " category="inline-code"></block> arquivo no diretório especificado pela propriedade do sistema<block ref="21970511d8c4ff1437500ceff576d4f3" prefix=" " category="inline-code"></block> . Se, por qualquer motivo, a CLI não puder colocar o arquivo no diretório especificado pelo<block ref="21970511d8c4ff1437500ceff576d4f3" prefix=" " category="inline-code"></block>, a CLI salvará o<block ref="24e197f441d6f5f661ab16f29b4e8b89" prefix=" " category="inline-code"></block> arquivo no mesmo diretório do qual a CLI está sendo executada. Não é possível alterar o nome do ficheiro ou a localização. O<block ref="24e197f441d6f5f661ab16f29b4e8b89" prefix=" " category="inline-code"></block> arquivo é substituído sempre que uma exceção ocorre. Se pretender guardar as informações no<block ref="24e197f441d6f5f661ab16f29b4e8b89" prefix=" " category="inline-code"></block> ficheiro, tem de copiar as informações para um novo ficheiro ou para um novo diretório.</block>
-  <block id="e0180366a7542136793eb497779f0039" category="summary">A versão do SANtricity os 11,60 incluiu a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como CLI segura ou SMcli) diretamente através do Gerenciador de sistema do SANtricity.</block>
   <block id="2b21cb9530a6c7704a66108d45c196a1" category="doc">Parâmetros da linha de comando SMcli para download</block>
   <block id="ab21a9218cf2507b606b474a8958d92d" category="section-title">11,60 e parâmetros de linha de comando SMcli para download mais recentes</block>
-  <block id="b6c9cb32de0a61002f039efec80a465c" category="paragraph">A versão do SANtricity os 11,60 inclui a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como "CLI segura" ou SMcli) diretamente através do Gerenciador de sistema do SANtricity. Esta versão para download do SMcli está disponível nos controladores EF600, EF300, E5700, EF570, E2800 e EF280. Para fazer o download do SMcli no Gerenciador de sistema do SANtricity, selecione *Configurações* *sistema* e *Complementos* *Interface de linha de comando* .</block>
   <block id="75842716a65060950b20cba161cbac95" category="admonition">Um Java Runtime Environment (JRE), versão 8 e superior, deve estar disponível no sistema de gerenciamento onde você planeja executar os comandos CLI.</block>
   <block id="c4f2e9f91e3e5a0d9fb8f8728ed63376" category="paragraph">Tal como nas versões anteriores do SMcli, o SMcli transferível através do Gestor de sistema SANtricity tem um conjunto exclusivo de parâmetros. Para obter informações sobre como usar parâmetros de linha de comando para o SANtricity os 11,53 e versões mais antigas, <block ref="f6644819b412d8968161178a2ccec029" category="inline-link-macro-rx"></block>consulte .</block>
   <block id="1a98f49f191845835d6fd3e13eb29812" category="section-title">Autenticação de vários fatores</block>
@@ -6423,7 +6365,6 @@
   <block id="fb52873edf9c97b7281409c640b5ed20" category="list-text">O<block ref="35d5ed698aa483d3174ea619db10c0ac" prefix=" " category="inline-code"></block> parâmetro não causa uma nova verificação no nível do SO. Ele itera sobre os dispositivos existentes vistos pelo sistema operacional.</block>
   <block id="9c4b22635677ff419bec86d3f3219927" category="list-text">Você deve ter permissões de usuário suficientes para executar o<block ref="35d5ed698aa483d3174ea619db10c0ac" prefix=" " category="inline-code"></block> comando.</block>
   <block id="dbb8d2fd09a59e1ab8494de138ceffdb" category="list-text">Isso inclui a capacidade de ler de dispositivos de bloco nativos do sistema operacional e executar comandos de consulta SCSI.</block>
-  <block id="9ce1523eff5e72a292ed6464a99b08b9" category="summary">Esta tabela lista os Estados de saída que podem ser retornados e o significado de cada status.</block>
   <block id="7cad7a53c4b37e36efac96e7af6321b2" category="doc">Sair do estado</block>
   <block id="3bdf0e76fb5a7a78d72a6a0680c1093f" category="cell">Valor do estado</block>
   <block id="a07bb1950747b5b0cf4b6797cc9f9937" category="cell">Nome do erro</block>
@@ -6623,9 +6564,7 @@
   <block id="a3f390d88e4c41f2747bfa2f1b5f87db" category="paragraph">68</block>
   <block id="fca34b0028dd6b39f2766938660645b1" category="paragraph">FICHEIRO_PASSWORD_INVÁLIDO</block>
   <block id="4415f88f8516743ac7ab25e136f3173b" category="paragraph">O arquivo de senha não pode ser encontrado ou não é legível.</block>
-  <block id="ba72f16b241252f7f1aca2bf704942d9" category="summary">Os comandos de script e os parâmetros de comando não são executados em todas as versões do firmware do controlador.</block>
   <block id="7c4dc74c16d2654cc3a92740adf5ff8e" category="doc">Níveis de compatibilidade de firmware</block>
-  <block id="b5ae4dc34424ad0e2619845eacbbcfc2" category="paragraph">Os comandos de script e os parâmetros de comando não são executados em todas as versões do firmware do controlador. Os comandos de script nas seções a seguir listam os níveis mínimos de firmware sob os quais os comandos de script podem ser executados. Nos comandos de script, os níveis de firmware são listados sob o título ""nível mínimo de firmware""" esta lista descreve como interpretar as informações sobre os níveis de firmware.</block>
   <block id="1bcc576b82fed619415d4157046a7fad" category="list-text">Se um comando de script não listar um nível mínimo de firmware de controladora, o comando de script e todos os parâmetros associados a esse comando de script podem ser executados em qualquer nível de firmware de controladora.</block>
   <block id="90f468710db30c16b02a8b002e1af686" category="list-text">Um número de firmware do controlador sem qualquer informação explicativa indica que o nível de firmware do controlador se aplica a todo o comando de script e a todos os parâmetros desse comando de script.</block>
   <block id="f2a446829158644357aab7a7d67017cc" category="list-text">Um número de firmware do controlador associado a um parâmetro indica o nível mínimo de firmware do controlador sob o qual o parâmetro pode ser executado.</block>
@@ -6639,7 +6578,6 @@
   <block id="d5c71011e72512445dc6f7650a967d6e" category="paragraph">Essas notações indicam que o comando script e todos os parâmetros, exceto<block ref="9775f3a49f15a0a7e717810df80797a0" prefix=" " category="inline-code"></block> executados sob um mínimo de firmware do controlador versão 7,84. O<block ref="9775f3a49f15a0a7e717810df80797a0" prefix=" " category="inline-code"></block> parâmetro é executado com um mínimo de versão de firmware do controlador 8,20_M3.</block>
   <block id="94536b08c149b401c1e3d4aa164b853c" category="summary">O Windows PowerShell é um shell interativo e de script que fornece acesso a ferramentas de linha de comando.</block>
   <block id="0a6760c3056dd4237b647943d44dae70" category="doc">Formate regras para comandos CLI no Windows PowerShell</block>
-  <block id="decd8a350cdf754c968c86ee87e30c6c" category="paragraph">O Windows PowerShell é um shell interativo e de script que fornece acesso a ferramentas de linha de comando. O Windows PowerShell melhora no prompt de comando do Windows com um conjunto mais robusto de comandos e capacidade de script. Você pode executar todos os comandos CLI e script no Windows PowerShell; no entanto, o Windows PowerShell tem alguns requisitos de formatação exclusivos. Os requisitos são os seguintes:</block>
   <block id="50d9f3447707fa32e9c0df1880bba9e0" category="list-text">Inicie todos os comandos SMcli com um ponto e uma barra (./)</block>
   <block id="caa5d9328bfc806fa16f762ba7bdcb27" category="list-text">O wrapper smcli deve ser identificado como um comando executável com a extensão .exe (SMcli.exe)</block>
   <block id="a2957c139a7a919a4f46836dd373b576" category="list-text">Inclua o comando script entre aspas simples (' ')</block>
@@ -6647,7 +6585,6 @@
   <block id="3f4ce7a0f44046982a99bac1b63932af" category="paragraph">A seguir está um exemplo de um comando CLI para criar um nome de storage array no Windows PowerShell. Observe o uso das aspas simples como delimitadores para o comando script e as aspas duplas da barra invertida ao redor do nome da matriz de armazenamento, identificadas como<block ref="084b91a7aa6610a04582f105860debfd" prefix=" " category="inline-code"></block> na sintaxe do comando.</block>
   <block id="ae2f4f58a64b18bee8095c4a505fd65e" category="paragraph">A seguir está um exemplo de um comando CLI para habilitar um recurso premium no Windows PowerShell. Observe o uso das aspas duplas da barra invertida antes do caminho do arquivo para a chave de recurso premium.</block>
   <block id="b1bb7b6f34567baccecede56369b8405" category="paragraph">Nos exemplos anteriores, são utilizadas letras maiúsculas e minúsculas. Este uso é para ajudar a deixar claro como os comandos são formatados. No entanto, o Windows PowerShell não diferencia maiúsculas de minúsculas e não requer casos específicos de uso.</block>
-  <block id="75cb823cd5ca0a1bca40888776191bd5" category="summary">Aspas duplas que são usadas como parte de um nome ou rótulo exigem consideração especial quando você executa os comandos CLI e os comandos de script em um sistema operacional Windows, Linux ou Solaris.</block>
   <block id="bb0d07b5620d2e85d47a3dfc403a4ee0" category="doc">Formate as regras para comandos CLI</block>
   <block id="02fcb96a2220221658b695dc783c341f" category="paragraph">Aspas duplas (" ") que são usadas como parte de um nome ou rótulo exigem consideração especial quando você executa os comandos CLI e os comandos de script em um sistema operacional Windows, Linux ou Solaris.</block>
   <block id="88f31185f3b63664c188b018aa2994d0" category="paragraph">Quando aspas duplas (" ") são parte de um nome ou valor, você deve inserir uma barra invertida (") antes de cada caractere de aspas duplas.</block>
@@ -6680,7 +6617,6 @@
   <block id="6918f21cd845297dbffdbb53fe114dc6" category="paragraph">*Ponto e vírgula* -- os comandos de script devem terminar com um ponto e vírgula <block ref="9eecb7db59d16c80417c72d1e1f4fbf1" prefix="(" category="inline-code"></block>). Você pode inserir mais de um comando de script na linha de comando ou em um arquivo de script. Por exemplo, um ponto e vírgula é usado para separar cada comando de script no arquivo de script a seguir.</block>
   <block id="1a7fe2603f72d881bd3957f529d643c1" category="summary">Se você inserir<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block> e um nome de storage array, mas não especificar parâmetros CLI, comandos de script ou um arquivo de script, a interface de linha de comando será executada no modo interativo.</block>
   <block id="c66f19bf3e23bb1d8f53417edec7a608" category="doc">Modo interativo</block>
-  <block id="b4c81425b278c15f09d39f40c52604f1" category="paragraph">Se você inserir<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block> e um nome de storage array, mas não especificar parâmetros CLI, comandos de script ou um arquivo de script, a interface de linha de comando será executada no modo interativo. O modo interativo permite executar comandos individuais sem prefixar os comandos com<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block>o .</block>
   <block id="d52e106dfae71aa8fe55bd08be1ee7a1" category="paragraph">No modo interativo, você pode inserir um único comando, exibir os resultados e digitar o próximo comando sem digitar a cadeia de carateres completa<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block>. O modo interativo é útil para determinar erros de configuração e testar rapidamente alterações de configuração.</block>
   <block id="d84642a0fa127291d74836c8f51b74d2" category="paragraph">Para terminar uma sessão de modo interativo, digite o comando específico do sistema operacional. Para Linux, esta combinação chave é *Control-D*. Para Windows, esta combinação de teclas é *Control-Z e ENTER*.</block>
   <block id="225df3023bbec8bcdc760941a198bdcc" category="summary">Saiba mais sobre migração de grupo de volume</block>
@@ -6772,7 +6708,6 @@
   <block id="87af3705302719c8461683fbfb64f57a" category="paragraph">No exemplo a seguir, também usando uma operação somente leitura, mas no<block ref="de6b0dcfbccd619d18dc01c80f872c93" prefix=" " category="inline-code"></block> modo cliente, tanto o nome de usuário quanto a senha são necessários e fornecidos, juntamente com<block ref="ff2bddd61609f26dc3255408781890ad" prefix=" " category="inline-code"></block> para aceitar um certificado autoassinado. O<block ref="de6b0dcfbccd619d18dc01c80f872c93" prefix=" " category="inline-code"></block> modo cliente requer uma senha mesmo para operações somente leitura.</block>
   <block id="d5a07a929adbc3f8e1dccfa24e88da4b" category="summary">A interface de linha de comando (CLI) é um aplicativo de software que fornece uma maneira de configurar e monitorar matrizes de armazenamento.</block>
   <block id="e469e58c2e81413c1d3a4e14f355fb8f" category="doc">Visão geral da CLI</block>
-  <block id="e83cc2dd74c6dba773792359624042d0" category="paragraph">A interface de linha de comando (CLI) é um aplicativo de software que fornece uma maneira de configurar e monitorar matrizes de armazenamento. Usando a CLI, você pode executar comandos de um prompt do sistema operacional, como o prompt do dos<block ref="d7aa32b0c582222819b91c8e0ccca765" prefix=" " category="inline-code"></block>, um caminho do sistema operacional Linux ou um caminho do sistema operacional Solaris.</block>
   <block id="43fc05846dc9a6463afd1a669e1e6af3" category="paragraph">Com a CLI, você tem acesso direto a um mecanismo de script que é um utilitário do software de gerenciamento de storage. O mecanismo de script executa comandos que configuram e gerenciam os storages. O mecanismo de script lê os comandos, seja através de um arquivo de script ou diretamente da linha de comando, e executa as operações instruídas pelos comandos.</block>
   <block id="3ab8d5bf5932f687f0670270fa3cf437" category="paragraph">Os comandos de script configuram e gerenciam um storage array. Os comandos de script são distintos dos comandos CLI. Você pode inserir comandos de script individuais ou executar um arquivo de comandos de script. Quando você insere um comando de script individual, você incorpora o comando script em um comando CLI. Quando você executa um arquivo de comandos de script, incorpore o nome do arquivo no comando CLI.</block>
   <block id="155d01e6206b0910227f88561d2675bf" category="paragraph">Alguns recursos de software descritos neste documento podem não estar disponíveis para o sistema de storage e-Series. Para dúvidas sobre os recursos disponíveis, entre em Contato com o representante da sua conta.</block>
@@ -6885,7 +6820,6 @@
   <block id="328ce1e7b08cc5e66a5ab81f4b53d470" category="paragraph">Uma chave de segurança do storage array já deve ser criada para o storage array se você quiser definir<block ref="39658fa1e0f09153b0523362d5528d1e" prefix=" " category="inline-code"></block>o . (Para criar uma chave de segurança de storage array, use o<block ref="36ef9cc664c3c8b1ff2bbe46b6e0eefa" prefix=" " category="inline-code"></block> comando.)</block>
   <block id="0f0c0580ded0edce199f20b947f561e0" category="summary">Os comandos CLI estão na forma de um wrapper de comando e elementos incorporados no wrapper.</block>
   <block id="5a8a6dcabe4b237ab44cc18e6346bcf8" category="doc">Estrutura dos comandos CLI</block>
-  <block id="fb59cb2dc8e821d9c2c091c101fe6086" category="paragraph">Os comandos CLI estão na forma de um wrapper de comando e elementos incorporados no wrapper. Um comando CLI consiste nestes elementos:</block>
   <block id="eb1d90c07ee11d08251a5d743cf30635" category="list-text">Um wrapper de comando identificado pelo termo<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block></block>
   <block id="a2cb2c8630500fa717555ea7e8ecd83d" category="list-text">O identificador da matriz de armazenamento</block>
   <block id="af8130d7d4ac9d981245dfeab40e7be9" category="list-text">Terminais que definem a operação a ser executada</block>
@@ -6897,7 +6831,6 @@
   <block id="1c591450a0dc8c2521fa307789cc4f23" category="list-text"><block ref="ede997b0caf2ec398110d79d9eba38bb" prefix="" category="inline-code"></block> É um valor CLI que define o ambiente e o propósito para o comando.</block>
   <block id="969ae0c2de293b383ec4b22d9aec2b24" category="list-text"><block ref="e77057c887938aefffa20b4f82e41610" prefix="" category="inline-code"></block> são um ou mais comandos de script ou o nome de um arquivo de script que contém comandos de script. (Os comandos de script configuram e gerenciam o storage array.)</block>
   <block id="c28c75dffe7b4d4a4d0486aaff29d1a6" category="paragraph">Se você inserir uma cadeia de carateres incompleta ou imprecisa<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block> que não tenha a sintaxe correta, nomes de parâmetros, opções ou terminais, o mecanismo de script retornará informações de uso.</block>
-  <block id="70c6fb2d6855a3bde6e8f77509cd46f3" category="summary">Todos os comandos de script têm a seguinte estrutura.</block>
   <block id="057a9f6979b14d39b3186b764f38dade" category="doc">Estrutura de um comando de script</block>
   <block id="fde555a5950c3b4a8e2eacccd0410a2f" category="paragraph">Todos os comandos de script têm a seguinte estrutura:</block>
   <block id="6b5a72a170b51acf167ff0bf43635ff4" category="list-text"><block ref="1dccadfed7bcbb036c56a4afb97e906f" prefix="" category="inline-code"></block> identifica a ação a ser executada.</block>
@@ -6945,7 +6878,6 @@
   <block id="1906f0c0c690d5cc786e031952f21ea5" category="paragraph">Uma entrada definida pelo usuário (como rótulo do usuário) é chamada de variável. Na sintaxe, ela é mostrada em itálico (como<block ref="a91aeff4d256189c9dab518d82d229a0" prefix=" " category="inline-code"></block> ou<block ref="8917628127c046d8d7cfac39abc9ef5e" prefix=" " category="inline-code"></block>).</block>
   <block id="832c4bddc90301ed87414e7217d12a80" category="summary">Como você pode usar os comandos de script para definir e gerenciar os diferentes aspetos de um storage array (como topologia do host, configuração da unidade, configuração do controlador, definições de volume e definições de grupo de volume), o número real de comandos é extenso.</block>
   <block id="9ab03979fb14b675494053f695a63b30" category="doc">Sinopse dos comandos de script</block>
-  <block id="31ad42a7159183494415ade9a05bd59b" category="paragraph">Como você pode usar os comandos de script para definir e gerenciar os diferentes aspetos de um storage array (como topologia do host, configuração da unidade, configuração do controlador, definições de volume e definições de grupo de volume), o número real de comandos é extenso. Os comandos, no entanto, se enquadram em categorias gerais que são reutilizadas quando você aplica os comandos para configurar ou manter um storage array. A tabela a seguir lista a forma geral dos comandos de script e uma definição de cada comando.</block>
   <block id="622d27cd104889791f5af80d64bd606f" category="paragraph">Executa a operação pendente.</block>
   <block id="b163752302067deaeafe32bc9b88e50c" category="paragraph">Configura o ambiente para que uma operação possa ocorrer ou execute a operação se o ambiente já estiver configurado corretamente.</block>
   <block id="d769d6f8d2857dfd0a8804d1fa373d9f" category="paragraph">Cria automaticamente uma configuração baseada nos parâmetros especificados no comando.</block>
@@ -6974,7 +6906,6 @@
   <block id="c0c10123d92b9dde47d2a928c5a4cc8e" category="paragraph">Pára uma operação assíncrona.</block>
   <block id="eb194bd624b79c01462f026fcc16a669" category="paragraph">Pára uma operação. Em seguida, você pode reiniciar a operação suspensa e ela continua a partir do ponto em que foi suspensa.</block>
   <block id="2a6889fd51daa4adf5e849a64d54890a" category="paragraph">Valida uma chave de segurança.</block>
-  <block id="16d9a06da671d438622dc19d0b30efcf" category="summary">Esta lista fornece diretrizes para escrever comandos de script na linha de comando.</block>
   <block id="a756bcc5185086b47d7c3f4c343e3b89" category="doc">Guidelines do comando de script</block>
   <block id="80e9d60e2926365dfd876497329f1728" category="paragraph">Esta lista fornece diretrizes para escrever comandos de script na linha de comando:</block>
   <block id="1fdcd0e53c86070c975139e3c6ff054d" category="list-text">Você deve terminar todos os comandos com um ponto e vírgula <block ref="9eecb7db59d16c80417c72d1e1f4fbf1" prefix="(" category="inline-code"></block>).</block>
@@ -7003,7 +6934,6 @@
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">Código aberto</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">Os arquivos de aviso fornecem informações sobre direitos autorais de terceiros e licenças usadas no software NetApp.</block>
   <block id="cc1ba14f8dc9bd7ba20e2aa654cde10b" category="inline-link">Aviso para o e-Series/EF-Series SANtricity os</block>
-  <block id="df9168fd1981b1464f7c0d38b2207c30" category="paragraph"><block ref="df9168fd1981b1464f7c0d38b2207c30" category="inline-link-rx"></block></block>
   <block id="40bca54aff18bd6b61ab776afa82b445" category="summary">Este tópico lista as alterações nas versões mais recentes do SANtricity System Manager do comando CLI e dos comandos de script.</block>
   <block id="490414e0366b091220802d406e52c076" category="doc">O que há de novo</block>
   <block id="951c6ae7fff0668a89aef7dc85bf76d0" category="paragraph">Ao emitir comandos SMcli no prompt de comando, você deve inserir um <block ref="28d397e87306b8631f3ed80d858d35f0" prefix="(" category="inline-code"></block>caractere de barra invertida adicional ) como um caractere de escape no nome do caminho do arquivo de um arquivo de entrada ou saída ao usar o sistema operacional Windows. A barra invertida <block ref="28d397e87306b8631f3ed80d858d35f0" prefix="(" category="inline-code"></block>adicional ) deve ser incluída ao usar SMcli no modo seguro https, fornecendo a opção -u para especificar um usuário de gerenciamento de acesso baseado em função. Exemplo:<block ref="1c05e98ca61c10b2b98fcdccf3f101eb" prefix=" " category="inline-code"></block></block>
@@ -7011,7 +6941,6 @@
   <block id="a92322756f07d387c173b27babcdad72" category="paragraph">A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11,81.</block>
   <block id="ee97be03cb04119af45014d815621ce1" category="cell">Comando</block>
   <block id="cabd3dec14f47181e4af36eb550db0ea" category="cell">Descrição da mudança</block>
-  <block id="559b1de3f22ee41aed01495562ee7836" category="paragraph"><block ref="559b1de3f22ee41aed01495562ee7836" category="inline-xref-macro-rx"></block></block>
   <block id="5fe9c86e85a56fcbfe366c1ef482deb0" category="paragraph"><block ref="35d5ed698aa483d3174ea619db10c0ac" prefix=" " category="inline-code"></block>Adicionado parâmetro.</block>
   <block id="5cc95b76fb76374efd724d73f3bc96c1" category="section-title">SANtricity 11,80</block>
   <block id="76ef75e53e9f3900484d89f765e447d8" category="paragraph">A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11,80.</block>
@@ -7299,7 +7228,6 @@
   <block id="96b59f808698df6864754108a4c5ddbd" category="sidebar">definir ...</block>
   <block id="ffacf3d692457ebf1248300f2834f31b" category="sidebar">defina asyncmirrorgroup</block>
   <block id="d38d98bd152cc610b8b378e8e1c7c8fd" category="sidebar">definir auditlog</block>
-  <block id="0e75666e368c3133391e3e9b9523ef23" category="sidebar">defina o método de entrega AutoSupport https e2800 ou e5700</block>
   <block id="9655870dc43c3f8521bf40f7ef9153fb" category="sidebar">defina o cgsnapvolume</block>
   <block id="16df982c84fa9faf95f5cfe511a88da3" category="sidebar">definir atributos de grupo de consistência</block>
   <block id="a36757c06c3eb71232d4624d16fc5074" category="sidebar">defina consistencygroup addcgmembrervolume</block>
@@ -7317,7 +7245,6 @@
   <block id="2af930af4da672ba35dfaf2943daa92e" category="sidebar">defina a segurança da unidade</block>
   <block id="df357b9536918c73b72fa718340518fc" category="sidebar">definir o serviço de acionamento allowedindicator</block>
   <block id="dfd87893d597527d913aa918cda6183d" category="sidebar">ajuste o drivechannel</block>
-  <block id="fc658572d597be0a6ae14e8e5bb211aa" category="sidebar">defina o método de entrega smtp de e-mail e2800 ou e5700</block>
   <block id="74e78c646a8c24344aeb3dee04a792e9" category="sidebar">definir emailalert</block>
   <block id="73ca504fee965cead780f40fe6a32275" category="sidebar">definir alerta de eventos</block>
   <block id="4d9a2591bb8801345b9a59696f18cfc3" category="sidebar">definir host</block>
@@ -7556,4 +7483,137 @@
   <block id="c539ceffff768f401decb5a53cadfacb" category="sidebar">Comandos CLI</block>
   <block id="bf448b76d11422f4a518bec20eb47937" category="sidebar">Windows PowerShell</block>
   <block id="17a4045752753b62f07b87c4db3302b1" category="sidebar">Migração de grupo de volumes</block>
+  <block id="761f226704fa8b9a2ea64701b36a66e1" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.</block>
+  <block id="a354034e1792cd00f19c11de116a69f4" category="paragraph">Para executar esse comando em um storage array E400, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.</block>
+  <block id="4818a1577bb873e9a1bea01f94e168fb" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="4ec343cf7b1916cb714cf2eed7cc2a56" category="paragraph">Para executar esse comando em um storage array E4000, E2800 ou E5700, você deve ter a função Storage Admin.</block>
+  <block id="076b233b5a4449b721cbb8368f8fb958" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Admin de suporte.</block>
+  <block id="0a5727fb9e4cceadd91fbb0916297759" category="paragraph">Este comando não é suportado nas plataformas E4000, E2800, E5700, EF600 e EF300.</block>
+  <block id="4cd285c149380629899b809a1fcfca80" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="fa3f8ed858d04e74dad152ab5070b1ec" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.</block>
+  <block id="d28f85e4921c2290b1849d9ca24381a1" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.</block>
+  <block id="4808830345a823114a0ff2909f8a5d34" category="paragraph">Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.</block>
+  <block id="2ef945e8385c3b3383dd40b9f20b81c9" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.</block>
+  <block id="5a55cb40d8562db2ade7e87c8407da61" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E4000, E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="b4089211682b23edd69e88a53d0dea73" category="paragraph">Para executar esse comando em um storage array E4000, E2800 ou E5700, você deve ter a função Administrador de armazenamento ou Administrador de suporte.</block>
+  <block id="96fbedb8e23ee770715d64868d91f512" category="paragraph"><block ref="3a1fe391cfcf9c718d5bc02bf3a7ff87" prefix="" category="inline-code"></block></block>
+  <block id="8f786c6665f112a9ec42e4921247dfaf" category="paragraph">Permite-lhe transferir uma chave privada juntamente com um certificado assinado. O<block ref="3a1fe391cfcf9c718d5bc02bf3a7ff87" prefix=" " category="inline-code"></block> parâmetro deve ser utilizado com<block ref="71cc3f1d4dc205619a9d8134cb1e6c5d" prefix=" " category="inline-code"></block> valor.</block>
+  <block id="5c12358ddfa7bc3dbacf8a9e26ff15f7" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E4000, E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="c65db51b73509a7f00c37eaba7ab2a29" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E4000, E2800, E5700, EF600 ou EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="f46b3f4800a69abecf156a53124b25a1" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.</block>
+  <block id="672bddf25a5148ad89f2d0de107bf704" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="e127d5ca4333d5b79c57c2b351704e07" category="paragraph"><block ref="2496da2f393859299e91ec0dcf920087" prefix="" category="inline-code"></block></block>
+  <block id="4b2b7d34e1c9c58df14d668116c7e27a" category="paragraph">Permite especificar um valor de<block ref="051928341be67dcba03f0e04104d9047" prefix=" " category="inline-code"></block>,<block ref="be767243ca8f574c740fb4c26cc6dceb" prefix=" " category="inline-code"></block> ou<block ref="f7efa4f864ae9b88d43527f4b14f750f" prefix=" " category="inline-code"></block> para o tamanho da chave do servidor. O tamanho padrão da chave é 3072 se nenhum tamanho de chave estiver selecionado.</block>
+  <block id="2f16a4e1f295aafddbecc5b08af16dfa" category="summary">O comando save controller arrayManagementCSR recupera o servidor instalado Certificate Signing Request (CSR) para o controlador para que você possa exibir os detalhes do certificado.</block>
+  <block id="41f378e1ae526513ccf1b18f5ef2e8cd" category="paragraph">O<block ref="1de7a3761ee490eb69b0d5dd1bc9f0c5" prefix=" " category="inline-code"></block> comando recupera o servidor instalado solicitação de assinatura de certificado (CSR) para o controlador para que você possa exibir os detalhes do certificado.</block>
+  <block id="7f838bc9deec658242ceadefd99b3992" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento. No entanto, o uso deste comando com o parâmetro LDAP é restrito àqueles com a função Security Admin.</block>
+  <block id="f0e9f8c4af25d5525e5279cfcef7f2f1" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de Segurança.</block>
+  <block id="52907868d469a177418995e68ae532d1" category="summary">Define o tamanho máximo de pacotes e envios AutoSupport para diferentes tipos de entrega.</block>
+  <block id="da0a49824cfffdf78423229085d4c3e9" category="doc">Definir o limite de tamanho de envio do AutoSupport</block>
+  <block id="8827ec62bb9ef8459dad00c458fbe0a7" category="paragraph">O<block ref="2da3a20c3f29f91772c0863129cf682b" prefix=" " category="inline-code"></block> define o tamanho máximo de pacotes e envios do AutoSupport para diferentes tipos de entrega.</block>
+  <block id="85b16c4ca5bf32600a6b672e3acfe5ba" category="paragraph">Através deste comando, os usuários podem configurar o tamanho do e-mail com base no que o servidor de e-mail suporta. Tamanhos maiores reduzem a chance de o pacote de suporte ser truncado.</block>
+  <block id="a766435b022362f5648e0c4e8f4fc086" category="admonition">Os usuários geralmente não devem configurar tamanhos HTTPS a menos que sejam direcionados pelo suporte da NetApp.</block>
+  <block id="0b003c45e2bea82dff19436ed2914393" category="paragraph"><block ref="5e056c500a1c4b6a7110b50d807bade5" prefix="" category="inline-code"></block></block>
+  <block id="e44f9cdc3f5de3ef655d78ea6ea1063c" category="paragraph">O tamanho máximo de envio HTTPS em bytes. Se o tamanho máximo não estiver configurado, a predefinição é 50 MIB. Um valor de "ilimitado" ou 0 não permite nenhuma restrição de tamanho. O tamanho mínimo permitido é de 2 MIB.</block>
+  <block id="ae1bde34794270bb273f407db5974619" category="paragraph"><block ref="0c83f57c786a0b4a39efab23731c7ebc" prefix="" category="inline-code"></block></block>
+  <block id="f03f94e81f0ba8cdc5f1bbeae4398791" category="paragraph">O tamanho máximo de entrega de e-mail (SMTP) em bytes. Se o tamanho máximo não estiver configurado, a predefinição é 5 MIB. Um valor de "ilimitado" ou 0 não permite nenhuma restrição de tamanho. O tamanho mínimo permitido é de 2 MIB.</block>
+  <block id="1cb7e72b12a0a45d204da26fb8f1d92e" category="paragraph">8,90</block>
+  <block id="98df893211013e4bedd978a6731f31a9" category="doc">Especifique o método de entrega AutoSupport HTTP(S)</block>
+  <block id="245aed6426acccf934bd6a10b9ad9de7" category="paragraph"><block ref="5c1ab9389f47f48fe5b3f7e85e114264" prefix="" category="inline-code"></block></block>
+  <block id="88210d391247e39637e08468431d164c" category="paragraph">Endereço de e-mail para onde os envios da AutoSupport serão enviados. Este parâmetro pode ser fornecido várias vezes para permitir que os envios sejam enviados para vários endereços.</block>
+  <block id="162df76e61114a9bc1095cea2e1e989f" category="paragraph">Esse comando se aplica aos storages E4000, E2800, E5700, EF600 e EF300. No entanto, você pode usar o comando como um comando SMcli, não um comando script, para arrays E2700 ou E5600. Nesse caso, o comando se aplica a todos os arrays no domínio de gerenciamento.</block>
+  <block id="43c3a57d07f46965c77984bf6d190860" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento, Administrador de suporte, Administrador de segurança ou Monitor de armazenamento.</block>
+  <block id="980650206e421df11ba972784e263d5e" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, 2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="f67115ecdc36bb812b11a0ffbd6afb0c" category="doc">Ative ou desative a janela de manutenção do AutoSupport</block>
+  <block id="9f3cf5bf61b5f1c707c6850bc8b41cd9" category="paragraph">Esse comando se aplica a um storage array individual E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.</block>
+  <block id="0963d08ec539961ce732d53f279fde56" category="paragraph">Para executar esse comando em um storage array E4000, 2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.</block>
+  <block id="904d825f949c4d18e91d96fe2b4cccb7" category="paragraph">O número de dias durante os quais a digitalização de material é executada. Os valores válidos são<block ref="075ae3d2fc31640504f814f60e5ef713" prefix=" " category="inline-code"></block> , que desliga a digitalização de material ou<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block> dia a<block ref="6f3ef77ac0e3619e98159e9b6febf557" prefix=" " category="inline-code"></block> dia, em que<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block> o dia é a taxa de digitalização mais rápida e<block ref="6f3ef77ac0e3619e98159e9b6febf557" prefix=" " category="inline-code"></block> os dias são a taxa de digitalização mais lenta. Um valor diferente<block ref="075ae3d2fc31640504f814f60e5ef713" prefix=" " category="inline-code"></block> de ou<block ref="c4ca4238a0b923820dcc509a6f75849b" prefix=" " category="inline-code"></block> através<block ref="6f3ef77ac0e3619e98159e9b6febf557" prefix=" " category="inline-code"></block> não permite que a digitalização de material funcione.</block>
+  <block id="2fe5dde43e76b44ed3412b7f72a2ec67" category="list-text">Informações sobre a vida útil das unidades SSD (essas informações não são mostradas se o array não contiver unidades SSD):</block>
+  <block id="fd979bea5528b4b653c26b7095b2585b" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte ou Monitor de armazenamento.</block>
+  <block id="5b07c4793f70ad68331f8bbc6375b6a2" category="paragraph">Esse comando está operacional para os storages E4000, E2800, E5700, EF600 e EF300.</block>
+  <block id="e0edf8f3e094504eb3aad1bcfa63b7a4" category="paragraph">Para executar esse comando em um storage array E4000, E2800 ou E5700, você deve ter a função Storage Admin ou Storage Monitor.</block>
+  <block id="2ddf6adc2ffbbed684ed33c230aba7a4" category="paragraph">Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.</block>
+  <block id="c0af9350de0f363c5a29eca79351e85f" category="paragraph">Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.</block>
+  <block id="53678d9fc91d730898effc66afed440c" category="paragraph">Este comando aplica-se a um array individual E4000, E2800, E5700, EF600 ou EF300. Ele não opera em storages E2700 e E5600.</block>
+  <block id="8e5de270187b60f585a76292f4955771" category="paragraph">Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos storages E4000, E2800 e E5700. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.</block>
+  <block id="e0e0f1fd1b2a76e36519194e58e6a746" category="paragraph">A lista a seguir de comandos de administrador está disponível para o sistema de storage e-Series.</block>
+  <block id="a0a6d235683f3b056cb81207a953a70a" category="inline-link-macro">Ative ou desative a janela de manutenção do AutoSupport</block>
+  <block id="136305f16eda9c995d0dafe2ae33afa5" category="paragraph"><block ref="136305f16eda9c995d0dafe2ae33afa5" category="inline-link-macro-rx"></block></block>
+  <block id="4337e1e9ae1833f743a6ecf1e1d2cc16" category="inline-link-macro">Ative ou desative o recurso AutoSupport OnDemand</block>
+  <block id="fbcc665052e7eece7504d9b0fa7e1fbc" category="paragraph"><block ref="fbcc665052e7eece7504d9b0fa7e1fbc" category="inline-link-macro-rx"></block></block>
+  <block id="dd265fc010ca9aeeda8af3ed045c143f" category="paragraph"><block ref="dd265fc010ca9aeeda8af3ed045c143f" category="inline-link-macro-rx"></block></block>
+  <block id="4388180ba8bee32fe0d5da2825a6ab8e" category="paragraph"><block ref="4388180ba8bee32fe0d5da2825a6ab8e" category="inline-link-macro-rx"></block></block>
+  <block id="c8bcea5e4e09a4efacf56501abebf738" category="paragraph"><block ref="c8bcea5e4e09a4efacf56501abebf738" category="inline-link-macro-rx"></block></block>
+  <block id="81272e11e04b2aab3ed70229486cd9a8" category="paragraph"><block ref="81272e11e04b2aab3ed70229486cd9a8" category="inline-link-macro-rx"></block></block>
+  <block id="1c29596e76fddad4525d647ab1ce71da" category="inline-link-macro">Definir o agendamento de coleta de mensagens do AutoSupport</block>
+  <block id="1c94f20da8d04fd6812183af204b7ad0" category="paragraph"><block ref="1c94f20da8d04fd6812183af204b7ad0" category="inline-link-macro-rx"></block></block>
+  <block id="ad9ea75e27f49501cd9f1cbce1d4aa94" category="paragraph"><block ref="ad9ea75e27f49501cd9f1cbce1d4aa94" category="inline-link-macro-rx"></block></block>
+  <block id="667929bcd97aee938187018944e42c7d" category="paragraph"><block ref="667929bcd97aee938187018944e42c7d" category="inline-link-macro-rx"></block></block>
+  <block id="0520ab41af41ebec72b058bb70369c2c" category="paragraph"><block ref="0520ab41af41ebec72b058bb70369c2c" category="inline-link-macro-rx"></block></block>
+  <block id="c8e27990f9b14e5758d740da8c613fb4" category="paragraph"><block ref="c8e27990f9b14e5758d740da8c613fb4" category="inline-link-macro-rx"></block></block>
+  <block id="b4145d0681d490a7d2e0e89a3c70fbf1" category="inline-link-macro">Mostrar configuração do AutoSupport</block>
+  <block id="78cd161b32c70a39191c00ca15dfc73d" category="paragraph"><block ref="78cd161b32c70a39191c00ca15dfc73d" category="inline-link-macro-rx"></block></block>
+  <block id="282a66aa79bdcd790e54ba76f725ae71" category="inline-link-macro">Testar as definições de entrega do AutoSupport</block>
+  <block id="59ed469f8c0fb1e7540b9c5e0e274379" category="paragraph"><block ref="59ed469f8c0fb1e7540b9c5e0e274379" category="inline-link-macro-rx"></block></block>
+  <block id="ca611b7f5b98899a7abee91397e031fa" category="paragraph">A lista a seguir de comandos de configuração de alerta está disponível para o seu sistema de storage e-Series.</block>
+  <block id="478f3d35dcc84bea1a78b7ac21781c63" category="paragraph">A lista a seguir de comandos de configuração de array está disponível para o seu sistema de storage e-Series.</block>
+  <block id="27a16d7fcbdb2e5222cbb08871982f58" category="paragraph">A lista a seguir de comandos de suporte automático está disponível para seu sistema de storage e-Series.</block>
+  <block id="3debeae67dbeb507c3cb1a41e3d15efe" category="section-title">Comandos AutoSupport para E4000, EF300, EF400, E2800, E5700</block>
+  <block id="b9aa6488935866e17a533f7cb9907f95" category="paragraph"><block ref="b9aa6488935866e17a533f7cb9907f95" category="inline-link-macro-rx"></block></block>
+  <block id="48dd72449a509b862d1dbc2e5df66c1d" category="paragraph"><block ref="48dd72449a509b862d1dbc2e5df66c1d" category="inline-link-macro-rx"></block></block>
+  <block id="91791fe8747c000ea0ee9806ad0b2697" category="paragraph">Veja a seguir uma lista completa de comandos disponíveis para o seu sistema de storage e-Series.</block>
+  <block id="c71942c4a8b171695841ba7046fc3eca" category="inline-link-macro">Ative ou desative o recurso de diagnóstico remoto do AutoSupport</block>
+  <block id="2fa9ab72f6f5ccc0cf969e1a230ce942" category="paragraph"><block ref="2fa9ab72f6f5ccc0cf969e1a230ce942" category="inline-link-macro-rx"></block></block>
+  <block id="fb10773226243f93cf4024b28436d09c" category="paragraph">A seguinte lista de comandos está disponível para o seu sistema E2700 e E5600.</block>
+  <block id="365f3ca0540bf35310ae0332b69b7733" category="summary">Comandos E4000, E2800, E5700, EF600 e EF300</block>
+  <block id="d98c52acb3963aab4c26465735d8ccd1" category="paragraph">A lista de comandos a seguir está disponível para o sistema E4000, E2800, E5700, EF600 e EF300.</block>
+  <block id="a7e37cb158c978c104225254d414a1d2" category="paragraph">A lista a seguir de comandos de espelhamento está disponível para seu sistema de storage e-Series.</block>
+  <block id="3c987a7895df93dcf7095d41701a10a9" category="paragraph">A lista a seguir de comandos de ajuste de desempenho está disponível para seu sistema de storage e-Series.</block>
+  <block id="273c6d6b2b49f1a011b0804803e8c061" category="paragraph">A lista a seguir de comandos de replicação está disponível para seu sistema de storage e-Series.</block>
+  <block id="cb7623073f82d3677db1ad1bb88781e9" category="paragraph">A lista a seguir de comandos de segurança está disponível para o seu sistema de storage e-Series.</block>
+  <block id="cda0a54617eafd4a642b731508c46594" category="paragraph">A lista a seguir de comandos da equipe do monitor de storage está disponível para o sistema de storage e-Series.</block>
+  <block id="e6758e83fedb51f643c556959edf8316" category="paragraph">A lista a seguir de comandos de configuração de volume está disponível para o sistema de storage e-Series.</block>
+  <block id="32ab50a97e637694ca3f82a504b945c5" category="section-title">Métodos para adicionar comentários a um arquivo de script</block>
+  <block id="ec6f7bfaf6737c1c0275c9a2144a4d8d" category="section-title">Convenções para a sintaxe do wrapper de comando CLI</block>
+  <block id="4051b543eb82d06a3875bc1d2c902524" category="paragraph">O protocolo Symbol é o único protocolo suportado para os controladores E2700 e E5600. Para preservar scripts existentes e minimizar o tempo de transição, as opções e gramática da CLI são preservadas o máximo possível. No entanto, existem algumas diferenças nas capacidades dos controladores E2800 e E5700 em relação à segurança, autenticação, AutoSupport e mensagens de alerta que tornam obsoleta parte da gramática CLI para esses controladores. No entanto, em alguns casos, a gramática só é obsoleta no E2800 ou E5700 quando o novo protocolo https é usado.</block>
+  <block id="0c691b598eb5dcf4dbe4aee57abd7fce" category="paragraph">O relatório detalhado de erros sob a CLI funciona da seguinte forma:</block>
+  <block id="7ab16c582be12bf2ea6a9bcbf26ef849" category="summary">O SANtricity os 11,60 e as versões mais recentes incluem a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como CLI segura ou SMcli) diretamente através do Gerenciador de sistema do SANtricity.</block>
+  <block id="3bcaed463dcace2a5d7df8ac788e2faa" category="paragraph">O SANtricity os 11,60 e versões mais recentes incluem a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como "CLI segura" ou SMcli) diretamente através do Gerenciador de sistema do SANtricity.</block>
+  <block id="326cbd85dc5f285361de38f20d31c9df" category="paragraph">A versão para download do SMcli está disponível nos controladores E4000, EF600, EF300, E5700, EF570, E2800 e EF280. Para fazer o download do SMcli no Gerenciador de sistema do SANtricity, selecione *Configurações* *sistema* e *Complementos* *Interface de linha de comando* .</block>
+  <block id="afbe36b824d95e989a52e9001491c721" category="summary">Os Estados de saída são retornados nos comandos executados. Esta tabela lista os Estados de saída que podem ser retornados e o significado de cada status.</block>
+  <block id="4e0440694d3b4fa172c69a3cac707e21" category="paragraph">Os Estados de saída são retornados nos comandos executados. A tabela a seguir lista os status de saída que podem ser retornados e o significado de cada status.</block>
+  <block id="20b10ae58c66c5b5927a513b2111c0c0" category="section-title">Sair das definições de estado</block>
+  <block id="6fde9e35cfbe9b570c98b18c68aa40b2" category="summary">Os comandos de script nas seções a seguir listam os níveis mínimos de firmware sob os quais os comandos de script podem ser executados.</block>
+  <block id="94077f6f150325fb211db641c09ce314" category="paragraph">Os comandos de script e os parâmetros de comando não são executados em todas as versões do firmware do controlador. Nos comandos de script, os níveis de firmware são listados sob o título ""nível mínimo de firmware""" esta lista descreve como interpretar as informações sobre os níveis de firmware.</block>
+  <block id="1e49df5be0b19054e9c0c14af53a4b02" category="paragraph">O Windows PowerShell melhora no prompt de comando do Windows com um conjunto mais robusto de comandos e capacidade de script. Você pode executar todos os comandos CLI e script no Windows PowerShell; no entanto, o Windows PowerShell tem alguns requisitos de formatação exclusivos. Os requisitos são os seguintes:</block>
+  <block id="94bb5b961b405d7b81426727ccc3745a" category="summary">Com base no valor ou nome inserido, certas regras de formato são aplicadas para comandos CLI.</block>
+  <block id="ad6459132a0e9d663a3740bfbcd40e30" category="section-title">Regras de formato CLI</block>
+  <block id="ef4148f48307b8c9275628c89160b45e" category="summary">O modo interativo permite executar comandos individuais sem prefixar os comandos com<block ref="6c1c8c9ef027362a508a3965a2e7831b" prefix=" " category="inline-code"></block>o .</block>
+  <block id="1ebdd2ce41d7ee389eba398f485abca0" category="summary">Regras específicas devem ser respeitadas para nomes usados nos comandos CLI.</block>
+  <block id="1f112336dfafee86bd5edd7429ea6243" category="paragraph">Usando a CLI, você pode executar comandos de um prompt do sistema operacional, como o prompt do dos<block ref="d7aa32b0c582222819b91c8e0ccca765" prefix=" " category="inline-code"></block>, um caminho do sistema operacional Linux ou um caminho do sistema operacional Solaris.</block>
+  <block id="85aeffdc26f30cd5e36a41f6c2599ecb" category="paragraph">Um comando CLI consiste nos seguintes elementos:</block>
+  <block id="d7219d378ce621ad5593ef3541fe98c9" category="summary">Para garantir a execução bem-sucedida, os comandos de script devem ser escritos na estrutura adequada.</block>
+  <block id="9206a3c52cc374d2c4bcd4c2435f0a4c" category="paragraph">Para garantir a execução bem-sucedida, os comandos de script devem ser escritos na estrutura adequada.</block>
+  <block id="969c9aafd3ad326a73ec93408a332797" category="paragraph">Os comandos se enquadram em categorias gerais que são reutilizadas quando você aplica os comandos para configurar ou manter um storage array. A tabela a seguir lista a forma geral dos comandos de script e uma definição de cada comando.</block>
+  <block id="9f83268e1b8fb56b39b289fd0b017d6d" category="summary">Siga as seguintes diretrizes ao escrever comandos de script.</block>
+  <block id="5e40a8e83b3a3f822534bef7faa8799b" category="paragraph"><block ref="5e40a8e83b3a3f822534bef7faa8799b" category="inline-link-rx"></block></block>
+  <block id="11b408e3275d65fef594050a844c8104" category="section-title">SANtricity 11,90</block>
+  <block id="bb368ace2c104ebc1936c99e46744a7d" category="paragraph">A tabela a seguir lista alterações aos comandos CLI e Script para a versão 11,90.</block>
+  <block id="277f6129cc659f62a7535c5645940126" category="paragraph"><block ref="277f6129cc659f62a7535c5645940126" category="inline-link-rx"></block></block>
+  <block id="cf7e9e105e18990ba410e1edfb66d617" category="inline-link">Salve o controlador arrayManagementCSR</block>
+  <block id="7c2ee57c55f996ae9a0c1a10ddaeaa6e" category="paragraph"><block ref="7c2ee57c55f996ae9a0c1a10ddaeaa6e" category="inline-link-rx"></block></block>
+  <block id="bc5a1792a55da7335139be566f27d0fc" category="paragraph"><block ref="74375e3e560ea0ccb01ea5e27866909a" prefix=" " category="inline-code"></block>Adicionado parâmetro.</block>
+  <block id="eba005731b64cdceb716385f6b0ab248" category="inline-link">Defina o método de entrega de e-mail (SMTP)</block>
+  <block id="2a1fee9f320df717c9070db7c760a0fc" category="paragraph"><block ref="2a1fee9f320df717c9070db7c760a0fc" category="inline-link-rx"></block></block>
+  <block id="2fec64df4b8f4cad94037197121f99b0" category="paragraph"><block ref="5c1ab9389f47f48fe5b3f7e85e114264" prefix=" " category="inline-code"></block>Adicionado parâmetro.</block>
+  <block id="f428d3f8fa259d23b94a6fdc0a8dc32a" category="inline-link">Mostrar Definições do AutoSupport</block>
+  <block id="77d8b5d953985ae2992c2ac0a2b2280d" category="paragraph"><block ref="77d8b5d953985ae2992c2ac0a2b2280d" category="inline-link-rx"></block></block>
+  <block id="79f5e5b1e1fbcae8b3d82e2c774aa0ba" category="paragraph">Adicionados limites de tamanho de despacho e endereços de e-mail de destino para saída de exemplo para comando.</block>
+  <block id="e873b0fb20d6ee2e171d5efa1a635264" category="inline-link">Baixe storageArray keyManagementCertificate</block>
+  <block id="49dc8933ffa823c7e0c676d71b74060a" category="paragraph"><block ref="49dc8933ffa823c7e0c676d71b74060a" category="inline-link-rx"></block></block>
+  <block id="2c6896158f13229becb081b45d1be339" category="paragraph"><block ref="3a1fe391cfcf9c718d5bc02bf3a7ff87" prefix=" " category="inline-code"></block>Adicionado parâmetro.</block>
+  <block id="4a8ad30f5e47d5591e164cfbf74f1d7a" category="paragraph"><block ref="4a8ad30f5e47d5591e164cfbf74f1d7a" category="inline-link-rx"></block></block>
+  <block id="5d41ad4f145ade32f5e478932b6efea5" category="sidebar">defina o limite de tamanho de despacho do AutoSupport</block>
+  <block id="d941967741f1767955be20b5fca52617" category="sidebar">defina o método de entrega AutoSupport https</block>
+  <block id="d8e44ec6283b9e1b03ebe13f2b9bf377" category="sidebar">definir o método de entrega smtp de e-mail</block>
 </blocks>

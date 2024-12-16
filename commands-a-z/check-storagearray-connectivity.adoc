@@ -7,7 +7,7 @@ summary: O comando check storageArray connectivity verifica se o storage array l
 = Verifique a conetividade do storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -21,14 +21,14 @@ Este comando se aplica a qualquer storage array individual, com algumas restriç
 
 [NOTE]
 ====
-Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+Este comando não é suportado nas plataformas E4000, E2800, E5700, EF600 e EF300.
 
 ====
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+N/A.
 
 
 
@@ -45,7 +45,7 @@ A conetividade é testada usando todos os canais possíveis e, se for uma config
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 check storageArray connectivity
 (remoteStorageArrayName=pass:quotes[_"storageArrayName"_]|

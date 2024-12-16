@@ -7,7 +7,7 @@ summary: O comando Set storageArray loginBanner permite que você carregue um ar
 = Definir banner de login de matriz de armazenamento
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,19 +17,19 @@ O `set storageArray loginBanner` comando permite que você carregue um arquivo d
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 set storageArray loginBanner file="path_to_login_banner"
 ----

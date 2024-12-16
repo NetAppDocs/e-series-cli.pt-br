@@ -7,7 +7,7 @@ summary: O comando save storageArray hostPortStatistics salva as estatísticas d
 = Salvar estatísticas da porta do host do storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `save storageArray hostPortStatistics` comando salva as estatísticas da porta
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de Segurança.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de Segurança.
 
 
 
@@ -38,7 +38,7 @@ Este comando substitui os comandos obsoletos xref:save-storagearray-iscsistatist
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 save storageArray hostPortStatistics [(raw | baseline)] type=(ISCSI| ISER | SRP | NVMEOF) file="filename"
 ----

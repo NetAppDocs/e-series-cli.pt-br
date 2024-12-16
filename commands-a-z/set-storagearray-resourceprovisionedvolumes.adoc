@@ -7,7 +7,7 @@ summary: O comando Set storageArray resourceProvideVolumes desativa o recurso DU
 = Definir volumes provisionados de recurso de storage de armazenamento
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -39,7 +39,7 @@ Os volumes provisionados de recursos são suportados apenas em grupos de volumes
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 set storageArray resourceProvisionedVolumes=(enable|disable)
 ----

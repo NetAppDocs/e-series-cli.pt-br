@@ -7,10 +7,15 @@ summary: As formas de sintaxe geral do comando CLI wrappers estão listadas nest
 = Sintaxe do wrapper de comando CLI
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 As formas de sintaxe geral do comando CLI wrappers estão listadas nesta seção. As convenções usadas na sintaxe do wrapper do comando CLI estão listadas na tabela a seguir.
+
+
+
+== Convenções para a sintaxe do wrapper de comando CLI
 
 [cols="2*"]
 |===

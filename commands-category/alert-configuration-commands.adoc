@@ -7,8 +7,11 @@ summary: Comandos de configuração de alerta
 = Comandos de configuração de alerta
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+A lista a seguir de comandos de configuração de alerta está disponível para o seu sistema de storage e-Series.
 
 
 

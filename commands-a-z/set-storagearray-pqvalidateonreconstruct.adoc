@@ -7,7 +7,7 @@ summary: O comando Set storageArray pqValidateOnReconstruct define o estado de v
 = Defina a validação PQ do storage array no Reconstruct
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `set storageArray pqValidateOnReconstruct` comando define o estado de validaç
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, 2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -37,7 +37,7 @@ A validação pode aumentar os tempos de reconstrução para unidades SSD, pelo 
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 set storageArray pqValidateOnReconstruct (enable | disable) driveMediaType=(hdd | ssd | allMedia)
 ----

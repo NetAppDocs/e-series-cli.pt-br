@@ -7,7 +7,7 @@ summary: O comando show check volume parity job mostra um trabalho de paridade d
 = Mostrar trabalho de paridade de volume de verificação
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -29,7 +29,7 @@ Para executar esse comando em um storage array EF600 e EF300, você deve ter a f
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show check volume parity job jobId=<job_id>;
 ----

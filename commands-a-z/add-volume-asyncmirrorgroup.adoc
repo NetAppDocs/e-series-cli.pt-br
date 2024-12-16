@@ -7,7 +7,7 @@ summary: O comando add volume asyncMirrorGroup adiciona um volume primário a um
 = Adicionar volume ao grupo de espelhos assíncronos
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -21,14 +21,14 @@ Este comando se aplica a qualquer storage array individual, com algumas restriç
 
 [NOTE]
 ====
-Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+Este comando não é suportado nas plataformas E4000, E2800, E5700, EF600 e EF300.
 
 ====
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+N/A.
 
 
 
@@ -40,7 +40,7 @@ Este comando é válido apenas na matriz de armazenamento local que contém o gr
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 pass:quotes[add volume="_volumeName_" asyncMirrorGroup="_asyncMirrorGroupName_"
 remotePassword="_password_"

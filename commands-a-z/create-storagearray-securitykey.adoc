@@ -7,7 +7,7 @@ summary: 'O comando Create storageArray securityKey cria ou altera uma nova chav
 = Crie a chave de segurança do storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `create storageArray securityKey` comando cria ou altera uma nova chave de seg
 
 == Arrays compatíveis
 
-Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
+Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E4000, E2800, E5700, EF600 e EF300. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -37,7 +37,7 @@ Para gerenciamento de chaves externas, esse comando cria uma chave diferente par
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 create storageArray securityKey
 [keyIdentifier=pass:quotes[_"keyIdentifierString"_]]

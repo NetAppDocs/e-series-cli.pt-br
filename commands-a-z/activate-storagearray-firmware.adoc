@@ -7,7 +7,7 @@ summary: O comando Activate storageArray firmware ativa o firmware que você bai
 = Ative o firmware da matriz de armazenamento
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `activate storageArray firmware` comando ativa o firmware que você baixou ant
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 activate storageArray firmware
 [healthCheckMelOverride=(TRUE | FALSE)]

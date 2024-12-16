@@ -7,7 +7,7 @@ summary: O comando SMcli -AutoSupportLog permite que você visualize um arquivo 
 = Capture ou visualize um log do AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `SMcli -autoSupportLog` comando permite visualizar um ficheiro de registo do A
 
 == Arrays compatíveis
 
-Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E2800 ou E5700.
+Esse comando se aplica a todos os storages E2700 e E5600 no domínio de gerenciamento de uma só vez. Isso não se aplica a storage arrays E4000, E2800 ou E5700.
 
 
 
@@ -38,7 +38,7 @@ Este comando é um comando SMcli, não um comando script. Você deve executar es
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 SMcli -autoSupportLog pass:quotes[(all|-n "_storageArrayName_" | -w "_wwID_")]
 pass:quotes[inputArchive=_n_] pass:quotes[outputLog=_filename_]

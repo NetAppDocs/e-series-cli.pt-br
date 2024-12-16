@@ -7,7 +7,7 @@ summary: O comando save storageArray Configuration cria um arquivo de script que
 = Salve a configuração do storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `save storageArray configuration` comando cria um arquivo de script que você 
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento. No entanto, o uso deste comando com o parâmetro LDAP é restrito àqueles com a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento. No entanto, o uso deste comando com o parâmetro LDAP é restrito àqueles com a função Security Admin.
 
 
 
@@ -38,7 +38,7 @@ Esse comando não salva os dados de configuração de espelhamento remoto ou có
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 save storageArray configuration file=pass:quotes["_filename_"]
 (allconfig|[globalSettings=(TRUE | FALSE)]

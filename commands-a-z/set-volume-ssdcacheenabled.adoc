@@ -7,7 +7,7 @@ summary: O comando Set volume ssdCacheEnabled ativa ou desativa o armazenamento 
 = Definir cache SSD para um volume
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `set volume ssdCacheEnabled` comando liga ou desliga o cache usando o recurso 
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de suporte.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Admin de suporte.
 
 
 
@@ -40,7 +40,7 @@ O volume pode ser um destes:
 
 == Sintaxe aplicável a um volume padrão
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set volume (pass:quotes[[_volumeName_]] | <"WWID">) ssdCacheEnabled=(TRUE | FALSE)
 ----
@@ -48,7 +48,7 @@ set volume (pass:quotes[[_volumeName_]] | <"WWID">) ssdCacheEnabled=(TRUE | FALS
 
 == Sintaxe aplicável a um volume instantâneo
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set snapVolume pass:quotes[["_snapVolumeName_"]] ssdCacheEnabled=(TRUE | FALSE)
 ----
@@ -56,7 +56,7 @@ set snapVolume pass:quotes[["_snapVolumeName_"]] ssdCacheEnabled=(TRUE | FALSE)
 
 == Sintaxe aplicável a um volume instantâneo de grupo de consistência
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set cgSnapVolume pass:quotes[["_cgSnapVolumeName_"]] ssdCacheEnabled=(TRUE | FALSE)
 ----

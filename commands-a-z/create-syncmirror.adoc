@@ -7,7 +7,7 @@ summary: 'O comando Create SyncMirror cria o volume primário e o volume secund�
 = Criar espelhamento síncrono
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -21,14 +21,14 @@ Este comando se aplica a qualquer storage array individual, com algumas restriç
 
 [NOTE]
 ====
-Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+Este comando não é suportado nas plataformas E4000, E2800, E5700, EF600 e EF300.
 
 ====
 
 
 == Funções
 
-Para executar esse comando em um array E2800 ou E5700storage, você deve ter a função Administrador de armazenamento.
+N/A.
 
 
 
@@ -43,7 +43,7 @@ Em versões anteriores deste comando, o identificador de funcionalidade era `rem
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 create syncMirror primary=pass:quotes[_"primaryVolumeName_"
 secondary="_secondaryVolumeName_"

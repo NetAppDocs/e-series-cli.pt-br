@@ -7,7 +7,7 @@ summary: O comando Set drive serviceAllowedIndicator liga ou desliga a luz indic
 = Definir o indicador de ação de serviço da unidade permitida
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `set drive serviceAllowedIndicator` comando liga ou desliga a luz indicadora A
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -35,7 +35,7 @@ Se a matriz de armazenamento não suportar a funcionalidade de luz indicadora de
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set (drive pass:quotes[[_trayID_],pass:quotes[[_drawerID_,]]pass:quotes[_slotID_]] | drivespass:quotes[[_trayID1_],pass:quotes[[_drawerID1_,]]pass:quotes[_slotID1_] ... pass:quotes[_trayIDn_],pass:quotes[[_drawerIDn_,]]pass:quotes[_slotIDn_]])
 serviceAllowedIndicator=(on | off)

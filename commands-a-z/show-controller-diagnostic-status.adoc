@@ -7,7 +7,7 @@ summary: O comando show controller retorna o status do diagnóstico do controlad
 = Mostrar o status de diagnóstico do controlador
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -19,7 +19,7 @@ Se o diagnóstico tiver terminado, são apresentados todos os resultados dos tes
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show controller [(a| b)] diagnosticStatus pass:quotes[[file=_filename_]]
 ----

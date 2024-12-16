@@ -7,7 +7,7 @@ summary: O comando Ativar recurso storageArray ativa o recurso espelhamento ass�
 = Ativar o espelhamento assíncrono
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `activate storageArray feature` comando ativa o recurso de espelhamento assín
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.
 
 [NOTE]
 ====
@@ -28,7 +28,7 @@ Este comando só é aplicável ao espelhamento assíncrono por Fibre Channel.
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E400, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -40,7 +40,7 @@ Depois de ativar o recurso de espelhamento assíncrono, você deve configurar um
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 activate storageArray feature=asyncRemoteMirror
 ----

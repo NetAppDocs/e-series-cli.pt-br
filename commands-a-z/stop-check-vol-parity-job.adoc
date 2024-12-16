@@ -7,7 +7,7 @@ summary: O comando stop check volume parity job pára um trabalho de paridade de
 = Parar trabalho de paridade de volume de verificação
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -29,7 +29,7 @@ Para executar esse comando em um storage array EF600 e EF300, você deve ter a f
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 stop check volume parity job jobId=<job_id>;
 ----

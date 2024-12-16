@@ -7,10 +7,13 @@ summary: 'Como você pode usar os comandos de script para definir e gerenciar os
 = Sinopse dos comandos de script
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-Como você pode usar os comandos de script para definir e gerenciar os diferentes aspetos de um storage array (como topologia do host, configuração da unidade, configuração do controlador, definições de volume e definições de grupo de volume), o número real de comandos é extenso. Os comandos, no entanto, se enquadram em categorias gerais que são reutilizadas quando você aplica os comandos para configurar ou manter um storage array. A tabela a seguir lista a forma geral dos comandos de script e uma definição de cada comando.
+[role="lead"]
+Como você pode usar os comandos de script para definir e gerenciar os diferentes aspetos de um storage array (como topologia do host, configuração da unidade, configuração do controlador, definições de volume e definições de grupo de volume), o número real de comandos é extenso.
+
+Os comandos se enquadram em categorias gerais que são reutilizadas quando você aplica os comandos para configurar ou manter um storage array. A tabela a seguir lista a forma geral dos comandos de script e uma definição de cada comando.
 
 [cols="2*"]
 |===

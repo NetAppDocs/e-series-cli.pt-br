@@ -7,14 +7,17 @@ summary: A versão do SANtricity os 11,40 introduziu, para os controladores E280
 = Parâmetros da linha de comando legada
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+A versão do SANtricity os 11,40 introduziu, para os controladores E2800 e E5700 com serviços da Web incorporados, a capacidade de interagir na linha de comando usando um protocolo HTTPS seguro. Esses controladores podem, opcionalmente, usar o protocolo de símbolo para interações de linha de comando.
 
 
 
 == 11,53 e parâmetros de linha de comando mais antigos
 
-A versão do SANtricity os 11,40 introduziu, para os controladores E2800 e E5700 com serviços da Web incorporados, a capacidade de interagir na linha de comando usando um protocolo HTTPS seguro. Esses controladores podem, opcionalmente, usar o protocolo de símbolo para interações de linha de comando. O protocolo Symbol é o único protocolo suportado para os controladores E2700 e E5600. Para preservar scripts existentes e minimizar o tempo de transição, as opções e gramática da CLI são preservadas o máximo possível. No entanto, existem algumas diferenças nas capacidades dos controladores E2800 e E5700 em relação à segurança, autenticação, AutoSupport e mensagens de alerta que tornam obsoleta parte da gramática CLI para esses controladores. No entanto, em alguns casos, a gramática só é obsoleta no E2800 ou E5700 quando o novo protocolo https é usado.
+O protocolo Symbol é o único protocolo suportado para os controladores E2700 e E5600. Para preservar scripts existentes e minimizar o tempo de transição, as opções e gramática da CLI são preservadas o máximo possível. No entanto, existem algumas diferenças nas capacidades dos controladores E2800 e E5700 em relação à segurança, autenticação, AutoSupport e mensagens de alerta que tornam obsoleta parte da gramática CLI para esses controladores. No entanto, em alguns casos, a gramática só é obsoleta no E2800 ou E5700 quando o novo protocolo https é usado.
 
 Para os novos parâmetros que se aplicam somente ao `*https*` tipo de cliente, segue-se que eles também se aplicam somente aos controladores E2800 ou E5700.
 

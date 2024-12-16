@@ -7,10 +7,13 @@ summary: Os comandos CLI estão na forma de um wrapper de comando e elementos in
 = Estrutura dos comandos CLI
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-Os comandos CLI estão na forma de um wrapper de comando e elementos incorporados no wrapper. Um comando CLI consiste nestes elementos:
+[role="lead"]
+Os comandos CLI estão na forma de um wrapper de comando e elementos incorporados no wrapper.
+
+Um comando CLI consiste nos seguintes elementos:
 
 * Um wrapper de comando identificado pelo termo `SMcli`
 * O identificador da matriz de armazenamento

@@ -7,7 +7,7 @@ summary: O comando Set storageArray define as propriedades do storage array.
 = Defina o storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `set storageArray` comando define as propriedades do storage array.
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -38,7 +38,7 @@ Com a versão de firmware 8,10, o `cacheFlushStop` parâmetro está obsoleto e s
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 set storageArray
 ([autoLoadBalancingEnable=(TRUE | FALSE)]|
@@ -49,7 +49,6 @@ set storageArray
 [autoSupportRemoteDiag (enable |disable)]|
 [cacheBlockSize=cacheBlockSizeValue]|
 [cacheFlushStart=cacheFlushStartSize]|
-[cacheFlushStop=cacheFlushStopSize]|
 [cacheMirrorDataAssuranceCheckEnable=(TRUE | FALSE)]|
 [controllerHealthImageAllowOverWrite]|
 [defaultHostType=("hostTypeName" |"hostTypeIdentifier")] |
@@ -60,13 +59,13 @@ set storageArray
 [icmpPingResponse=(TRUE | FALSE)]|
 [isnsIPV4ConfigurationMethod isns IPv4 Config Method Parameters]|
 [isnsIPv6Address=ipAddress]|
-[isnsListeningPort=listeningPortIPAddress]]|
+[isnsListeningPort=listeningPortIPAddress]|
 [isnsRegistration=(TRUE | FALSE)]|
 [learnCycleDate learn cycle parameters]|
 [localUsername=local user name parameters]|
 [loginBanner file="path_to_login_banner"]|
 [managementInterface restOnly={true | false}]|
-[mediaScanRate=(disabled | 1-30)]|
+[mediaScanRate=(disabled | 1-210)]|
 [odxEnabled=(TRUE | FALSE)]|
 [password="password"]|
 [passwordLength=<INTEGER>]|
@@ -306,7 +305,7 @@ Altera a interface de gerenciamento do controlador. Altere o tipo de interface d
  a| 
 `mediaScanRate`
  a| 
-O número de dias durante os quais a digitalização de material é executada. Os valores válidos são `disabled` , que desliga a digitalização de material ou `1` dia a `30` dia, em que `1` o dia é a taxa de digitalização mais rápida e `30` os dias são a taxa de digitalização mais lenta. Um valor diferente `disabled` de ou `1` para `30` não permite que a digitalização de material funcione.
+O número de dias durante os quais a digitalização de material é executada. Os valores válidos são `disabled` , que desliga a digitalização de material ou `1` dia a `210` dia, em que `1` o dia é a taxa de digitalização mais rápida e `210` os dias são a taxa de digitalização mais lenta. Um valor diferente `disabled` de ou `1` através `210` não permite que a digitalização de material funcione.
 
 
 

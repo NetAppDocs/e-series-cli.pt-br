@@ -2,13 +2,16 @@
 permalink: get-started/naming-conventions.html 
 sidebar: sidebar 
 keywords: name, conventions 
-summary: Os nomes podem ter um máximo de 30 carateres. 
+summary: Regras específicas devem ser respeitadas para nomes usados nos comandos CLI. 
 ---
 = Convenções de nomenclatura
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+Regras específicas devem ser respeitadas para nomes usados nos comandos CLI.
 
 * Os nomes podem ter um máximo de 30 carateres.
 * Você pode usar qualquer combinação de carateres alfanuméricos, hífens e sublinhados para os nomes dos seguintes componentes:

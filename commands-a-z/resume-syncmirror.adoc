@@ -7,7 +7,7 @@ summary: O comando RESUME SyncMirror retoma uma operação de espelhamento sínc
 = Retomar o espelhamento síncrono
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `resume syncMirror` comando retoma uma operação de espelhamento síncrono su
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800 ou E5700, você deve ter a função Storage Admin.
+Para executar esse comando em um storage array E4000, E2800 ou E5700, você deve ter a função Storage Admin.
 
 
 
@@ -38,7 +38,7 @@ Em versões anteriores deste comando, o identificador de recurso era `remoteMirr
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 resume syncMirror (primary pass:quotes[[_volumeName_]] |
 primaries pass:quotes[[_volumeName1 ... volumeNameN_]])

@@ -7,7 +7,7 @@ summary: 'O comando Set Tray (Definir bandeja) define a ID da bandeja de uma ban
 = Definir a identificação da bandeja
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -35,7 +35,7 @@ Este comando é válido apenas para bandejas de controladores, bandejas de unida
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set tray pass:quotes[["_serialNumber_"]] pass:quotes[id=_trayID_]
 ----

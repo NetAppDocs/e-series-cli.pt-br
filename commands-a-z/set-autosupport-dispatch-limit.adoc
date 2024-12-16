@@ -1,0 +1,68 @@
+---
+permalink: commands-a-z/set-autosupport-dispatch-limit.html 
+sidebar: sidebar 
+keywords: Autosupport, bundle, dispatch, delivery type, size 
+summary: Define o tamanho máximo de pacotes e envios AutoSupport para diferentes tipos de entrega. 
+---
+= Definir o limite de tamanho de envio do AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O `set storageArray autoSupport dispatchSizeLimit` define o tamanho máximo de pacotes e envios do AutoSupport para diferentes tipos de entrega.
+
+Através deste comando, os usuários podem configurar o tamanho do e-mail com base no que o servidor de e-mail suporta. Tamanhos maiores reduzem a chance de o pacote de suporte ser truncado.
+
+
+NOTE: Os usuários geralmente não devem configurar tamanhos HTTPS a menos que sejam direcionados pelo suporte da NetApp.
+
+
+
+== Arrays compatíveis
+
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+
+
+
+== Funções
+
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+
+
+
+== Sintaxe
+
+[source, cli, subs="+macros"]
+----
+
+set storageArray autoSupport dispatchSizeLimit (https=(<sizeInBytes>|unlimited)|email=(<sizeInBytes>|unlimited));
+----
+
+
+== Parâmetros
+
+[cols="2*"]
+|===
+| Parâmetro | Descrição 
+
+
+ a| 
+`https`
+ a| 
+O tamanho máximo de envio HTTPS em bytes. Se o tamanho máximo não estiver configurado, a predefinição é 50 MIB. Um valor de "ilimitado" ou 0 não permite nenhuma restrição de tamanho. O tamanho mínimo permitido é de 2 MIB.
+
+
+
+ a| 
+`email`
+ a| 
+O tamanho máximo de entrega de e-mail (SMTP) em bytes. Se o tamanho máximo não estiver configurado, a predefinição é 5 MIB. Um valor de "ilimitado" ou 0 não permite nenhuma restrição de tamanho. O tamanho mínimo permitido é de 2 MIB.
+
+|===
+
+
+== Nível mínimo de firmware
+
+8,90

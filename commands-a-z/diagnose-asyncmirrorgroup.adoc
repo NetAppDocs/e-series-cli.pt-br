@@ -7,7 +7,7 @@ summary: O comando diagnostique asyncMirrorGroup testa possíveis problemas de c
 = Teste a conetividade assíncrona do grupo de espelhos
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -21,20 +21,20 @@ Este comando se aplica a qualquer storage array individual, com algumas restriç
 
 [NOTE]
 ====
-Este comando não é suportado nas plataformas E2800, E5700, EF600 e EF300.
+Este comando não é suportado nas plataformas E4000, E2800, E5700, EF600 e EF300.
 
 ====
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+N/A.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 pass:quotes[diagnose asyncMirrorGroup [_asyncMirrorGroupName_]]
 testID=(all | connectivity | latency | bandwidth | portConnections)

@@ -7,7 +7,7 @@ summary: O comando start volumeGroup fullProvisioning inicia uma operação de p
 = Iniciar o provisionamento total do grupo de volume
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -39,7 +39,7 @@ O formato de provisionamento completo garante que todos os blocos necessários p
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 start volumeGroup[volumeGroupName] fullProvisioning [disableResourceProvisioning=(TRUE | FALSE)]
 ----

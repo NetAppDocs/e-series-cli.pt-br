@@ -2,15 +2,20 @@
 permalink: get-started/exit-status.html 
 sidebar: sidebar 
 keywords: exit, status 
-summary: Esta tabela lista os Estados de saída que podem ser retornados e o significado de cada status. 
+summary: Os Estados de saída são retornados nos comandos executados. Esta tabela lista os Estados de saída que podem ser retornados e o significado de cada status. 
 ---
 = Sair do estado
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-Esta tabela lista os Estados de saída que podem ser retornados e o significado de cada status.
+[role="lead"]
+Os Estados de saída são retornados nos comandos executados. A tabela a seguir lista os status de saída que podem ser retornados e o significado de cada status.
+
+
+
+== Sair das definições de estado
 
 [cols="3*"]
 |===

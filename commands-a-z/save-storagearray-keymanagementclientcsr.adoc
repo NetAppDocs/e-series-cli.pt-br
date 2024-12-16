@@ -7,7 +7,7 @@ summary: O comando save storageArray keyManagementClientCSR solicita um CSR gera
 = Gerar solicitação de assinatura de certificado de Gerenciamento de chaves (CSR)
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `save storageArray keyManagementClientCSR` comando solicita um CSR gerado para
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -38,7 +38,7 @@ Este comando aplica-se apenas ao gerenciamento de chaves externas.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 
 save storageArray keyManagementClientCSR commonName=pass:quotes["_common_name_"]

@@ -7,7 +7,7 @@ summary: O comando start diskPool fullProvisioning inicia uma operação de prov
 = Inicie o provisionamento completo do pool de discos
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -39,7 +39,7 @@ O formato de provisionamento completo garante que todos os blocos necessários p
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 start diskPool[diskPoolName] fullProvisioning [disableResourceProvisioning=(TRUE | FALSE)]
 ----

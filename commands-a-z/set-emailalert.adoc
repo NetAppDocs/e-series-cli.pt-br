@@ -7,7 +7,7 @@ summary: O comando Set emailAlert configura o e-mail para enviar um e-mail para 
 = Configure as definições de alerta por e-mail
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,15 +17,14 @@ O `set emailAlert` comando configura o e-mail para enviar um e-mail para uma org
 
 == Arrays compatíveis
 
-Esse comando se aplica aos storages E2800, E5700, EF600 e EF300. No entanto, você pode usar o comando como um comando SMcli, não um comando script, para arrays E2700 ou E5600. Nesse caso, o comando se aplica a todos os arrays no domínio de gerenciamento.
+Esse comando se aplica aos storages E4000, E2800, E5700, EF600 e EF300. No entanto, você pode usar o comando como um comando SMcli, não um comando script, para arrays E2700 ou E5600. Nesse caso, o comando se aplica a todos os arrays no domínio de gerenciamento.
 
 
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
-
 set emailAlert
     serverAddress=pass:quotes["_serverAddress_"] |
     serverEncryption=pass:quotes[_none_ | _smtps_ | _starttls_ |]

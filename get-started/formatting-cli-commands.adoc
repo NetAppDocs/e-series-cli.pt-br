@@ -2,13 +2,20 @@
 permalink: get-started/formatting-cli-commands.html 
 sidebar: sidebar 
 keywords: format, rules, cli, commands 
-summary: Aspas duplas que são usadas como parte de um nome ou rótulo exigem consideração especial quando você executa os comandos CLI e os comandos de script em um sistema operacional Windows, Linux ou Solaris. 
+summary: Com base no valor ou nome inserido, certas regras de formato são aplicadas para comandos CLI. 
 ---
 = Formate as regras para comandos CLI
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+Com base no valor ou nome inserido, certas regras de formato são aplicadas para comandos CLI.
+
+
+
+== Regras de formato CLI
 
 Aspas duplas (" ") que são usadas como parte de um nome ou rótulo exigem consideração especial quando você executa os comandos CLI e os comandos de script em um sistema operacional Windows, Linux ou Solaris.
 

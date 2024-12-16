@@ -7,7 +7,7 @@ summary: O comando show volumeCopy retorna informações sobre operações de c�
 = Mostrar cópia de volume
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `show volumeCopy` comando retorna informações sobre operações de cópia de
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Storage Admin ou Storage Monitor.
 
 
 
@@ -45,7 +45,7 @@ Você pode recuperar informações sobre um par de cópias de volume específico
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show volumeCopy (allVolumes | source pass:quotes[["_sourceName_"]] |
 target pass:quotes[["_targetName_"]])

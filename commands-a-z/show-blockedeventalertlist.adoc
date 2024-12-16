@@ -7,7 +7,7 @@ summary: O comando show blockedEventAlertList retorna uma lista de eventos que e
 = Mostrar eventos bloqueados
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -32,7 +32,7 @@ Este comando é um comando SMcli, não um comando script. Você deve executar es
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 show blockedEventAlertList
 ----

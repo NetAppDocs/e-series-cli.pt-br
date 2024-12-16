@@ -7,7 +7,7 @@ summary: 'O comando Set Tray (Definir bandeja) define atributos definidos pelo u
 = Definir atributo de bandeja
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,7 +17,7 @@ O `set tray` comando define atributos definidos pelo usuário para uma bandeja
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 set tray pass:quotes[[_trayID_]] (chassisName | assetTag)=pass:quotes["_userID_"]
 ----

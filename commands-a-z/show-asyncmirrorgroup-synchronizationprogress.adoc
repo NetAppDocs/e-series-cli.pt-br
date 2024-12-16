@@ -7,7 +7,7 @@ summary: O comando show asyncMirrorGroup synchronizationProgress exibe o progres
 = Mostrar o progresso assíncrono da sincronização do grupo de espelhos
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `show asyncMirrorGroup synchronizationProgress` comando exibe o progresso da s
 
 == Arrays compatíveis
 
-Este comando se aplica a qualquer storage array individual, incluindo os arrays E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli estejam instalados.
+Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador do armazenamento.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.
 
 
 
@@ -40,7 +40,7 @@ Existem dois tipos de sincronização: Sincronização inicial e sincronização
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 show asyncMirrorGroup pass:quotes[[_asyncMirrorGroupName_]]
 [synchronizationProgress]

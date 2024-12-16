@@ -7,10 +7,13 @@ summary: O Windows PowerShell é um shell interativo e de script que fornece ace
 = Formate regras para comandos CLI no Windows PowerShell
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
-O Windows PowerShell é um shell interativo e de script que fornece acesso a ferramentas de linha de comando. O Windows PowerShell melhora no prompt de comando do Windows com um conjunto mais robusto de comandos e capacidade de script. Você pode executar todos os comandos CLI e script no Windows PowerShell; no entanto, o Windows PowerShell tem alguns requisitos de formatação exclusivos. Os requisitos são os seguintes:
+[role="lead"]
+O Windows PowerShell é um shell interativo e de script que fornece acesso a ferramentas de linha de comando.
+
+O Windows PowerShell melhora no prompt de comando do Windows com um conjunto mais robusto de comandos e capacidade de script. Você pode executar todos os comandos CLI e script no Windows PowerShell; no entanto, o Windows PowerShell tem alguns requisitos de formatação exclusivos. Os requisitos são os seguintes:
 
 * Inicie todos os comandos SMcli com um ponto e uma barra (./)
 * O wrapper smcli deve ser identificado como um comando executável com a extensão .exe (SMcli.exe)

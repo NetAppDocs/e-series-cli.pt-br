@@ -7,8 +7,11 @@ summary: Comandos de replicação
 = Comandos de replicação
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+A lista a seguir de comandos de replicação está disponível para seu sistema de storage e-Series.
 
 
 

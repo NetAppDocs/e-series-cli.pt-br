@@ -7,7 +7,7 @@ summary: 'O comando Set Controller (Definir controlador) liga ou desliga a luz i
 = Definir o indicador de ação de serviço do controlador permitido
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -34,7 +34,7 @@ Esse comando é válido apenas para E2700, E5600 ou EF560 (e outras gerações a
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 set controller [(a| b)]
 serviceAllowedIndicator=(on | off)

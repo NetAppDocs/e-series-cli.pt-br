@@ -7,7 +7,7 @@ summary: O comando Validar storageArray securityKey valida a chave de segurança
 = Valide a chave de segurança do storage array
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `validate storageArray securityKey` comando valida a chave de segurança para 
 
 == Arrays compatíveis
 
-Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos arrays E2800 e E5700. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
+Se o gerenciamento de chaves externas estiver habilitado, esse comando se aplicará somente aos storages E4000, E2800 e E5700. Se o gerenciamento de chaves internas estiver habilitado, o comando se aplica a qualquer storage array individual, desde que todos os pacotes SMcli estejam instalados.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Security Admin.
 
 
 
@@ -40,7 +40,7 @@ Este comando aplica-se ao gerenciamento de chaves internas e externas.
 
 == Sintaxe
 
-[listing, subs="+macros"]
+[source, cli, subs="+macros"]
 ----
 
 pass:quotes[validate storageArray securityKey file="_fileName_" passPhrase="_passPhraseString_"]

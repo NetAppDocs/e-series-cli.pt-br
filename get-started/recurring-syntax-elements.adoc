@@ -7,9 +7,10 @@ summary: Elementos de sintaxe recorrentes são uma categoria geral de parâmetro
 = Elementos de sintaxe recorrentes
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
+[role="lead"]
 Elementos de sintaxe recorrentes são uma categoria geral de parâmetros e opções que você pode usar nos comandos de script. A tabela a seguir lista as convenções usadas nos elementos de sintaxe recorrentes.
 
 [cols="2*"]

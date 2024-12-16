@@ -4,10 +4,10 @@ sidebar: sidebar
 keywords: reset, autosupport, message, collection, schedule 
 summary: O comando RESET storageArray AutoSupport schedule redefine os horários e dias diários e semanais da semana em que as mensagens AutoSupport são enviadas de volta para os valores aleatórios gerados pelo software de gerenciamento. 
 ---
-= Redefinir o agendamento de coleta de mensagens do AutoSupport (para storages individuais E2800 ou E5700)
+= Redefinir o agendamento de coleta de mensagens do AutoSupport
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -17,13 +17,13 @@ O `reset storageArray autoSupport schedule` comando redefine os horários e dias
 
 == Arrays compatíveis
 
-Este comando se aplica a um storage array individual de armazenamento E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
+Esse comando se aplica a um storage array individual de armazenamento E4000, E2800, E5700, EF600 ou EF300. Ele não opera em matrizes de armazenamento E2700 ou E5600.
 
 
 
 == Funções
 
-Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
+Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento ou Administrador de suporte.
 
 
 
@@ -37,7 +37,7 @@ Para executar esse comando em um storage array E2800, E5700, EF600 ou EF300, voc
 
 == Sintaxe
 
-[listing]
+[source, cli]
 ----
 reset storageArray autoSupport schedule
 ----
