@@ -436,7 +436,7 @@ Exceto para o `isnsRegistration`, quando você usa este comando, você pode espe
 
 
 
-== Dados de suporte automático
+== Dados do AutoSupport
 
 [NOTE]
 ====

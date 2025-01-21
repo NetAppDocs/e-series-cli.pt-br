@@ -8,7 +8,7 @@ entries:
   url: "/commands-category/alert-configuration-commands.html"
 - title: Comandos de configuração de array
   url: "/commands-category/array-configuration-commands.html"
-- title: Comandos de suporte automático
+- title: Comandos AutoSupport
   url: "/commands-category/auto-support-commands.html"
 - title: Comandos de espelhamento
   url: "/commands-category/mirroring-commands.html"

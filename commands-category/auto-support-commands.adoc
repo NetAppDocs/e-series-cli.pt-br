@@ -2,16 +2,16 @@
 permalink: commands-category/auto-support-commands.html 
 sidebar: sidebar 
 keywords: support, commands, bundle, collection, autosupport 
-summary: Comandos de suporte automático 
+summary: Comandos AutoSupport 
 ---
-= Comandos de suporte automático
+= Comandos AutoSupport
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-A lista a seguir de comandos de suporte automático está disponível para seu sistema de storage e-Series.
+A lista a seguir de comandos do AutoSupport está disponível para seu sistema de storage e-Series.
 
 
 

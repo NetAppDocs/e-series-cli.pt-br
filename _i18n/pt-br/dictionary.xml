@@ -3874,7 +3874,6 @@
   <block id="393e0e962c18bb9902a7b505f4795d88" category="paragraph">Permite definir um tempo limite no System Manager, para que as sessões inativas dos usuários sejam desconetadas após um tempo especificado.</block>
   <block id="9cd2c4a736609c872b659ec8f0f81c17" category="paragraph">Ativa ou desativa o VMware vStorage API Array Architecture (VAAI) para um storage array</block>
   <block id="d088930721693a65d59f92b69b7a1a65" category="paragraph">Exceto para o<block ref="eea7089ff91928271ea047f8777b435a" prefix=" " category="inline-code"></block>, quando você usa este comando, você pode especificar um ou mais parâmetros opcionais.</block>
-  <block id="b8a27435b63207164489e175a608261a" category="section-title">Dados de suporte automático</block>
   <block id="6fbf4b60b0cd4dd67ba1febddba8dee6" category="paragraph">Quando ativado, o<block ref="dd3f70e6356e01b6b6fbd34512887b9f" prefix=" " category="inline-code"></block> comando faz com que todas as informações de configuração e estado do storage array sejam retornadas sempre que um evento crítico de Registro de eventos principais (mel) for detetado. As informações de configuração e estado são retornadas na forma de um gráfico de objetos. O gráfico de objetos contém todos os objetos lógicos e físicos relevantes e suas informações de estado associadas para o storage array.</block>
   <block id="7cf3236cfa030bb0624e61dedbe4115c" category="paragraph">O<block ref="dd3f70e6356e01b6b6fbd34512887b9f" prefix=" " category="inline-code"></block> comando coleta informações de configuração e estado desta maneira:</block>
   <block id="f5a46ee44f2a39219ad0cb7b3b8cb232" category="list-text">A coleta automática das informações de configuração e estado ocorre a cada 72 horas. As informações de configuração e estado são salvas no arquivo de arquivo zip da matriz de armazenamento. O ficheiro de arquivo tem um carimbo de hora utilizado para gerir os ficheiros de arquivo.</block>
@@ -6054,7 +6053,6 @@
   <block id="5994baa4421fdde61fd0b1d2fab9b0e2" category="section-title">Comandos da bandeja</block>
   <block id="9f6f7e1d6ffb8b6703a5273300888f95" category="paragraph"><block ref="9f6f7e1d6ffb8b6703a5273300888f95" category="inline-link-macro-rx"></block></block>
   <block id="cb30c164e3271585aa280d9d483c32a6" category="section-title">Comandos não categorizados</block>
-  <block id="7aa544bbf9280961acfdcfa2d71984cb" category="summary">Comandos de suporte automático</block>
   <block id="788a0a0737156f6df5e8987a7fb89831" category="section-title">Comandos de coleção de pacotes AutoSupport para E2700 e E5600</block>
   <block id="e9d7f9c9ee1489e3f615c622c9279f50" category="paragraph"><block ref="e9d7f9c9ee1489e3f615c622c9279f50" category="inline-link-macro-rx"></block></block>
   <block id="174de654995d2038f77ba29a971d3a08" category="inline-link-macro">Ative ou desative o recurso de diagnóstico remoto do AutoSupport OnDemand em...</block>
@@ -7555,8 +7553,6 @@
   <block id="59ed469f8c0fb1e7540b9c5e0e274379" category="paragraph"><block ref="59ed469f8c0fb1e7540b9c5e0e274379" category="inline-link-macro-rx"></block></block>
   <block id="ca611b7f5b98899a7abee91397e031fa" category="paragraph">A lista a seguir de comandos de configuração de alerta está disponível para o seu sistema de storage e-Series.</block>
   <block id="478f3d35dcc84bea1a78b7ac21781c63" category="paragraph">A lista a seguir de comandos de configuração de array está disponível para o seu sistema de storage e-Series.</block>
-  <block id="27a16d7fcbdb2e5222cbb08871982f58" category="paragraph">A lista a seguir de comandos de suporte automático está disponível para seu sistema de storage e-Series.</block>
-  <block id="3debeae67dbeb507c3cb1a41e3d15efe" category="section-title">Comandos AutoSupport para E4000, EF300, EF400, E2800, E5700</block>
   <block id="b9aa6488935866e17a533f7cb9907f95" category="paragraph"><block ref="b9aa6488935866e17a533f7cb9907f95" category="inline-link-macro-rx"></block></block>
   <block id="48dd72449a509b862d1dbc2e5df66c1d" category="paragraph"><block ref="48dd72449a509b862d1dbc2e5df66c1d" category="inline-link-macro-rx"></block></block>
   <block id="91791fe8747c000ea0ee9806ad0b2697" category="paragraph">Veja a seguir uma lista completa de comandos disponíveis para o seu sistema de storage e-Series.</block>
@@ -7616,4 +7612,8 @@
   <block id="d8e44ec6283b9e1b03ebe13f2b9bf377" category="sidebar">definir o método de entrega smtp de e-mail</block>
   <block id="27ed3c2f0cc271f3ffd55cef1621928d" category="sidebar">Gerenciador de sistemas SANtricity 11,9</block>
   <block id="ece14770330886bc2d41238acbfe48aa" category="sidebar">SANtricity Unified Manager 7</block>
+  <block id="d0a774826d0463e72211475dbf19c749" category="section-title">Dados do AutoSupport</block>
+  <block id="e12f84520db4494b5d41a3376aaf2efe" category="summary">Comandos AutoSupport</block>
+  <block id="f92f6d9fbe12679709b79badc45794e4" category="paragraph">A lista a seguir de comandos do AutoSupport está disponível para seu sistema de storage e-Series.</block>
+  <block id="3668b2be3ec33e7453152c010b5ad26a" category="section-title">Comandos AutoSupport para E4000, EF300, EF400, E2800, E5700</block>
 </blocks>
