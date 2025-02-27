@@ -7573,7 +7573,6 @@
   <block id="0c691b598eb5dcf4dbe4aee57abd7fce" category="paragraph">O relatório detalhado de erros sob a CLI funciona da seguinte forma:</block>
   <block id="7ab16c582be12bf2ea6a9bcbf26ef849" category="summary">O SANtricity os 11,60 e as versões mais recentes incluem a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como CLI segura ou SMcli) diretamente através do Gerenciador de sistema do SANtricity.</block>
   <block id="3bcaed463dcace2a5d7df8ac788e2faa" category="paragraph">O SANtricity os 11,60 e versões mais recentes incluem a capacidade de baixar e instalar a versão baseada em http da CLI (também conhecida como "CLI segura" ou SMcli) diretamente através do Gerenciador de sistema do SANtricity.</block>
-  <block id="326cbd85dc5f285361de38f20d31c9df" category="paragraph">A versão para download do SMcli está disponível nos controladores E4000, EF600, EF300, E5700, EF570, E2800 e EF280. Para fazer o download do SMcli no Gerenciador de sistema do SANtricity, selecione *Configurações* *sistema* e *Complementos* *Interface de linha de comando* .</block>
   <block id="afbe36b824d95e989a52e9001491c721" category="summary">Os Estados de saída são retornados nos comandos executados. Esta tabela lista os Estados de saída que podem ser retornados e o significado de cada status.</block>
   <block id="4e0440694d3b4fa172c69a3cac707e21" category="paragraph">Os Estados de saída são retornados nos comandos executados. A tabela a seguir lista os status de saída que podem ser retornados e o significado de cada status.</block>
   <block id="20b10ae58c66c5b5927a513b2111c0c0" category="section-title">Sair das definições de estado</block>
@@ -7615,5 +7614,6 @@
   <block id="d0a774826d0463e72211475dbf19c749" category="section-title">Dados do AutoSupport</block>
   <block id="e12f84520db4494b5d41a3376aaf2efe" category="summary">Comandos AutoSupport</block>
   <block id="f92f6d9fbe12679709b79badc45794e4" category="paragraph">A lista a seguir de comandos do AutoSupport está disponível para seu sistema de storage e-Series.</block>
-  <block id="3668b2be3ec33e7453152c010b5ad26a" category="section-title">Comandos AutoSupport para E4000, EF300, EF400, E2800, E5700</block>
+  <block id="7cfe927cc93acde3fd26ff2626d6a30c" category="section-title">Comandos AutoSupport para E4000, EF300, EF600, E2800, E5700</block>
+  <block id="4446202efb248928e4f489743b194e56" category="paragraph">A versão para download do SMcli está disponível nos controladores E4000, EF600, EF300, E5700, EF570, E2800, EF280, EF300C e EF600C. Para fazer o download do SMcli no Gerenciador de sistema do SANtricity, selecione *Configurações* *sistema* e *Complementos* *Interface de linha de comando* .</block>
 </blocks>
