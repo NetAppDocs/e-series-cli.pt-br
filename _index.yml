@@ -5,7 +5,7 @@ indexpage:
   keywords: santricity, syntax, commands, user assistance
   lead: Bem-vindo à Assistência ao usuário da CLI incorporada do Gerenciador de sistemas
     do SANtricity, onde você pode descobrir como configurar, monitorar e ajustar seu
-    storage usando a interface de linha de comando (CLI).'
+    storage usando a interface de linha de comando (CLI).
   tiles:
   - title: Comece agora
     links:

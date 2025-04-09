@@ -6076,7 +6076,6 @@
   <block id="fe0b30447bc6f11f8e1d946e88d92283" category="paragraph"><block ref="fe0b30447bc6f11f8e1d946e88d92283" category="inline-link-macro-rx"></block></block>
   <block id="06b1f30ec301048e37eefe3067919a56" category="paragraph"><block ref="06b1f30ec301048e37eefe3067919a56" category="inline-link-macro-rx"></block></block>
   <block id="851ecb9bcd9eaea85cb9cc7b83e26224" category="paragraph"><block ref="851ecb9bcd9eaea85cb9cc7b83e26224" category="inline-link-macro-rx"></block></block>
-  <block id="75d0cfb68b71d4c1551f137d574c98e2" category="summary">Comandos E2700 e E5600</block>
   <block id="974c39615a30eb12263edf94ca8b50a1" category="inline-link-macro">Guardar erros de paridade do trabalho de verificação de volume</block>
   <block id="133fba1f812cada0c7b9feb43526fffc" category="paragraph"><block ref="133fba1f812cada0c7b9feb43526fffc" category="inline-link-macro-rx"></block></block>
   <block id="6752d22f8e0c2b7fadbf03092d48e8dc" category="paragraph"><block ref="6752d22f8e0c2b7fadbf03092d48e8dc" category="inline-link-macro-rx"></block></block>
@@ -7008,7 +7007,6 @@
   <block id="4d926e7d603a8be98a85dd68645636bc" category="paragraph"><block ref="b182d51fe65bf7239a2992c767d0bbb8" prefix=" " category="inline-code"></block>Adicionado parâmetro.</block>
   <block id="8ab3987f5e11278960924053c1c48603" category="paragraph"><block ref="8ab3987f5e11278960924053c1c48603" category="inline-xref-macro-rx"></block></block>
   <block id="dd62ecca79626b0abf30ba505a8993ef" category="paragraph"><block ref="3a53bf66495d7b495faf8750a3363cbf" prefix=" " category="inline-code"></block>Adicionado parâmetro.</block>
-  <block id="85e8092ad24869d134ad6af40b479c96" category="sidebar">Bem-vindo à Assistência ao usuário da CLI incorporada do Gerenciador de sistemas do SANtricity, onde você pode descobrir como configurar, monitorar e ajustar seu storage usando a interface de linha de comando (CLI).'</block>
   <block id="9692ef191259605d058276292b4075e0" category="sidebar">Comandos do Gerenciador de sistema do SANtricity</block>
   <block id="31c2f685d4833664806d295f3c7b4bc6" category="sidebar">Descreve a sintaxe e o uso de comandos SANtricity.</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Comece agora</block>
@@ -7480,7 +7478,6 @@
   <block id="bf448b76d11422f4a518bec20eb47937" category="sidebar">Windows PowerShell</block>
   <block id="17a4045752753b62f07b87c4db3302b1" category="sidebar">Migração de grupo de volumes</block>
   <block id="761f226704fa8b9a2ea64701b36a66e1" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800, E5700, EF600 e EF300, desde que todos os pacotes SMcli sejam instalados.</block>
-  <block id="a354034e1792cd00f19c11de116a69f4" category="paragraph">Para executar esse comando em um storage array E400, E2800, E5700, EF600 ou EF300, você deve ter a função Administrador de armazenamento.</block>
   <block id="4818a1577bb873e9a1bea01f94e168fb" category="paragraph">Este comando se aplica a qualquer storage array individual, incluindo os arrays E4000, E2700, E5600, E2800 e E5700, desde que todos os pacotes SMcli estejam instalados.</block>
   <block id="4ec343cf7b1916cb714cf2eed7cc2a56" category="paragraph">Para executar esse comando em um storage array E4000, E2800 ou E5700, você deve ter a função Storage Admin.</block>
   <block id="076b233b5a4449b721cbb8368f8fb958" category="paragraph">Para executar esse comando em um storage array E4000, E2800, E5700, EF600 ou EF300, você deve ter a função Admin de suporte.</block>
@@ -7558,9 +7555,6 @@
   <block id="91791fe8747c000ea0ee9806ad0b2697" category="paragraph">Veja a seguir uma lista completa de comandos disponíveis para o seu sistema de storage e-Series.</block>
   <block id="c71942c4a8b171695841ba7046fc3eca" category="inline-link-macro">Ative ou desative o recurso de diagnóstico remoto do AutoSupport</block>
   <block id="2fa9ab72f6f5ccc0cf969e1a230ce942" category="paragraph"><block ref="2fa9ab72f6f5ccc0cf969e1a230ce942" category="inline-link-macro-rx"></block></block>
-  <block id="fb10773226243f93cf4024b28436d09c" category="paragraph">A seguinte lista de comandos está disponível para o seu sistema E2700 e E5600.</block>
-  <block id="365f3ca0540bf35310ae0332b69b7733" category="summary">Comandos E4000, E2800, E5700, EF600 e EF300</block>
-  <block id="d98c52acb3963aab4c26465735d8ccd1" category="paragraph">A lista de comandos a seguir está disponível para o sistema E4000, E2800, E5700, EF600 e EF300.</block>
   <block id="a7e37cb158c978c104225254d414a1d2" category="paragraph">A lista a seguir de comandos de espelhamento está disponível para seu sistema de storage e-Series.</block>
   <block id="3c987a7895df93dcf7095d41701a10a9" category="paragraph">A lista a seguir de comandos de ajuste de desempenho está disponível para seu sistema de storage e-Series.</block>
   <block id="273c6d6b2b49f1a011b0804803e8c061" category="paragraph">A lista a seguir de comandos de replicação está disponível para seu sistema de storage e-Series.</block>
@@ -7616,4 +7610,5 @@
   <block id="f92f6d9fbe12679709b79badc45794e4" category="paragraph">A lista a seguir de comandos do AutoSupport está disponível para seu sistema de storage e-Series.</block>
   <block id="7cfe927cc93acde3fd26ff2626d6a30c" category="section-title">Comandos AutoSupport para E4000, EF300, EF600, E2800, E5700</block>
   <block id="4446202efb248928e4f489743b194e56" category="paragraph">A versão para download do SMcli está disponível nos controladores E4000, EF600, EF300, E5700, EF570, E2800, EF280, EF300C e EF600C. Para fazer o download do SMcli no Gerenciador de sistema do SANtricity, selecione *Configurações* *sistema* e *Complementos* *Interface de linha de comando* .</block>
+  <block id="d14e73691bb33d04604da5d4d66f9630" category="sidebar">Bem-vindo à Assistência ao usuário da CLI incorporada do Gerenciador de sistemas do SANtricity, onde você pode descobrir como configurar, monitorar e ajustar seu storage usando a interface de linha de comando (CLI).</block>
 </blocks>
